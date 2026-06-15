@@ -1,0 +1,208 @@
+{
+  "navigation": {
+    "home": "Início",
+    "about": "Sobre",
+    "projects": "Projetos",
+    "certificates": "Certificados",
+    "socialMedia": "Redes Sociais"
+  },
+  "common": {
+    "readMore": "Ler mais",
+    "loading": "Carregando...",
+    "error": "Erro",
+    "notFound": "Não encontrado",
+    "backToHome": "Voltar ao início",
+    "language": "Idioma",
+    "portuguese": "Português",
+    "english": "Inglês"
+  },
+  "search": {
+    "placeholder": "Buscar artigos sobre algoritmos, carreira, tech...",
+    "triggerText": "Buscar artigos sobre algoritmos, carreira, tech...",
+    "searching": "Buscando artigos...",
+    "noResults": "Nenhum resultado encontrado",
+    "noResultsDescription": "Tente usar palavras-chave diferentes como \"algoritmos\", \"carreira\" ou \"sistema\"",
+    "featuredArticles": "Artigos em Destaque",
+    "searchResults": "Resultados da Busca",
+    "cancel": "Cancelar",
+    "clear": "Limpar",
+    "navigate": "Navegar",
+    "select": "Selecionar",
+    "close": "Fechar",
+    "shortcutHint": "K"
+  },
+  "notFound": {
+    "title": "Página não encontrada",
+    "description": "Ops! A página que você está procurando não existe ou foi movida.",
+    "suggestions": "Que tal tentar uma dessas opções?",
+    "home": "Página Inicial",
+    "about": "Sobre",
+    "backToHome": "Voltar ao Início",
+    "contactText": "Se você acredita que isso é um erro, entre em contato comigo em"
+  },
+  "hero": {
+    "stats": {
+      "subscribers": "Inscritos YouTube",
+      "experience": "Anos de Experiência",
+      "lessons": "Aulas no Curso Principal",
+      "countries": "Países Trabalhados"
+    },
+    "cta": {
+      "courses": "Ver Projetos",
+      "blog": "Ler Blog",
+      "channels": "Canais no YouTube:",
+      "available": "Disponível para mentorias",
+      "new": "Novo"
+    }
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Artigos sobre desenvolvimento, tecnologia e carreira",
+    "searchPlaceholder": "Pesquisar artigos...",
+    "noResults": "Nenhum artigo encontrado",
+    "readTime": "min de leitura",
+    "publishedOn": "Publicado em",
+    "lastUpdated": "Última atualização"
+  },
+  "about": {
+    "title": "Sobre Mim",
+    "subtitle": "Desenvolvedor apaixonado por tecnologia e educação"
+  },
+  "courses": {
+    "title": "Cursos",
+    "subtitle": "Aprenda desenvolvimento web com conteúdo prático"
+  },
+  "books": {
+    "title": "Livros Recomendados",
+    "buyOnAmazon": "Comprar na Amazon",
+    "techBooksTitle": "Livros Técnicos",
+    "nonTechBooksTitle": "Livros Não-Técnicos",
+    "dividerText": "e também",
+    "recommendations": {
+      "clean-code": "Eu não faço as regras, é muito influente. Li e acho que +- metade das ideias tem valor.",
+      "refactoring": "Um dos livros mais fáceis de se recomendar. Refactoring é bom.",
+      "pragmatic-programmer": "Outro livro muito fácil de se recomendar. Todo dev deveria ler.",
+      "software-architecture": "Arquitetura de software E arquitetura de software as partes difíceis.",
+      "art-science-engineering": "Opinião pessoal, talvez o melhor livro que eu li nos últimos 2 anos.",
+      "grokking-algorithms": "Livro introdutório para estruturas e algoritmos. Se você não entende isso, é um bom livro. Se você já entende, não vai ser muito útil.",
+      "cracking-code": "Pra passar em entrevista FAANG.",
+      "system-design-interview": "Também pra passar em FAANG.",
+      "mythical-man-month": "Clássico atemporal sobre gestão de projetos de software.",
+      "sicp": "Structure and Interpretation of Computer Programs. A base da ciência da computação.",
+      "extreme-programming": "O livro fundamental sobre XP e práticas ágeis.",
+      "ddia": "A 'bíblia' de sistemas distribuídos.",
+      "tanenbaum-os": "Sistemas Operacionais Modernos. O livro texto definitivo sobre o assunto.",
+      "k-and-r": "The C Programming Language. A origem de tudo.",
+      "ddd-red-book": "Domain-Driven Design. O livro vermelho clássico.",
+      "microservices-patterns": "Padrões essenciais para arquitetura de microsserviços.",
+      "cormen": "Introduction to Algorithms. O guia definitivo e acadêmico sobre algoritmos.",
+      "knuth": "The Art of Computer Programming. A obra magna da computação.",
+      "hobbit": "O meu livro de ficção favorito.",
+      "a-arte-de-fazer-acontecer": "O único método de organização que funcionou para mim. O livro é chatinho de ler, mas o método é bom.",
+      "gatsby": "O melhor livro que eu li em 2025. Curto; Excepcional.",
+      "almanaque-naval-ravikant": "Um daqueles livros que vc precisa ter contato com as ideias por um tempo. Filósofo do silício.",
+      "pai-rico-pai-pobre": "Se você não teve contato com ideias sobre finanças, ativos e passivos é o livro mais importante. Se teve, é irrelevante. ",
+      "4h-workweek": "É o pai rico pai pobre do empreendedorismo.",
+      "diario-estoico": "O livro tem uma reflexão por dia de calendário. É bem bacana pra adicionar em um momento do seu dia",
+      "hitchhikers-guide-to-the-galaxy": "Ficção, mas poderia muito bem ser um livro da filosofia absurdista do Camus.",
+      "antifragil": "Um dos livros que mais influenciou minha forma de pensar. O livro é um pouco difícil de ler, mas vale a pena.",
+      "magico-de-oz": "Esse livro me ajudou a sair um pouco da rotina de trabalho, todas as noites eu lia e via o mundo com outro olhar",
+      "e-myth": "O livro tem uma ou duas ideias muito importantes para empreendedores, repetidas ao longo do livro. Não acho um bom livro, mas as duas ideias fazem valer a pena.",
+      "estrangeiro": "É impressionante como um livro de ficção pode ser tão filosófico.",
+      "ruido": "O llivro ensina sobre viéses e ruídos na hora de tomar decisões. Foi muito importante para mim.",
+      "habitos-atomicos": "É o basico, e o basico precisa ser lido. Bons habitos geram ganhos compostos e mudam sua vida.",
+      "bebado": "Livro incrível pra ter uma visão mais lúdica de probabilidade e estatística. Foi um dos livros que mais influenciou minha forma de pensar.",
+      "rapido-e-devagar": "Todo mundo recomenda esse livro mas ninguém leu. E ninguém leu porque a leitura é meio chata. Mas é um bom livro.",
+      "10-percent": "Esse livro me convenceu a meditar. Só esse fato melhorou a minha vida, uns 10%",
+      "wall-street-random-walk": "O ponto de vista bogglehead de um investidor de longo prazo. Vale a pena a perspectiva",
+      "cisne-negro": "É um dos livros mais influentes do século. Boa leitura pra entender eventos de baixa probabilidade.",
+      "one-up-on-wall-street": "Peter Lynch, o escritor desse livro, é um dos melhores investidores de todos os tempos. O livro é um guia para investidores de longo prazo.",
+      "meditacoes": "É raro que a gente tenha acesso aos pensamentos privados de um filósofo e imperador romano. Mas aqui temos exatamente isso.",
+      "intelligent-investor": "Benjamin Graham, o escritor desse livro, é um dos melhores investidores de todos os tempos. O livro é um guia para investidores de longo prazo.",
+      "fahrenheit-451": "Uma das poucas distopias que eu li e gostei.",
+      "trabalho-focado": "Num mundo de distrações, o livro mostra o valor de poucas horas de foco.",
+      "alice-in-wonderland": "É um classico, bom pra se perder"
+    }
+  },
+  "setup": {
+    "title": "Meu Setup",
+    "subtitle": "Ferramentas e equipamentos que uso no dia a dia"
+  },
+  "metadata": {
+    "home": {
+      "keywords": [
+        "algoritmos",
+        "estruturas de dados",
+        "leetcode",
+        "programação",
+        "carreira tech",
+        "backend",
+        "python",
+        "javascript",
+        "trabalho remoto",
+        "system design",
+        "entrevista técnica",
+        "coding interview",
+        "programador brasileiro",
+        "tech lead",
+        "cto",
+        "startup",
+        "europa",
+        "emigração tech"
+      ]
+    },
+    "about": {
+      "title": "Sobre",
+      "keywords": [
+        "trajetória",
+        "carreira tech",
+        "brasil",
+        "eua",
+        "europa",
+        "cto",
+        "desenvolvedor",
+        "algoritmos",
+        "educação"
+      ]
+    },
+    "courses": {
+      "title": "Cursos",
+      "description": "Cursos práticos sobre algoritmos, estruturas de dados e carreira em tech. Aprenda com quem saiu do Brasil e chegou ao topo na Europa e EUA.",
+      "keywords": [
+        "cursos",
+        "algoritmos",
+        "estruturas de dados",
+        "carreira tech",
+        "prático",
+        "educação",
+        "programação",
+        "leetcode"
+      ]
+    },
+    "books": {
+      "title": "Livros Recomendados",
+      "description": "Lista curada de livros essenciais para desenvolvedores de software. Clean Code, Arquitetura, Sistemas Distribuídos e mais.",
+      "keywords": [
+        "livros",
+        "recomendações",
+        "clean code",
+        "arquitetura de software",
+        "carreira tech",
+        "leitura"
+      ]
+    },
+    "setup": {
+      "title": "Setup & Produtividade",
+      "description": "Conheça o setup de trabalho e dicas de produtividade de Augusto Galego. Ferramentas, configurações e metodologias para ser mais eficiente.",
+      "keywords": [
+        "setup",
+        "produtividade",
+        "ferramentas",
+        "configurações",
+        "metodologias",
+        "eficiência",
+        "trabalho remoto"
+      ]
+    }
+  }
+}

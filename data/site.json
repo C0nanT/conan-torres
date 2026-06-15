@@ -1,0 +1,337 @@
+{
+  "profile": {
+    "fullName": "Conan Torres",
+    "displayName": "Conan Torres",
+    "firstName": "Conan",
+    "lastName": "Torres",
+    "aliases": ["Conan", "Conan o Bárbaro"],
+    "initials": "CT",
+    "role": "Senior Software Engineer",
+    "subtitle": "Desenvolvedor & Cibersegurança",
+    "jobTitle": "Senior Software Engineer",
+    "nationality": "Brasileiro",
+    "location": {
+      "city": "Florianópolis",
+      "country": "Brasil",
+      "countryCode": "BR",
+      "display": "Florianópolis, SC 🇧🇷"
+    },
+    "structuredDataLocation": {
+      "city": "Florianópolis",
+      "countryCode": "BR"
+    },
+    "education": {
+      "degree": "Análise e Desenvolvimento de Sistemas - UNIASSELVI",
+      "institution": "Centro Universitário Leonardo da Vinci",
+      "institutionShort": "UNIASSELVI",
+      "year": 2024
+    },
+    "stats": {
+      "yearsExperience": "6+"
+    },
+    "images": {
+      "avatar": "/profile-id-sem-fundo-2.png",
+      "hero": "/profile-id-sem-fundo-2.png",
+      "profile": "/profile-id-sem-fundo-2.png",
+      "about": "/profile-id-sem-fundo-2.png",
+      "og": "/profile-id-sem-fundo-2.png",
+      "logo": "/profile-id-sem-fundo-2.png"
+    },
+    "knowsAbout": [
+      "Cyber Security",
+      "Web Development",
+      "Laravel (PHP)",
+      "Django (Python)",
+      "React (TypeScript)",
+      "Docker",
+      "Linux",
+      "DevOps"
+    ],
+    "tagline": "Dev Senior Full-Stack & Cyber Security"
+  },
+  "content": {
+    "hero": {
+      "description": "Engenheiro Senior Full-Stack e Cibersegurança, com mais de 6 anos de experiência em desenvolvimento de software e cibersegurança.",
+      "highlights": {
+        "security": "Construindo sistemas seguros e confiáveis",
+        "development": "Desenvolvimento web moderno e escalável",
+        "ai": "Claude como IA para desenvolvimento",
+        "editor": "Cursor como IDE"
+      }
+    },
+    "metadata": {
+      "home": {
+        "title": "Augusto Galego - CTO, Backend Engineer e Educador",
+        "description": "CTO, Backend Engineer e Educador. Especialista em algoritmos, estruturas de dados e carreira em tech. Aprenda com quem saiu do Brasil e chegou ao topo na Europa."
+      },
+      "about": {
+        "description": "Conheça a trajetória de Augusto Galego: de desenvolvedor júnior no Brasil a CTO nos EUA. Especialista em algoritmos, estruturas de dados e educação em tech."
+      }
+    }
+  },
+  "contact": {
+    "email": "algoritmos.galego@gmail.com",
+    "availability": "Disponível para mentorias"
+  },
+  "social": {
+    "youtube": {
+      "url": "https://www.todo.com/trocar-isso-depois",
+      "handle": "@GutoGalego",
+      "label": "YouTube"
+    },
+    "youtubeSecondary": {
+      "url": "https://www.todo.com/trocar-isso-depois",
+      "handle": "@GutoMonólogos",
+      "label": "YouTube"
+    },
+    "linkedin": {
+      "url": "https://www.todo.com/trocar-isso-depois",
+      "handle": "augusto-galego",
+      "label": "LinkedIn"
+    },
+    "github": {
+      "url": "https://www.todo.com/trocar-isso-depois",
+      "handle": "gutogalego",
+      "label": "GitHub"
+    },
+    "twitter": {
+      "url": "https://www.todo.com/trocar-isso-depois",
+      "handle": "@RealGalego",
+      "label": "X"
+    }
+  },
+  "site": {
+    "name": "Augusto Galego",
+    "url": "https://augustogalego.com",
+    "analytics": {
+      "clarityId": "uwvig5tu0g"
+    }
+  },
+  "youtube": {
+    "freeLessonVideoId": "g-hIXvdDeZk",
+    "channels": [
+      {
+        "id": "main",
+        "handle": "@GutoGalego",
+        "url": "https://www.todo.com/trocar-isso-depois",
+        "description": "Canal principal com foco em algoritmos, estruturas de dados, LeetCode e carreira em tech.",
+        "subscribers": "135K+",
+        "videoCount": "226",
+        "category": "Educação Tech",
+        "status": "Ativo",
+        "highlights": ["Algoritmos", "LeetCode", "Carreira", "System Design"],
+        "isMain": true
+      },
+      {
+        "id": "secondary",
+        "handle": "@GutoMonólogos",
+        "url": "https://www.todo.com/trocar-isso-depois",
+        "description": "Canal secundário com monólogos, reflexões pessoais e dicas de produtividade.",
+        "subscribers": "Crescendo",
+        "videoCount": "15+",
+        "category": "Lifestyle Tech",
+        "status": "Em Crescimento",
+        "highlights": ["Produtividade", "Reflexões", "Setup", "Carreira"],
+        "isMain": false
+      }
+    ],
+    "recommendedChannels": [
+      {
+        "id": "matt-pocock",
+        "name": "Matt Pocock",
+        "handle": "@mattpocockuk",
+        "url": "https://www.todo.com/trocar-isso-depois",
+        "description": "Engenharia de software com IA na prática — workflows, TypeScript e Claude Code para devs reais.",
+        "subscribers": "250K+",
+        "videoCount": "270+",
+        "category": "AI Coding",
+        "status": "Ativo",
+        "highlights": ["AI Coding", "Claude Code", "TypeScript", "Workflows"]
+      },
+      {
+        "id": "karpathy",
+        "name": "Andrej Karpathy",
+        "handle": "@AndrejKarpathy",
+        "url": "https://www.todo.com/trocar-isso-depois",
+        "description": "Fundamentos de IA e LLMs explicados por quem construiu na OpenAI e Tesla.",
+        "subscribers": "1M+",
+        "videoCount": "50+",
+        "category": "AI & ML",
+        "status": "Ativo",
+        "highlights": [
+          "LLMs",
+          "Neural Networks",
+          "Zero to Hero",
+          "Machine Learning"
+        ]
+      }
+    ],
+    "recommendedVideos": [
+      {
+        "videoId": "EJyuu6zlQCg",
+        "startSeconds": 305,
+        "title": "5 Claude Code skills I use every single day",
+        "views": "393K",
+        "channelId": "matt-pocock"
+      },
+      {
+        "videoId": "-QFHIoCo-Ko",
+        "title": "Full Walkthrough: Workflow for AI Coding",
+        "views": "868K",
+        "channelId": "matt-pocock"
+      },
+      {
+        "videoId": "EWvNQjAaOHw",
+        "title": "How I use LLMs",
+        "views": "2.5M",
+        "channelId": "karpathy"
+      }
+    ]
+  },
+  "courses": {
+    "featured": {
+      "id": "algorithms-leetcode",
+      "title": "Estruturas de Dados e Algoritmos + LeetCode",
+      "description": "Curso completo com 68 aulas, explicações visuais e desenhos na tela. Aprenda os fundamentos que todo desenvolvedor precisa saber.",
+      "students": "5k+",
+      "lessons": 68,
+      "hours": "8h",
+      "highlights": [
+        "Explicações visuais",
+        "Desenhos na tela",
+        "Python",
+        "LeetCode"
+      ],
+      "url": "https://www.todo.com/trocar-isso-depois"
+    },
+    "others": [
+      {
+        "id": "roadmap",
+        "title": "Roadmap pro seu próximo emprego",
+        "description": "Tudo o que você precisa saber para achar vagas no Brasil e na gringa, melhorar seu LinkedIn e ser aprovado nas entrevistas técnicas",
+        "url": "https://www.todo.com/trocar-isso-depois"
+      },
+      {
+        "id": "leetcode-workshop",
+        "title": "Workshop: 10 LeetCodes para Entrevistas",
+        "description": "Aprenda a resolver os 10 problemas mais cobrados em entrevistas técnicas com explicações detalhadas e estratégias de resolução",
+        "url": "https://www.todo.com/trocar-isso-depois"
+      },
+      {
+        "id": "system-design-workshop",
+        "title": "Workshop: System Design para Entrevistas",
+        "description": "Domine os fundamentos de System Design e aprenda a projetar sistemas escaláveis para passar em entrevistas de grandes empresas",
+        "url": "https://www.todo.com/trocar-isso-depois"
+      }
+    ]
+  },
+  "about": {
+    "badge": "Sobre Augusto Galego",
+    "headline": "De júnior no Brasil a CTO nos EUA",
+    "headlineHighlight": "CTO nos EUA",
+    "subheadline": "Uma jornada de 10+anos em tecnologia",
+    "bio": [
+      "Olá! Eu sou o Augusto Miranda Galego, mais conhecido como \"Galego\" ou \"Papai do LeetCode\". Minha história é sobre transformação, persistência e a busca constante por crescimento.",
+      "Comecei como desenvolvedor júnior no Brasil em 2014, logo após me formar em Sistemas de Informação pela UFSC. Hoje, sou CTO de uma startup americana, morando na Itália e ajudando milhares de desenvolvedores a crescerem em suas carreiras.",
+      "Minha missão é desmistificar algoritmos e estruturas de dados, compartilhar insights sobre carreira internacional e mostrar que é possível sim sair do Brasil e construir uma carreira sólida na Europa e EUA."
+    ],
+    "quickFacts": [
+      {
+        "label": "Formação",
+        "value": "Sistemas de Informação - UFSC",
+        "year": "2014"
+      },
+      {
+        "label": "Experiência",
+        "value": "10+anos em desenvolvimento",
+        "year": "2014-2025"
+      },
+      {
+        "label": "Localização",
+        "value": "Pádua, Itália",
+        "year": "Atual"
+      },
+      {
+        "label": "Posição",
+        "value": "CTO em startup americana",
+        "year": "2025"
+      }
+    ],
+    "achievements": [
+      "135K+ seguidores no YouTube",
+      "Especialista reconhecido em LeetCode",
+      "Transição internacional bem-sucedida",
+      "Educador com milhares de alunos",
+      "CTO em startup americana",
+      "Palestrante em eventos de tech"
+    ]
+  },
+  "philosophy": {
+    "coreValues": [
+      {
+        "title": "Fundamentos Primeiro",
+        "description": "Acredito que entender profundamente algoritmos e estruturas de dados é mais importante que decorar sintaxe de frameworks.",
+        "quote": "\"Frameworks mudam, fundamentos permanecem.\""
+      },
+      {
+        "title": "Educação Acessível",
+        "description": "Conhecimento deve ser democrático. Uso explicações visuais e linguagem simples para tornar conceitos complexos acessíveis.",
+        "quote": "\"Se não consegue explicar de forma simples, não entendeu bem.\""
+      },
+      {
+        "title": "Prática Deliberada",
+        "description": "Crescimento vem da prática consistente e focada. LeetCode é uma ferramenta, não um fim em si mesmo.",
+        "quote": "\"Pratique com propósito, não por obrigação.\""
+      },
+      {
+        "title": "Impacto Real",
+        "description": "Meu objetivo é ajudar desenvolvedores a crescerem em suas carreiras e alcançarem seus sonhos profissionais.",
+        "quote": "\"Sucesso é ver meus alunos superando seus próprios limites.\""
+      }
+    ],
+    "personalInsights": [
+      {
+        "title": "Sobre LeetCode",
+        "content": "LeetCode é uma excelente ferramenta para praticar algoritmos, mas não deve ser o único foco. Use-o para fortalecer fundamentos, não para decorar soluções.",
+        "category": "Técnico"
+      },
+      {
+        "title": "Carreira Internacional",
+        "content": "Sair do Brasil foi desafiador, mas possível. O segredo está em construir um portfólio sólido, melhorar o inglês e ser persistente.",
+        "category": "Carreira"
+      },
+      {
+        "title": "Educação Online",
+        "content": "Ensinar online me permitiu impactar milhares de pessoas. A chave é ser autêntico e focar genuinamente em ajudar os alunos.",
+        "category": "Educação"
+      },
+      {
+        "title": "Produtividade",
+        "content": "Organização é fundamental. Uso Notion para tudo: projetos, ideias, planejamento. Um sistema bem estruturado liberta a mente para criar.",
+        "category": "Produtividade"
+      }
+    ]
+  },
+  "seo": {
+    "keywords": [
+      "algoritmos",
+      "estruturas de dados",
+      "leetcode",
+      "programação",
+      "carreira tech",
+      "backend",
+      "python",
+      "javascript",
+      "trabalho remoto",
+      "system design",
+      "entrevista técnica",
+      "coding interview",
+      "programador brasileiro",
+      "tech lead",
+      "cto",
+      "startup",
+      "europa",
+      "emigração tech"
+    ]
+  }
+}
