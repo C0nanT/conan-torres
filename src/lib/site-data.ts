@@ -28,7 +28,6 @@ export interface RecommendedYouTubeChannel {
   subscribers: string
   videoCount: string
   category: string
-  status: string
   highlights: string[]
 }
 

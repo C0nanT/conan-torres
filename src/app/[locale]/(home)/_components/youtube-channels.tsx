@@ -17,38 +17,53 @@ import {
 import { ExternalLink, Play, Youtube } from 'lucide-react'
 import Image from 'next/image'
 
-function getCategoryColors(tag: string): { bg: string; text: string } {
+interface TopicCategory {
+  label: string
+  keywords: string[]
+  bg: string
+  text: string
+  dot: string
+}
+
+const TOPIC_CATEGORIES: TopicCategory[] = [
+  {
+    label: 'IA no desenvolvimento',
+    keywords: ['ai coding', 'claude', 'typescript'],
+    bg: 'bg-blue-100 dark:bg-blue-950',
+    text: 'text-blue-700 dark:text-blue-300',
+    dot: 'bg-blue-500',
+  },
+  {
+    label: 'LLMs e Machine Learning',
+    keywords: ['llm', 'neural', 'machine learning'],
+    bg: 'bg-purple-100 dark:bg-purple-950',
+    text: 'text-purple-700 dark:text-purple-300',
+    dot: 'bg-purple-500',
+  },
+  {
+    label: 'Workflows',
+    keywords: ['workflow'],
+    bg: 'bg-green-100 dark:bg-green-950',
+    text: 'text-green-700 dark:text-green-300',
+    dot: 'bg-green-500',
+  },
+]
+
+const DEFAULT_TOPIC_CATEGORY: TopicCategory = {
+  label: 'Outros',
+  keywords: [],
+  bg: 'bg-gray-100 dark:bg-gray-950',
+  text: 'text-gray-700 dark:text-gray-300',
+  dot: 'bg-gray-500',
+}
+
+function getCategoryColors(tag: string): TopicCategory {
   const t = tag.toLowerCase()
-  if (
-    t.includes('ai coding') ||
-    t.includes('claude') ||
-    t.includes('typescript')
-  ) {
-    return {
-      bg: 'bg-blue-100 dark:bg-blue-950',
-      text: 'text-blue-700 dark:text-blue-300',
-    }
-  }
-  if (
-    t.includes('llm') ||
-    t.includes('neural') ||
-    t.includes('machine learning')
-  ) {
-    return {
-      bg: 'bg-purple-100 dark:bg-purple-950',
-      text: 'text-purple-700 dark:text-purple-300',
-    }
-  }
-  if (t.includes('workflow')) {
-    return {
-      bg: 'bg-green-100 dark:bg-green-950',
-      text: 'text-green-700 dark:text-green-300',
-    }
-  }
-  return {
-    bg: 'bg-gray-100 dark:bg-gray-950',
-    text: 'text-gray-700 dark:text-gray-300',
-  }
+  return (
+    TOPIC_CATEGORIES.find((category) =>
+      category.keywords.some((keyword) => t.includes(keyword))
+    ) ?? DEFAULT_TOPIC_CATEGORY
+  )
 }
 
 export function YouTubeChannels() {
@@ -71,33 +86,33 @@ export function YouTubeChannels() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
           {recommendedChannels.map((channel) => (
             <Card
               key={channel.id}
-              className="tech-card relative overflow-hidden"
+              className="tech-card relative flex h-full flex-col overflow-hidden"
             >
-              <CardHeader>
-                <div className="flex items-start space-x-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-foreground text-white">
-                    <Youtube className="h-6 w-6" />
+              <CardHeader className="p-5 pb-3">
+                <div className="flex items-start space-x-3">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-foreground text-white">
+                    <Youtube className="h-5 w-5" />
                   </div>
                   <div className="flex-1">
-                    <CardTitle className="text-xl">{channel.name}</CardTitle>
+                    <CardTitle className="text-lg">{channel.name}</CardTitle>
                     <p className="text-sm text-muted-foreground mt-0.5">
                       {channel.handle}
                     </p>
-                    <CardDescription className="mt-2">
+                    <CardDescription className="mt-2 line-clamp-3 text-sm">
                       {channel.description}
                     </CardDescription>
                   </div>
                 </div>
               </CardHeader>
 
-              <CardContent className="space-y-6">
-                <div className="grid grid-cols-3 gap-4">
+              <CardContent className="flex flex-1 flex-col space-y-4 p-5 pt-0">
+                <div className="grid grid-cols-2 gap-2">
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-primary">
+                    <div className="text-xl font-bold text-primary">
                       {channel.subscribers}
                     </div>
                     <div className="text-sm text-muted-foreground">
@@ -105,15 +120,10 @@ export function YouTubeChannels() {
                     </div>
                   </div>
                   <div className="text-center">
-                    <div className="text-2xl font-bold">
+                    <div className="text-xl font-bold">
                       {channel.videoCount}
                     </div>
                     <div className="text-sm text-muted-foreground">Vídeos</div>
-                  </div>
-                  <div className="text-center">
-                    <Badge variant="default" className="text-xs">
-                      {channel.status}
-                    </Badge>
                   </div>
                 </div>
 
@@ -137,7 +147,7 @@ export function YouTubeChannels() {
                   </div>
                 </div>
 
-                <Button className="w-full group" asChild={true}>
+                <Button className="group mt-auto w-full" asChild={true}>
                   <Link
                     href={channel.url}
                     target="_blank"
@@ -152,6 +162,18 @@ export function YouTubeChannels() {
             </Card>
           ))}
         </div>
+
+        <ul className="mb-12 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-muted-foreground">
+          {[...TOPIC_CATEGORIES, DEFAULT_TOPIC_CATEGORY].map((category) => (
+            <li key={category.label} className="flex items-center gap-2">
+              <span
+                aria-hidden="true"
+                className={`h-2.5 w-2.5 rounded-full ${category.dot}`}
+              />
+              {category.label}
+            </li>
+          ))}
+        </ul>
 
         <div className="space-y-6">
           <div className="text-center">

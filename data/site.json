@@ -130,25 +130,7 @@
         "subscribers": "250K+",
         "videoCount": "270+",
         "category": "AI Coding",
-        "status": "Ativo",
         "highlights": ["AI Coding", "Claude Code", "TypeScript", "Workflows"]
-      },
-      {
-        "id": "karpathy",
-        "name": "Andrej Karpathy",
-        "handle": "@AndrejKarpathy",
-        "url": "https://www.todo.com/trocar-isso-depois",
-        "description": "Fundamentos de IA e LLMs explicados por quem construiu na OpenAI e Tesla.",
-        "subscribers": "1M+",
-        "videoCount": "50+",
-        "category": "AI & ML",
-        "status": "Ativo",
-        "highlights": [
-          "LLMs",
-          "Neural Networks",
-          "Zero to Hero",
-          "Machine Learning"
-        ]
       },
       {
         "id": "renato-augusto",
@@ -159,40 +141,49 @@
         "subscribers": "150K+",
         "videoCount": "60+",
         "category": "Software Engineering",
-        "status": "Ativo",
         "highlights": [
           "Carreira",
           "Arquitetura de Software",
           "Programação",
           "Livros"
         ]
+      },
+      {
+        "id": "karpathy",
+        "name": "Andrej Karpathy",
+        "handle": "@AndrejKarpathy",
+        "url": "https://www.todo.com/trocar-isso-depois",
+        "description": "Fundamentos de IA e LLMs explicados por quem construiu na OpenAI e Tesla.",
+        "subscribers": "1M+",
+        "videoCount": "50+",
+        "category": "AI & ML",
+        "highlights": [
+          "LLMs",
+          "Neural Networks",
+          "Zero to Hero",
+          "Machine Learning"
+        ]
       }
     ],
     "recommendedVideos": [
       {
-        "videoId": "EJyuu6zlQCg",
-        "startSeconds": 305,
-        "title": "5 Claude Code skills I use every single day",
-        "views": "393K",
-        "channelId": "matt-pocock"
-      },
-      {
         "videoId": "-QFHIoCo-Ko",
+        "startSeconds": 2,
         "title": "Full Walkthrough: Workflow for AI Coding",
         "views": "868K",
         "channelId": "matt-pocock"
-      },
-      {
-        "videoId": "EWvNQjAaOHw",
-        "title": "How I use LLMs",
-        "views": "2.5M",
-        "channelId": "karpathy"
       },
       {
         "videoId": "TREjh6d5fLg",
         "title": "10 ANOS DE PROGRAMAÇÃO EM 10 LIÇÕES QUE VÃO MUDAR SUA CARREIRA!",
         "views": "82K",
         "channelId": "renato-augusto"
+      },
+      {
+        "videoId": "EWvNQjAaOHw",
+        "title": "How I use LLMs",
+        "views": "2.5M",
+        "channelId": "karpathy"
       }
     ]
   },
