@@ -1,0 +1,181 @@
+{
+  "source": "https://www.linkedin.com/in/conan-torres/",
+  "fetchedAt": "2026-10-01",
+  "certifications": [
+    {
+      "title": "Palestrante: 1° Encontro de Tecnologia das Defensorias Públicas da Região Sul",
+      "issuer": "Defensoria Pública do Estado do Rio Grande do Sul",
+      "issuedAt": "2026-08",
+      "credentialId": null,
+      "skills": []
+    },
+    {
+      "title": "AI Fluency: Framework & Foundations",
+      "issuer": "Anthropic",
+      "issuedAt": "2026-05",
+      "credentialId": "6ah84k8a2tf8",
+      "skills": ["AI Workflow Integration"]
+    },
+    {
+      "title": "Claude Code In Action",
+      "issuer": "Anthropic",
+      "issuedAt": "2026-05",
+      "credentialId": "8p6qnvmnptiq",
+      "skills": ["Agentic Workflows"]
+    },
+    {
+      "title": "Curso de Banco de dados relacionais e SQL",
+      "issuer": "Full Cycle",
+      "issuedAt": "2025-12",
+      "credentialId": "67c4b9c3-c761-4e7a-a6c6-9a02095529dc",
+      "skills": ["PostgreSQL", "MySQL"]
+    },
+    {
+      "title": "Curso de Fundamentos de Cloud Computing (AWS)",
+      "issuer": "Full Cycle",
+      "issuedAt": "2025-12",
+      "credentialId": "f4c5b6b4-e45e-4471-ae03-6b20aa0addbd",
+      "skills": ["CI/CD", "AWS"]
+    },
+    {
+      "title": "Curso de Docker para produção",
+      "issuer": "Full Cycle",
+      "issuedAt": "2025-12",
+      "credentialId": "f30d5a03-4814-4552-9a94-0b3ed05b9c5d",
+      "skills": ["Docker"]
+    },
+    {
+      "title": "EF SET English Certificate 50/100 (B1 Intermediate)",
+      "issuer": "EF SET",
+      "issuedAt": "2025-11",
+      "credentialId": null,
+      "skills": ["Inglês"]
+    },
+    {
+      "title": "Curso de POO - Orientação a objetos",
+      "issuer": "Full Cycle",
+      "issuedAt": "2025-11",
+      "credentialId": "387b33e3-34ee-421f-9fa6-17ea12fc7614",
+      "skills": ["TypeScript"]
+    },
+    {
+      "title": "Análise e Desenvolvimento de Sistemas",
+      "issuer": "UNIASSELVI",
+      "issuedAt": "2025-07",
+      "credentialId": "1472.1472.4842b416794b28263bc1ca53cbfa7678ffd21988acd59be670b580f3b6e42f11",
+      "skills": []
+    },
+    {
+      "title": "Curso de Git e Github",
+      "issuer": "Full Cycle",
+      "issuedAt": "2025-07",
+      "credentialId": "20c9ac4e-31fe-41f5-a07a-47464f79b2dd",
+      "skills": ["GitHub", "Git"]
+    },
+    {
+      "title": "Curso de Arquitetura em camadas e MVC",
+      "issuer": "Full Cycle",
+      "issuedAt": "2025-07",
+      "credentialId": "209d4eba-bce6-4a4a-b474-cb9966f7cd2c",
+      "skills": ["TypeScript"]
+    },
+    {
+      "title": "Curso de Autenticação e autorização: Tokens JWT, ACL e RBAC",
+      "issuer": "Full Cycle",
+      "issuedAt": "2025-06",
+      "credentialId": "f5afd353-121a-4391-bb56-59315aebaeb8",
+      "skills": ["JWT"]
+    },
+    {
+      "title": "Curso de SOLID na prática - Princípios e aplicações em design de software",
+      "issuer": "Full Cycle",
+      "issuedAt": "2025-05",
+      "credentialId": "21736e3e-c008-48d7-b7d7-bee96f49499a",
+      "skills": ["SOLID"]
+    },
+    {
+      "title": "Curso de Docker para Desenvolvimento",
+      "issuer": "Full Cycle",
+      "issuedAt": "2025-04",
+      "credentialId": "8f29688c-6e46-4146-82b0-65d068894294",
+      "skills": ["Docker"]
+    },
+    {
+      "title": "Curso de Docker na prática",
+      "issuer": "Full Cycle",
+      "issuedAt": "2025-04",
+      "credentialId": "2c126bc0-5829-46c1-82f8-bf01e79379b2",
+      "skills": ["Docker"]
+    },
+    {
+      "title": "Curso de REST e Níveis de Maturidade na prática",
+      "issuer": "Full Cycle",
+      "issuedAt": "2025-03",
+      "credentialId": "d63dfb3f-6018-4fed-aceb-a82f69616e7d",
+      "skills": ["API REST"]
+    },
+    {
+      "title": "React Native: utilizando e criando Hooks",
+      "issuer": "Alura",
+      "issuedAt": "2024-04",
+      "credentialId": "e2d2c4b3-870a-4379-8c69-0b081cb4e411",
+      "skills": ["React Native", "Qualidade de software"]
+    },
+    {
+      "title": "Laravel: validando formulários, usando sessões e definindo relacionamentos",
+      "issuer": "Alura",
+      "issuedAt": "2024-03",
+      "credentialId": "2dbef2ad-3335-4246-aedd-895e9864b9fe",
+      "skills": ["Laravel", "Qualidade de software"]
+    },
+    {
+      "title": "Laravel: criando uma aplicação com MVC",
+      "issuer": "Alura",
+      "issuedAt": "2024-02",
+      "credentialId": "5d6d33b9-736d-4b40-b0d3-fcfb32ee1e02",
+      "skills": ["Laravel", "Qualidade de software"]
+    },
+    {
+      "title": "Formação Aprenda a programar em PHP - 8 Cursos",
+      "issuer": "Alura",
+      "issuedAt": "2024-02",
+      "credentialId": "f4c45c8a-f23b-4a58-8b57-de73801b6f2a",
+      "skills": ["PHP", "Qualidade de software"]
+    },
+    {
+      "title": "Git e GitHub: repositório, commit e versões",
+      "issuer": "Alura",
+      "issuedAt": "2023-09",
+      "credentialId": "a988f684-8fd3-4279-993b-d9bc61860ba0",
+      "skills": ["Qualidade de software", "Git"]
+    },
+    {
+      "title": "SQL com MySQL: manipule e consulte dados",
+      "issuer": "Alura",
+      "issuedAt": "2023-09",
+      "credentialId": "e095f481-a3a7-4dd7-bc0d-620a4d5ced7f",
+      "skills": ["MySQL", "SQL"]
+    },
+    {
+      "title": "Modelagem de banco de dados relacional: entidades, relacionamentos e atributos",
+      "issuer": "Alura",
+      "issuedAt": "2023-09",
+      "credentialId": "89e39122-86f2-42f9-bf9f-0789b7bb3d6e",
+      "skills": ["Qualidade de software"]
+    },
+    {
+      "title": "HTML e CSS para Iniciantes",
+      "issuer": "Origamid",
+      "issuedAt": "2023-07",
+      "credentialId": "0bb2389b",
+      "skills": ["CSS", "HTML"]
+    },
+    {
+      "title": "Python 3 - Mundo 3",
+      "issuer": "Curso em Vídeo",
+      "issuedAt": "2023-01",
+      "credentialId": "90D7E-685A-A",
+      "skills": ["Qualidade de software", "Python"]
+    }
+  ]
+}

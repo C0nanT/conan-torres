@@ -33,7 +33,6 @@ export function HeroSection() {
       label: t('stats.certifications'),
       value: profile.stats.certifications,
       icon: Award,
-      isPlaceholder: true,
     },
     {
       label: t('stats.experience'),
@@ -164,7 +163,7 @@ export function HeroSection() {
                 const Icon = stat.icon
                 const card = (
                   <Card
-                    className={`tech-card h-full ${stat.isPlaceholder ? 'bg-red-500' : ''} ${stat.href ? 'transition-colors hover:border-primary/50' : ''}`}
+                    className={`tech-card h-full ${stat.href ? 'transition-colors hover:border-primary/50' : ''}`}
                   >
                     <CardContent className="p-4">
                       <div className="flex items-center space-x-3">
