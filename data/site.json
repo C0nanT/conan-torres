@@ -70,7 +70,7 @@
     }
   },
   "contact": {
-    "email": "algoritmos.galego@gmail.com",
+    "email": "conantorreswf@gmail.com",
     "availability": "Disponível para mentorias"
   },
   "social": {
@@ -90,21 +90,21 @@
       "label": "LinkedIn"
     },
     "github": {
-      "url": "https://www.todo.com/trocar-isso-depois",
-      "handle": "gutogalego",
+      "url": "https://github.com/C0nanT",
+      "handle": "C0nanT",
       "label": "GitHub"
     },
     "twitter": {
       "url": "https://www.todo.com/trocar-isso-depois",
-      "handle": "@RealGalego",
+      "handle": "",
       "label": "X"
     }
   },
   "site": {
     "name": "Conan Torres",
-    "url": "https://augustogalego.com",
+    "url": "https://conantorres.dev",
     "analytics": {
-      "clarityId": "uwvig5tu0g"
+      "clarityId": ""
     }
   },
   "youtube": {
