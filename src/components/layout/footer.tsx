@@ -138,8 +138,8 @@ export function Footer() {
                 {section.title}
               </h3>
               <ul className="space-y-3">
-                {section.links.map((link) => (
-                  <li key={link.href}>
+                {section.links.map((link, i) => (
+                  <li key={`${link.href}-${i}`}>
                     <Link
                       href={link.href}
                       {...(link.external
