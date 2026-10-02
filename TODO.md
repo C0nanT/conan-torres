@@ -2,25 +2,8 @@
 
 Conteúdo em `data/site.json` (e `messages/pt.json`). Feito: nome, email, domínio, GitHub.
 
-## Analytics
+## Analytics (Deixar para depois)
 - [ ] `site.analytics.clarityId` está vazio (Clarity desligado). Criar projeto no Microsoft Clarity e colocar o ID.
-
-## Redes sociais (`social.*` em `data/site.json`)
-- [x] YouTube (`youtube`, `youtubeSecondary`): ainda com handle do Augusto (`@GutoGalego`, `@GutoMonólogos`) e URL placeholder `todo.com`. Remover ou trocar.
-- [x] X/Twitter (`twitter`): sem conta, handle vazio e URL placeholder. Remover do footer (`src/components/layout/footer.tsx`), `getSocialLinksForNav` e `getSocialSameAs` (`src/lib/site-data.ts`), e `twitter.site/creator` em `src/lib/metadata.ts`.
-- [x] LinkedIn: URL ainda placeholder (handle `conan-torres`).
-- [x] `src/app/[locale]/layout.tsx:140-141`: remover `dns-prefetch` de youtube/twitter se tirar as redes.
-- [x] Hero (`hero-section.tsx`): botão/seção "Canais no YouTube" usa `social.youtube.url`.
-
-## YouTube (`youtube.*`)
-- [x] `channels` (principal/secundário): são os canais do Augusto (135K inscritos, 226 vídeos…). Remover a seção ou trocar.
-- [x] `freeLessonVideoId` (`g-hIXvdDeZk`): vídeo de aula grátis dele, usado em `featured-content.tsx`.
-- [x] `recommendedChannels` / `recommendedVideos`: curadoria dele (Matt Pocock, Karpathy, Renato Augusto). Manter só se for sua recomendação; URLs ainda `todo.com`.
-
-## Cursos (`courses.*`)
-- [x] `featured` (LeetCode, 68 aulas, 5k+ alunos, 8h) e `others` (Roadmap, workshops LeetCode e System Design): cursos dele. Trocar por projetos seus ou remover. URLs `todo.com`.
-- [x] Footer usa `courses.others[0].url`; hero usa `courses.featured.url`.
-- [x] `messages/pt.json` → `metadata.courses` (título/descrição/keywords "saiu do Brasil e chegou ao topo na Europa e EUA").
 
 ## Bio / About (`about.*` e `philosophy.*`)
 - [ ] `about`: headline "De júnior no Brasil a CTO nos EUA", bio (UFSC 2014, CTO de startup americana, Itália), `quickFacts` (Pádua, CTO, 2014-2025), `achievements` (135K seguidores, palestrante…).
