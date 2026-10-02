@@ -5,11 +5,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import * as FancyButton from '@/components/ui/fancy-button'
 import { Link } from '@/lib/navigation'
-import {
-  getMainYouTubeChannel,
-  getSecondaryYouTubeChannel,
-  site,
-} from '@/lib/site-data'
+import { site } from '@/lib/site-data'
 import {
   ArrowRight,
   Briefcase,
@@ -27,9 +23,7 @@ import Image from 'next/image'
 
 export function HeroSection() {
   const t = useTranslations('hero')
-  const { profile, courses, social } = site
-  const mainChannel = getMainYouTubeChannel()
-  const secondaryChannel = getSecondaryYouTubeChannel()
+  const { profile, courses } = site
 
   const stats = [
     {
@@ -131,68 +125,6 @@ export function HeroSection() {
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </FancyButton.Root>
-
-              <Button
-                variant="outline"
-                size="lg"
-                asChild={true}
-                className="group"
-              >
-                <Link
-                  href={social.youtube.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Code className="mr-2 h-4 w-4" />
-                  YouTube
-                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </Button>
-            </div>
-
-            {/* YouTube Channels */}
-            <div className="space-y-3">
-              <p className="text-sm font-medium text-muted-foreground">
-                {t('cta.channels')}
-              </p>
-              <div className="flex flex-col space-y-2 sm:flex-row sm:space-x-4 sm:space-y-0">
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  asChild={true}
-                  className="justify-start"
-                >
-                  <Link
-                    href={mainChannel.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Youtube className="mr-2 h-4 w-4 text-foreground" />
-                    {mainChannel.handle} ({mainChannel.subscribers})
-                  </Link>
-                </Button>
-
-                {secondaryChannel && (
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    asChild={true}
-                    className="justify-start"
-                  >
-                    <Link
-                      href={secondaryChannel.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Youtube className="mr-2 h-4 w-4 text-foreground" />
-                      {secondaryChannel.handle}
-                      <Badge variant="secondary" className="ml-2 text-xs">
-                        {t('cta.new')}
-                      </Badge>
-                    </Link>
-                  </Button>
-                )}
-              </div>
             </div>
           </div>
 

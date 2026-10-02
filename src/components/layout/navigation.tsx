@@ -8,7 +8,7 @@ import { Link, usePathname } from '@/lib/navigation'
 import { getSocialLinksForNav } from '@/lib/site-data'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
-import { FaLinkedin, FaXTwitter, FaYoutube } from 'react-icons/fa6'
+import { FaLinkedin } from 'react-icons/fa6'
 import {
   RiCloseLine,
   RiFileListLine,
@@ -32,14 +32,10 @@ const getNavigationItems = (t: (key: string) => string) => [
 
 const getSocialIcon = (name: string) => {
   switch (name) {
-    case 'YouTube':
-      return FaYoutube
     case 'LinkedIn':
       return FaLinkedin
-    case 'X':
-      return FaXTwitter
     default:
-      return FaYoutube
+      return FaLinkedin
   }
 }
 

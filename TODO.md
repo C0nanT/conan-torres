@@ -6,11 +6,11 @@ Conteúdo em `data/site.json` (e `messages/pt.json`). Feito: nome, email, domín
 - [ ] `site.analytics.clarityId` está vazio (Clarity desligado). Criar projeto no Microsoft Clarity e colocar o ID.
 
 ## Redes sociais (`social.*` em `data/site.json`)
-- [ ] YouTube (`youtube`, `youtubeSecondary`): ainda com handle do Augusto (`@GutoGalego`, `@GutoMonólogos`) e URL placeholder `todo.com`. Remover ou trocar.
-- [ ] X/Twitter (`twitter`): sem conta, handle vazio e URL placeholder. Remover do footer (`src/components/layout/footer.tsx`), `getSocialLinksForNav` e `getSocialSameAs` (`src/lib/site-data.ts`), e `twitter.site/creator` em `src/lib/metadata.ts`.
+- [x] YouTube (`youtube`, `youtubeSecondary`): ainda com handle do Augusto (`@GutoGalego`, `@GutoMonólogos`) e URL placeholder `todo.com`. Remover ou trocar.
+- [x] X/Twitter (`twitter`): sem conta, handle vazio e URL placeholder. Remover do footer (`src/components/layout/footer.tsx`), `getSocialLinksForNav` e `getSocialSameAs` (`src/lib/site-data.ts`), e `twitter.site/creator` em `src/lib/metadata.ts`.
 - [ ] LinkedIn: URL ainda placeholder (handle `conan-torres`).
-- [ ] `src/app/[locale]/layout.tsx:140-141`: remover `dns-prefetch` de youtube/twitter se tirar as redes.
-- [ ] Hero (`hero-section.tsx`): botão/seção "Canais no YouTube" usa `social.youtube.url`.
+- [x] `src/app/[locale]/layout.tsx:140-141`: remover `dns-prefetch` de youtube/twitter se tirar as redes.
+- [x] Hero (`hero-section.tsx`): botão/seção "Canais no YouTube" usa `social.youtube.url`.
 
 ## YouTube (`youtube.*`)
 - [ ] `channels` (principal/secundário): são os canais do Augusto (135K inscritos, 226 vídeos…). Remover a seção ou trocar.

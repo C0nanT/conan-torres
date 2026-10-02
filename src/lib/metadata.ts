@@ -35,7 +35,7 @@ export async function generateLocalizedMetadata(
 ): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: 'metadata' })
   const baseUrl = getSiteUrl()
-  const { profile, social, seo } = site
+  const { profile, seo } = site
 
   const title =
     customMetadata?.title ||
@@ -97,8 +97,6 @@ export async function generateLocalizedMetadata(
     },
     twitter: {
       card: 'summary_large_image',
-      site: social.twitter.handle,
-      creator: social.twitter.handle,
       title: customMetadata?.twitter?.title || title,
       description: customMetadata?.twitter?.description || description,
       images: customMetadata?.twitter?.images || [defaultOgImage.url],

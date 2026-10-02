@@ -2,14 +2,7 @@ import { LogoHorizontal } from '@/components/common'
 import { Separator } from '@/components/ui/separator'
 import { Link } from '@/lib/navigation'
 import { site } from '@/lib/site-data'
-import {
-  ArrowUpRight,
-  Github,
-  Linkedin,
-  MapPin,
-  Twitter,
-  Youtube,
-} from 'lucide-react'
+import { ArrowUpRight, Github, Linkedin, MapPin } from 'lucide-react'
 
 interface FooterLink {
   name: string
@@ -44,11 +37,6 @@ const footerSections: FooterSection[] = [
     title: 'Comunidade',
     links: [
       {
-        name: 'YouTube',
-        href: site.social.youtube.url,
-        external: true,
-      },
-      {
         name: 'GitHub',
         href: site.social.github.url,
         external: true,
@@ -56,11 +44,6 @@ const footerSections: FooterSection[] = [
       {
         name: 'LinkedIn',
         href: site.social.linkedin.url,
-        external: true,
-      },
-      {
-        name: 'Twitter',
-        href: site.social.twitter.url,
         external: true,
       },
     ],
@@ -93,15 +76,6 @@ export function Footer() {
             {/* Social Icons */}
             <div className="flex items-center space-x-4">
               <Link
-                href={social.youtube.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-foreground transition-colors p-1"
-                aria-label="YouTube"
-              >
-                <Youtube className="h-4 w-4" />
-              </Link>
-              <Link
                 href={social.github.url}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -118,15 +92,6 @@ export function Footer() {
                 aria-label="LinkedIn"
               >
                 <Linkedin className="h-4 w-4" />
-              </Link>
-              <Link
-                href={social.twitter.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-foreground transition-colors p-1"
-                aria-label="Twitter"
-              >
-                <Twitter className="h-4 w-4" />
               </Link>
             </div>
           </div>

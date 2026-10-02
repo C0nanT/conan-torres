@@ -137,8 +137,6 @@ export default async function LocaleLayout({
           crossOrigin=""
         />
 
-        <link rel="dns-prefetch" href="//www.youtube.com" />
-        <link rel="dns-prefetch" href="//twitter.com" />
         <link rel="dns-prefetch" href="//www.linkedin.com" />
         <link rel="dns-prefetch" href="//github.com" />
 

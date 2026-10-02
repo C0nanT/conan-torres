@@ -113,11 +113,8 @@ export interface SiteData {
     availability: string
   }
   social: {
-    youtube: SocialLink
-    youtubeSecondary: SocialLink
     linkedin: SocialLink
     github: SocialLink
-    twitter: SocialLink
   }
   site: {
     name: string
@@ -194,20 +191,11 @@ export function getSocialLinksForNav(): Array<{
   name: string
   href: string
 }> {
-  return [
-    { name: site.social.youtube.label, href: site.social.youtube.url },
-    { name: site.social.linkedin.label, href: site.social.linkedin.url },
-    { name: site.social.twitter.label, href: site.social.twitter.url },
-  ]
+  return [{ name: site.social.linkedin.label, href: site.social.linkedin.url }]
 }
 
 export function getSocialSameAs(): string[] {
-  return [
-    site.social.twitter.url,
-    site.social.linkedin.url,
-    site.social.youtube.url,
-    site.social.github.url,
-  ]
+  return [site.social.linkedin.url, site.social.github.url]
 }
 
 export function getMainYouTubeChannel(): YouTubeChannel {

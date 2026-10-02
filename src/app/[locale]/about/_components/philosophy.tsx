@@ -17,7 +17,7 @@ import {
 const coreValueIcons = [Lightbulb, Users, Target, Heart] as const
 
 export function Philosophy() {
-  const { philosophy, social, contact } = site
+  const { philosophy, contact } = site
   const { coreValues, personalInsights } = philosophy
 
   return (
@@ -121,17 +121,6 @@ export function Philosophy() {
                     Entrar em Contato
                     <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                   </a>
-                </Button>
-
-                <Button variant="outline" asChild={true}>
-                  <Link
-                    href={social.twitter.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <MessageCircle className="mr-2 h-4 w-4" />
-                    Seguir no Twitter
-                  </Link>
                 </Button>
               </div>
 

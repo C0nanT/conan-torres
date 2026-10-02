@@ -74,16 +74,6 @@
     "availability": "Disponível para mentorias"
   },
   "social": {
-    "youtube": {
-      "url": "https://www.todo.com/trocar-isso-depois",
-      "handle": "@GutoGalego",
-      "label": "YouTube"
-    },
-    "youtubeSecondary": {
-      "url": "https://www.todo.com/trocar-isso-depois",
-      "handle": "@GutoMonólogos",
-      "label": "YouTube"
-    },
     "linkedin": {
       "url": "https://www.todo.com/trocar-isso-depois",
       "handle": "conan-torres",
@@ -93,11 +83,6 @@
       "url": "https://github.com/C0nanT",
       "handle": "C0nanT",
       "label": "GitHub"
-    },
-    "twitter": {
-      "url": "https://www.todo.com/trocar-isso-depois",
-      "handle": "",
-      "label": "X"
     }
   },
   "site": {
