@@ -15,6 +15,7 @@ argument-hint: "[seção ou trecho do item]"
 
 3. **Responder.** Em português, sem introdução, resumo, diagnóstico nem lista de mudanças. Formato:
    - Uma linha por item: `**<item curto>**` seguido das perguntas objetivas (uma frase cada, com o valor atual entre parênteses só se ajudar a responder).
+   - Numere **toda** pergunta com prefixo `q<N>` (`q1`, `q2`, `q3`…), em sequência contínua ao longo de toda a resposta (não reinicie por item), para o Conan responder por número (ex.: "q1: sim, q2: 2024"). Uma pergunta por número; cada `qN` em linha própria, sob o item correspondente.
    - Pergunte apenas o que bloqueia a correção. Se o item não depende do Conan, escreva `sem dúvidas` e nada mais.
    - Nunca invente conteúdo que dependa do Conan.
 

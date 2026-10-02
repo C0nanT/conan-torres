@@ -4,11 +4,11 @@
     "displayName": "Conan Torres",
     "firstName": "Conan",
     "lastName": "Torres",
-    "aliases": ["Conan", "Conan o Bárbaro"],
+    "aliases": ["Conan"],
     "initials": "CT",
-    "role": "Senior Software Engineer",
-    "subtitle": "Desenvolvedor & Cibersegurança",
-    "jobTitle": "Senior Software Engineer",
+    "role": "Tech Lead",
+    "subtitle": "Tech Lead & Desenvolvedor Full-Stack",
+    "jobTitle": "Assessor de Tecnologia (Tech Lead)",
     "nationality": "Brasileiro",
     "location": {
       "city": "Florianópolis",
@@ -41,7 +41,6 @@
       "logo": "/profile-id-sem-fundo-2.png"
     },
     "knowsAbout": [
-      "Cyber Security",
       "Web Development",
       "Laravel (PHP)",
       "Django (Python)",
@@ -50,13 +49,12 @@
       "Linux",
       "DevOps"
     ],
-    "tagline": "Dev Senior Full-Stack & Cyber Security"
+    "tagline": "Tech Lead & Dev Full-Stack"
   },
   "content": {
     "hero": {
-      "description": "Engenheiro Senior Full-Stack e Cibersegurança, com mais de 6 anos de experiência em desenvolvimento de software e cibersegurança.",
+      "description": "Tech Lead e desenvolvedor full-stack na Defensoria Pública de Santa Catarina, com mais de 6 anos de experiência em desenvolvimento de software.",
       "highlights": {
-        "security": "Construindo sistemas seguros e confiáveis",
         "development": "Desenvolvimento web moderno e escalável",
         "ai": "Claude como IA para desenvolvimento",
         "editor": "Cursor como IDE"
@@ -64,11 +62,11 @@
     },
     "metadata": {
       "home": {
-        "title": "Conan Torres - Desenvolvedor Full-Stack e Cibersegurança",
-        "description": "Engenheiro de Software Sênior Full-Stack e Cibersegurança. Desenvolvimento web moderno, sistemas seguros e carreira em tech."
+        "title": "Conan Torres - Tech Lead e Desenvolvedor Full-Stack",
+        "description": "Tech Lead e desenvolvedor full-stack na Defensoria Pública de Santa Catarina. Desenvolvimento web moderno, liderança técnica e carreira em tech."
       },
       "about": {
-        "description": "Conheça a trajetória de Conan Torres: desenvolvedor full-stack e especialista em cibersegurança com mais de 6 anos de experiência."
+        "description": "Conheça a trajetória de Conan Torres: Tech Lead e desenvolvedor full-stack na Defensoria Pública de Santa Catarina, com mais de 6 anos de experiência."
       }
     }
   },
@@ -165,88 +163,82 @@
   },
   "about": {
     "badge": "Sobre Conan Torres",
-    "headline": "De júnior no Brasil a CTO nos EUA",
-    "headlineHighlight": "CTO nos EUA",
-    "subheadline": "Uma jornada de 10+anos em tecnologia",
+    "headline": "Do código à liderança técnica",
+    "headlineHighlight": "liderança técnica",
+    "subheadline": "Mais de 6 anos construindo software e liderando times",
     "bio": [
-      "Olá! Eu sou o Conan Torres, mais conhecido como \"Conan\". Minha história é sobre transformação, persistência e a busca constante por crescimento.",
-      "Comecei como desenvolvedor júnior no Brasil em 2014, logo após me formar em Sistemas de Informação pela UFSC. Hoje, sou CTO de uma startup americana, morando na Itália e ajudando milhares de desenvolvedores a crescerem em suas carreiras.",
-      "Minha missão é desmistificar algoritmos e estruturas de dados, compartilhar insights sobre carreira internacional e mostrar que é possível sim sair do Brasil e construir uma carreira sólida na Europa e EUA."
+      "Olá! Eu sou o Conan Torres. Minha história é sobre aprendizado contínuo, responsabilidade e a vontade de crescer a cada desafio.",
+      "Sou Assessor de Tecnologia na Defensoria Pública de Santa Catarina, onde atuo como Tech Lead: defino a arquitetura, conduzo o desenvolvimento e ajudo o time a entregar software que melhora o acesso à justiça. Me formei em Análise e Desenvolvimento de Sistemas pela UNIASSELVI em dezembro de 2024.",
+      "Minha missão é construir tecnologia útil para as pessoas, compartilhar o que aprendo pelo caminho e seguir crescendo na liderança técnica, seja no setor público ou em novas empresas."
     ],
     "quickFacts": [
       {
         "label": "Formação",
-        "value": "Sistemas de Informação - UFSC",
-        "year": "2014"
+        "value": "Análise e Desenvolvimento de Sistemas - UNIASSELVI",
+        "year": "2024"
       },
       {
         "label": "Experiência",
-        "value": "10+anos em desenvolvimento",
-        "year": "2014-2025"
+        "value": "6+ anos em desenvolvimento",
+        "year": "Atual"
       },
       {
         "label": "Localização",
-        "value": "Pádua, Itália",
+        "value": "Florianópolis, SC",
         "year": "Atual"
       },
       {
         "label": "Posição",
-        "value": "CTO em startup americana",
-        "year": "2025"
+        "value": "Assessor de Tecnologia (Tech Lead) na Defensoria Pública de SC",
+        "year": "Atual"
       }
     ],
     "achievements": [
-      "135K+ seguidores no YouTube",
-      "Especialista reconhecido em LeetCode",
-      "Transição internacional bem-sucedida",
-      "Educador com milhares de alunos",
-      "CTO em startup americana",
-      "Palestrante em eventos de tech"
+      "Tech Lead na Defensoria Pública de Santa Catarina",
+      "Palestrante no 1° Encontro de Tecnologia das Defensorias Públicas da Região Sul (2026)",
+      "Certificado Anthropic em AI Fluency e Claude Code In Action",
+      "Formado em Análise e Desenvolvimento de Sistemas (UNIASSELVI, 2024)",
+      "25 certificações em desenvolvimento, bancos de dados, Docker e arquitetura"
     ]
   },
   "philosophy": {
     "coreValues": [
       {
         "title": "Fundamentos Primeiro",
-        "description": "Acredito que entender profundamente algoritmos e estruturas de dados é mais importante que decorar sintaxe de frameworks.",
+        "description": "Frameworks e ferramentas mudam rápido. Arquitetura, boas práticas e princípios como SOLID, REST e MVC continuam valendo em qualquer stack.",
         "quote": "\"Frameworks mudam, fundamentos permanecem.\""
       },
       {
-        "title": "Educação Acessível",
-        "description": "Conhecimento deve ser democrático. Uso explicações visuais e linguagem simples para tornar conceitos complexos acessíveis.",
-        "quote": "\"Se não consegue explicar de forma simples, não entendeu bem.\""
+        "title": "Tecnologia com Propósito",
+        "description": "Software no setor público existe para servir pessoas. Cada decisão técnica precisa tornar o serviço mais simples, acessível e confiável.",
+        "quote": "\"Bom software é o que resolve o problema de quem usa.\""
       },
       {
-        "title": "Prática Deliberada",
-        "description": "Crescimento vem da prática consistente e focada. LeetCode é uma ferramenta, não um fim em si mesmo.",
+        "title": "Aprendizado Contínuo",
+        "description": "Estudo todo dia: cursos, certificações e projetos práticos. Crescer na carreira é uma consequência de aprender com constância.",
         "quote": "\"Pratique com propósito, não por obrigação.\""
       },
       {
-        "title": "Impacto Real",
-        "description": "Meu objetivo é ajudar desenvolvedores a crescerem em suas carreiras e alcançarem seus sonhos profissionais.",
-        "quote": "\"Sucesso é ver meus alunos superando seus próprios limites.\""
+        "title": "Liderar pelo Exemplo",
+        "description": "Um bom Tech Lead eleva o time inteiro: compartilha contexto, documenta decisões e deixa o código mais fácil para quem vem depois.",
+        "quote": "\"Liderança técnica é fazer o time ir mais longe.\""
       }
     ],
     "personalInsights": [
       {
-        "title": "Sobre LeetCode",
-        "content": "LeetCode é uma excelente ferramenta para praticar algoritmos, mas não deve ser o único foco. Use-o para fortalecer fundamentos, não para decorar soluções.",
+        "title": "IA no Desenvolvimento",
+        "content": "Uso o Claude como agente e o Cursor como editor no dia a dia. A IA acelera a entrega, mas quem entende o problema e revisa o resultado continua sendo a pessoa.",
         "category": "Técnico"
       },
       {
-        "title": "Carreira Internacional",
-        "content": "Sair do Brasil foi desafiador, mas possível. O segredo está em construir um portfólio sólido, melhorar o inglês e ser persistente.",
+        "title": "Tecnologia no Setor Público",
+        "content": "Trabalhar na Defensoria Pública mostra o impacto direto do software na vida das pessoas. Estabilidade e qualidade importam tanto quanto velocidade.",
         "category": "Carreira"
       },
       {
-        "title": "Educação Online",
-        "content": "Ensinar online me permitiu impactar milhares de pessoas. A chave é ser autêntico e focar genuinamente em ajudar os alunos.",
-        "category": "Educação"
-      },
-      {
-        "title": "Produtividade",
-        "content": "Organização é fundamental. Uso Notion para tudo: projetos, ideias, planejamento. Um sistema bem estruturado liberta a mente para criar.",
-        "category": "Produtividade"
+        "title": "Do Desenvolvimento à Liderança",
+        "content": "Virar Tech Lead exige ir além do código: comunicar bem, priorizar, mentorar e tomar decisões de arquitetura com o time.",
+        "category": "Carreira"
       }
     ]
   },
@@ -397,24 +389,22 @@
   },
   "seo": {
     "keywords": [
-      "algoritmos",
-      "estruturas de dados",
-      "leetcode",
-      "programação",
-      "carreira tech",
-      "backend",
-      "python",
-      "javascript",
-      "trabalho remoto",
-      "system design",
-      "entrevista técnica",
-      "coding interview",
-      "programador brasileiro",
       "tech lead",
-      "cto",
-      "startup",
-      "europa",
-      "emigração tech"
+      "desenvolvedor full-stack",
+      "desenvolvimento de software",
+      "programação",
+      "laravel",
+      "php",
+      "python",
+      "react",
+      "typescript",
+      "docker",
+      "arquitetura de software",
+      "defensoria pública",
+      "tecnologia no setor público",
+      "carreira tech",
+      "claude code",
+      "programador brasileiro"
     ]
   }
 }

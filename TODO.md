@@ -6,16 +6,16 @@ Conteúdo em `data/site.json` (e `messages/pt.json`). Feito: nome, email, domín
 - [ ] `site.analytics.clarityId` está vazio (Clarity desligado). Criar projeto no Microsoft Clarity e colocar o ID.
 
 ## Bio / About (`about.*` e `philosophy.*`)
-- [ ] `about`: headline "De júnior no Brasil a CTO nos EUA", bio (UFSC 2014, CTO de startup americana, Itália), `quickFacts` (Pádua, CTO, 2014-2025), `achievements` (135K seguidores, palestrante…).
-- [ ] `philosophy.coreValues` e `personalInsights`: opiniões dele (LeetCode, carreira internacional, Notion, educação online).
-- [ ] `content.hero.highlights` e `profile.*`: revisar (role, subtitle, education UNIASSELVI, 6+ anos) — conferir se está tudo certo.
+- [x] `about`: headline "De júnior no Brasil a CTO nos EUA", bio (UFSC 2014, CTO de startup americana, Itália), `quickFacts` (Pádua, CTO, 2014-2025), `achievements` (135K seguidores, palestrante…).
+- [x] `philosophy.coreValues` e `personalInsights`: opiniões dele (LeetCode, carreira internacional, Notion, educação online).
+- [x] `content.hero.highlights` e `profile.*`: revisar (role, subtitle, education UNIASSELVI, 6+ anos) — conferir se está tudo certo.
 
 ## Stats do hero
 - [ ] `hero-section.tsx` lê `profile.stats.youtubeSubscribers`, `courseLessons`, `countriesWorked`, mas `profile.stats` só tem `yearsExperience`. Trocar os cards (inscritos YouTube, aulas, países) por números seus.
 - [ ] `messages/pt.json` → `hero.stats` e `hero.cta` ("Disponível para mentorias", "Ler Blog" sem blog?). `contact.availability` também.
 
 ## SEO
-- [ ] `seo.keywords` em `data/site.json` e `metadata.home/about.keywords` em `messages/pt.json`: tudo de algoritmos/LeetCode/CTO/Europa/emigração. Trocar por cibersegurança, full-stack, etc.
+- [x] `seo.keywords` em `data/site.json` e `metadata.home/about.keywords` em `messages/pt.json`: tudo de algoritmos/LeetCode/CTO/Europa/emigração. Trocar por cibersegurança, full-stack, etc.
 - [ ] `messages/pt.json` → `metadata.books/setup`: textos genéricos, revisar.
 
 ## Livros e setup (`messages/pt.json`)

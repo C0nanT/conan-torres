@@ -91,7 +91,6 @@ export interface SiteData {
     hero: {
       description: string
       highlights: {
-        security: string
         development: string
         ai: string
         editor: string

@@ -48,10 +48,6 @@ export function HeroSection() {
 
   const highlights = [
     {
-      label: site.content.hero.highlights.security,
-      icon: '/icons/cadeado.png',
-    },
-    {
       label: site.content.hero.highlights.development,
       icon: '/icons/flecha-verde.png',
     },
