@@ -26,6 +26,22 @@ export interface RecommendedYouTubeVideo {
   startSeconds?: number
 }
 
+export type BookStatus = 'read' | 'reading' | 'to-read'
+
+export interface RecommendedBook {
+  id: string
+  title: string
+  subtitle?: string
+  originalTitle?: string
+  authors: string[]
+  language: 'pt' | 'en'
+  category: string
+  topics: string[]
+  description: string
+  url: string
+  status: BookStatus
+}
+
 export interface SiteData {
   profile: {
     fullName: string
@@ -109,6 +125,9 @@ export interface SiteData {
   youtube: {
     recommendedChannels: RecommendedYouTubeChannel[]
     recommendedVideos: RecommendedYouTubeVideo[]
+  }
+  books: {
+    recommended: RecommendedBook[]
   }
   about: {
     badge: string
