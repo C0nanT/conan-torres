@@ -11,8 +11,8 @@ Conteúdo em `data/site.json` (e `messages/pt.json`). Feito: nome, email, domín
 - [x] `content.hero.highlights` e `profile.*`: revisar (role, subtitle, education UNIASSELVI, 6+ anos) — conferir se está tudo certo.
 
 ## Stats do hero
-- [ ] `hero-section.tsx` lê `profile.stats.youtubeSubscribers`, `courseLessons`, `countriesWorked`, mas `profile.stats` só tem `yearsExperience`. Trocar os cards (inscritos YouTube, aulas, países) por números seus.
-- [ ] `messages/pt.json` → `hero.stats` e `hero.cta` ("Disponível para mentorias", "Ler Blog" sem blog?). `contact.availability` também.
+- [x] `hero-section.tsx` lê `profile.stats.youtubeSubscribers`, `courseLessons`, `countriesWorked`, mas `profile.stats` só tem `yearsExperience`. Trocar os cards (inscritos YouTube, aulas, países) por números seus.
+- [x] `messages/pt.json` → `hero.stats` e `hero.cta` ("Disponível para mentorias", "Ler Blog" sem blog?). `contact.availability` também.
 
 ## SEO
 - [x] `seo.keywords` em `data/site.json` e `metadata.home/about.keywords` em `messages/pt.json`: tudo de algoritmos/LeetCode/CTO/Europa/emigração. Trocar por cibersegurança, full-stack, etc.

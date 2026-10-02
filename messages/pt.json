@@ -45,14 +45,11 @@
       "projects": "Projetos Relevantes Publicados",
       "certifications": "Certificações",
       "experience": "Anos de Experiência",
-      "mentorships": "Mentorias Realizadas"
+      "freelances": "Projetos Freelance"
     },
     "cta": {
       "courses": "Ver Projetos",
-      "blog": "Ler Blog",
-      "channels": "Canais no YouTube:",
-      "available": "Disponível para mentorias",
-      "new": "Novo"
+      "available": "Disponível para projetos freelance"
     }
   },
   "blog": {

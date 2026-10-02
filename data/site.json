@@ -30,7 +30,7 @@
       "relevantProjects": "16",
       "certifications": "25",
       "yearsExperience": "6+",
-      "mentorships": "7"
+      "freelances": "7"
     },
     "images": {
       "avatar": "/profile-id-sem-fundo-2.png",
@@ -71,8 +71,7 @@
     }
   },
   "contact": {
-    "email": "conantorreswf@gmail.com",
-    "availability": "Disponível para mentorias"
+    "email": "conantorreswf@gmail.com"
   },
   "social": {
     "linkedin": {

@@ -12,22 +12,29 @@ import {
   Briefcase,
   FolderGit2,
   GraduationCap,
+  type LucideIcon,
   MapPin,
   Users,
 } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 
+interface HeroStat {
+  label: string
+  value: string
+  icon: LucideIcon
+  href?: string
+}
+
 export function HeroSection() {
   const t = useTranslations('hero')
   const { profile } = site
 
-  const stats = [
+  const stats: HeroStat[] = [
     {
       label: t('stats.projects'),
       value: profile.stats.relevantProjects,
       icon: FolderGit2,
-      href: '/projects',
     },
     {
       label: t('stats.certifications'),
@@ -40,8 +47,8 @@ export function HeroSection() {
       icon: Briefcase,
     },
     {
-      label: t('stats.mentorships'),
-      value: profile.stats.mentorships,
+      label: t('stats.freelances'),
+      value: profile.stats.freelances,
       icon: Users,
     },
   ]
@@ -108,12 +115,15 @@ export function HeroSection() {
 
             {/* CTA Buttons */}
             <div className="flex flex-col space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
-              <FancyButton.Root size="lg" asChild={true} className="group">
-                <Link href="/projects">
-                  <FancyButton.Icon as={GraduationCap} className="mr-2" />
-                  {t('cta.courses')}
-                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                </Link>
+              <FancyButton.Root
+                size="lg"
+                type="button"
+                disabled={true}
+                className="group"
+              >
+                <FancyButton.Icon as={GraduationCap} className="mr-2" />
+                {t('cta.courses')}
+                <ArrowRight className="ml-2 h-4 w-4" />
               </FancyButton.Root>
             </div>
           </div>

@@ -74,7 +74,7 @@ export interface SiteData {
       relevantProjects: string
       certifications: string
       yearsExperience: string
-      mentorships: string
+      freelances: string
     }
     images: {
       avatar: string
@@ -108,7 +108,6 @@ export interface SiteData {
   }
   contact: {
     email: string
-    availability: string
   }
   social: {
     linkedin: SocialLink
