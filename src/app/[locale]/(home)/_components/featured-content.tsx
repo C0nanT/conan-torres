@@ -10,15 +10,11 @@ import {
   CardTitle,
 } from '@/components/ui/card'
 import * as FancyButton from '@/components/ui/fancy-button'
-import { FreeLessonModal } from '@/components/ui/free-lesson-modal'
 import { site } from '@/lib/site-data'
-import { ArrowRight, GraduationCap, Play, TrendingUp } from 'lucide-react'
-import { useState } from 'react'
+import { ArrowRight, GraduationCap, TrendingUp } from 'lucide-react'
 
 export function FeaturedContent() {
-  const [isFreeLessonOpen, setIsFreeLessonOpen] = useState(false)
   const { featured: featuredCourse, others: otherCourses } = site.courses
-  const { freeLessonVideoId } = site.youtube
 
   return (
     <section className="py-16 lg:py-20">
@@ -97,16 +93,6 @@ export function FeaturedContent() {
 
                 {/* CTA */}
                 <div className="space-y-3">
-                  <Button
-                    variant="outline"
-                    size="lg"
-                    className="w-full"
-                    onClick={() => setIsFreeLessonOpen(true)}
-                  >
-                    <Play className="mr-2 h-4 w-4" />
-                    Assista a primeira aula grátis
-                  </Button>
-
                   <FancyButton.Root
                     size="lg"
                     className="w-full group"
@@ -162,14 +148,6 @@ export function FeaturedContent() {
             ))}
           </div>
         </div>
-
-        {/* Free Lesson Modal */}
-        <FreeLessonModal
-          isOpen={isFreeLessonOpen}
-          onClose={() => setIsFreeLessonOpen(false)}
-          courseTitle={featuredCourse.title}
-          videoId={freeLessonVideoId}
-        />
       </div>
     </section>
   )

@@ -13,9 +13,9 @@ Conteúdo em `data/site.json` (e `messages/pt.json`). Feito: nome, email, domín
 - [x] Hero (`hero-section.tsx`): botão/seção "Canais no YouTube" usa `social.youtube.url`.
 
 ## YouTube (`youtube.*`)
-- [ ] `channels` (principal/secundário): são os canais do Augusto (135K inscritos, 226 vídeos…). Remover a seção ou trocar.
-- [ ] `freeLessonVideoId` (`g-hIXvdDeZk`): vídeo de aula grátis dele, usado em `featured-content.tsx`.
-- [ ] `recommendedChannels` / `recommendedVideos`: curadoria dele (Matt Pocock, Karpathy, Renato Augusto). Manter só se for sua recomendação; URLs ainda `todo.com`.
+- [x] `channels` (principal/secundário): são os canais do Augusto (135K inscritos, 226 vídeos…). Remover a seção ou trocar.
+- [x] `freeLessonVideoId` (`g-hIXvdDeZk`): vídeo de aula grátis dele, usado em `featured-content.tsx`.
+- [x] `recommendedChannels` / `recommendedVideos`: curadoria dele (Matt Pocock, Karpathy, Renato Augusto). Manter só se for sua recomendação; URLs ainda `todo.com`.
 
 ## Cursos (`courses.*`)
 - [ ] `featured` (LeetCode, 68 aulas, 5k+ alunos, 8h) e `others` (Roadmap, workshops LeetCode e System Design): cursos dele. Trocar por projetos seus ou remover. URLs `todo.com`.

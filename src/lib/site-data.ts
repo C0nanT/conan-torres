@@ -6,19 +6,6 @@ export interface SocialLink {
   label: string
 }
 
-export interface YouTubeChannel {
-  id: string
-  handle: string
-  url: string
-  description: string
-  subscribers: string
-  videoCount: string
-  category: string
-  status: string
-  highlights: string[]
-  isMain: boolean
-}
-
 export interface RecommendedYouTubeChannel {
   id: string
   name: string
@@ -123,8 +110,6 @@ export interface SiteData {
     }
   }
   youtube: {
-    freeLessonVideoId: string
-    channels: YouTubeChannel[]
     recommendedChannels: RecommendedYouTubeChannel[]
     recommendedVideos: RecommendedYouTubeVideo[]
   }
@@ -195,18 +180,6 @@ export function getSocialLinksForNav(): Array<{
 
 export function getSocialSameAs(): string[] {
   return [site.social.linkedin.url, site.social.github.url]
-}
-
-export function getMainYouTubeChannel(): YouTubeChannel {
-  const main = site.youtube.channels.find((channel) => channel.isMain)
-  if (!main) {
-    throw new Error('Main YouTube channel not configured in site.json')
-  }
-  return main
-}
-
-export function getSecondaryYouTubeChannel(): YouTubeChannel | undefined {
-  return site.youtube.channels.find((channel) => !channel.isMain)
 }
 
 export function getRecommendedChannelById(

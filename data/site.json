@@ -93,39 +93,12 @@
     }
   },
   "youtube": {
-    "freeLessonVideoId": "g-hIXvdDeZk",
-    "channels": [
-      {
-        "id": "main",
-        "handle": "@GutoGalego",
-        "url": "https://www.todo.com/trocar-isso-depois",
-        "description": "Canal principal com foco em algoritmos, estruturas de dados, LeetCode e carreira em tech.",
-        "subscribers": "135K+",
-        "videoCount": "226",
-        "category": "Educação Tech",
-        "status": "Ativo",
-        "highlights": ["Algoritmos", "LeetCode", "Carreira", "System Design"],
-        "isMain": true
-      },
-      {
-        "id": "secondary",
-        "handle": "@GutoMonólogos",
-        "url": "https://www.todo.com/trocar-isso-depois",
-        "description": "Canal secundário com monólogos, reflexões pessoais e dicas de produtividade.",
-        "subscribers": "Crescendo",
-        "videoCount": "15+",
-        "category": "Lifestyle Tech",
-        "status": "Em Crescimento",
-        "highlights": ["Produtividade", "Reflexões", "Setup", "Carreira"],
-        "isMain": false
-      }
-    ],
     "recommendedChannels": [
       {
         "id": "matt-pocock",
         "name": "Matt Pocock",
         "handle": "@mattpocockuk",
-        "url": "https://www.todo.com/trocar-isso-depois",
+        "url": "https://www.youtube.com/@mattpocockuk",
         "description": "Engenharia de software com IA na prática — workflows, TypeScript e Claude Code para devs reais.",
         "subscribers": "250K+",
         "videoCount": "270+",
@@ -152,7 +125,7 @@
         "id": "karpathy",
         "name": "Andrej Karpathy",
         "handle": "@AndrejKarpathy",
-        "url": "https://www.todo.com/trocar-isso-depois",
+        "url": "https://www.youtube.com/@AndrejKarpathy",
         "description": "Fundamentos de IA e LLMs explicados por quem construiu na OpenAI e Tesla.",
         "subscribers": "1M+",
         "videoCount": "50+",
