@@ -61,11 +61,11 @@
     },
     "metadata": {
       "home": {
-        "title": "Augusto Galego - CTO, Backend Engineer e Educador",
-        "description": "CTO, Backend Engineer e Educador. Especialista em algoritmos, estruturas de dados e carreira em tech. Aprenda com quem saiu do Brasil e chegou ao topo na Europa."
+        "title": "Conan Torres - Desenvolvedor Full-Stack e Cibersegurança",
+        "description": "Engenheiro de Software Sênior Full-Stack e Cibersegurança. Desenvolvimento web moderno, sistemas seguros e carreira em tech."
       },
       "about": {
-        "description": "Conheça a trajetória de Augusto Galego: de desenvolvedor júnior no Brasil a CTO nos EUA. Especialista em algoritmos, estruturas de dados e educação em tech."
+        "description": "Conheça a trajetória de Conan Torres: desenvolvedor full-stack e especialista em cibersegurança com mais de 6 anos de experiência."
       }
     }
   },
@@ -101,7 +101,7 @@
     }
   },
   "site": {
-    "name": "Augusto Galego",
+    "name": "Conan Torres",
     "url": "https://augustogalego.com",
     "analytics": {
       "clarityId": "uwvig5tu0g"
@@ -249,12 +249,12 @@
     ]
   },
   "about": {
-    "badge": "Sobre Augusto Galego",
+    "badge": "Sobre Conan Torres",
     "headline": "De júnior no Brasil a CTO nos EUA",
     "headlineHighlight": "CTO nos EUA",
     "subheadline": "Uma jornada de 10+anos em tecnologia",
     "bio": [
-      "Olá! Eu sou o Augusto Miranda Galego, mais conhecido como \"Galego\" ou \"Papai do LeetCode\". Minha história é sobre transformação, persistência e a busca constante por crescimento.",
+      "Olá! Eu sou o Conan Torres, mais conhecido como \"Conan\". Minha história é sobre transformação, persistência e a busca constante por crescimento.",
       "Comecei como desenvolvedor júnior no Brasil em 2014, logo após me formar em Sistemas de Informação pela UFSC. Hoje, sou CTO de uma startup americana, morando na Itália e ajudando milhares de desenvolvedores a crescerem em suas carreiras.",
       "Minha missão é desmistificar algoritmos e estruturas de dados, compartilhar insights sobre carreira internacional e mostrar que é possível sim sair do Brasil e construir uma carreira sólida na Europa e EUA."
     ],
