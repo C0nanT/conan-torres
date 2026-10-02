@@ -1,22 +1,21 @@
 ---
 name: next-todo
-description: Mostra o próximo item pendente do TODO.md e o que corrigir nele.
+description: Lê o TODO.md e devolve só as perguntas necessárias para corrigir os próximos itens pendentes.
 disable-model-invocation: true
 argument-hint: "[seção ou trecho do item]"
 ---
 
-`TODO.md` (raiz do repo) é a lista de migração do site herdado de outro dev para o portfólio do Conan. Esta skill é um **briefing**: diagnostica um item e diz o que mudar; quem decide e edita é o Conan.
+`TODO.md` (raiz do repo) é a lista de migração do site herdado de outro dev para o portfólio do Conan. Esta skill só **pergunta**: devolve o mínimo que o Conan precisa responder para os próximos itens poderem ser corrigidos. Não edita nada.
 
 ## Passos
 
-1. **Escolher o item.** Leia `TODO.md`. Com argumento (`$ARGUMENTS`), pegue o primeiro `- [ ]` cuja seção ou texto bata com ele. Sem argumento, pegue o primeiro `- [ ]` na ordem do arquivo, pulando seções cujo título contém "Deixar para depois". Feito quando há exatamente um item escolhido; se não sobrou nenhum pendente, diga isso e pare.
+1. **Escolher os itens.** Leia `TODO.md`. Com argumento (`$ARGUMENTS`), pegue os `- [ ]` cuja seção ou texto bata com ele. Sem argumento, pegue os próximos `- [ ]` na ordem do arquivo, pulando seções cujo título contém "Deixar para depois", até cobrir a primeira seção com pendências (máx. 5 itens). Se não sobrou nenhum pendente, diga isso e pare.
 
-2. **Levantar o estado atual.** Abra cada arquivo, campo e componente que o item cita (`data/site.json`, `messages/pt.json`, `src/...`, `public/...`) e siga os usos com grep: quem lê o campo, onde o texto aparece na UI, se a rota/página existe. Feito quando cada referência do item tem o valor atual citado com `arquivo:linha`, ou está confirmada como inexistente.
+2. **Levantar o estado atual.** Para cada item, abra só o que ele cita (`data/site.json`, `messages/pt.json`, `src/...`, `public/...`) e confira o valor atual. Use isso para decidir o que já dá para corrigir sozinho e o que depende do Conan (bio, números, opiniões, links, decisões).
 
-3. **Briefing.** Responda em português, curto:
-   - **Item**: o texto do TODO e a seção.
-   - **Hoje**: o que está lá agora (valores reais, `arquivo:linha`), marcando o que é do dev anterior.
-   - **O que corrigir**: lista concreta de mudanças por arquivo/campo. Onde o conteúdo depende do Conan (bio, números, opiniões, links), faça perguntas objetivas em vez de inventar.
-   - **Cuidados**: efeitos colaterais (ex.: campo novo em `site.json` exige atualizar `SiteData` em `src/lib/site-data.ts`; imagem remota exige `remotePatterns`).
+3. **Responder.** Em português, sem introdução, resumo, diagnóstico nem lista de mudanças. Formato:
+   - Uma linha por item: `**<item curto>**` seguido das perguntas objetivas (uma frase cada, com o valor atual entre parênteses só se ajudar a responder).
+   - Pergunte apenas o que bloqueia a correção. Se o item não depende do Conan, escreva `sem dúvidas` e nada mais.
+   - Nunca invente conteúdo que dependa do Conan.
 
-Termine o briefing aí: os arquivos ficam intactos até o Conan pedir a correção. Quando ele confirmar que o item está resolvido, marque-o `- [x]` no `TODO.md`.
+Termine aí. Os arquivos ficam intactos até o Conan responder e pedir a correção. Quando ele confirmar que um item está resolvido, marque-o `- [x]` no `TODO.md`.
