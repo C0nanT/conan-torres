@@ -19,8 +19,8 @@ Conteúdo em `data/site.json` (e `messages/pt.json`). Feito: nome, email, domín
 - [x] `messages/pt.json` → `metadata.books/setup`: textos genéricos, revisar.
 
 ## Livros e setup (`messages/pt.json`)
-- [ ] Comentários dos livros ("Um dos livros que mais influenciou minha forma de pensar"…) estão na voz dele. Reescrever com suas opiniões ou remover. Conferir se as páginas existem (`src/app/[locale]` só tem `about` e home).
-- [ ] `setup` / ícones `public/icons` (claude, cursor): conferir se refletem seu setup.
+- [x] Comentários dos livros ("Um dos livros que mais influenciou minha forma de pensar"…) estão na voz dele. Reescrever com suas opiniões ou remover. Conferir se as páginas existem (`src/app/[locale]` só tem `about` e home).
+- [x] `setup` / ícones `public/icons` (claude, cursor): conferir se refletem seu setup.
 
 ## Imagens / assets
 - [ ] `public/profile-id-sem-fundo-2.png` e favicons/android-chrome/apple-touch: conferir se são suas (e OG image).

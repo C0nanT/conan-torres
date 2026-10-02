@@ -10,6 +10,7 @@ import {
   ArrowRight,
   Award,
   Briefcase,
+  Code2,
   FolderGit2,
   GraduationCap,
   type LucideIcon,
@@ -18,6 +19,12 @@ import {
 } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
+
+interface HeroHighlight {
+  label: string
+  image?: string
+  icon?: LucideIcon
+}
 
 interface HeroStat {
   label: string
@@ -53,15 +60,15 @@ export function HeroSection() {
     },
   ]
 
-  const highlights = [
+  const highlights: HeroHighlight[] = [
     {
       label: site.content.hero.highlights.development,
-      icon: '/icons/flecha-verde.png',
+      icon: Code2,
     },
-    { label: site.content.hero.highlights.ai, icon: '/icons/claude.png' },
+    { label: site.content.hero.highlights.ai, image: '/icons/claude.png' },
     {
       label: site.content.hero.highlights.editor,
-      icon: '/icons/cursor-ide.png',
+      image: '/icons/cursor-ide.png',
     },
   ]
 
@@ -97,20 +104,30 @@ export function HeroSection() {
 
             {/* Highlights */}
             <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
-              {highlights.map((highlight) => (
-                <div key={highlight.label} className="flex items-center gap-2">
-                  {highlight.icon && (
-                    <Image
-                      src={highlight.icon}
-                      alt=""
-                      width={16}
-                      height={16}
-                      className="shrink-0"
-                    />
-                  )}
-                  <span className="text-sm font-medium">{highlight.label}</span>
-                </div>
-              ))}
+              {highlights.map((highlight) => {
+                const Icon = highlight.icon
+
+                return (
+                  <div
+                    key={highlight.label}
+                    className="flex items-center gap-2"
+                  >
+                    {Icon && <Icon className="h-4 w-4 shrink-0" />}
+                    {highlight.image && (
+                      <Image
+                        src={highlight.image}
+                        alt=""
+                        width={16}
+                        height={16}
+                        className="shrink-0"
+                      />
+                    )}
+                    <span className="text-sm font-medium">
+                      {highlight.label}
+                    </span>
+                  </div>
+                )
+              })}
             </div>
 
             {/* CTA Buttons */}

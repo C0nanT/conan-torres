@@ -244,6 +244,23 @@
   "books": {
     "recommended": [
       {
+        "id": "monolito-para-microsservicos",
+        "title": "Monolith to Microservices",
+        "subtitle": "Evolutionary Patterns to Transform Your Monolith",
+        "authors": ["Sam Newman"],
+        "language": "en",
+        "category": "Arquitetura de Software",
+        "topics": [
+          "Microsserviços",
+          "Monolitos",
+          "Migração",
+          "Arquitetura Evolutiva"
+        ],
+        "description": "Padrões práticos para migrar um sistema monolítico para microsserviços de forma incremental, sem reescrever tudo de uma vez.",
+        "url": "https://www.amazon.com.br/dp/1492047848",
+        "status": "reading"
+      },
+      {
         "id": "14-habitos-desenvolvedores",
         "title": "14 Hábitos de Desenvolvedores Altamente Produtivos",
         "authors": ["Zeno Rocha"],
