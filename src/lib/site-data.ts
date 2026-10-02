@@ -55,13 +55,10 @@ export interface SiteData {
       year: number
     }
     stats: {
-      youtubeSubscribers: string
+      relevantProjects: string
+      certifications: string
       yearsExperience: string
-      courseLessons: number
-      countriesWorked: number
-      courseStudents: string
-      courseHours: string
-      videoCount: string
+      mentorships: string
     }
     images: {
       avatar: string
@@ -112,24 +109,6 @@ export interface SiteData {
   youtube: {
     recommendedChannels: RecommendedYouTubeChannel[]
     recommendedVideos: RecommendedYouTubeVideo[]
-  }
-  courses: {
-    featured: {
-      id: string
-      title: string
-      description: string
-      students: string
-      lessons: number
-      hours: string
-      highlights: string[]
-      url: string
-    }
-    others: Array<{
-      id: string
-      title: string
-      description: string
-      url: string
-    }>
   }
   about: {
     badge: string

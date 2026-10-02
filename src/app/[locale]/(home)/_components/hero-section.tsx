@@ -8,28 +8,32 @@ import { Link } from '@/lib/navigation'
 import { site } from '@/lib/site-data'
 import {
   ArrowRight,
+  Award,
   Briefcase,
-  Code,
-  Globe,
+  FolderGit2,
   GraduationCap,
   MapPin,
-  Play,
-  Star,
   Users,
-  Youtube,
 } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 
 export function HeroSection() {
   const t = useTranslations('hero')
-  const { profile, courses } = site
+  const { profile } = site
 
   const stats = [
     {
-      label: t('stats.subscribers'),
-      value: profile.stats.youtubeSubscribers,
-      icon: Users,
+      label: t('stats.projects'),
+      value: profile.stats.relevantProjects,
+      icon: FolderGit2,
+      href: '/projects',
+    },
+    {
+      label: t('stats.certifications'),
+      value: profile.stats.certifications,
+      icon: Award,
+      isPlaceholder: true,
     },
     {
       label: t('stats.experience'),
@@ -37,14 +41,9 @@ export function HeroSection() {
       icon: Briefcase,
     },
     {
-      label: t('stats.lessons'),
-      value: String(profile.stats.courseLessons),
-      icon: GraduationCap,
-    },
-    {
-      label: t('stats.countries'),
-      value: String(profile.stats.countriesWorked),
-      icon: Globe,
+      label: t('stats.mentorships'),
+      value: profile.stats.mentorships,
+      icon: Users,
     },
   ]
 
@@ -115,11 +114,7 @@ export function HeroSection() {
             {/* CTA Buttons */}
             <div className="flex flex-col space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
               <FancyButton.Root size="lg" asChild={true} className="group">
-                <Link
-                  href={courses.featured.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <Link href="/projects">
                   <FancyButton.Icon as={GraduationCap} className="mr-2" />
                   {t('cta.courses')}
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
@@ -167,8 +162,10 @@ export function HeroSection() {
             <div className="grid grid-cols-2 gap-4">
               {stats.map((stat) => {
                 const Icon = stat.icon
-                return (
-                  <Card key={stat.label} className="tech-card">
+                const card = (
+                  <Card
+                    className={`tech-card h-full ${stat.isPlaceholder ? 'bg-red-500' : ''} ${stat.href ? 'transition-colors hover:border-primary/50' : ''}`}
+                  >
                     <CardContent className="p-4">
                       <div className="flex items-center space-x-3">
                         <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
@@ -184,6 +181,16 @@ export function HeroSection() {
                     </CardContent>
                   </Card>
                 )
+
+                if (stat.href) {
+                  return (
+                    <Link key={stat.label} href={stat.href} className="block">
+                      {card}
+                    </Link>
+                  )
+                }
+
+                return <div key={stat.label}>{card}</div>
               })}
             </div>
           </div>

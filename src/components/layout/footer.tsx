@@ -24,16 +24,6 @@ const footerSections: FooterSection[] = [
     ],
   },
   {
-    title: 'Recursos',
-    links: [
-      {
-        name: 'Roadmap',
-        href: site.courses.others[0]?.url ?? '#',
-        external: true,
-      },
-    ],
-  },
-  {
     title: 'Comunidade',
     links: [
       {

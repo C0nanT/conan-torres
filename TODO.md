@@ -18,9 +18,9 @@ Conteúdo em `data/site.json` (e `messages/pt.json`). Feito: nome, email, domín
 - [x] `recommendedChannels` / `recommendedVideos`: curadoria dele (Matt Pocock, Karpathy, Renato Augusto). Manter só se for sua recomendação; URLs ainda `todo.com`.
 
 ## Cursos (`courses.*`)
-- [ ] `featured` (LeetCode, 68 aulas, 5k+ alunos, 8h) e `others` (Roadmap, workshops LeetCode e System Design): cursos dele. Trocar por projetos seus ou remover. URLs `todo.com`.
-- [ ] Footer usa `courses.others[0].url`; hero usa `courses.featured.url`.
-- [ ] `messages/pt.json` → `metadata.courses` (título/descrição/keywords "saiu do Brasil e chegou ao topo na Europa e EUA").
+- [x] `featured` (LeetCode, 68 aulas, 5k+ alunos, 8h) e `others` (Roadmap, workshops LeetCode e System Design): cursos dele. Trocar por projetos seus ou remover. URLs `todo.com`.
+- [x] Footer usa `courses.others[0].url`; hero usa `courses.featured.url`.
+- [x] `messages/pt.json` → `metadata.courses` (título/descrição/keywords "saiu do Brasil e chegou ao topo na Europa e EUA").
 
 ## Bio / About (`about.*` e `philosophy.*`)
 - [ ] `about`: headline "De júnior no Brasil a CTO nos EUA", bio (UFSC 2014, CTO de startup americana, Itália), `quickFacts` (Pádua, CTO, 2014-2025), `achievements` (135K seguidores, palestrante…).

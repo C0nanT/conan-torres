@@ -27,7 +27,10 @@
       "year": 2024
     },
     "stats": {
-      "yearsExperience": "6+"
+      "relevantProjects": "16",
+      "certifications": "—",
+      "yearsExperience": "6+",
+      "mentorships": "7"
     },
     "images": {
       "avatar": "/profile-id-sem-fundo-2.png",
@@ -157,43 +160,6 @@
         "title": "How I use LLMs",
         "views": "2.5M",
         "channelId": "karpathy"
-      }
-    ]
-  },
-  "courses": {
-    "featured": {
-      "id": "algorithms-leetcode",
-      "title": "Estruturas de Dados e Algoritmos + LeetCode",
-      "description": "Curso completo com 68 aulas, explicações visuais e desenhos na tela. Aprenda os fundamentos que todo desenvolvedor precisa saber.",
-      "students": "5k+",
-      "lessons": 68,
-      "hours": "8h",
-      "highlights": [
-        "Explicações visuais",
-        "Desenhos na tela",
-        "Python",
-        "LeetCode"
-      ],
-      "url": "https://www.todo.com/trocar-isso-depois"
-    },
-    "others": [
-      {
-        "id": "roadmap",
-        "title": "Roadmap pro seu próximo emprego",
-        "description": "Tudo o que você precisa saber para achar vagas no Brasil e na gringa, melhorar seu LinkedIn e ser aprovado nas entrevistas técnicas",
-        "url": "https://www.todo.com/trocar-isso-depois"
-      },
-      {
-        "id": "leetcode-workshop",
-        "title": "Workshop: 10 LeetCodes para Entrevistas",
-        "description": "Aprenda a resolver os 10 problemas mais cobrados em entrevistas técnicas com explicações detalhadas e estratégias de resolução",
-        "url": "https://www.todo.com/trocar-isso-depois"
-      },
-      {
-        "id": "system-design-workshop",
-        "title": "Workshop: System Design para Entrevistas",
-        "description": "Domine os fundamentos de System Design e aprenda a projetar sistemas escaláveis para passar em entrevistas de grandes empresas",
-        "url": "https://www.todo.com/trocar-isso-depois"
       }
     ]
   },
