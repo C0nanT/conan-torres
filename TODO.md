@@ -16,7 +16,7 @@ Conteúdo em `data/site.json` (e `messages/pt.json`). Feito: nome, email, domín
 
 ## SEO
 - [x] `seo.keywords` em `data/site.json` e `metadata.home/about.keywords` em `messages/pt.json`: tudo de algoritmos/LeetCode/CTO/Europa/emigração. Trocar por cibersegurança, full-stack, etc.
-- [ ] `messages/pt.json` → `metadata.books/setup`: textos genéricos, revisar.
+- [x] `messages/pt.json` → `metadata.books/setup`: textos genéricos, revisar.
 
 ## Livros e setup (`messages/pt.json`)
 - [ ] Comentários dos livros ("Um dos livros que mais influenciou minha forma de pensar"…) estão na voz dele. Reescrever com suas opiniões ou remover. Conferir se as páginas existem (`src/app/[locale]` só tem `about` e home).

@@ -160,31 +160,6 @@
         "liderança técnica",
         "educação"
       ]
-    },
-    "books": {
-      "title": "Livros Recomendados",
-      "description": "Lista curada de livros essenciais para desenvolvedores de software. Clean Code, Arquitetura, Sistemas Distribuídos e mais.",
-      "keywords": [
-        "livros",
-        "recomendações",
-        "clean code",
-        "arquitetura de software",
-        "carreira tech",
-        "leitura"
-      ]
-    },
-    "setup": {
-      "title": "Setup & Produtividade",
-      "description": "Conheça o setup de trabalho e dicas de produtividade de Conan Torres. Ferramentas, configurações e metodologias para ser mais eficiente.",
-      "keywords": [
-        "setup",
-        "produtividade",
-        "ferramentas",
-        "configurações",
-        "metodologias",
-        "eficiência",
-        "trabalho remoto"
-      ]
     }
   }
 }
