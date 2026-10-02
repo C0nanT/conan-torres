@@ -52,3 +52,23 @@ From `.cursor/rules/`:
 - kebab-case file and directory names; PascalCase components/types; event handlers prefixed `handle`, booleans `is/has/can`.
 - Functional/declarative code, early returns, no classes; prefer Server Components, `'use client'` only where needed.
 - Animations: purposeful, compositor-friendly properties (transform/opacity), interruptible, and must respect `prefers-reduced-motion` (see `.cursor/rules/animation-guidelines.mdc` for the full Framer Motion guidance).
+
+## SOLID
+
+Apply SOLID at the **architecture** level: module boundaries, dependency direction, and the interfaces between them. It is a way to shape seams, not a naming ritual. "Module" means whatever this codebase groups behaviour into: a class, a package, a file of functions, a service.
+
+### Scope: boy scout rule
+
+SOLID applies to:
+
+- code written new in the current change, and
+- the existing code the current flow already passes through, when a small local edit clears friction that change is hitting.
+
+The rest of the codebase stays as it is. Keep a change's blast radius on the flow being built or fixed: a repo-wide SOLID refactor is its own piece of work, and happens only when explicitly asked for. The codebase converges one change at a time.
+
+When applying a principle would require reshaping modules outside the current flow, leave them alone and say so in the summary of the change.
+
+### The principles, as architecture rules
+
+- **SRP**: a module has one reason to change. When one flow forces edits in a module that other flows also own for unrelated reasons, that module is holding two responsibilities.
+- **OCP**: new behaviour arrives as a new implementation behind an existing interface, rather than another branch in a growing conditional over kinds of thing.
