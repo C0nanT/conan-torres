@@ -24,7 +24,7 @@ Conteúdo em `data/site.json` (e `messages/pt.json`). Feito: nome, email, domín
 
 ## Imagens / assets
 - [x] `public/profile-id-sem-fundo-2.png` e favicons/android-chrome/apple-touch: conferir se são suas (e OG image).
-- [ ] Trocar `public/og-image.png` (1200×630, gerada provisoriamente por script) pela imagem que o Conan vai criar. Manter o caminho `/og-image.png` (usado em `profile.images.og` no `data/site.json`) ou atualizar lá.
+- [x] Trocar `public/og-image.png` (1200×630, gerada provisoriamente por script) pela imagem que o Conan vai criar. Manter o caminho `/og-image.png` (usado em `profile.images.og` no `data/site.json`) ou atualizar lá.
 ## Certificações (`data/certifications.json`)
 Os 25 itens já estão no JSON (título, emissor, mês, código, competências). Falta anexar o comprovante e o link de cada um para a página `/certificates` (ainda não existe).
 
