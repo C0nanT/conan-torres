@@ -238,27 +238,6 @@ export function YouTubeChannels() {
               )
             })}
           </div>
-
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            {recommendedChannels.map((channel) => (
-              <Button
-                key={channel.id}
-                variant="outline"
-                size="lg"
-                asChild={true}
-              >
-                <Link
-                  href={`${channel.url}/videos`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Youtube className="mr-2 h-4 w-4 text-foreground" />
-                  Ver mais no {channel.handle}
-                  <ExternalLink className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-            ))}
-          </div>
         </div>
       </div>
     </section>
