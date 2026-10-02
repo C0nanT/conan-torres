@@ -164,6 +164,23 @@
           "Zero to Hero",
           "Machine Learning"
         ]
+      },
+      {
+        "id": "renato-augusto",
+        "name": "Renato Augusto",
+        "handle": "@RenatoAugustoTech",
+        "url": "https://www.youtube.com/@RenatoAugustoTech",
+        "description": "Tecnologia para engenheiros de software que querem se destacar — carreira, arquitetura e boas práticas.",
+        "subscribers": "150K+",
+        "videoCount": "60+",
+        "category": "Software Engineering",
+        "status": "Ativo",
+        "highlights": [
+          "Carreira",
+          "Arquitetura de Software",
+          "Programação",
+          "Livros"
+        ]
       }
     ],
     "recommendedVideos": [
@@ -185,6 +202,12 @@
         "title": "How I use LLMs",
         "views": "2.5M",
         "channelId": "karpathy"
+      },
+      {
+        "videoId": "TREjh6d5fLg",
+        "title": "10 ANOS DE PROGRAMAÇÃO EM 10 LIÇÕES QUE VÃO MUDAR SUA CARREIRA!",
+        "views": "82K",
+        "channelId": "renato-augusto"
       }
     ]
   },

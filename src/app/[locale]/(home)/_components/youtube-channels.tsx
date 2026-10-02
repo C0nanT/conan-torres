@@ -66,7 +66,7 @@ export function YouTubeChannels() {
             Canais e vídeos que <span className="gradient-text">recomendo</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Dois canais que acompanho de perto e vídeos que vale a pena assistir
+            Canais que acompanho de perto e vídeos que vale a pena assistir
             primeiro.
           </p>
         </div>
