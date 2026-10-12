@@ -9,6 +9,7 @@ import {
   formatCertificationDate,
   getIssuerInitials,
 } from '@/lib/certifications'
+import { cn } from '@/lib/shadcn'
 import type { Certification } from '@/lib/site-data'
 import { sortTechnologies } from '@/lib/technology-groups'
 import { ExternalLink, FileText } from 'lucide-react'
@@ -30,28 +31,35 @@ export function CertificationItem({
     t(`${getLabel(link)}Label`, { title })
 
   return (
-    <article className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-muted/40 text-card-foreground shadow-sm transition-[transform,box-shadow,border-color] duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/30 hover:shadow-md motion-reduce:transition-none motion-reduce:hover:translate-y-0">
+    <article
+      className={cn(
+        'group relative flex h-full flex-col overflow-hidden rounded-2xl border border-transparent bg-muted/40 text-card-foreground shadow-sm transition-[transform,box-shadow,border-color] duration-200 ease-out motion-reduce:transition-none',
+        primary &&
+          'cursor-pointer hover:-translate-y-0.5 hover:border-foreground/30 hover:shadow-md motion-reduce:hover:translate-y-0'
+      )}
+    >
       {primary && (
-        <a
-          href={primary.href}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={getAriaLabel(primary)}
-          title={t(getLabel(primary))}
-          className="group absolute right-0 top-0 flex h-10 w-12 items-center justify-center rounded-bl-2xl bg-primary text-primary-foreground transition-colors hover:bg-primary/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
-        >
-          {primary.kind === 'credential' ? (
-            <ExternalLink
-              className="h-4 w-4 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 motion-reduce:transition-none motion-reduce:group-hover:transform-none"
-              aria-hidden="true"
-            />
-          ) : (
-            <FileText
-              className="h-4 w-4 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 motion-reduce:transition-none motion-reduce:group-hover:transform-none"
-              aria-hidden="true"
-            />
-          )}
-        </a>
+        <>
+          <a
+            href={primary.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            title={t(getLabel(primary))}
+            className="absolute inset-0 rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+          >
+            <span className="sr-only">{getAriaLabel(primary)}</span>
+          </a>
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute right-0 top-0 flex h-10 w-12 items-center justify-center rounded-bl-2xl bg-primary text-primary-foreground transition-colors group-hover:bg-primary/80"
+          >
+            {primary.kind === 'credential' ? (
+              <ExternalLink className="h-4 w-4 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 motion-reduce:transition-none motion-reduce:group-hover:transform-none" />
+            ) : (
+              <FileText className="h-4 w-4 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 motion-reduce:transition-none motion-reduce:group-hover:transform-none" />
+            )}
+          </div>
+        </>
       )}
 
       <div className="flex h-full flex-col gap-4 p-5">
@@ -86,7 +94,7 @@ export function CertificationItem({
         )}
 
         {secondary && (
-          <div className="mt-auto border-t border-border pt-4">
+          <div className="relative mt-auto border-t border-border pt-4">
             <Button asChild={true} size="sm" variant="outline">
               <a
                 href={secondary.href}
