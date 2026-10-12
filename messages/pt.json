@@ -86,7 +86,7 @@
   },
   "certificates": {
     "title": "Minhas certificações",
-    "description": "Cursos, certificações e participações que compõem minha formação continuada.",
+    "description": "Cursos, certificações e participações que compõem minha formação.",
     "viewCredential": "Ver credencial",
     "viewFile": "Ver comprovante",
     "viewCredentialLabel": "Ver credencial: {title}",
@@ -158,7 +158,7 @@
         "certificações",
         "certificados",
         "cursos",
-        "formação continuada",
+        "formação",
         "credenciais"
       ]
     }
