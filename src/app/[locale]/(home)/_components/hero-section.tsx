@@ -19,6 +19,8 @@ import {
 } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
+import { AvailableBadge } from './available-badge'
+import { IntroAudio } from './intro-audio'
 
 interface HeroHighlight {
   label: string
@@ -66,7 +68,7 @@ export function HeroSection() {
       label: site.content.hero.highlights.development,
       icon: Code2,
     },
-    { label: site.content.hero.highlights.ai, image: '/icons/claude.png' },
+    { label: site.content.hero.highlights.ai, image: '/icons/claude-code.svg' },
     {
       label: site.content.hero.highlights.editor,
       image: '/icons/cursor-ide.png',
@@ -132,7 +134,7 @@ export function HeroSection() {
             </div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
+            <div className="flex flex-col space-y-4 sm:flex-row sm:items-center sm:space-x-4 sm:space-y-0">
               <FancyButton.Root
                 size="lg"
                 type="button"
@@ -143,6 +145,7 @@ export function HeroSection() {
                 {t('cta.courses')}
                 <ArrowRight className="ml-2 h-4 w-4" />
               </FancyButton.Root>
+              <IntroAudio src={profile.introAudio} />
             </div>
           </div>
 
@@ -161,24 +164,7 @@ export function HeroSection() {
                 />
               </div>
 
-              {/* Floating badge */}
-              <a
-                href="https://api.whatsapp.com/send/?phone=5548999904772"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="absolute -bottom-4 -right-4"
-              >
-                <Card className="border-green-500/20 shadow-lg shadow-green-500/20 hover:shadow-green-500/40 transition-all duration-300 ease-out">
-                  <CardContent className="py-0 px-2">
-                    <div className="flex items-center space-x-2">
-                      <div className="h-2 w-2 rounded-full bg-green-500 animate-pulse shadow-md shadow-green-500/50" />
-                      <span className="text-xs font-medium">
-                        {t('cta.available')}
-                      </span>
-                    </div>
-                  </CardContent>
-                </Card>
-              </a>
+              <AvailableBadge />
             </div>
 
             {/* Stats Grid */}

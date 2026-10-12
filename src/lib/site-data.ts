@@ -85,6 +85,7 @@ export interface SiteData {
       og: string
       logo: string
     }
+    introAudio: string
     knowsAbout: string[]
     tagline: string
   }
