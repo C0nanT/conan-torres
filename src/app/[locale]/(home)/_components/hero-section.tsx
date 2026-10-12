@@ -15,7 +15,7 @@ import {
   GraduationCap,
   type LucideIcon,
   MapPin,
-  Users,
+  Rocket,
 } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
@@ -57,7 +57,7 @@ export function HeroSection() {
     {
       label: t('stats.freelances'),
       value: profile.stats.freelances,
-      icon: Users,
+      icon: Rocket,
     },
   ]
 
@@ -182,24 +182,30 @@ export function HeroSection() {
             </div>
 
             {/* Stats Grid */}
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-3">
               {stats.map((stat) => {
                 const Icon = stat.icon
                 const card = (
                   <Card
-                    className={`tech-card h-full ${stat.href ? 'transition-colors hover:border-primary/50' : ''}`}
+                    className={`tech-card relative h-full overflow-hidden p-4 ${stat.href ? 'transition-colors hover:border-primary/50' : ''}`}
                   >
-                    <CardContent className="p-4">
-                      <div className="flex items-center space-x-3">
-                        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
-                          <Icon className="h-5 w-5 text-primary" />
-                        </div>
-                        <div>
-                          <div className="text-2xl font-bold">{stat.value}</div>
-                          <div className="text-xs text-muted-foreground">
-                            {stat.label}
-                          </div>
-                        </div>
+                    <div
+                      aria-hidden="true"
+                      className="pointer-events-none absolute inset-0"
+                    >
+                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_100%_0%,hsl(var(--primary)/0.14),transparent_65%)]" />
+                      <div className="absolute inset-0 bg-[radial-gradient(hsl(var(--primary)/0.35)_1px,transparent_1px)] [background-size:10px_10px] [mask-image:radial-gradient(circle_at_100%_0%,black,transparent_70%)]" />
+                      <div className="absolute -right-8 -top-8 h-24 w-24 rounded-full border border-primary/15" />
+                      <div className="absolute -right-12 -top-12 h-32 w-32 rounded-full border border-primary/10" />
+                      <Icon
+                        strokeWidth={1.5}
+                        className="absolute right-2 top-2 h-12 w-12 rotate-12 text-primary/25"
+                      />
+                    </div>
+                    <CardContent className="relative p-3">
+                      <div className="text-2xl font-bold">{stat.value}</div>
+                      <div className="text-xs text-muted-foreground">
+                        {stat.label}
                       </div>
                     </CardContent>
                   </Card>
