@@ -77,7 +77,7 @@ export function NavigationDock({ items, className }: NavigationDockProps) {
                 prefersReducedMotion
                   ? 'transition-none'
                   : 'transition-all duration-500 ease-out',
-                isActive ? 'w-[120px]' : 'w-10'
+                'min-w-10'
               )}
             >
               <FancyButton.Root
@@ -105,23 +105,19 @@ export function NavigationDock({ items, className }: NavigationDockProps) {
                 >
                   <FancyButton.Icon as={Icon} />
                   <span
-                    className={cn(
-                      'text-sm font-medium whitespace-nowrap overflow-hidden',
-                      prefersReducedMotion
-                        ? 'transition-none'
-                        : 'transition-[max-width,margin] duration-500 ease-out',
-                      isActive
-                        ? 'opacity-100 max-w-[80px] ml-2 relative'
-                        : 'opacity-0 max-w-0 ml-0 absolute'
-                    )}
+                    className="grid"
                     style={{
+                      gridTemplateColumns: isActive ? '1fr' : '0fr',
+                      marginLeft: isActive ? '0.5rem' : 0,
                       opacity: isActive ? 1 : 0,
                       transition: prefersReducedMotion
                         ? 'none'
-                        : 'max-width 500ms ease-out, margin 500ms ease-out',
+                        : 'grid-template-columns 500ms ease-out, margin 500ms ease-out',
                     }}
                   >
-                    {item.name}
+                    <span className="min-w-0 overflow-hidden whitespace-nowrap text-sm font-medium">
+                      {item.name}
+                    </span>
                   </span>
                   {isActive && (
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-50 -translate-x-full animate-[shine_2s_ease-in-out_infinite]" />
