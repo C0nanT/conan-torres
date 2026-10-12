@@ -9,6 +9,8 @@ import {
 } from '@/lib/certifications'
 import type { Certification } from '@/lib/site-data'
 import { groupTechnologies } from '@/lib/technology-groups'
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
+import { Trash2 } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { Fragment, useState } from 'react'
 import { CertificationItem } from './certification-item'
@@ -21,6 +23,7 @@ export function CertificationExplorer({
 }) {
   const t = useTranslations('certificates')
   const [selected, setSelected] = useState<string[]>([])
+  const prefersReducedMotion = useReducedMotion()
 
   const technologyGroups = groupTechnologies(getAllTechnologies(certifications))
   const hasSelection = selected.length > 0
@@ -44,18 +47,38 @@ export function CertificationExplorer({
       <div>
         {technologyGroups.length > 0 && (
           <fieldset className="min-w-0 space-y-3">
-            <legend className="mb-3 flex items-center gap-3 text-sm font-medium">
+            <legend className="mb-3 flex min-h-8 items-center gap-3 text-sm font-medium">
               {t('filterBy')}
-              {hasSelection && (
-                <Button
-                  type="button"
-                  variant="ghost"
-                  size="sm"
-                  onClick={handleClear}
-                >
-                  {t('clearFilters')}
-                </Button>
-              )}
+              <AnimatePresence initial={false}>
+                {hasSelection && (
+                  <motion.span
+                    key="clear-filters"
+                    className="inline-flex"
+                    initial={
+                      prefersReducedMotion
+                        ? { opacity: 0 }
+                        : { opacity: 0, scale: 0.9, x: -8 }
+                    }
+                    animate={{ opacity: 1, scale: 1, x: 0 }}
+                    exit={
+                      prefersReducedMotion
+                        ? { opacity: 0 }
+                        : { opacity: 0, scale: 0.9, x: -8 }
+                    }
+                    transition={{ duration: 0.18, ease: 'easeOut' }}
+                  >
+                    <Button
+                      type="button"
+                      variant="ghost"
+                      size="sm"
+                      onClick={handleClear}
+                    >
+                      <Trash2 aria-hidden="true" className="mr-1.5 size-3.5" />
+                      {t('clearFilters')}
+                    </Button>
+                  </motion.span>
+                )}
+              </AnimatePresence>
             </legend>
             <dl className="grid gap-x-6 gap-y-2 sm:grid-cols-[9rem_1fr]">
               {technologyGroups.map((group) => (
