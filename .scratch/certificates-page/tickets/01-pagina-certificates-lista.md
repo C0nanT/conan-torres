@@ -10,11 +10,11 @@
 
 **Blocked by:** None (can start immediately).
 
-Status: ready-for-agent
+Status: ready-for-human
 
-- [ ] `/certificates` renderiza os 25 itens ordenados do mais recente ao mais antigo
-- [ ] Cada item exibe título, emissor, data em pt-BR e competências (itens sem competências não mostram bloco vazio)
-- [ ] Textos vêm de `messages/pt.json` (namespaces `certificates` e `metadata.certificates` com `title`, `description`, `keywords`)
-- [ ] `/certificates` está no sitemap
-- [ ] Layout ok em celular, foco visível, `prefers-reduced-motion` respeitado
-- [ ] `pnpm check`, `pnpm exec tsc --noEmit` e `pnpm build` passam
+- [x] `/certificates` renderiza os 25 itens ordenados do mais recente ao mais antigo
+- [x] Cada item exibe título, emissor, data em pt-BR e competências (itens sem competências não mostram bloco vazio)
+- [x] Textos vêm de `messages/pt.json` (namespaces `certificates` e `metadata.certificates` com `title`, `description`, `keywords`)
+- [x] `/certificates` está no sitemap
+- [x] Layout ok em celular, foco visível, `prefers-reduced-motion` respeitado
+- [x] `pnpm check`, `pnpm exec tsc --noEmit` e `pnpm build` passam

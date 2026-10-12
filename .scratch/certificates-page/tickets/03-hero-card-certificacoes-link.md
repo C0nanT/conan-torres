@@ -12,7 +12,7 @@
 
 Status: ready-for-agent
 
-- [ ] Clique no card navega para `/certificates`
-- [ ] Card ganha o mesmo estilo de hover dos outros cards clicáveis; os cards sem destino não mudam
-- [ ] O número continua vindo de `profile.stats.certifications`
+- [x] Clique no card navega para `/certificates`
+- [x] Card ganha o mesmo estilo de hover dos outros cards clicáveis; os cards sem destino não mudam
+- [x] O número continua vindo de `profile.stats.certifications`
 - [ ] `pnpm check`, `pnpm exec tsc --noEmit` passam

@@ -12,9 +12,9 @@
 
 Status: ready-for-agent
 
-- [ ] Item sem `url` e sem `file` não renderiza âncora
-- [ ] Item só com `url` ou só com `file` mostra um link para o destino certo
-- [ ] Item com os dois mostra credencial como principal e arquivo como secundário
-- [ ] Todos os links externos têm `target="_blank"` e `rel="noopener noreferrer"`
-- [ ] Links têm texto descritivo e foco visível (inclui o título da certificação no nome acessível)
+- [x] Item sem `url` e sem `file` não renderiza âncora
+- [x] Item só com `url` ou só com `file` mostra um link para o destino certo
+- [x] Item com os dois mostra credencial como principal e arquivo como secundário
+- [x] Todos os links externos têm `target="_blank"` e `rel="noopener noreferrer"`
+- [x] Links têm texto descritivo e foco visível (inclui o título da certificação no nome acessível)
 - [ ] Conferência manual preenchendo temporariamente `url`/`file` em alguns itens e revertendo; `pnpm check`, `tsc` e `build` passam
