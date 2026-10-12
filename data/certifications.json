@@ -3,6 +3,7 @@
   "fetchedAt": "2026-10-01",
   "certifications": [
     {
+      "id": "palestrante-encontro-tecnologia-defensorias-publicas-regiao-sul",
       "title": "Palestrante: 1° Encontro de Tecnologia das Defensorias Públicas da Região Sul",
       "issuer": "Defensoria Pública do Estado do Rio Grande do Sul",
       "issuedAt": "2026-08",
@@ -10,6 +11,7 @@
       "skills": []
     },
     {
+      "id": "anthropic-ai-fluency-framework-foundations",
       "title": "AI Fluency: Framework & Foundations",
       "issuer": "Anthropic",
       "issuedAt": "2026-05",
@@ -17,6 +19,7 @@
       "skills": ["AI Workflow Integration"]
     },
     {
+      "id": "anthropic-claude-code-in-action",
       "title": "Claude Code In Action",
       "issuer": "Anthropic",
       "issuedAt": "2026-05",
@@ -24,6 +27,7 @@
       "skills": ["Agentic Workflows"]
     },
     {
+      "id": "full-cycle-curso-de-banco-de-dados-relacionais-e-sql",
       "title": "Curso de Banco de dados relacionais e SQL",
       "issuer": "Full Cycle",
       "issuedAt": "2025-12",
@@ -31,6 +35,7 @@
       "skills": ["PostgreSQL", "MySQL"]
     },
     {
+      "id": "full-cycle-curso-de-fundamentos-de-cloud-computing-aws",
       "title": "Curso de Fundamentos de Cloud Computing (AWS)",
       "issuer": "Full Cycle",
       "issuedAt": "2025-12",
@@ -38,6 +43,7 @@
       "skills": ["CI/CD", "AWS"]
     },
     {
+      "id": "full-cycle-curso-de-docker-para-producao",
       "title": "Curso de Docker para produção",
       "issuer": "Full Cycle",
       "issuedAt": "2025-12",
@@ -45,6 +51,7 @@
       "skills": ["Docker"]
     },
     {
+      "id": "ef-set-english-certificate-b1",
       "title": "EF SET English Certificate 50/100 (B1 Intermediate)",
       "issuer": "EF SET",
       "issuedAt": "2025-11",
@@ -52,6 +59,7 @@
       "skills": ["Inglês"]
     },
     {
+      "id": "full-cycle-curso-de-poo-orientacao-a-objetos",
       "title": "Curso de POO - Orientação a objetos",
       "issuer": "Full Cycle",
       "issuedAt": "2025-11",
@@ -59,6 +67,7 @@
       "skills": ["TypeScript"]
     },
     {
+      "id": "uniasselvi-analise-e-desenvolvimento-de-sistemas",
       "title": "Análise e Desenvolvimento de Sistemas",
       "issuer": "UNIASSELVI",
       "issuedAt": "2025-07",
@@ -66,6 +75,7 @@
       "skills": []
     },
     {
+      "id": "full-cycle-curso-de-git-e-github",
       "title": "Curso de Git e Github",
       "issuer": "Full Cycle",
       "issuedAt": "2025-07",
@@ -73,6 +83,7 @@
       "skills": ["GitHub", "Git"]
     },
     {
+      "id": "full-cycle-curso-de-arquitetura-em-camadas-e-mvc",
       "title": "Curso de Arquitetura em camadas e MVC",
       "issuer": "Full Cycle",
       "issuedAt": "2025-07",
@@ -80,6 +91,7 @@
       "skills": ["TypeScript"]
     },
     {
+      "id": "full-cycle-curso-de-autenticacao-e-autorizacao-tokens-jwt-acl-e-rbac",
       "title": "Curso de Autenticação e autorização: Tokens JWT, ACL e RBAC",
       "issuer": "Full Cycle",
       "issuedAt": "2025-06",
@@ -87,6 +99,7 @@
       "skills": ["JWT"]
     },
     {
+      "id": "full-cycle-curso-de-solid-na-pratica-principios-e-aplicacoes-em-design-de-software",
       "title": "Curso de SOLID na prática - Princípios e aplicações em design de software",
       "issuer": "Full Cycle",
       "issuedAt": "2025-05",
@@ -94,6 +107,7 @@
       "skills": ["SOLID"]
     },
     {
+      "id": "full-cycle-curso-de-docker-para-desenvolvimento",
       "title": "Curso de Docker para Desenvolvimento",
       "issuer": "Full Cycle",
       "issuedAt": "2025-04",
@@ -101,6 +115,7 @@
       "skills": ["Docker"]
     },
     {
+      "id": "full-cycle-curso-de-docker-na-pratica",
       "title": "Curso de Docker na prática",
       "issuer": "Full Cycle",
       "issuedAt": "2025-04",
@@ -108,6 +123,7 @@
       "skills": ["Docker"]
     },
     {
+      "id": "full-cycle-curso-de-rest-e-niveis-de-maturidade-na-pratica",
       "title": "Curso de REST e Níveis de Maturidade na prática",
       "issuer": "Full Cycle",
       "issuedAt": "2025-03",
@@ -115,6 +131,7 @@
       "skills": ["API REST"]
     },
     {
+      "id": "alura-react-native-utilizando-e-criando-hooks",
       "title": "React Native: utilizando e criando Hooks",
       "issuer": "Alura",
       "issuedAt": "2024-04",
@@ -122,6 +139,7 @@
       "skills": ["React Native", "Qualidade de software"]
     },
     {
+      "id": "alura-laravel-validando-formularios-usando-sessoes-e-definindo-relacionamentos",
       "title": "Laravel: validando formulários, usando sessões e definindo relacionamentos",
       "issuer": "Alura",
       "issuedAt": "2024-03",
@@ -129,6 +147,7 @@
       "skills": ["Laravel", "Qualidade de software"]
     },
     {
+      "id": "alura-laravel-criando-uma-aplicacao-com-mvc",
       "title": "Laravel: criando uma aplicação com MVC",
       "issuer": "Alura",
       "issuedAt": "2024-02",
@@ -136,6 +155,7 @@
       "skills": ["Laravel", "Qualidade de software"]
     },
     {
+      "id": "alura-formacao-aprenda-a-programar-em-php-8-cursos",
       "title": "Formação Aprenda a programar em PHP - 8 Cursos",
       "issuer": "Alura",
       "issuedAt": "2024-02",
@@ -143,6 +163,7 @@
       "skills": ["PHP", "Qualidade de software"]
     },
     {
+      "id": "alura-git-e-github-repositorio-commit-e-versoes",
       "title": "Git e GitHub: repositório, commit e versões",
       "issuer": "Alura",
       "issuedAt": "2023-09",
@@ -150,6 +171,7 @@
       "skills": ["Qualidade de software", "Git"]
     },
     {
+      "id": "alura-sql-com-mysql-manipule-e-consulte-dados",
       "title": "SQL com MySQL: manipule e consulte dados",
       "issuer": "Alura",
       "issuedAt": "2023-09",
@@ -157,6 +179,7 @@
       "skills": ["MySQL", "SQL"]
     },
     {
+      "id": "alura-modelagem-de-banco-de-dados-relacional-entidades-relacionamentos-e-atributos",
       "title": "Modelagem de banco de dados relacional: entidades, relacionamentos e atributos",
       "issuer": "Alura",
       "issuedAt": "2023-09",
@@ -164,6 +187,7 @@
       "skills": ["Qualidade de software"]
     },
     {
+      "id": "origamid-html-e-css-para-iniciantes",
       "title": "HTML e CSS para Iniciantes",
       "issuer": "Origamid",
       "issuedAt": "2023-07",
@@ -171,6 +195,7 @@
       "skills": ["CSS", "HTML"]
     },
     {
+      "id": "curso-em-video-python-3-mundo-3",
       "title": "Python 3 - Mundo 3",
       "issuer": "Curso em Vídeo",
       "issuedAt": "2023-01",

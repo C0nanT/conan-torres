@@ -1,3 +1,4 @@
+import certificationsData from '../../data/certifications.json'
 import siteData from '../../data/site.json'
 
 export interface SocialLink {
@@ -157,7 +158,21 @@ export interface SiteData {
   }
 }
 
+export interface Certification {
+  id: string
+  title: string
+  issuer: string
+  issuedAt: string
+  credentialId: string | null
+  skills: string[]
+  file?: string
+  url?: string
+}
+
 export const site = siteData as SiteData
+
+export const certifications =
+  certificationsData.certifications as Certification[]
 
 export function getSiteUrl(): string {
   return site.site.url

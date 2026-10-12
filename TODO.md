@@ -29,7 +29,7 @@ Conteúdo em `data/site.json` (e `messages/pt.json`). Feito: nome, email, domín
 Os 25 itens já estão no JSON (título, emissor, mês, código, competências). Falta anexar o comprovante e o link de cada um para a página `/certificates` (ainda não existe).
 
 - [ ] Para cada item: colocar o arquivo (PDF/imagem) em `public/certificates/` e/ou o link "Exibir credencial" do LinkedIn, e adicionar ao JSON os campos `file` (ex.: `/certificates/anthropic-claude-code-in-action.pdf`) e `url` (link de verificação).
-- [ ] Adicionar `id` (slug) a cada certificação e o tipo `Certification` em `src/lib/site-data.ts` (o JSON é só cast).
+- [x] Adicionar `id` (slug) a cada certificação e o tipo `Certification` em `src/lib/site-data.ts` (o JSON é só cast).
 - [ ] Criar a página `src/app/[locale]/certificates/` listando as certificações: clicar abre o arquivo ou o link da credencial (`target="_blank"`, `rel="noopener noreferrer"`) e, se não houver os dois, não mostrar link.
 - [ ] Ligar o card "Certificações" do hero a `/certificates` (campo `href` em `hero-section.tsx`, como o card de projetos).
 - [ ] Decidir se palestra, graduação (UNIASSELVI) e teste de inglês (EF SET) contam no número do hero (hoje 25; só cursos = 22 ou 23). Se mudar, atualizar `profile.stats.certifications`.
