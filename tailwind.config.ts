@@ -18,7 +18,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['var(--font-geist-sans)', 'system-ui', 'sans-serif'],
+        // Design usa Geist Mono como fonte principal (ver docs/design)
+        sans: ['var(--font-geist-mono)', 'Menlo', 'monospace'],
         mono: ['var(--font-geist-mono)', 'Menlo', 'monospace'],
       },
       colors: {
