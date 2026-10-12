@@ -10,9 +10,9 @@
 
 **Blocked by:** None (can start immediately)
 
-Status: ready-for-agent
+Status: ready-for-human
 
-- [ ] Ticket em `.scratch/` registra o form de contato não funcional
-- [ ] `REMAINING_ISSUES_REPORT.md` removido
-- [ ] Menção no `AGENTS.md` atualizada
-- [ ] Verificação sem testes automáticos: `pnpm check`, `pnpm exec tsc --noEmit`, `pnpm build`.
+- [x] Ticket em `.scratch/` registra o form de contato não funcional
+- [x] `REMAINING_ISSUES_REPORT.md` removido
+- [x] Menção no `AGENTS.md` atualizada
+- [x] Verificação sem testes automáticos: `pnpm check`, `pnpm exec tsc --noEmit`, `pnpm build`.

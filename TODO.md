@@ -32,8 +32,8 @@ Os 25 itens já estão no JSON (título, emissor, mês, código, competências).
 - [x] Adicionar `id` (slug) a cada certificação e o tipo `Certification` em `src/lib/site-data.ts` (o JSON é só cast).
 - [x] Criar a página `src/app/[locale]/certificates/` listando as certificações: clicar abre o arquivo ou o link da credencial (`target="_blank"`, `rel="noopener noreferrer"`) e, se não houver os dois, não mostrar link.
 - [x] Ligar o card "Certificações" do hero a `/certificates` (campo `href` em `hero-section.tsx`, como o card de projetos).
-- [ ] Decidir se palestra, graduação (UNIASSELVI) e teste de inglês (EF SET) contam no número do hero (hoje 25; só cursos = 22 ou 23). Se mudar, atualizar `profile.stats.certifications`.
-- [ ] `profile.education` em `data/site.json`: conferir com a graduação UNIASSELVI (ADS, jul. 2025).
+- [x] Decidir se palestra, graduação (UNIASSELVI) e teste de inglês (EF SET) contam no número do hero (hoje 25; só cursos = 22 ou 23). Se mudar, atualizar `profile.stats.certifications`.
+- [x] `profile.education` em `data/site.json`: conferir com a graduação UNIASSELVI (ADS, jul. 2025).
 
 - [ ] **Provisório:** as 25 certificações estão com `url: "https://www.google.com"` em `data/certifications.json` só para testar o botão de link do card. Trocar cada uma pelo link real da credencial (e/ou `file`); remover o `url` das que não tiverem comprovante, para o botão não aparecer.
 
@@ -65,7 +65,7 @@ Comprovantes por certificação (arquivo e/ou link):
 - [ ] Python 3 - Mundo 3 — Curso em Vídeo (jan. 2023)
 
 ## Outros
-- [ ] `REMAINING_ISSUES_REPORT.md`: relatório de bugs do site dele (cita `augustogalego`, rota `/blog/...`, form de contato não funcional). Revisar/apagar.
-- [ ] `README.md` é boilerplate T3.
-- [ ] `next.config.mjs` `remotePatterns` (Amazon, ghchart): ver se ainda usa.
-- [ ] `package.json` (name, repository, author) e `.git` remotes: conferir.
+- [x] `REMAINING_ISSUES_REPORT.md`: relatório de bugs do site dele (cita `augustogalego`, rota `/blog/...`, form de contato não funcional). Revisar/apagar.
+- [x] `README.md` é boilerplate T3.
+- [x] `next.config.mjs` `remotePatterns` (Amazon, ghchart): ver se ainda usa.
+- [x] `package.json` (name, repository, author) e `.git` remotes: conferir.

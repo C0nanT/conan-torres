@@ -2,6 +2,11 @@
   "name": "conan-torres",
   "version": "0.1.0",
   "private": true,
+  "author": "Conan Torres",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/C0nanT/conan-torres"
+  },
   "engines": {
     "node": ">=22.0.0",
     "pnpm": ">=9.0.0"

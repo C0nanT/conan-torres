@@ -10,8 +10,8 @@
 
 **Blocked by:** None (can start immediately)
 
-Status: ready-for-agent
+Status: ready-for-human
 
-- [ ] Nenhum `url` provisório resta em `data/certifications.json`
-- [ ] `/certificates` renderiza os 25 itens sem botão de link
-- [ ] Verificação sem testes automáticos: `pnpm check`, `pnpm exec tsc --noEmit`, `pnpm build`.
+- [x] Nenhum `url` provisório resta em `data/certifications.json`
+- [x] `/certificates` renderiza os 25 itens sem botão de link
+- [x] Verificação sem testes automáticos: `pnpm check`, `pnpm exec tsc --noEmit`, `pnpm build`.

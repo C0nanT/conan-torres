@@ -9,8 +9,7 @@
       "issuedAt": "2026-08",
       "credentialId": null,
       "skills": [],
-      "technologies": ["Palestra", "Setor público", "IA"],
-      "url": "https://www.google.com"
+      "technologies": ["Palestra", "Setor público", "IA"]
     },
     {
       "id": "anthropic-ai-fluency-framework-foundations",
@@ -19,8 +18,7 @@
       "issuedAt": "2026-05",
       "credentialId": "6ah84k8a2tf8",
       "skills": ["AI Workflow Integration"],
-      "technologies": ["IA", "Claude"],
-      "url": "https://www.google.com"
+      "technologies": ["IA", "Claude"]
     },
     {
       "id": "anthropic-claude-code-in-action",
@@ -29,8 +27,7 @@
       "issuedAt": "2026-05",
       "credentialId": "8p6qnvmnptiq",
       "skills": ["Agentic Workflows"],
-      "technologies": ["IA", "Claude"],
-      "url": "https://www.google.com"
+      "technologies": ["IA", "Claude"]
     },
     {
       "id": "full-cycle-curso-de-banco-de-dados-relacionais-e-sql",
@@ -39,8 +36,7 @@
       "issuedAt": "2025-12",
       "credentialId": "67c4b9c3-c761-4e7a-a6c6-9a02095529dc",
       "skills": ["PostgreSQL", "MySQL"],
-      "technologies": ["SQL", "PostgreSQL", "MySQL", "Banco de dados"],
-      "url": "https://www.google.com"
+      "technologies": ["SQL", "PostgreSQL", "MySQL", "Banco de dados"]
     },
     {
       "id": "full-cycle-curso-de-fundamentos-de-cloud-computing-aws",
@@ -49,8 +45,7 @@
       "issuedAt": "2025-12",
       "credentialId": "f4c5b6b4-e45e-4471-ae03-6b20aa0addbd",
       "skills": ["CI/CD", "AWS"],
-      "technologies": ["AWS", "Cloud"],
-      "url": "https://www.google.com"
+      "technologies": ["AWS", "Cloud"]
     },
     {
       "id": "full-cycle-curso-de-docker-para-producao",
@@ -59,8 +54,7 @@
       "issuedAt": "2025-12",
       "credentialId": "f30d5a03-4814-4552-9a94-0b3ed05b9c5d",
       "skills": ["Docker"],
-      "technologies": ["Docker", "DevOps"],
-      "url": "https://www.google.com"
+      "technologies": ["Docker", "DevOps"]
     },
     {
       "id": "ef-set-english-certificate-b1",
@@ -69,8 +63,7 @@
       "issuedAt": "2025-11",
       "credentialId": null,
       "skills": ["Inglês"],
-      "technologies": ["Inglês"],
-      "url": "https://www.google.com"
+      "technologies": ["Inglês"]
     },
     {
       "id": "full-cycle-curso-de-poo-orientacao-a-objetos",
@@ -79,8 +72,7 @@
       "issuedAt": "2025-11",
       "credentialId": "387b33e3-34ee-421f-9fa6-17ea12fc7614",
       "skills": ["TypeScript"],
-      "technologies": ["POO", "Arquitetura"],
-      "url": "https://www.google.com"
+      "technologies": ["POO", "Arquitetura"]
     },
     {
       "id": "uniasselvi-analise-e-desenvolvimento-de-sistemas",
@@ -89,8 +81,7 @@
       "issuedAt": "2025-07",
       "credentialId": "1472.1472.4842b416794b28263bc1ca53cbfa7678ffd21988acd59be670b580f3b6e42f11",
       "skills": [],
-      "technologies": ["Graduação", "Desenvolvimento de sistemas"],
-      "url": "https://www.google.com"
+      "technologies": ["Graduação", "Desenvolvimento de sistemas"]
     },
     {
       "id": "full-cycle-curso-de-git-e-github",
@@ -99,8 +90,7 @@
       "issuedAt": "2025-07",
       "credentialId": "20c9ac4e-31fe-41f5-a07a-47464f79b2dd",
       "skills": ["GitHub", "Git"],
-      "technologies": ["Git", "GitHub"],
-      "url": "https://www.google.com"
+      "technologies": ["Git", "GitHub"]
     },
     {
       "id": "full-cycle-curso-de-arquitetura-em-camadas-e-mvc",
@@ -109,8 +99,7 @@
       "issuedAt": "2025-07",
       "credentialId": "209d4eba-bce6-4a4a-b474-cb9966f7cd2c",
       "skills": ["TypeScript"],
-      "technologies": ["MVC", "TypeScript", "Arquitetura"],
-      "url": "https://www.google.com"
+      "technologies": ["MVC", "TypeScript", "Arquitetura"]
     },
     {
       "id": "full-cycle-curso-de-autenticacao-e-autorizacao-tokens-jwt-acl-e-rbac",
@@ -119,8 +108,7 @@
       "issuedAt": "2025-06",
       "credentialId": "f5afd353-121a-4391-bb56-59315aebaeb8",
       "skills": ["JWT"],
-      "technologies": ["JWT", "Autenticação", "Segurança"],
-      "url": "https://www.google.com"
+      "technologies": ["JWT", "Autenticação", "Segurança"]
     },
     {
       "id": "full-cycle-curso-de-solid-na-pratica-principios-e-aplicacoes-em-design-de-software",
@@ -129,8 +117,7 @@
       "issuedAt": "2025-05",
       "credentialId": "21736e3e-c008-48d7-b7d7-bee96f49499a",
       "skills": ["SOLID"],
-      "technologies": ["SOLID", "Arquitetura", "POO"],
-      "url": "https://www.google.com"
+      "technologies": ["SOLID", "Arquitetura", "POO"]
     },
     {
       "id": "full-cycle-curso-de-docker-para-desenvolvimento",
@@ -139,8 +126,7 @@
       "issuedAt": "2025-04",
       "credentialId": "8f29688c-6e46-4146-82b0-65d068894294",
       "skills": ["Docker"],
-      "technologies": ["Docker", "DevOps"],
-      "url": "https://www.google.com"
+      "technologies": ["Docker", "DevOps"]
     },
     {
       "id": "full-cycle-curso-de-docker-na-pratica",
@@ -149,8 +135,7 @@
       "issuedAt": "2025-04",
       "credentialId": "2c126bc0-5829-46c1-82f8-bf01e79379b2",
       "skills": ["Docker"],
-      "technologies": ["Docker", "DevOps"],
-      "url": "https://www.google.com"
+      "technologies": ["Docker", "DevOps"]
     },
     {
       "id": "full-cycle-curso-de-rest-e-niveis-de-maturidade-na-pratica",
@@ -159,8 +144,7 @@
       "issuedAt": "2025-03",
       "credentialId": "d63dfb3f-6018-4fed-aceb-a82f69616e7d",
       "skills": ["API REST"],
-      "technologies": ["API REST", "Arquitetura"],
-      "url": "https://www.google.com"
+      "technologies": ["API REST", "Arquitetura"]
     },
     {
       "id": "alura-react-native-utilizando-e-criando-hooks",
@@ -169,8 +153,7 @@
       "issuedAt": "2024-04",
       "credentialId": "e2d2c4b3-870a-4379-8c69-0b081cb4e411",
       "skills": ["React Native", "Qualidade de software"],
-      "technologies": ["React Native", "React", "Mobile"],
-      "url": "https://www.google.com"
+      "technologies": ["React Native", "React", "Mobile"]
     },
     {
       "id": "alura-laravel-validando-formularios-usando-sessoes-e-definindo-relacionamentos",
@@ -179,8 +162,7 @@
       "issuedAt": "2024-03",
       "credentialId": "2dbef2ad-3335-4246-aedd-895e9864b9fe",
       "skills": ["Laravel", "Qualidade de software"],
-      "technologies": ["Laravel", "PHP", "MVC"],
-      "url": "https://www.google.com"
+      "technologies": ["Laravel", "PHP", "MVC"]
     },
     {
       "id": "alura-laravel-criando-uma-aplicacao-com-mvc",
@@ -189,8 +171,7 @@
       "issuedAt": "2024-02",
       "credentialId": "5d6d33b9-736d-4b40-b0d3-fcfb32ee1e02",
       "skills": ["Laravel", "Qualidade de software"],
-      "technologies": ["Laravel", "PHP", "MVC"],
-      "url": "https://www.google.com"
+      "technologies": ["Laravel", "PHP", "MVC"]
     },
     {
       "id": "alura-formacao-aprenda-a-programar-em-php-8-cursos",
@@ -199,8 +180,7 @@
       "issuedAt": "2024-02",
       "credentialId": "f4c45c8a-f23b-4a58-8b57-de73801b6f2a",
       "skills": ["PHP", "Qualidade de software"],
-      "technologies": ["PHP"],
-      "url": "https://www.google.com"
+      "technologies": ["PHP"]
     },
     {
       "id": "alura-git-e-github-repositorio-commit-e-versoes",
@@ -209,8 +189,7 @@
       "issuedAt": "2023-09",
       "credentialId": "a988f684-8fd3-4279-993b-d9bc61860ba0",
       "skills": ["Qualidade de software", "Git"],
-      "technologies": ["Git", "GitHub"],
-      "url": "https://www.google.com"
+      "technologies": ["Git", "GitHub"]
     },
     {
       "id": "alura-sql-com-mysql-manipule-e-consulte-dados",
@@ -219,8 +198,7 @@
       "issuedAt": "2023-09",
       "credentialId": "e095f481-a3a7-4dd7-bc0d-620a4d5ced7f",
       "skills": ["MySQL", "SQL"],
-      "technologies": ["SQL", "MySQL", "Banco de dados"],
-      "url": "https://www.google.com"
+      "technologies": ["SQL", "MySQL", "Banco de dados"]
     },
     {
       "id": "alura-modelagem-de-banco-de-dados-relacional-entidades-relacionamentos-e-atributos",
@@ -229,8 +207,7 @@
       "issuedAt": "2023-09",
       "credentialId": "89e39122-86f2-42f9-bf9f-0789b7bb3d6e",
       "skills": ["Qualidade de software"],
-      "technologies": ["Banco de dados", "SQL"],
-      "url": "https://www.google.com"
+      "technologies": ["Banco de dados", "SQL"]
     },
     {
       "id": "origamid-html-e-css-para-iniciantes",
@@ -239,8 +216,7 @@
       "issuedAt": "2023-07",
       "credentialId": "0bb2389b",
       "skills": ["CSS", "HTML"],
-      "technologies": ["HTML", "CSS", "Front-end"],
-      "url": "https://www.google.com"
+      "technologies": ["HTML", "CSS", "Front-end"]
     },
     {
       "id": "curso-em-video-python-3-mundo-3",
@@ -249,8 +225,7 @@
       "issuedAt": "2023-01",
       "credentialId": "90D7E-685A-A",
       "skills": ["Qualidade de software", "Python"],
-      "technologies": ["Python"],
-      "url": "https://www.google.com"
+      "technologies": ["Python"]
     }
   ]
 }

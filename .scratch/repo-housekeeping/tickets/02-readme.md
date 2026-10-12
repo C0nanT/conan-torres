@@ -10,9 +10,9 @@
 
 **Blocked by:** None (can start immediately)
 
-Status: ready-for-agent
+Status: ready-for-human
 
-- [ ] Descreve o projeto, stack e comandos (`pnpm dev/build/check`, Node >= 22, `SKIP_ENV_VALIDATION`)
-- [ ] Aponta conteúdo em `data/site.json` e textos em `messages/pt.json`
-- [ ] Nenhum resto de boilerplate T3
-- [ ] Verificação sem testes automáticos: `pnpm check`, `pnpm exec tsc --noEmit`, `pnpm build`.
+- [x] Descreve o projeto, stack e comandos (`pnpm dev/build/check`, Node >= 22, `SKIP_ENV_VALIDATION`)
+- [x] Aponta conteúdo em `data/site.json` e textos em `messages/pt.json`
+- [x] Nenhum resto de boilerplate T3
+- [x] Verificação sem testes automáticos: `pnpm check`, `pnpm exec tsc --noEmit`, `pnpm build`.
