@@ -7,7 +7,7 @@
     "aliases": ["Conan"],
     "initials": "CT",
     "role": "Tech Lead",
-    "subtitle": "Tech Lead & Desenvolvedor Full-Stack",
+    "subtitle": "Tech Lead & Desenvolvedor Full Stack",
     "jobTitle": "Assessor de Tecnologia (Tech Lead)",
     "nationality": "Brasileiro",
     "location": {
@@ -49,11 +49,11 @@
       "Linux",
       "DevOps"
     ],
-    "tagline": "Tech Lead & Dev Full-Stack"
+    "tagline": "Tech Lead & Dev Full Stack"
   },
   "content": {
     "hero": {
-      "description": "Tech Lead e desenvolvedor full-stack na Defensoria Pública de Santa Catarina, com mais de 6 anos de experiência em desenvolvimento de software.",
+      "description": "Tech Lead e Desenvolvedor Full Stack na Defensoria Pública de Santa Catarina, com mais de 6 anos de experiência em desenvolvimento de software.",
       "highlights": {
         "development": "Desenvolvimento web moderno e escalável",
         "ai": "Claude como IA para desenvolvimento",
@@ -62,11 +62,11 @@
     },
     "metadata": {
       "home": {
-        "title": "Conan Torres - Tech Lead e Desenvolvedor Full-Stack",
-        "description": "Tech Lead e desenvolvedor full-stack na Defensoria Pública de Santa Catarina. Desenvolvimento web moderno, liderança técnica e carreira em tech."
+        "title": "Conan Torres - Tech Lead e Desenvolvedor Full Stack",
+        "description": "Tech Lead e Desenvolvedor Full Stack na Defensoria Pública de Santa Catarina. Desenvolvimento web moderno, liderança técnica e carreira em tech."
       },
       "about": {
-        "description": "Conheça a trajetória de Conan Torres: Tech Lead e desenvolvedor full-stack na Defensoria Pública de Santa Catarina, com mais de 6 anos de experiência."
+        "description": "Conheça a trajetória de Conan Torres: Tech Lead e Desenvolvedor Full Stack na Defensoria Pública de Santa Catarina, com mais de 6 anos de experiência."
       }
     }
   },
@@ -406,7 +406,7 @@
   "seo": {
     "keywords": [
       "tech lead",
-      "desenvolvedor full-stack",
+      "desenvolvedor full stack",
       "desenvolvimento de software",
       "programação",
       "laravel",

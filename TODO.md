@@ -15,7 +15,7 @@ Conteúdo em `data/site.json` (e `messages/pt.json`). Feito: nome, email, domín
 - [x] `messages/pt.json` → `hero.stats` e `hero.cta` ("Disponível para mentorias", "Ler Blog" sem blog?). `contact.availability` também.
 
 ## SEO
-- [x] `seo.keywords` em `data/site.json` e `metadata.home/about.keywords` em `messages/pt.json`: tudo de algoritmos/LeetCode/CTO/Europa/emigração. Trocar por cibersegurança, full-stack, etc.
+- [x] `seo.keywords` em `data/site.json` e `metadata.home/about.keywords` em `messages/pt.json`: tudo de algoritmos/LeetCode/CTO/Europa/emigração. Trocar por cibersegurança, full stack, etc.
 - [x] `messages/pt.json` → `metadata.books/setup`: textos genéricos, revisar.
 
 ## Livros e setup (`messages/pt.json`)
