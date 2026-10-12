@@ -8,12 +8,14 @@ import {
 import {
   formatCertificationDate,
   getIssuerInitials,
+  getIssuerLogo,
 } from '@/lib/certifications'
 import { cn } from '@/lib/shadcn'
 import type { Certification } from '@/lib/site-data'
 import { sortTechnologies } from '@/lib/technology-groups'
 import { ExternalLink, FileText } from 'lucide-react'
 import { useTranslations } from 'next-intl'
+import Image from 'next/image'
 import { TechnologyBadge } from './technology-badge'
 
 export function CertificationItem({
@@ -24,6 +26,7 @@ export function CertificationItem({
   const t = useTranslations('certificates')
   const [primary, secondary] = getCertificationLinks(certification)
   const { title, issuer, issuedAt, technologies = [] } = certification
+  const logo = getIssuerLogo(issuer)
 
   const getLabel = (link: CertificationLink) =>
     link.kind === 'credential' ? 'viewCredential' : 'viewFile'
@@ -66,9 +69,22 @@ export function CertificationItem({
         <div className={`flex items-center gap-3 ${primary ? 'pr-10' : ''}`}>
           <span
             aria-hidden="true"
-            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-border bg-background text-sm font-bold"
+            className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-border bg-white text-sm font-bold text-black"
           >
-            {getIssuerInitials(issuer)}
+            {logo ? (
+              <Image
+                src={logo.src}
+                alt=""
+                width={40}
+                height={40}
+                className={cn(
+                  'h-full w-full object-contain',
+                  logo.padded && 'p-1.5'
+                )}
+              />
+            ) : (
+              getIssuerInitials(issuer)
+            )}
           </span>
           <div className="min-w-0">
             <p className="truncate text-sm font-medium">{issuer}</p>

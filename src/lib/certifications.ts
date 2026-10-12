@@ -99,3 +99,27 @@ export function getIssuerInitials(issuer: string): string {
     .map((word) => word[0]?.toUpperCase() ?? '')
     .join('')
 }
+
+export interface IssuerLogo {
+  src: string
+  // Transparent logos need breathing room; full-bleed ones fill the tile.
+  padded?: boolean
+}
+
+const ISSUER_LOGOS = new Map<string, IssuerLogo>([
+  ['Alura', { src: '/issuers/alura.png' }],
+  ['Anthropic', { src: '/issuers/anthropic.png' }],
+  ['Curso em Vídeo', { src: '/issuers/curso-em-video.png' }],
+  [
+    'Defensoria Pública do Estado do Rio Grande do Sul',
+    { src: '/issuers/defensoria-rs.png', padded: true },
+  ],
+  ['EF SET', { src: '/issuers/ef-set.png' }],
+  ['Full Cycle', { src: '/issuers/full-cycle.svg', padded: true }],
+  ['Origamid', { src: '/issuers/origamid.png' }],
+  ['UNIASSELVI', { src: '/issuers/uniasselvi.png' }],
+])
+
+export function getIssuerLogo(issuer: string): IssuerLogo | undefined {
+  return ISSUER_LOGOS.get(issuer)
+}
