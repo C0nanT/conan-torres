@@ -8,6 +8,7 @@
       "issuer": "Defensoria Pública do Estado do Rio Grande do Sul",
       "issuedAt": "2026-08",
       "credentialId": null,
+      "url": "https://www.linkedin.com/in/conan-torres/overlay/Certifications/1692880287/treasury?profileId=ACoAAEKqkiIBewYDwezC4Lv0chbhhsN8upAmDa4",
       "skills": [],
       "technologies": ["Palestra", "Setor público", "IA"]
     },
@@ -17,6 +18,7 @@
       "issuer": "Anthropic",
       "issuedAt": "2026-05",
       "credentialId": "6ah84k8a2tf8",
+      "url": "https://verify.skilljar.com/c/6ah84k8a2tf8",
       "skills": ["AI Workflow Integration"],
       "technologies": ["IA", "Claude"]
     },
@@ -26,6 +28,7 @@
       "issuer": "Anthropic",
       "issuedAt": "2026-05",
       "credentialId": "8p6qnvmnptiq",
+      "url": "https://verify.skilljar.com/c/8p6qnvmnptiq",
       "skills": ["Agentic Workflows"],
       "technologies": ["IA", "Claude"]
     },
@@ -35,6 +38,7 @@
       "issuer": "Full Cycle",
       "issuedAt": "2025-12",
       "credentialId": "67c4b9c3-c761-4e7a-a6c6-9a02095529dc",
+      "url": "https://fullcycle.com.br/certificado/67c4b9c3-c761-4e7a-a6c6-9a02095529dc/",
       "skills": ["PostgreSQL", "MySQL"],
       "technologies": ["SQL", "PostgreSQL", "MySQL", "Banco de dados"]
     },
@@ -44,6 +48,7 @@
       "issuer": "Full Cycle",
       "issuedAt": "2025-12",
       "credentialId": "f4c5b6b4-e45e-4471-ae03-6b20aa0addbd",
+      "url": "https://fullcycle.com.br/certificado/f4c5b6b4-e45e-4471-ae03-6b20aa0addbd/",
       "skills": ["CI/CD", "AWS"],
       "technologies": ["AWS", "Cloud"]
     },
@@ -53,6 +58,7 @@
       "issuer": "Full Cycle",
       "issuedAt": "2025-12",
       "credentialId": "f30d5a03-4814-4552-9a94-0b3ed05b9c5d",
+      "url": "https://fullcycle.com.br/certificado/f30d5a03-4814-4552-9a94-0b3ed05b9c5d/",
       "skills": ["Docker"],
       "technologies": ["Docker", "DevOps"]
     },
@@ -62,6 +68,7 @@
       "issuer": "EF SET",
       "issuedAt": "2025-11",
       "credentialId": null,
+      "url": "https://cert.efset.org/en/H8xiat",
       "skills": ["Inglês"],
       "technologies": ["Inglês"]
     },
@@ -71,6 +78,7 @@
       "issuer": "Full Cycle",
       "issuedAt": "2025-11",
       "credentialId": "387b33e3-34ee-421f-9fa6-17ea12fc7614",
+      "url": "https://fullcycle.com.br/certificado/387b33e3-34ee-421f-9fa6-17ea12fc7614",
       "skills": ["TypeScript"],
       "technologies": ["POO", "Arquitetura"]
     },
@@ -80,6 +88,7 @@
       "issuer": "UNIASSELVI",
       "issuedAt": "2025-07",
       "credentialId": "1472.1472.4842b416794b28263bc1ca53cbfa7678ffd21988acd59be670b580f3b6e42f11",
+      "url": "https://www.linkedin.com/in/conan-torres/overlay/Education/918305083/treasury/?profileId=ACoAAEKqkiIBewYDwezC4Lv0chbhhsN8upAmDa4",
       "skills": [],
       "technologies": ["Graduação", "Desenvolvimento de sistemas"]
     },
@@ -89,6 +98,7 @@
       "issuer": "Full Cycle",
       "issuedAt": "2025-07",
       "credentialId": "20c9ac4e-31fe-41f5-a07a-47464f79b2dd",
+      "url": "https://fullcycle.com.br/certificado/20c9ac4e-31fe-41f5-a07a-47464f79b2dd/",
       "skills": ["GitHub", "Git"],
       "technologies": ["Git", "GitHub"]
     },
@@ -98,6 +108,7 @@
       "issuer": "Full Cycle",
       "issuedAt": "2025-07",
       "credentialId": "209d4eba-bce6-4a4a-b474-cb9966f7cd2c",
+      "url": "https://fullcycle.com.br/certificado/209d4eba-bce6-4a4a-b474-cb9966f7cd2c",
       "skills": ["TypeScript"],
       "technologies": ["MVC", "TypeScript", "Arquitetura"]
     },
@@ -107,6 +118,7 @@
       "issuer": "Full Cycle",
       "issuedAt": "2025-06",
       "credentialId": "f5afd353-121a-4391-bb56-59315aebaeb8",
+      "url": "https://fullcycle.com.br/certificado/f5afd353-121a-4391-bb56-59315aebaeb8",
       "skills": ["JWT"],
       "technologies": ["JWT", "Autenticação", "Segurança"]
     },
@@ -116,6 +128,7 @@
       "issuer": "Full Cycle",
       "issuedAt": "2025-05",
       "credentialId": "21736e3e-c008-48d7-b7d7-bee96f49499a",
+      "url": "https://fullcycle.com.br/certificado/21736e3e-c008-48d7-b7d7-bee96f49499a",
       "skills": ["SOLID"],
       "technologies": ["SOLID", "Arquitetura", "POO"]
     },
@@ -125,6 +138,7 @@
       "issuer": "Full Cycle",
       "issuedAt": "2025-04",
       "credentialId": "8f29688c-6e46-4146-82b0-65d068894294",
+      "url": "https://fullcycle.com.br/certificado/8f29688c-6e46-4146-82b0-65d068894294",
       "skills": ["Docker"],
       "technologies": ["Docker", "DevOps"]
     },
@@ -134,6 +148,7 @@
       "issuer": "Full Cycle",
       "issuedAt": "2025-04",
       "credentialId": "2c126bc0-5829-46c1-82f8-bf01e79379b2",
+      "url": "https://fullcycle.com.br/certificado/2c126bc0-5829-46c1-82f8-bf01e79379b2",
       "skills": ["Docker"],
       "technologies": ["Docker", "DevOps"]
     },
@@ -143,6 +158,7 @@
       "issuer": "Full Cycle",
       "issuedAt": "2025-03",
       "credentialId": "d63dfb3f-6018-4fed-aceb-a82f69616e7d",
+      "url": "https://fullcycle.com.br/certificado/d63dfb3f-6018-4fed-aceb-a82f69616e7d",
       "skills": ["API REST"],
       "technologies": ["API REST", "Arquitetura"]
     },
@@ -152,6 +168,7 @@
       "issuer": "Alura",
       "issuedAt": "2024-04",
       "credentialId": "e2d2c4b3-870a-4379-8c69-0b081cb4e411",
+      "url": "https://cursos.alura.com.br/certificate/e2d2c4b3-870a-4379-8c69-0b081cb4e411?lang",
       "skills": ["React Native", "Qualidade de software"],
       "technologies": ["React Native", "React", "Mobile"]
     },
@@ -161,6 +178,7 @@
       "issuer": "Alura",
       "issuedAt": "2024-03",
       "credentialId": "2dbef2ad-3335-4246-aedd-895e9864b9fe",
+      "url": "https://cursos.alura.com.br/certificate/2dbef2ad-3335-4246-aedd-895e9864b9fe?lang",
       "skills": ["Laravel", "Qualidade de software"],
       "technologies": ["Laravel", "PHP", "MVC"]
     },
@@ -170,6 +188,7 @@
       "issuer": "Alura",
       "issuedAt": "2024-02",
       "credentialId": "5d6d33b9-736d-4b40-b0d3-fcfb32ee1e02",
+      "url": "https://cursos.alura.com.br/certificate/5d6d33b9-736d-4b40-b0d3-fcfb32ee1e02?lang",
       "skills": ["Laravel", "Qualidade de software"],
       "technologies": ["Laravel", "PHP", "MVC"]
     },
@@ -179,6 +198,7 @@
       "issuer": "Alura",
       "issuedAt": "2024-02",
       "credentialId": "f4c45c8a-f23b-4a58-8b57-de73801b6f2a",
+      "url": "https://cursos.alura.com.br/degree/certificate/f4c45c8a-f23b-4a58-8b57-de73801b6f2a?lang",
       "skills": ["PHP", "Qualidade de software"],
       "technologies": ["PHP"]
     },
@@ -188,6 +208,7 @@
       "issuer": "Alura",
       "issuedAt": "2023-09",
       "credentialId": "a988f684-8fd3-4279-993b-d9bc61860ba0",
+      "url": "https://cursos.alura.com.br/certificate/a988f684-8fd3-4279-993b-d9bc61860ba0",
       "skills": ["Qualidade de software", "Git"],
       "technologies": ["Git", "GitHub"]
     },
@@ -197,6 +218,7 @@
       "issuer": "Alura",
       "issuedAt": "2023-09",
       "credentialId": "e095f481-a3a7-4dd7-bc0d-620a4d5ced7f",
+      "url": "https://cursos.alura.com.br/certificate/e095f481-a3a7-4dd7-bc0d-620a4d5ced7f",
       "skills": ["MySQL", "SQL"],
       "technologies": ["SQL", "MySQL", "Banco de dados"]
     },
@@ -206,6 +228,7 @@
       "issuer": "Alura",
       "issuedAt": "2023-09",
       "credentialId": "89e39122-86f2-42f9-bf9f-0789b7bb3d6e",
+      "url": "https://cursos.alura.com.br/certificate/89e39122-86f2-42f9-bf9f-0789b7bb3d6e",
       "skills": ["Qualidade de software"],
       "technologies": ["Banco de dados", "SQL"]
     },
