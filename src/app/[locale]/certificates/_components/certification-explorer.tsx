@@ -100,16 +100,24 @@ export function CertificationExplorer({
           {t('noResults')}
         </p>
       ) : (
-        <div className="space-y-10">
+        <div className="relative flex flex-col gap-10">
+          <span
+            aria-hidden="true"
+            className="absolute bottom-0 left-32 top-4 hidden w-px -translate-x-1/2 bg-border lg:block"
+          />
           {groupByYear(visible).map((group) => (
             <section
               key={group.year}
               aria-labelledby={`year-${group.year}`}
-              className="grid gap-4 lg:grid-cols-[7rem_1fr] lg:gap-8"
+              className="relative grid gap-4 lg:grid-cols-[7rem_1fr] lg:gap-8"
             >
+              <span
+                aria-hidden="true"
+                className="absolute left-32 top-2.5 hidden h-3 w-3 -translate-x-1/2 rounded-full border-2 border-foreground bg-background lg:block"
+              />
               <h2
                 id={`year-${group.year}`}
-                className="text-2xl font-semibold tabular-nums text-muted-foreground lg:sticky lg:top-24 lg:self-start"
+                className="text-2xl font-semibold tabular-nums text-muted-foreground lg:sticky lg:top-24 lg:self-start lg:text-right"
               >
                 {group.year}
               </h2>

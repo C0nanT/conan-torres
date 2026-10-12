@@ -49,7 +49,7 @@
       "issuedAt": "2025-12",
       "credentialId": "f4c5b6b4-e45e-4471-ae03-6b20aa0addbd",
       "skills": ["CI/CD", "AWS"],
-      "technologies": ["AWS", "Cloud", "CI/CD"],
+      "technologies": ["AWS", "Cloud"],
       "url": "https://www.google.com"
     },
     {
@@ -79,7 +79,7 @@
       "issuedAt": "2025-11",
       "credentialId": "387b33e3-34ee-421f-9fa6-17ea12fc7614",
       "skills": ["TypeScript"],
-      "technologies": ["POO", "TypeScript", "Arquitetura"],
+      "technologies": ["POO", "Arquitetura"],
       "url": "https://www.google.com"
     },
     {

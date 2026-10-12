@@ -90,3 +90,12 @@ export function formatCertificationDate(issuedAt: string): string {
 
   return `${monthFormatter.format(new Date(Date.UTC(year, month - 1, 1)))} ${year}`
 }
+
+// 'Full Cycle' -> 'FC'; first letters of the first two words.
+export function getIssuerInitials(issuer: string): string {
+  return issuer
+    .split(/\s+/)
+    .slice(0, 2)
+    .map((word) => word[0]?.toUpperCase() ?? '')
+    .join('')
+}
