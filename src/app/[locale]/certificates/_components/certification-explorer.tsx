@@ -2,16 +2,15 @@
 
 import { Button } from '@/components/ui/button'
 import {
-  type CertificationSort,
-  certificationSorts,
   filterByTechnologies,
   getAllTechnologies,
   groupByYear,
   sortCertifications,
 } from '@/lib/certifications'
 import type { Certification } from '@/lib/site-data'
+import { groupTechnologies } from '@/lib/technology-groups'
 import { useTranslations } from 'next-intl'
-import { useState } from 'react'
+import { Fragment, useState } from 'react'
 import { CertificationItem } from './certification-item'
 import { TechnologyBadge } from './technology-badge'
 
@@ -22,15 +21,13 @@ export function CertificationExplorer({
 }) {
   const t = useTranslations('certificates')
   const [selected, setSelected] = useState<string[]>([])
-  const [sort, setSort] = useState<CertificationSort>('newest')
 
-  const technologies = getAllTechnologies(certifications)
+  const technologyGroups = groupTechnologies(getAllTechnologies(certifications))
+  const hasSelection = selected.length > 0
   const visible = sortCertifications(
     filterByTechnologies(certifications, selected),
-    sort
+    'newest'
   )
-
-  const isChronological = sort === 'newest' || sort === 'oldest'
 
   const handleToggle = (tech: string) => {
     setSelected((current) =>
@@ -40,35 +37,16 @@ export function CertificationExplorer({
     )
   }
 
-  const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setSort(event.target.value as CertificationSort)
-  }
-
   const handleClear = () => setSelected([])
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-        {technologies.length > 0 && (
-          <fieldset className="min-w-0 space-y-2">
-            <legend className="text-sm font-medium">{t('filterBy')}</legend>
-            <div className="flex flex-wrap gap-2">
-              {technologies.map((tech) => {
-                const isActive = selected.includes(tech)
-
-                return (
-                  <button
-                    key={tech}
-                    type="button"
-                    aria-pressed={isActive}
-                    onClick={() => handleToggle(tech)}
-                    className="rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                  >
-                    <TechnologyBadge label={tech} isActive={isActive} />
-                  </button>
-                )
-              })}
-              {selected.length > 0 && (
+      <div>
+        {technologyGroups.length > 0 && (
+          <fieldset className="min-w-0 space-y-3">
+            <legend className="mb-3 flex items-center gap-3 text-sm font-medium">
+              {t('filterBy')}
+              {hasSelection && (
                 <Button
                   type="button"
                   variant="ghost"
@@ -78,24 +56,39 @@ export function CertificationExplorer({
                   {t('clearFilters')}
                 </Button>
               )}
-            </div>
+            </legend>
+            <dl className="grid gap-x-6 gap-y-2 sm:grid-cols-[9rem_1fr]">
+              {technologyGroups.map((group) => (
+                <Fragment key={group.id}>
+                  <dt className="pt-1 text-xs text-muted-foreground sm:text-right">
+                    {t(`groups.${group.id}`)}
+                  </dt>
+                  <dd className="mb-2 flex flex-wrap gap-1.5 sm:mb-0">
+                    {group.labels.map((tech) => {
+                      const isActive = selected.includes(tech)
+
+                      return (
+                        <button
+                          key={tech}
+                          type="button"
+                          aria-pressed={isActive}
+                          onClick={() => handleToggle(tech)}
+                          className="rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                        >
+                          <TechnologyBadge
+                            label={tech}
+                            isActive={isActive}
+                            isDimmed={hasSelection && !isActive}
+                          />
+                        </button>
+                      )
+                    })}
+                  </dd>
+                </Fragment>
+              ))}
+            </dl>
           </fieldset>
         )}
-
-        <label className="flex shrink-0 flex-col gap-2 text-sm font-medium sm:ml-auto">
-          {t('sortBy')}
-          <select
-            value={sort}
-            onChange={handleSortChange}
-            className="h-9 rounded-md border border-input bg-background px-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-          >
-            {certificationSorts.map((option) => (
-              <option key={option} value={option}>
-                {t(`sort.${option}`)}
-              </option>
-            ))}
-          </select>
-        </label>
       </div>
 
       <p className="text-sm text-muted-foreground" aria-live="polite">
@@ -106,7 +99,7 @@ export function CertificationExplorer({
         <p className="py-12 text-center text-muted-foreground">
           {t('noResults')}
         </p>
-      ) : isChronological ? (
+      ) : (
         <div className="space-y-10">
           {groupByYear(visible).map((group) => (
             <section
@@ -124,13 +117,6 @@ export function CertificationExplorer({
             </section>
           ))}
         </div>
-      ) : (
-        <section aria-labelledby="all-certifications">
-          <h2 id="all-certifications" className="sr-only">
-            {t('allCertifications')}
-          </h2>
-          <CardGrid items={visible} />
-        </section>
       )}
     </div>
   )

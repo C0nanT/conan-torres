@@ -85,7 +85,6 @@
     }
   },
   "certificates": {
-    "allCertifications": "Todas as certificações",
     "title": "Minhas certificações",
     "description": "Cursos, certificações e participações que compõem minha formação continuada.",
     "viewCredential": "Ver credencial",
@@ -100,6 +99,16 @@
     "clearFilters": "Limpar filtros",
     "sortBy": "Ordenar por",
     "resultCount": "{count, plural, one {# certificação} other {# certificações}}",
+    "groups": {
+      "development": "Desenvolvimento",
+      "data": "Dados",
+      "infra": "Infra e DevOps",
+      "architecture": "Arquitetura",
+      "security": "Segurança",
+      "ai": "Inteligência artificial",
+      "career": "Formação e carreira",
+      "other": "Outros"
+    },
     "sort": {
       "newest": "Mais recentes",
       "oldest": "Mais antigas",
