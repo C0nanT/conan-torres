@@ -1,6 +1,5 @@
 'use client'
 
-import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import {
   type CertificationSort,
@@ -14,6 +13,7 @@ import type { Certification } from '@/lib/site-data'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 import { CertificationItem } from './certification-item'
+import { TechnologyBadge } from './technology-badge'
 
 export function CertificationExplorer({
   certifications,
@@ -64,12 +64,7 @@ export function CertificationExplorer({
                     onClick={() => handleToggle(tech)}
                     className="rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                   >
-                    <Badge
-                      variant={isActive ? 'default' : 'outline'}
-                      className="cursor-pointer"
-                    >
-                      {tech}
-                    </Badge>
+                    <TechnologyBadge label={tech} isActive={isActive} />
                   </button>
                 )
               })}

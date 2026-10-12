@@ -1,6 +1,5 @@
 'use client'
 
-import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { getCertificationLinks } from '@/lib/certification-links'
@@ -8,6 +7,7 @@ import { formatCertificationDate } from '@/lib/certifications'
 import type { Certification } from '@/lib/site-data'
 import { ExternalLink, FileText } from 'lucide-react'
 import { useTranslations } from 'next-intl'
+import { TechnologyBadge } from './technology-badge'
 
 export function CertificationItem({
   certification,
@@ -35,7 +35,7 @@ export function CertificationItem({
           <ul aria-label={t('technologies')} className="flex flex-wrap gap-1.5">
             {technologies.map((tech) => (
               <li key={tech}>
-                <Badge variant="secondary">{tech}</Badge>
+                <TechnologyBadge label={tech} />
               </li>
             ))}
           </ul>
