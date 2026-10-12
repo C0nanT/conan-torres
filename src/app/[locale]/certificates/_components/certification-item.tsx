@@ -1,3 +1,5 @@
+'use client'
+
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
@@ -5,40 +7,49 @@ import { getCertificationLinks } from '@/lib/certification-links'
 import { formatCertificationDate } from '@/lib/certifications'
 import type { Certification } from '@/lib/site-data'
 import { ExternalLink, FileText } from 'lucide-react'
-import { getTranslations } from 'next-intl/server'
+import { useTranslations } from 'next-intl'
 
-export async function CertificationItem({
+export function CertificationItem({
   certification,
 }: {
   certification: Certification
 }) {
-  const t = await getTranslations('certificates')
+  const t = useTranslations('certificates')
   const links = getCertificationLinks(certification)
-  const { title, issuer, issuedAt, skills } = certification
+  const { title, issuer, issuedAt, skills, technologies = [] } = certification
 
   return (
-    <Card className="tech-card">
-      <CardContent className="p-6 space-y-4">
-        <div className="space-y-1">
-          <h2 className="font-bold text-lg">{title}</h2>
-          <p className="text-sm text-muted-foreground">
-            {issuer} ·{' '}
-            <time dateTime={issuedAt}>{formatCertificationDate(issuedAt)}</time>
-          </p>
+    <Card className="h-full rounded-xl shadow-none">
+      <CardContent className="flex h-full flex-col gap-4 p-5">
+        <div className="space-y-2">
+          <div className="flex items-baseline justify-between gap-4 text-xs text-muted-foreground">
+            <span className="font-medium">{issuer}</span>
+            <time dateTime={issuedAt} className="shrink-0 tabular-nums">
+              {formatCertificationDate(issuedAt)}
+            </time>
+          </div>
+          <h3 className="text-base font-semibold leading-snug">{title}</h3>
         </div>
 
-        {skills.length > 0 && (
-          <ul aria-label={t('skills')} className="flex flex-wrap gap-2">
-            {skills.map((skill) => (
-              <li key={skill}>
-                <Badge variant="secondary">{skill}</Badge>
+        {technologies.length > 0 && (
+          <ul aria-label={t('technologies')} className="flex flex-wrap gap-1.5">
+            {technologies.map((tech) => (
+              <li key={tech}>
+                <Badge variant="secondary">{tech}</Badge>
               </li>
             ))}
           </ul>
         )}
 
+        {skills.length > 0 && (
+          <p className="text-xs leading-relaxed text-muted-foreground">
+            <span className="font-medium text-foreground">{t('skills')}:</span>{' '}
+            {skills.join(', ')}
+          </p>
+        )}
+
         {links.length > 0 && (
-          <div className="flex flex-wrap gap-2">
+          <div className="mt-auto flex flex-wrap gap-2 border-t pt-4">
             {links.map((link, index) => {
               const isCredential = link.kind === 'credential'
               const Icon = isCredential ? ExternalLink : FileText

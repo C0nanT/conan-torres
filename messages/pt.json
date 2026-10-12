@@ -85,7 +85,7 @@
     }
   },
   "certificates": {
-    "badge": "Certificações",
+    "allCertifications": "Todas as certificações",
     "title": "Minhas certificações",
     "description": "Cursos, certificações e participações que compõem minha formação continuada.",
     "viewCredential": "Ver credencial",
@@ -93,7 +93,19 @@
     "viewCredentialLabel": "Ver credencial: {title}",
     "viewFileLabel": "Ver comprovante: {title}",
     "skills": "Competências",
-    "empty": "Nenhuma certificação disponível no momento."
+    "technologies": "Tecnologias",
+    "empty": "Nenhuma certificação disponível no momento.",
+    "noResults": "Nenhuma certificação com as tecnologias selecionadas.",
+    "filterBy": "Filtrar por tecnologia",
+    "clearFilters": "Limpar filtros",
+    "sortBy": "Ordenar por",
+    "resultCount": "{count, plural, one {# certificação} other {# certificações}}",
+    "sort": {
+      "newest": "Mais recentes",
+      "oldest": "Mais antigas",
+      "title": "Título (A–Z)",
+      "technologies": "Mais tecnologias"
+    }
   },
   "metadata": {
     "home": {

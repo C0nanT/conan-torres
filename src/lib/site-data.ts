@@ -165,6 +165,7 @@ export interface Certification {
   issuedAt: string
   credentialId: string | null
   skills: string[]
+  technologies?: string[]
   file?: string
   url?: string
 }
