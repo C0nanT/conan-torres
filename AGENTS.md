@@ -18,7 +18,7 @@ pnpm check:fix         # biome auto-fix
 pnpm exec tsc --noEmit # type check (no script for it)
 ```
 
-No test framework is set up. Pre-commit hook (husky + lint-staged) runs `biome check --write` on staged files. Set `SKIP_ENV_VALIDATION=1` to bypass env validation (used for Docker builds).
+No test framework is set up, and none is wanted: this is a portfolio site. Do not write or add tests, set up a test framework, or declare test seams, even when a skill (`tdd`, `to-spec`, `to-tickets`, `implement`, …) asks for them. Where a skill requires a testing section, write "no automated tests" and verify with `pnpm check`, `pnpm exec tsc --noEmit`, `pnpm build` and a manual check. Pre-commit hook (husky + lint-staged) runs `biome check --write` on staged files. Set `SKIP_ENV_VALIDATION=1` to bypass env validation (used for Docker builds).
 
 ## Architecture
 
