@@ -84,6 +84,17 @@
       "monolito-para-microsservicos": "Em breve..."
     }
   },
+  "certificates": {
+    "badge": "Certificações",
+    "title": "Minhas certificações",
+    "description": "Cursos, certificações e participações que compõem minha formação continuada.",
+    "viewCredential": "Ver credencial",
+    "viewFile": "Ver comprovante",
+    "viewCredentialLabel": "Ver credencial: {title}",
+    "viewFileLabel": "Ver comprovante: {title}",
+    "skills": "Competências",
+    "empty": "Nenhuma certificação disponível no momento."
+  },
   "metadata": {
     "home": {
       "keywords": [
@@ -118,6 +129,17 @@
         "setor público",
         "liderança técnica",
         "educação"
+      ]
+    },
+    "certificates": {
+      "title": "Certificações",
+      "description": "Lista de certificações, cursos e participações de Conan Torres, com emissor, data e competências.",
+      "keywords": [
+        "certificações",
+        "certificados",
+        "cursos",
+        "formação continuada",
+        "credenciais"
       ]
     }
   }

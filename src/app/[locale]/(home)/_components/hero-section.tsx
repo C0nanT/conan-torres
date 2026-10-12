@@ -47,6 +47,7 @@ export function HeroSection() {
       label: t('stats.certifications'),
       value: profile.stats.certifications,
       icon: Award,
+      href: '/certificates',
     },
     {
       label: t('stats.experience'),

@@ -12,6 +12,11 @@ export default async function sitemap({
   const staticPages = [
     { path: '', priority: 1, changeFrequency: 'monthly' as const },
     { path: '/about', priority: 0.8, changeFrequency: 'monthly' as const },
+    {
+      path: '/certificates',
+      priority: 0.6,
+      changeFrequency: 'monthly' as const,
+    },
   ]
 
   return staticPages.map(({ path, priority, changeFrequency }) => {
