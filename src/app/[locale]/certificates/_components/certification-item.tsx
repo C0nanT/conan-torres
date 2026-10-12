@@ -2,9 +2,13 @@
 
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
-import { getCertificationLinks } from '@/lib/certification-links'
+import {
+  type CertificationLink,
+  getCertificationLinks,
+} from '@/lib/certification-links'
 import { formatCertificationDate } from '@/lib/certifications'
 import type { Certification } from '@/lib/site-data'
+import { sortTechnologies } from '@/lib/technology-groups'
 import { ExternalLink, FileText } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { TechnologyBadge } from './technology-badge'
@@ -15,14 +19,38 @@ export function CertificationItem({
   certification: Certification
 }) {
   const t = useTranslations('certificates')
-  const links = getCertificationLinks(certification)
-  const { title, issuer, issuedAt, skills, technologies = [] } = certification
+  const [primary, secondary] = getCertificationLinks(certification)
+  const { title, issuer, issuedAt, technologies = [] } = certification
+
+  const getLabel = (link: CertificationLink) =>
+    link.kind === 'credential' ? 'viewCredential' : 'viewFile'
+  const getAriaLabel = (link: CertificationLink) =>
+    t(`${getLabel(link)}Label`, { title })
 
   return (
-    <Card className="h-full rounded-xl shadow-none">
+    <Card className="relative h-full overflow-hidden rounded-xl shadow-none">
+      {primary && (
+        <a
+          href={primary.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={getAriaLabel(primary)}
+          title={t(getLabel(primary))}
+          className="absolute right-0 top-0 flex h-10 w-12 items-center justify-center rounded-bl-xl bg-primary text-primary-foreground transition-colors hover:bg-primary/85 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+        >
+          {primary.kind === 'credential' ? (
+            <ExternalLink className="h-4 w-4" aria-hidden="true" />
+          ) : (
+            <FileText className="h-4 w-4" aria-hidden="true" />
+          )}
+        </a>
+      )}
+
       <CardContent className="flex h-full flex-col gap-4 p-5">
         <div className="space-y-2">
-          <div className="flex items-baseline justify-between gap-4 text-xs text-muted-foreground">
+          <div
+            className={`flex items-baseline justify-between gap-4 text-xs text-muted-foreground ${primary ? 'pr-10' : ''}`}
+          >
             <span className="font-medium">{issuer}</span>
             <time dateTime={issuedAt} className="shrink-0 tabular-nums">
               {formatCertificationDate(issuedAt)}
@@ -33,7 +61,7 @@ export function CertificationItem({
 
         {technologies.length > 0 && (
           <ul aria-label={t('technologies')} className="flex flex-wrap gap-1.5">
-            {technologies.map((tech) => (
+            {sortTechnologies(technologies).map((tech) => (
               <li key={tech}>
                 <TechnologyBadge label={tech} />
               </li>
@@ -41,41 +69,19 @@ export function CertificationItem({
           </ul>
         )}
 
-        {skills.length > 0 && (
-          <p className="text-xs leading-relaxed text-muted-foreground">
-            <span className="font-medium text-foreground">{t('skills')}:</span>{' '}
-            {skills.join(', ')}
-          </p>
-        )}
-
-        {links.length > 0 && (
-          <div className="mt-auto flex flex-wrap gap-2 border-t pt-4">
-            {links.map((link, index) => {
-              const isCredential = link.kind === 'credential'
-              const Icon = isCredential ? ExternalLink : FileText
-
-              return (
-                <Button
-                  key={link.kind}
-                  asChild={true}
-                  size="sm"
-                  variant={index === 0 ? 'default' : 'outline'}
-                >
-                  <a
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={t(
-                      isCredential ? 'viewCredentialLabel' : 'viewFileLabel',
-                      { title }
-                    )}
-                  >
-                    <Icon className="mr-2 h-4 w-4" />
-                    {t(isCredential ? 'viewCredential' : 'viewFile')}
-                  </a>
-                </Button>
-              )
-            })}
+        {secondary && (
+          <div className="mt-auto border-t pt-4">
+            <Button asChild={true} size="sm" variant="outline">
+              <a
+                href={secondary.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={getAriaLabel(secondary)}
+              >
+                <FileText className="mr-2 h-4 w-4" aria-hidden="true" />
+                {t(getLabel(secondary))}
+              </a>
+            </Button>
           </div>
         )}
       </CardContent>

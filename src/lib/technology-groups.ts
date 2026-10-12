@@ -43,7 +43,7 @@ const technologyGroups: TechnologyGroup[] = [
     color: '#ef4444',
     labels: ['Segurança', 'Autenticação', 'JWT'],
   },
-  { id: 'ai', color: '#ec4899', labels: ['IA', 'Claude', 'Claude Code'] },
+  { id: 'ai', color: '#ec4899', labels: ['IA', 'Claude'] },
   {
     id: 'career',
     color: '#64748b',
@@ -82,4 +82,22 @@ export function groupTechnologies(labels: string[]): TechnologyGroup[] {
   return other.length > 0
     ? [...known, { id: 'other', color: '', labels: other }]
     : known
+}
+
+// Orders labels like the filter does: by group, then by position in the group.
+// Unknown labels go last, keeping their given order.
+export function sortTechnologies(labels: string[]): string[] {
+  const rank = (label: string) => {
+    const groupIndex = technologyGroups.findIndex((group) =>
+      group.labels.includes(label)
+    )
+    const group = technologyGroups[groupIndex]
+    if (!group) {
+      return Number.MAX_SAFE_INTEGER
+    }
+
+    return groupIndex * 1000 + group.labels.indexOf(label)
+  }
+
+  return [...labels].sort((a, b) => rank(a) - rank(b))
 }
