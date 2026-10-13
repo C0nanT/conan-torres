@@ -7,10 +7,6 @@ Conteúdo em `data/site.json` (e `messages/pt.json`).
 ## Analytics (Deixar para depois)
 - [ ] `site.analytics.clarityId` está vazio (Clarity desligado). Criar projeto no Microsoft Clarity e colocar o ID.
 
-## Livros recomendados
-- [ ] Preencher em `data/site.json`, por livro: `progress` (0-100, só para quem está `reading`), `rating` (1-5) e `note` (observação pessoal). Os campos são opcionais e só aparecem quando preenchidos.
-- [ ] Capas reais dos livros (hoje a capa é um bloco em gradiente).
-
 ## Sobre mim (Fazer depois)
 - [ ] Revisar a página completa de "sobre mim".
 
