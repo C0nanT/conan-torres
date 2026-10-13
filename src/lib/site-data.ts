@@ -93,9 +93,10 @@ export interface SiteData {
     hero: {
       description: string
       highlights: {
-        development: string
+        architecture: string
+        people: string
         ai: string
-        editor: string
+        learning: string
       }
     }
     metadata: {

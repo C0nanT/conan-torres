@@ -16,16 +16,19 @@ import {
   type LucideIcon,
   MapPin,
   Rocket,
+  Users,
 } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
+import type { ComponentType } from 'react'
+import { LiaBookSolid } from 'react-icons/lia'
 import { AvailableBadge } from './available-badge'
 import { IntroAudio } from './intro-audio'
 
 interface HeroHighlight {
   label: string
   image?: string
-  icon?: LucideIcon
+  icon?: ComponentType<{ className?: string }>
 }
 
 interface HeroStat {
@@ -65,13 +68,17 @@ export function HeroSection() {
 
   const highlights: HeroHighlight[] = [
     {
-      label: site.content.hero.highlights.development,
+      label: site.content.hero.highlights.architecture,
       icon: Code2,
+    },
+    {
+      label: site.content.hero.highlights.people,
+      icon: Users,
     },
     { label: site.content.hero.highlights.ai, image: '/icons/claude-code.svg' },
     {
-      label: site.content.hero.highlights.editor,
-      image: '/icons/cursor-ide.png',
+      label: site.content.hero.highlights.learning,
+      icon: LiaBookSolid,
     },
   ]
 

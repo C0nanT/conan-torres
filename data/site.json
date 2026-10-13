@@ -56,9 +56,10 @@
     "hero": {
       "description": "Tech Lead e Desenvolvedor Full Stack na Defensoria Pública de Santa Catarina, com mais de 6 anos de experiência em desenvolvimento de software.",
       "highlights": {
-        "development": "Desenvolvimento web moderno e escalável",
-        "ai": "Claude como IA para desenvolvimento",
-        "editor": "Cursor como IDE"
+        "architecture": "Arquitetura antes do framework",
+        "people": "Código e pessoas, na mesma medida",
+        "ai": "Claude Code no dia a dia",
+        "learning": "Sempre ensinando e aprendendo"
       }
     },
     "metadata": {
@@ -87,7 +88,7 @@
     }
   },
   "site": {
-    "name": "Conan Torres",
+    "name": "Torres",
     "url": "https://conantorres.dev",
     "analytics": {
       "clarityId": ""
