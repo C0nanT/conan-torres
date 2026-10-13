@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import * as FancyButton from '@/components/ui/fancy-button'
 import { Link } from '@/lib/navigation'
+import { cn } from '@/lib/shadcn'
 import { site } from '@/lib/site-data'
 import {
   ArrowRight,
@@ -84,7 +85,17 @@ export function HeroSection() {
 
   return (
     <section className="hero-section">
-      <div className="max-w-6xl mx-auto px-8 py-16 lg:py-20 border-x-2 border-dotted border-border/40">
+      <div
+        className={cn(
+          'relative max-w-6xl mx-auto px-8 py-16 lg:py-20 border-x-2 border-transparent',
+          'before:absolute before:inset-y-0 before:-left-0.5 before:border-l-2',
+          'after:absolute after:inset-y-0 after:-right-0.5 after:border-r-2',
+          'before:border-dotted before:border-border/40 after:border-dotted after:border-border/40',
+          'before:pointer-events-none after:pointer-events-none',
+          'before:[mask-image:linear-gradient(to_bottom,black_80%,transparent)]',
+          'after:[mask-image:linear-gradient(to_bottom,black_80%,transparent)]'
+        )}
+      >
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16 items-center">
           {/* Left Column - Content */}
           <div className="space-y-8">

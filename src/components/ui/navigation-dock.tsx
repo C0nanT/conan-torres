@@ -85,7 +85,8 @@ export function NavigationDock({ items, className }: NavigationDockProps) {
                 asChild={true}
                 variant={isActive ? 'basic' : 'ghost'}
                 className={cn(
-                  'relative overflow-hidden w-full',
+                  'relative overflow-hidden w-full gap-0',
+                  isActive ? 'px-4' : 'px-0',
                   prefersReducedMotion
                     ? 'transition-none'
                     : 'transition-all duration-500 ease-out'
@@ -96,11 +97,10 @@ export function NavigationDock({ items, className }: NavigationDockProps) {
                   prefetch={true}
                   onClick={(e) => handleLinkClick(item.href, isActive, e)}
                   className={cn(
-                    'flex items-center py-2 relative z-10 w-full',
+                    'flex items-center justify-center py-2 relative z-10 w-full',
                     prefersReducedMotion
                       ? 'transition-none'
-                      : 'transition-all duration-500 ease-out',
-                    isActive ? 'justify-center px-4' : 'justify-center px-0'
+                      : 'transition-all duration-500 ease-out'
                   )}
                 >
                   <FancyButton.Icon as={Icon} />
