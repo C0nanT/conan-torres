@@ -16,8 +16,11 @@ export function YouTubeChannels() {
     <section className="bg-muted/30 py-16 lg:py-20">
       <div className="max-w-6xl mx-auto px-4">
         <div className="text-center space-y-4 mb-12">
-          <Badge variant="outline" className="px-3 py-1">
-            <Youtube className="mr-1 h-3 w-3 text-foreground" />
+          <Badge
+            variant="outline"
+            className="group px-3 py-1 motion-safe:hover:scale-100 hover:border-[#FF0000]/40 hover:bg-[#FF0000]/10 hover:text-[#D93025]"
+          >
+            <Youtube className="mr-1 h-3 w-3 text-foreground transition-colors duration-200 group-hover:text-[#D93025]" />
             YouTube
           </Badge>
           <h2 className="text-3xl font-bold lg:text-4xl">
@@ -50,11 +53,11 @@ export function YouTubeChannels() {
                       src={getYouTubeVideoThumbnail(video.videoId)}
                       alt={video.title}
                       fill={true}
-                      className="object-cover"
+                      className="object-cover transition-transform duration-500 ease-out motion-safe:group-hover:scale-105"
                       sizes="(max-width: 768px) 100vw, 360px"
                     />
                     <div className="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 transition-opacity group-hover:opacity-100">
-                      <div className="flex h-14 w-14 items-center justify-center rounded-full bg-foreground text-white">
+                      <div className="flex h-14 w-14 items-center justify-center rounded-full bg-foreground text-white transition-transform duration-300 motion-safe:scale-75 motion-safe:group-hover:scale-100">
                         <Play className="ml-1 h-7 w-7" />
                       </div>
                     </div>
@@ -80,7 +83,7 @@ export function YouTubeChannels() {
                       <Badge
                         key={highlight}
                         variant="secondary"
-                        className="text-xs"
+                        className="text-xs hover:bg-secondary motion-safe:hover:scale-100"
                       >
                         {highlight}
                       </Badge>

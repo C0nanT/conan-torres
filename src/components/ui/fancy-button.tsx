@@ -96,9 +96,9 @@ export const fancyButtonVariants = tv({
           'after:pointer-events-none after:opacity-0 after:transition-all after:duration-500 after:ease-out',
           'after:[clip-path:polygon(-100%_0,_-100%_100%,_-100%_100%,_-100%_0)]',
           // hover
-          'hover:after:opacity-100 hover:after:[clip-path:polygon(-100%_0,_200%_100%,_200%_100%,_200%_0)] hover:shadow-md hover:-translate-y-0.5',
+          'hover:after:opacity-100 hover:after:[clip-path:polygon(-100%_0,_200%_100%,_200%_100%,_200%_0)] hover:shadow-md motion-safe:hover:-translate-y-0.5 motion-safe:hover:scale-[1.02]',
           // active
-          'active:translate-y-0 active:shadow-sm',
+          'active:translate-y-0 active:shadow-sm motion-safe:active:scale-95',
         ],
       },
     },

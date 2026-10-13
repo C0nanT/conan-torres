@@ -3,7 +3,7 @@ import { ResumeDownloadTitle } from './resume-download-title'
 
 export function ExperienceSection() {
   return (
-    <section className="bg-gradient-to-b from-background to-muted/30 py-16 lg:py-20">
+    <section className="bg-gradient-to-b from-background to-muted/30 pt-16 pb-8 lg:pt-20 lg:pb-10">
       <div className="max-w-6xl mx-auto px-4">
         <ResumeDownloadTitle />
 
@@ -11,7 +11,7 @@ export function ExperienceSection() {
           {site.experience.map((job) => (
             <div
               key={`${job.company}-${job.period}`}
-              className="grid gap-4 py-8 first:pt-0 last:pb-0 md:grid-cols-[280px_1fr] md:gap-12"
+              className="group grid gap-4 px-3 transition-colors duration-200 py-8 md:grid-cols-[280px_1fr] md:gap-12 hover:bg-muted/40"
             >
               <div className="space-y-1">
                 <h3 className="text-xl font-bold">

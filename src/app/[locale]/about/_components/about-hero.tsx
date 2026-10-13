@@ -60,9 +60,9 @@ export function AboutHero() {
                 {about.achievements.map((achievement) => (
                   <div
                     key={achievement}
-                    className="flex items-center space-x-2"
+                    className="group flex items-center space-x-2"
                   >
-                    <div className="h-2 w-2 rounded-full bg-primary flex-shrink-0" />
+                    <div className="h-2 w-2 rounded-full bg-primary flex-shrink-0 transition-transform duration-200 motion-safe:group-hover:scale-150" />
                     <span className="text-sm">{achievement}</span>
                   </div>
                 ))}
@@ -84,7 +84,7 @@ export function AboutHero() {
 
               {/* Location badge */}
               <div className="absolute -bottom-4 -right-4">
-                <Card>
+                <Card className="hover-ambient">
                   <CardContent className="p-3">
                     <div className="flex items-center space-x-2">
                       <MapPin className="h-4 w-4 text-primary" />
@@ -102,10 +102,10 @@ export function AboutHero() {
               {about.quickFacts.map((fact) => {
                 const Icon = getQuickFactIcon(fact.label)
                 return (
-                  <Card key={fact.label} className="tech-card">
+                  <Card key={fact.label} className="tech-card group">
                     <CardContent className="p-4">
                       <div className="flex items-center space-x-4">
-                        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 flex-shrink-0">
+                        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 flex-shrink-0 transition-[transform,background-color] duration-300 group-hover:bg-primary/20 motion-safe:group-hover:rotate-6 motion-safe:group-hover:scale-110">
                           <Icon className="h-5 w-5 text-primary" />
                         </div>
                         <div className="flex-1">

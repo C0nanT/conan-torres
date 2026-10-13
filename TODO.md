@@ -13,7 +13,4 @@ Conteúdo em `data/site.json` (e `messages/pt.json`).
 ## Projetos (Fazer depois)
 - [ ] Criar a página de projetos.
 
-## Certificações (`data/certifications.json`)
-Faltam `origamid-html-e-css-para-iniciantes` e `curso-em-video-python-3-mundo-3` (sem comprovante: botão não aparece).
-
 - [ ] Para cada item: colocar o arquivo (PDF/imagem) em `public/certificates/` e/ou o link "Exibir credencial" do Linkedin, e adicionar ao JSON os campos `file` (ex.: `/certificates/anthropic-claude-code-in-action.pdf`) e `url` (link de verificação).

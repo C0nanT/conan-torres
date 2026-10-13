@@ -44,10 +44,10 @@ export function Philosophy() {
           {coreValues.map((value, index) => {
             const Icon = coreValueIcons[index] ?? Lightbulb
             return (
-              <Card key={value.title} className="tech-card">
+              <Card key={value.title} className="tech-card group">
                 <CardContent className="p-6 space-y-4">
                   <div className="flex items-start space-x-4">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 flex-shrink-0">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 flex-shrink-0 transition-[transform,background-color] duration-300 group-hover:bg-primary/20 motion-safe:group-hover:-rotate-6 motion-safe:group-hover:scale-110">
                       <Icon className="h-6 w-6 text-primary" />
                     </div>
                     <div className="space-y-2">

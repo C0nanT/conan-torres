@@ -34,7 +34,7 @@ function CoverArt({
   return (
     <div
       className={cn(
-        'relative aspect-[3/4] w-36 overflow-hidden rounded-md border border-border/40 shadow-md',
+        'relative aspect-[3/4] w-36 overflow-hidden rounded-md border border-border/40 shadow-md transition-[transform,box-shadow] duration-300 ease-out motion-safe:group-hover:-translate-y-1 motion-safe:group-hover:-rotate-1 group-hover:shadow-xl',
         book.status === 'to-read' && 'opacity-50'
       )}
     >
@@ -133,7 +133,7 @@ export function BookItem({ book }: { book: RecommendedBook }) {
   const progress = getBookProgress(book)
 
   return (
-    <article className="grid gap-5 py-6 first:pt-0 last:pb-0 sm:grid-cols-[144px_1fr]">
+    <article className="hover-ambient grid gap-5 rounded-lg border border-transparent px-3 py-6 first:pt-0 last:pb-0 sm:grid-cols-[144px_1fr]">
       <BookCover book={book} progress={progress} />
 
       <div className="space-y-3">

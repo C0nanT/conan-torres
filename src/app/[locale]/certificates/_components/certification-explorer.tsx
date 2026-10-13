@@ -96,7 +96,7 @@ export function CertificationExplorer({
                           type="button"
                           aria-pressed={isActive}
                           onClick={() => handleToggle(tech)}
-                          className="rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                          className="rounded-md transition-transform duration-150 motion-safe:hover:-translate-y-0.5 motion-safe:active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                         >
                           <TechnologyBadge
                             label={tech}

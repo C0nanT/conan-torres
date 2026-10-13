@@ -131,16 +131,18 @@ export function HeroSection() {
                 return (
                   <div
                     key={highlight.label}
-                    className="flex items-center gap-2"
+                    className="group flex items-center gap-2 transition-transform duration-200 ease-out motion-safe:hover:translate-x-1"
                   >
-                    {Icon && <Icon className="h-4 w-4 shrink-0" />}
+                    {Icon && (
+                      <Icon className="h-4 w-4 shrink-0 transition-transform duration-200 motion-safe:group-hover:scale-125 motion-safe:group-hover:-rotate-6" />
+                    )}
                     {highlight.image && (
                       <Image
                         src={highlight.image}
                         alt=""
                         width={16}
                         height={16}
-                        className="shrink-0"
+                        className="shrink-0 transition-transform duration-200 motion-safe:group-hover:scale-125"
                       />
                     )}
                     <span className="text-sm font-medium">
@@ -171,12 +173,12 @@ export function HeroSection() {
           <div className="space-y-8">
             {/* Profile Image */}
             <div className="relative">
-              <div className="aspect-square w-full max-w-md mx-auto relative overflow-hidden rounded-2xl bg-white from-muted/50 to-muted border border-border/20 shadow-[inset_0_0_40px_rgba(0,0,0,0.15)]">
+              <div className="group aspect-square w-full max-w-md mx-auto relative overflow-hidden rounded-2xl bg-white from-muted/50 to-muted border border-border/20 shadow-[inset_0_0_40px_rgba(0,0,0,0.15)]">
                 <Image
                   src={profile.images.hero}
                   alt={`${profile.displayName} - ${profile.jobTitle}`}
                   fill={true}
-                  className="object-cover object-center"
+                  className="object-cover object-center transition-transform duration-700 ease-out motion-safe:group-hover:scale-105"
                   priority={true}
                   sizes="(max-width: 768px) 100vw, 448px"
                 />
@@ -191,7 +193,10 @@ export function HeroSection() {
                 const Icon = stat.icon
                 const card = (
                   <Card
-                    className={`tech-card relative h-full overflow-hidden p-4 ${stat.href ? 'transition-colors hover:border-primary/50' : ''}`}
+                    className={cn(
+                      'tech-card group relative h-full overflow-hidden p-4',
+                      stat.href && 'hover-interactive cursor-pointer'
+                    )}
                   >
                     <div
                       aria-hidden="true"
@@ -203,7 +208,7 @@ export function HeroSection() {
                       <div className="absolute -right-12 -top-12 h-32 w-32 rounded-full border border-primary/10" />
                       <Icon
                         strokeWidth={1.5}
-                        className="absolute right-2 top-2 h-12 w-12 rotate-12 text-primary/25"
+                        className="absolute right-2 top-2 h-12 w-12 rotate-12 text-primary/25 transition-[transform,color] duration-300 ease-out group-hover:text-primary/40 motion-safe:group-hover:rotate-[24deg] motion-safe:group-hover:scale-110"
                       />
                     </div>
                     <CardContent className="relative p-3">

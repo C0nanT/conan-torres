@@ -14,7 +14,7 @@ export function ResumeDownloadTitle() {
   }
 
   return (
-    <h2 className="mb-12 text-3xl font-bold lg:text-4xl">
+    <h2 className="mb-6 text-3xl font-bold lg:text-4xl">
       <button
         type="button"
         onClick={handleClick}
