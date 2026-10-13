@@ -43,6 +43,14 @@ export interface RecommendedBook {
   status: BookStatus
 }
 
+export interface Experience {
+  company: string
+  level: string
+  role: string
+  period: string
+  highlights: string[]
+}
+
 export interface SiteData {
   profile: {
     fullName: string
@@ -155,6 +163,7 @@ export interface SiteData {
       category: string
     }>
   }
+  experience: Experience[]
   seo: {
     keywords: string[]
   }

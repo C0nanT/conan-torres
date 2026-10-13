@@ -420,5 +420,65 @@
       "claude code",
       "programador brasileiro"
     ]
-  }
+  },
+  "experience": [
+    {
+      "company": "Defensoria Pública de Santa Catarina",
+      "level": "SR → TL",
+      "role": "Tech Lead | Assessor de Tec.",
+      "period": "Mar 2026 - Atual",
+      "highlights": [
+        "Entrei como Desenvolvedor Sênior e posteriormente assumi a liderança técnica do time, sendo responsável por arquitetura, padrões de engenharia e desenvolvimento das pessoas.",
+        "Modernização de sistemas legados críticos: performance 6x maior e cerca de 50% de redução no custo de infraestrutura em nuvem.",
+        "Implantei um fluxo de desenvolvimento assistido por IA, com ganhos acima de 10x na maior parte das entregas, que foi apresentado no 1° Encontro das Defensorias do Sul.",
+        "Responsável técnico por sistemas usados para administração de todas as Defensorias Públicas de Santa Catarina",
+        "Estruturei a base de engenharia da instituição: entrega contínua, segurança de aplicações, observabilidade e Design System oficial."
+      ]
+    },
+    {
+      "company": "FiveLabs",
+      "level": "JR",
+      "role": "Desenvolvedor Full Stack",
+      "period": "Mai 2025 - Fev 2026",
+      "highlights": [
+        "Desenvolvimento de sistemas de gestão empresarial, do planejamento à produção.",
+        "Consultas críticas de cerca de 1,8s para menos de 200ms com estratégias de cache e processamento assíncrono.",
+        "Cultura de testes automatizados: cerca de 50% menos tempo e custo na entrega de novas features.",
+        "Code review, integrações entre sistemas e apoio técnico ao time."
+      ]
+    },
+    {
+      "company": "SistemaPET",
+      "level": "EST → JR → PL",
+      "role": "Desenvolvedor Full Stack",
+      "period": "Set 2023 - Abr 2025",
+      "highlights": [
+        "Promovido de estagiário a pleno, com ownership de ponta a ponta: dos requisitos à entrega em produção.",
+        "Entreguei um chatbot com IA sobre a base de conhecimento da empresa e um app mobile multiplataforma.",
+        "Automação de processos de negócio e integrações com parceiros.",
+        "Evolução dos ERPs web e mobile e mentoria de estagiários."
+      ]
+    },
+    {
+      "company": "Freelance",
+      "level": "FL",
+      "role": "Desenvolvedor de software",
+      "period": "Jan 2020 - Dez 2023",
+      "highlights": [
+        "Soluções web sob medida para pequenos negócios, da concepção ao deploy.",
+        "Landing pages focadas em performance e conversão.",
+        "Produtos SaaS próprios, construídos do zero até a produção."
+      ]
+    },
+    {
+      "company": "Colégio Santa Terezinha",
+      "level": "EST",
+      "role": "Estagiário de TI",
+      "period": "Jul 2022 - Set 2023",
+      "highlights": [
+        "Suporte de TI e manutenção dos sites institucionais.",
+        "Apoio em aulas introdutórias de informática e programação."
+      ]
+    }
+  ]
 }
