@@ -124,10 +124,6 @@ export function CertificationExplorer({
         </p>
       ) : (
         <div className="relative flex flex-col gap-10">
-          <span
-            aria-hidden="true"
-            className="absolute bottom-0 left-32 top-4 hidden w-px -translate-x-1/2 bg-border lg:block"
-          />
           {groupByYear(visible).map((group) => (
             <section
               key={group.year}
@@ -136,7 +132,11 @@ export function CertificationExplorer({
             >
               <span
                 aria-hidden="true"
-                className="absolute left-32 top-2.5 hidden h-3 w-3 -translate-x-1/2 rounded-full border-2 border-foreground bg-background lg:block"
+                className="absolute bottom-[-2.25rem] left-32 top-6 hidden w-0.5 -translate-x-1/2 bg-[length:2px_8px] bg-[linear-gradient(to_bottom,currentColor_50%,transparent_50%)] text-border [mask-image:linear-gradient(to_bottom,black_55%,transparent)] lg:block"
+              />
+              <span
+                aria-hidden="true"
+                className="absolute left-32 top-2.5 hidden h-3 w-3 -translate-x-1/2 rounded-full border-2 border-border bg-background lg:block"
               />
               <h2
                 id={`year-${group.year}`}
