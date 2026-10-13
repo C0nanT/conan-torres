@@ -84,6 +84,7 @@
     "description": "Livros que li, estou lendo ou pretendo ler.",
     "viewOnAmazon": "Ver na Amazon",
     "ratingLabel": "Nota: {rating} de 5",
+    "unrated": "Sem nota",
     "progressLabel": "Progresso: {progress}%",
     "readPercent": "{progress}% lido",
     "updatedAt": "Atualizado em {date}",

@@ -18,7 +18,10 @@ function CoverArt({
     return (
       <div
         aria-hidden={true}
-        className="flex h-48 w-36 flex-col justify-end rounded-md border border-border/40 bg-muted p-3 shadow-inner"
+        className={cn(
+          'flex h-48 w-36 flex-col justify-end rounded-md border border-border/40 bg-muted p-3 shadow-inner',
+          book.status === 'to-read' && 'opacity-50'
+        )}
       >
         <span className="line-clamp-3 text-sm font-bold leading-tight text-muted-foreground">
           {book.title}
@@ -28,13 +31,21 @@ function CoverArt({
   }
 
   return (
-    <div className="relative aspect-[3/4] w-36 overflow-hidden rounded-md border border-border/40 shadow-md">
+    <div
+      className={cn(
+        'relative aspect-[3/4] w-36 overflow-hidden rounded-md border border-border/40 shadow-md',
+        book.status === 'to-read' && 'opacity-50'
+      )}
+    >
       <Image
         src={book.cover}
         alt={book.title}
         fill={true}
         sizes={COVER_SIZES}
-        className="object-cover grayscale"
+        className={cn(
+          'object-cover grayscale',
+          book.status === 'reading' && 'opacity-50'
+        )}
       />
       <Image
         src={book.cover}
@@ -91,11 +102,15 @@ function BookCover({
   )
 }
 
-function BookRating({ rating }: { rating: number }) {
+function BookRating({ rating = 0 }: { rating?: number }) {
   const t = useTranslations('books')
 
   return (
-    <div role="img" aria-label={t('ratingLabel', { rating })} className="flex">
+    <div
+      role="img"
+      aria-label={rating ? t('ratingLabel', { rating }) : t('unrated')}
+      className="flex"
+    >
       {[1, 2, 3, 4, 5].map((star) => (
         <Star
           key={star}
@@ -142,7 +157,7 @@ export function BookItem({ book }: { book: RecommendedBook }) {
           ))}
         </div>
         <div className="flex flex-wrap items-center gap-4">
-          {book.rating && <BookRating rating={book.rating} />}
+          <BookRating rating={book.rating} />
           {book.status === 'reading' && book.progress !== undefined && (
             <span className="sr-only">
               {t('progressLabel', { progress: book.progress })}
