@@ -24,7 +24,7 @@ const footerSections: FooterSection[] = [
     ],
   },
   {
-    title: 'Comunidade',
+    title: 'Redes',
     links: [
       {
         name: 'GitHub',
@@ -38,10 +38,29 @@ const footerSections: FooterSection[] = [
       },
     ],
   },
+  {
+    title: 'Contato',
+    links: [
+      {
+        name: site.contact.email,
+        href: `mailto:${site.contact.email}`,
+      },
+    ],
+  },
 ]
+
+// Emoji flags sit on a different baseline than the surrounding text, so the
+// flag is rendered in its own box to keep it vertically centred.
+function splitTrailingFlag(text: string): [string, string] {
+  const match = text.match(/^(.*?)\s*(\p{Regional_Indicator}{2})$/u)
+  return match ? [match[1] ?? text, match[2] ?? ''] : [text, '']
+}
 
 export function Footer() {
   const { profile, social } = site
+  const [locationText, locationFlag] = splitTrailingFlag(
+    profile.location.display
+  )
 
   return (
     <footer className="border-t-2 border-dotted border-border/40 bg-background">
@@ -60,7 +79,17 @@ export function Footer() {
 
             <div className="flex items-center space-x-2 text-sm text-muted-foreground">
               <MapPin className="h-4 w-4 flex-shrink-0" />
-              <span>{profile.location.display}</span>
+              <span className="whitespace-nowrap leading-none">
+                {locationText}
+              </span>
+              {locationFlag && (
+                <span
+                  className="text-base leading-none pl-20"
+                  aria-hidden="true"
+                >
+                  {locationFlag}
+                </span>
+              )}
             </div>
 
             {/* Social Icons */}

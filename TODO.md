@@ -14,8 +14,8 @@ Página `/books` criada (cards em lista horizontal, variante B). Status e capa e
 - [ ] Capas reais dos livros (hoje a capa é um bloco em gradiente).
 
 ## Footer (Fazer depois)
-- [ ] Arrumar a bandeira do Brasil, que está torta.
-- [ ] Trocar o texto "comunidade" por algo melhor.
+- [x] Arrumar a bandeira do Brasil, que está torta.
+- [x] Trocar o texto "comunidade" por algo melhor.
 - [ ] Colocar o Instagram e o email no footer.
 
 ## Sobre mim (Fazer depois)
@@ -23,9 +23,6 @@ Página `/books` criada (cards em lista horizontal, variante B). Status e capa e
 
 ## Projetos (Fazer depois)
 - [ ] Criar a página de projetos.
-
-## WhatsApp
-- [x] Colocar um botão flutuante de WhatsApp no canto da tela.
 
 ## Certificações (`data/certifications.json`)
 Os 25 itens e a página `/certificates` já existem. 23 de 25 já têm `url` real. Faltam `origamid-html-e-css-para-iniciantes` e `curso-em-video-python-3-mundo-3` (sem comprovante: botão não aparece).
