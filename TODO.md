@@ -13,11 +13,6 @@ Página `/books` criada (cards em lista horizontal, variante B). Status e capa e
 - [ ] Preencher em `data/site.json`, por livro: `progress` (0-100, só para quem está `reading`), `rating` (1-5) e `note` (observação pessoal). Os campos são opcionais e só aparecem quando preenchidos.
 - [ ] Capas reais dos livros (hoje a capa é um bloco em gradiente).
 
-## Footer (Fazer depois)
-- [x] Arrumar a bandeira do Brasil, que está torta.
-- [x] Trocar o texto "comunidade" por algo melhor.
-- [ ] Colocar o Instagram e o email no footer.
-
 ## Sobre mim (Fazer depois)
 - [ ] Revisar a página completa de "sobre mim".
 
@@ -27,4 +22,4 @@ Página `/books` criada (cards em lista horizontal, variante B). Status e capa e
 ## Certificações (`data/certifications.json`)
 Os 25 itens e a página `/certificates` já existem. 23 de 25 já têm `url` real. Faltam `origamid-html-e-css-para-iniciantes` e `curso-em-video-python-3-mundo-3` (sem comprovante: botão não aparece).
 
-- [ ] Para cada item: colocar o arquivo (PDF/imagem) em `public/certificates/` e/ou o link "Exibir credencial" do LinkedIn, e adicionar ao JSON os campos `file` (ex.: `/certificates/anthropic-claude-code-in-action.pdf`) e `url` (link de verificação).
+- [ ] Para cada item: colocar o arquivo (PDF/imagem) em `public/certificates/` e/ou o link "Exibir credencial" do Linkedin, e adicionar ao JSON os campos `file` (ex.: `/certificates/anthropic-claude-code-in-action.pdf`) e `url` (link de verificação).
