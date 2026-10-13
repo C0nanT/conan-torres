@@ -2,6 +2,8 @@
 
 Conteúdo em `data/site.json` (e `messages/pt.json`). Feito: nome, email, domínio, GitHub.
 
+- [ ] Melhorar os hovers do projeto
+
 ## Analytics (Deixar para depois)
 - [ ] `site.analytics.clarityId` está vazio (Clarity desligado). Criar projeto no Microsoft Clarity e colocar o ID.
 
