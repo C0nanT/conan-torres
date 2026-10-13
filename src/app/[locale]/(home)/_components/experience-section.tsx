@@ -3,7 +3,7 @@ import { ResumeDownloadTitle } from './resume-download-title'
 
 export function ExperienceSection() {
   return (
-    <section className="py-16 lg:py-20">
+    <section className="bg-gradient-to-b from-background to-muted/30 py-16 lg:py-20">
       <div className="max-w-6xl mx-auto px-4">
         <ResumeDownloadTitle />
 
