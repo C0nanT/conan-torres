@@ -5,6 +5,7 @@ import { type RecommendedBook, getBookProgress } from '@/lib/site-data'
 import { ExternalLink, Star } from 'lucide-react'
 import { useFormatter, useTranslations } from 'next-intl'
 import Image from 'next/image'
+import { ReadingBadge } from './reading-badge'
 
 const COVER_SIZES = '144px'
 
@@ -138,7 +139,11 @@ export function BookItem({ book }: { book: RecommendedBook }) {
       <div className="space-y-3">
         <div className="flex flex-wrap items-center gap-2">
           <h3 className="text-xl font-bold">{book.title}</h3>
-          <Badge variant="outline">{t(`status.${book.status}`)}</Badge>
+          {book.status === 'reading' ? (
+            <ReadingBadge label={t('status.reading')} />
+          ) : (
+            <Badge variant="outline">{t(`status.${book.status}`)}</Badge>
+          )}
         </div>
         <p className="text-sm text-muted-foreground">
           {book.authors.join(', ')} · {book.category}
