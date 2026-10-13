@@ -1,6 +1,6 @@
 # TODO — personalizar o site (herdado de Augusto Galego)
 
-Conteúdo em `data/site.json` (e `messages/pt.json`). Feito: nome, email, domínio, GitHub.
+Conteúdo em `data/site.json` (e `messages/pt.json`).
 
 - [ ] Melhorar os hovers do projeto
 
@@ -8,8 +8,6 @@ Conteúdo em `data/site.json` (e `messages/pt.json`). Feito: nome, email, domín
 - [ ] `site.analytics.clarityId` está vazio (Clarity desligado). Criar projeto no Microsoft Clarity e colocar o ID.
 
 ## Livros recomendados
-Página `/books` criada (cards em lista horizontal, variante B). Status e capa em gradiente já funcionam.
-
 - [ ] Preencher em `data/site.json`, por livro: `progress` (0-100, só para quem está `reading`), `rating` (1-5) e `note` (observação pessoal). Os campos são opcionais e só aparecem quando preenchidos.
 - [ ] Capas reais dos livros (hoje a capa é um bloco em gradiente).
 
@@ -20,6 +18,6 @@ Página `/books` criada (cards em lista horizontal, variante B). Status e capa e
 - [ ] Criar a página de projetos.
 
 ## Certificações (`data/certifications.json`)
-Os 25 itens e a página `/certificates` já existem. 23 de 25 já têm `url` real. Faltam `origamid-html-e-css-para-iniciantes` e `curso-em-video-python-3-mundo-3` (sem comprovante: botão não aparece).
+Faltam `origamid-html-e-css-para-iniciantes` e `curso-em-video-python-3-mundo-3` (sem comprovante: botão não aparece).
 
 - [ ] Para cada item: colocar o arquivo (PDF/imagem) em `public/certificates/` e/ou o link "Exibir credencial" do Linkedin, e adicionar ao JSON os campos `file` (ex.: `/certificates/anthropic-claude-code-in-action.pdf`) e `url` (link de verificação).
