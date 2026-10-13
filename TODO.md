@@ -5,15 +5,11 @@ Conteúdo em `data/site.json` (e `messages/pt.json`). Feito: nome, email, domín
 ## Analytics (Deixar para depois)
 - [ ] `site.analytics.clarityId` está vazio (Clarity desligado). Criar projeto no Microsoft Clarity e colocar o ID.
 
-## Livros recomendados (Fazer depois)
-Página de livros com os livros que recomendo.
+## Livros recomendados
+Página `/books` criada (cards em lista horizontal, variante B). Status e capa em gradiente já funcionam.
 
-- [ ] Criar a página de livros.
-- [ ] Separar os livros por status: já lidos, lendo agora e vou ler.
-- [ ] Indicar o progresso de cada livro com uma barrinha de progresso ou gradiente na capa: sem cor o que não li, com cor o que já li.
-- [ ] Nota de 1 a 5 estrelas por livro.
-- [ ] Pequena observação sobre cada livro.
-- [ ] Conteúdo em `data/site.json` (atualizar o tipo `SiteData` em `src/lib/site-data.ts`) e textos de UI em `messages/pt.json`.
+- [ ] Preencher em `data/site.json`, por livro: `progress` (0-100, só para quem está `reading`), `rating` (1-5) e `note` (observação pessoal). Os campos são opcionais e só aparecem quando preenchidos.
+- [ ] Capas reais dos livros (hoje a capa é um bloco em gradiente).
 
 ## Footer (Fazer depois)
 - [ ] Arrumar a bandeira do Brasil, que está torta.

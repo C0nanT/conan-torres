@@ -40,7 +40,17 @@ export interface RecommendedBook {
   topics: string[]
   description: string
   url: string
+  /** path under `public/`, e.g. `/books/<id>.jpg` */
+  cover?: string
   status: BookStatus
+  /** 0-100, only meaningful while `status` is `reading` */
+  progress?: number
+  /** ISO date (YYYY-MM-DD) of the last `progress` update */
+  progressUpdatedAt?: string
+  /** 1-5 stars */
+  rating?: 1 | 2 | 3 | 4 | 5
+  /** short personal remark about the book */
+  note?: string
 }
 
 export interface Experience {
@@ -209,6 +219,16 @@ export function getRecommendedChannelById(
   id: string
 ): RecommendedYouTubeChannel | undefined {
   return site.youtube.recommendedChannels.find((channel) => channel.id === id)
+}
+
+export function getBookProgress(book: RecommendedBook): number | undefined {
+  if (book.status === 'read') {
+    return 100
+  }
+  if (book.status === 'to-read') {
+    return 0
+  }
+  return book.progress
 }
 
 export function getYouTubeVideoUrl(

@@ -10,6 +10,7 @@ import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 import { FaLinkedin } from 'react-icons/fa6'
 import {
+  RiBook2Line,
   RiCloseLine,
   RiFileListLine,
   RiFolderLine,
@@ -28,6 +29,7 @@ const getNavigationItems = (t: (key: string) => string) => [
     href: '/certificates',
     icon: RiFileListLine,
   },
+  { name: t('navigation.books'), href: '/books', icon: RiBook2Line },
 ]
 
 const getSocialIcon = (name: string) => {

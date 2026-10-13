@@ -4,6 +4,7 @@
     "about": "Sobre",
     "projects": "Projetos",
     "certificates": "Certificados",
+    "books": "Livros",
     "socialMedia": "Redes Sociais"
   },
   "experience": {
@@ -80,6 +81,17 @@
   },
   "books": {
     "title": "Livros Recomendados",
+    "description": "Livros que li, estou lendo ou pretendo ler.",
+    "viewOnAmazon": "Ver na Amazon",
+    "ratingLabel": "Nota: {rating} de 5",
+    "progressLabel": "Progresso: {progress}%",
+    "readPercent": "{progress}% lido",
+    "updatedAt": "Atualizado em {date}",
+    "status": {
+      "read": "Lido",
+      "reading": "Lendo",
+      "to-read": "Vou ler"
+    },
     "recommendations": {
       "14-habitos-desenvolvedores": "Em breve...",
       "fundamentos-arquitetura-software": "Em breve...",
@@ -158,6 +170,17 @@
         "setor público",
         "liderança técnica",
         "educação"
+      ]
+    },
+    "books": {
+      "title": "Livros recomendados",
+      "description": "Livros recomendados por Conan Torres sobre arquitetura de software, microsserviços e carreira, com status de leitura.",
+      "keywords": [
+        "livros",
+        "livros recomendados",
+        "arquitetura de software",
+        "microsserviços",
+        "leitura"
       ]
     },
     "certificates": {
