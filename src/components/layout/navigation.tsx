@@ -34,7 +34,7 @@ const getNavigationItems = (t: (key: string) => string) => [
 
 const getSocialIcon = (name: string) => {
   switch (name) {
-    case 'LinkedIn':
+    case 'Linkedin':
       return FaLinkedin
     default:
       return FaLinkedin

@@ -32,7 +32,7 @@ const footerSections: FooterSection[] = [
         external: true,
       },
       {
-        name: 'LinkedIn',
+        name: 'Linkedin',
         href: site.social.linkedin.url,
         external: true,
       },
@@ -108,7 +108,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-foreground transition-colors p-1"
-                aria-label="LinkedIn"
+                aria-label="Linkedin"
               >
                 <Linkedin className="h-4 w-4" />
               </Link>

@@ -46,4 +46,4 @@ Sem testes automáticos (portfólio; ver AGENTS.md). Seam acordado: nenhum autom
 
 ## Further Notes
 
-Obter os comprovantes depende de Conan (LinkedIn "Exibir credencial", PDFs). O agente não consegue fazer isso sozinho; a spec fica pronta para o passo 1 e para aplicar os lotes que Conan entregar.
+Obter os comprovantes depende de Conan (Linkedin "Exibir credencial", PDFs). O agente não consegue fazer isso sozinho; a spec fica pronta para o passo 1 e para aplicar os lotes que Conan entregar.
