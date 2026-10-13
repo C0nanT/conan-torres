@@ -1,3 +1,4 @@
+import { WhatsappFloatingButton } from '@/components/common'
 import { Footer, Navigation } from '@/components/layout'
 import { InitialLoading } from '@/components/ui/initial-loading'
 import { RouteTransition } from '@/components/ui/route-transition'
@@ -168,6 +169,7 @@ export default async function LocaleLayout({
             </main>
             <Footer />
           </div>
+          <WhatsappFloatingButton />
           <Toaster />
         </NextIntlClientProvider>
       </body>

@@ -129,6 +129,7 @@ export interface SiteData {
   }
   contact: {
     email: string
+    whatsapp: string
   }
   social: {
     linkedin: SocialLink

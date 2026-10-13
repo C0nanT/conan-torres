@@ -24,8 +24,8 @@ Página `/books` criada (cards em lista horizontal, variante B). Status e capa e
 ## Projetos (Fazer depois)
 - [ ] Criar a página de projetos.
 
-## WhatsApp (Fazer depois)
-- [ ] Colocar um botão flutuante de WhatsApp no canto da tela.
+## WhatsApp
+- [x] Colocar um botão flutuante de WhatsApp no canto da tela.
 
 ## Certificações (`data/certifications.json`)
 Os 25 itens e a página `/certificates` já existem. 23 de 25 já têm `url` real. Faltam `origamid-html-e-css-para-iniciantes` e `curso-em-video-python-3-mundo-3` (sem comprovante: botão não aparece).

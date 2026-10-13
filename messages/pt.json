@@ -24,7 +24,8 @@
     "backToHome": "Voltar ao início",
     "language": "Idioma",
     "portuguese": "Português",
-    "english": "Inglês"
+    "english": "Inglês",
+    "whatsappChat": "Conversar no WhatsApp"
   },
   "search": {
     "placeholder": "Buscar artigos sobre algoritmos, carreira, tech...",
