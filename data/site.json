@@ -124,15 +124,15 @@
         ]
       },
       {
-        "id": "nuno-maduro",
-        "name": "Nuno Maduro",
-        "handle": "@nunomaduro",
-        "url": "https://www.youtube.com/@nunomaduro",
-        "description": "PHP, Laravel e desenvolvimento web moderno com quem constrói as ferramentas.",
-        "subscribers": "30K+",
-        "videoCount": "100+",
-        "category": "PHP & Laravel",
-        "highlights": ["PHP", "Laravel", "Web Development"]
+        "id": "pasquadev",
+        "name": "Vinicius Pasquantonio",
+        "handle": "@pasquadev",
+        "url": "https://www.youtube.com/@pasquadev",
+        "description": "Staff Engineer mostrando como devs de verdade usam IA no dia a dia, sem vibe coding.",
+        "subscribers": "29K+",
+        "videoCount": "900+",
+        "category": "IA & Engenharia",
+        "highlights": ["IA", "Engenharia de Software", "Carreira"]
       }
     ],
     "recommendedVideos": [
@@ -150,11 +150,10 @@
         "channelId": "renato-augusto"
       },
       {
-        "videoId": "PLkLhIwVfMk",
-        "startSeconds": 52,
-        "title": "PHP in 2026 is so good..",
-        "views": "55K",
-        "channelId": "nuno-maduro"
+        "videoId": "BT5OUk5Ma4E",
+        "title": "Tudo o que você ignorava agora é obrigatório.",
+        "views": "28K",
+        "channelId": "pasquadev"
       }
     ]
   },

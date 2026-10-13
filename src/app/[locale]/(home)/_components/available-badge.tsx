@@ -1,7 +1,12 @@
 'use client'
 
 import { Card, CardContent } from '@/components/ui/card'
-import { motion, useReducedMotion } from 'framer-motion'
+import {
+  motion,
+  useMotionValue,
+  useReducedMotion,
+  useTransform,
+} from 'framer-motion'
 import { MousePointer2, Pointer } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { useEffect, useRef, useState } from 'react'
@@ -14,12 +19,21 @@ const LOOP = {
   ease: 'easeInOut' as const,
   repeat: Number.POSITIVE_INFINITY,
 }
+// While the cursor travels left it dips down and comes back up, tracing an arc
+// instead of a straight line. The height is derived from the horizontal
+// position, so it only returns to the card's level as the cursor arrives.
+const ARC_DIP = 40
 
 export function AvailableBadge() {
   const t = useTranslations('hero')
   const isReducedMotion = useReducedMotion()
   const anchorRef = useRef<HTMLDivElement>(null)
   const [startX, setStartX] = useState(400)
+  const cursorX = useMotionValue(startX)
+  const cursorY = useTransform(cursorX, (x) => {
+    const progress = Math.min(Math.max(x / startX, 0), 1)
+    return ARC_DIP * 4 * progress * (1 - progress)
+  })
 
   // Cursor starts just past the right edge of the viewport and travels to the
   // card's click point (its horizontal centre).
@@ -74,6 +88,7 @@ export function AvailableBadge() {
             <motion.div
               aria-hidden="true"
               className="pointer-events-none absolute left-1/2 top-[60%] z-10 h-0 w-0 drop-shadow"
+              style={{ x: cursorX, y: cursorY }}
               initial={{ x: startX, opacity: 0 }}
               animate={{
                 x: [startX, startX, 0, 0, 0, 0, 0, 0],

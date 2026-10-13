@@ -6,6 +6,15 @@
     "certificates": "Certificados",
     "socialMedia": "Redes Sociais"
   },
+  "experience": {
+    "titlePrefix": "Minhas",
+    "titleHighlight": "experiências",
+    "downloadResume": "Minhas experiências — baixar currículo",
+    "resumeUnavailable": {
+      "title": "Currículo em breve",
+      "description": "O download do currículo estará disponível em breve."
+    }
+  },
   "common": {
     "readMore": "Ler mais",
     "loading": "Carregando...",

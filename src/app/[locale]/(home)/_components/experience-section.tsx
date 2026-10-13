@@ -1,12 +1,11 @@
 import { site } from '@/lib/site-data'
+import { ResumeDownloadTitle } from './resume-download-title'
 
 export function ExperienceSection() {
   return (
     <section className="py-16 lg:py-20">
       <div className="max-w-6xl mx-auto px-4">
-        <h2 className="mb-12 text-3xl font-bold lg:text-4xl">
-          Minhas <span className="gradient-text">experiências</span>
-        </h2>
+        <ResumeDownloadTitle />
 
         <div className="divide-y divide-border">
           {site.experience.map((job) => (

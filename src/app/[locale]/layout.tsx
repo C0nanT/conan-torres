@@ -1,6 +1,7 @@
 import { Footer, Navigation } from '@/components/layout'
 import { InitialLoading } from '@/components/ui/initial-loading'
 import { RouteTransition } from '@/components/ui/route-transition'
+import { Toaster } from '@/components/ui/sonner'
 import {
   generateLocalizedMetadata,
   generateStructuredData,
@@ -167,6 +168,7 @@ export default async function LocaleLayout({
             </main>
             <Footer />
           </div>
+          <Toaster />
         </NextIntlClientProvider>
       </body>
     </html>
