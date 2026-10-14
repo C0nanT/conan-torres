@@ -1,6 +1,6 @@
 import { projects } from '@/lib/projects'
 import { getTranslations } from 'next-intl/server'
-import { ProjectCard } from './project-card'
+import { ProjectBrowser } from './project-browser'
 
 export async function ProjectList() {
   const t = await getTranslations('projects')
@@ -16,13 +16,7 @@ export async function ProjectList() {
         {projects.length === 0 ? (
           <p className="text-center text-muted-foreground">{t('empty')}</p>
         ) : (
-          <ul className="grid gap-6 sm:grid-cols-2">
-            {projects.map((project) => (
-              <li key={project.name} className="flex">
-                <ProjectCard project={project} />
-              </li>
-            ))}
-          </ul>
+          <ProjectBrowser projects={projects} />
         )}
       </div>
     </section>

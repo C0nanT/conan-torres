@@ -1,9 +1,13 @@
+'use client'
+
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import type { Project } from '@/lib/projects'
+import { cn } from '@/lib/shadcn'
 import { Code2, ExternalLink, Github } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
+import { useState } from 'react'
 
 function ProjectCover({ project }: { project: Project }) {
   if (project.image) {
@@ -13,7 +17,7 @@ function ProjectCover({ project }: { project: Project }) {
           src={project.image}
           alt=""
           fill={true}
-          sizes="(min-width: 1024px) 512px, (min-width: 640px) 50vw, 100vw"
+          sizes="(min-width: 1024px) 700px, 100vw"
           className="object-cover"
         />
       </div>
@@ -30,22 +34,22 @@ function ProjectCover({ project }: { project: Project }) {
   )
 }
 
-export function ProjectCard({ project }: { project: Project }) {
+function ProjectDetail({ project }: { project: Project }) {
   const t = useTranslations('projects')
 
   return (
-    <article className="flex w-full flex-col overflow-hidden rounded-lg border border-border transition-[transform,border-color] duration-200 ease-out motion-reduce:transition-none motion-safe:hover:-translate-y-1 hover:border-primary/50">
+    <article className="flex flex-col overflow-hidden rounded-xl border border-border">
       <ProjectCover project={project} />
-      <div className="flex flex-1 flex-col gap-4 p-5">
+      <div className="flex flex-col gap-4 p-6 lg:p-8">
         <div className="flex flex-wrap items-center gap-2">
-          <h2 className="text-lg font-semibold">{project.name}</h2>
+          <h2 className="text-2xl font-bold lg:text-3xl">{project.name}</h2>
           {project.language && (
             <Badge variant="secondary">{project.language}</Badge>
           )}
         </div>
 
         {project.description && (
-          <p className="text-sm text-muted-foreground">{project.description}</p>
+          <p className="text-muted-foreground">{project.description}</p>
         )}
 
         {project.stack.length > 0 && (
@@ -60,7 +64,7 @@ export function ProjectCard({ project }: { project: Project }) {
           </ul>
         )}
 
-        <div className="mt-auto flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2">
           <Button asChild={true} variant="outline" size="sm">
             <a
               href={project.repoUrl}
@@ -88,5 +92,36 @@ export function ProjectCard({ project }: { project: Project }) {
         </div>
       </div>
     </article>
+  )
+}
+
+export function ProjectBrowser({ projects }: { projects: Project[] }) {
+  const [selectedName, setSelectedName] = useState(projects[0]?.name)
+  const selected = projects.find((project) => project.name === selectedName)
+
+  return (
+    <div className="grid gap-6 md:grid-cols-[16rem_1fr]">
+      <ul className="flex gap-2 overflow-x-auto pb-2 md:flex-col md:overflow-visible md:pb-0">
+        {projects.map((project) => (
+          <li key={project.name}>
+            <button
+              type="button"
+              aria-pressed={project.name === selectedName}
+              onClick={() => setSelectedName(project.name)}
+              className={cn(
+                'w-full whitespace-nowrap rounded-md px-3 py-2 text-left text-sm transition-colors motion-reduce:transition-none',
+                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
+                project.name === selectedName
+                  ? 'bg-primary text-primary-foreground'
+                  : 'hover:bg-muted'
+              )}
+            >
+              {project.name}
+            </button>
+          </li>
+        ))}
+      </ul>
+      {selected && <ProjectDetail project={selected} />}
+    </div>
   )
 }
