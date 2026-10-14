@@ -82,7 +82,3 @@ Issues and specs live as local markdown files under `.scratch/<feature>/`. See `
 ### Domain docs
 
 Single-context: one root `CONTEXT.md` plus `docs/adr/`, both created lazily. See `docs/agents/domain.md`.
-
-### Git guardrails
-
-Destructive git (`commit`, `push`, `reset`, …) is denied via `permissions.deny` in `.claude/settings.json`. See `docs/agents/git-guardrails.md`.

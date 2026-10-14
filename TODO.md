@@ -9,6 +9,7 @@ Conteúdo em `data/site.json` (e `messages/pt.json`).
 
 ## Sobre mim (Fazer depois)
 - [ ] Revisar a página completa de "sobre mim".
+- [ ] Criar uma sessão de recomendações, puxando direto do linkedin as que já existem lá, de outros usuários me recomendadno
 
 ## Projetos (Fazer depois)
 - [ ] Criar a página de projetos.
