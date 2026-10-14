@@ -1,10 +1,11 @@
+import { projects } from '@/lib/projects'
 import { ExperienceSection, HeroSection, YouTubeChannels } from './_components'
 import { SectionDivider } from './_components/section-divider'
 
 export default function HomePage() {
   return (
     <>
-      <HeroSection />
+      <HeroSection projectsCount={projects.length} />
       <ExperienceSection />
       <SectionDivider />
       <YouTubeChannels />
