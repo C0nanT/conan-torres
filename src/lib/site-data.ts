@@ -101,7 +101,6 @@ export interface SiteData {
       year: number
     }
     stats: {
-      relevantProjects: string
       certifications: string
       yearsExperience: string
       freelances: string

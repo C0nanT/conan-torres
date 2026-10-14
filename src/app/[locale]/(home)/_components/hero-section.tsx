@@ -39,14 +39,18 @@ interface HeroStat {
   href?: string
 }
 
-export function HeroSection() {
+interface HeroSectionProps {
+  projectsCount: number
+}
+
+export function HeroSection({ projectsCount }: HeroSectionProps) {
   const t = useTranslations('hero')
   const { profile } = site
 
   const stats: HeroStat[] = [
     {
       label: t('stats.projects'),
-      value: profile.stats.relevantProjects,
+      value: String(projectsCount),
       icon: FolderGit2,
     },
     {
