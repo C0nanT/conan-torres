@@ -12,6 +12,7 @@ export default async function sitemap({
   const staticPages = [
     { path: '', priority: 1, changeFrequency: 'monthly' as const },
     { path: '/about', priority: 0.8, changeFrequency: 'monthly' as const },
+    { path: '/projects', priority: 0.7, changeFrequency: 'monthly' as const },
     { path: '/books', priority: 0.6, changeFrequency: 'monthly' as const },
     {
       path: '/certificates',

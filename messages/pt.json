@@ -107,6 +107,15 @@
       "monolito-para-microsservicos": "Em breve..."
     }
   },
+  "projects": {
+    "title": "Projetos",
+    "description": "Ferramentas e experimentos de código aberto que construí.",
+    "code": "Código",
+    "demo": "Demo",
+    "codeLabel": "Código de {name} no GitHub",
+    "demoLabel": "Demo de {name}",
+    "empty": "Nenhum projeto disponível no momento."
+  },
   "certificates": {
     "title": "Minhas certificações",
     "description": "Cursos, certificações e participações que compõem minha formação.",
@@ -183,6 +192,17 @@
         "arquitetura de software",
         "microsserviços",
         "leitura"
+      ]
+    },
+    "projects": {
+      "title": "Projetos",
+      "description": "Projetos de código aberto de Conan Torres: ferramentas, plugins e automações com link para o código e demo.",
+      "keywords": [
+        "projetos",
+        "open source",
+        "github",
+        "ferramentas",
+        "portfólio"
       ]
     },
     "certificates": {

@@ -53,6 +53,13 @@ export interface RecommendedBook {
   note?: string
 }
 
+export interface ProjectEntry {
+  /** GitHub repository name, must exist in `data/github-repos.json` */
+  repo: string
+  /** Portuguese description shown on the card */
+  description: string
+}
+
 export interface Experience {
   company: string
   level: string
@@ -145,6 +152,9 @@ export interface SiteData {
   youtube: {
     recommendedChannels: RecommendedYouTubeChannel[]
     recommendedVideos: RecommendedYouTubeVideo[]
+  }
+  projects: {
+    featured: ProjectEntry[]
   }
   books: {
     recommended: RecommendedBook[]

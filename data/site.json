@@ -239,6 +239,26 @@
       }
     ]
   },
+  "projects": {
+    "featured": [
+      { "repo": "ping-check", "description": "" },
+      { "repo": "db-verify", "description": "" },
+      { "repo": "claude-hooks", "description": "" },
+      { "repo": "start-claude-cron", "description": "" },
+      { "repo": "youtube-download", "description": "" },
+      { "repo": "cursor-update", "description": "" },
+      { "repo": "limithit", "description": "" },
+      { "repo": "claude-notification", "description": "" },
+      { "repo": "corslab", "description": "" },
+      { "repo": "dirsearch", "description": "" },
+      { "repo": "minify-context", "description": "" },
+      { "repo": "context-reductor", "description": "" },
+      { "repo": "lsd-plugin", "description": "" },
+      { "repo": "whats-message-editor", "description": "" },
+      { "repo": "fill-inputs", "description": "" },
+      { "repo": "dowload-music", "description": "" }
+    ]
+  },
   "books": {
     "recommended": [
       {
