@@ -2,7 +2,7 @@
 
 Conteúdo em `data/site.json` (e `messages/pt.json`).
 
-- [ ] Melhorar os hovers do projeto
+- [x] Melhorar os hovers do projeto
 
 ## Analytics (Deixar para depois)
 - [ ] `site.analytics.clarityId` está vazio (Clarity desligado). Criar projeto no Microsoft Clarity e colocar o ID.
@@ -12,6 +12,6 @@ Conteúdo em `data/site.json` (e `messages/pt.json`).
 - [ ] Criar uma sessão de recomendações, puxando direto do linkedin as que já existem lá, de outros usuários me recomendadno
 
 ## Projetos (Fazer depois)
-- [ ] Criar a página de projetos.
+- [x] Criar a página de projetos.
 
 - [ ] Para cada item: colocar o arquivo (PDF/imagem) em `public/certificates/` e/ou o link "Exibir credencial" do Linkedin, e adicionar ao JSON os campos `file` (ex.: `/certificates/anthropic-claude-code-in-action.pdf`) e `url` (link de verificação).
