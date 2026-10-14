@@ -466,7 +466,7 @@
       "id": "leonan-martins",
       "photo": "/recommendations/leonan.jpeg",
       "name": "Leonan Martins",
-      "headline": "Desenvolvedor full stack | Software developer |Back-end | Front-end | Javascript | Typescript | Node.js | React | Postgres",
+      "headline": "Desenvolvedor full stack | Software developer | Back-end | Front-end | Javascript | Typescript | Node.js | React | Postgres",
       "relationship": "Supervisionou Conan diretamente",
       "date": "março de 2026",
       "text": "Tive o prazer de trabalhar com o Conan durante o último ano e, desde o início, sua eficácia chamou minha atenção. Ele demonstra um compromisso excepcional com a qualidade, indo além da execução ao analisar criteriosamente cada projeto. O Conan não se limita a entregar tarefas; ele identifica falhas de forma proativa e sugere melhorias que elevam o nível do resultado final."
@@ -484,10 +484,10 @@
       "id": "kaio-cabral",
       "photo": "/recommendations/kaio.png",
       "name": "Kaio Cabral",
-      "headline": "Assessor de Tecnologia | Fullstack | Defensoria Publica de Santa Catarina",
+      "headline": "Assessor de Tecnologia | Fullstack | Defensoria Pública de Santa Catarina",
       "relationship": "Trabalhamos na mesma equipe",
       "date": "fevereiro de 2026",
-      "text": "Conan me ajudou a aperfeiçoar minha habilidade no backend, além de compreender a estrutura rapidamente e desenvolver soluções elegantes no frontend. Trata-se de um profissional dedicado, proativo e que não se limita à mediocridade; sempre busca atuar com qualidade, mas sem perder a eficiência. Comprometido com as datas de entrega, além de sempre ser bem-humorado, qualidade a qual, em cenários de pressão e estresse, é o diferencial de uma equipe"
+      "text": "Conan me ajudou a aperfeiçoar minha habilidade no backend, além de compreender a estrutura rapidamente e desenvolver soluções elegantes no frontend. Trata-se de um profissional dedicado, proativo e que não se limita à mediocridade; sempre busca atuar com qualidade, mas sem perder a eficiência. Comprometido com as datas de entrega, além de sempre ser bem-humorado, qualidade que, em cenários de pressão e estresse, é o diferencial de uma equipe."
     },
     {
       "id": "victor-prim-buchele",
@@ -505,7 +505,7 @@
       "headline": "Software developer",
       "relationship": "Trabalhamos na mesma equipe",
       "date": "novembro de 2025",
-      "text": "O Conan é um profissional excelente, extremamente dedicado, alinhado com a qualidade do projeto e muito prestativo.\nAdmiro muito a dedicação dele em aprender mais e da melhor maneira.\nÉ um profissional que deixa o serviço mais leve mesmo sendo um dia difícil sempre tem algo positivo a dizer, tem uma ótima comunicação e sempre está disposto a ajudar.\nAgradeço por todo o conhecimento que compartilhamos, te desejo muito sucesso!"
+      "text": "O Conan é um profissional excelente, extremamente dedicado, alinhado com a qualidade do projeto e muito prestativo.\nAdmiro muito a dedicação dele em aprender mais e da melhor maneira.\nÉ um profissional que deixa o serviço mais leve mesmo sendo um dia difícil, sempre tem algo positivo a dizer, tem uma ótima comunicação e sempre está disposto a ajudar.\nAgradeço por todo o conhecimento que compartilhamos, te desejo muito sucesso!"
     },
     {
       "id": "emilly-lima",
@@ -532,7 +532,7 @@
       "headline": "Desenvolvedor full-stack | front-end | React | React Native | Laravel | Nextjs | Typescript | PHP | Java | Mobile",
       "relationship": "Era liderado por Conan",
       "date": "abril de 2025",
-      "text": "Trabalhei com o Conan na sistemaPET e foi muito importante para o meu crescimento, me ensinou muito sobre PHP, backend e banco de dados. O Conan já passou por diversos desafios com diversas tecnologias diferentes, portanto é um programador completo e o melhor de tudo, sabe se comunicar e passar essa experiência pra frente!"
+      "text": "Trabalhei com o Conan no SistemaPET e foi muito importante para o meu crescimento, me ensinou muito sobre PHP, backend e banco de dados. O Conan já passou por diversos desafios com diversas tecnologias diferentes, portanto é um programador completo e o melhor de tudo, sabe se comunicar e passar essa experiência pra frente!"
     }
   ],
   "experience": [
