@@ -10,6 +10,6 @@
 
 **Blocked by:** 02: Card completo; 03: Número do hero calculado da lista.
 
-Status: ready-for-agent
+Status: ready-for-human
 
-- [ ] Os dois itens estão marcados como feitos no `TODO.md`
+- [x] Os dois itens estão marcados como feitos no `TODO.md`

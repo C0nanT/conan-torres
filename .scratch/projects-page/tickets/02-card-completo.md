@@ -12,10 +12,10 @@
 
 Status: ready-for-agent
 
-- [ ] Tags da stack aparecem no card
-- [ ] Imagem aparece quando existir; senão, fundo padrão sem espaço vazio
-- [ ] Grade de 1 coluna no celular e 2 no desktop
-- [ ] Hover discreto, desativado com `prefers-reduced-motion`
-- [ ] Foco por teclado visível nos links
+- [x] Tags da stack aparecem no card
+- [x] Imagem aparece quando existir; senão, fundo padrão sem espaço vazio
+- [x] Grade de 1 coluna no celular e 2 no desktop
+- [x] Hover discreto, desativado com `prefers-reduced-motion`
+- [x] Foco por teclado visível nos links
 - [ ] Verificação manual em desktop e celular
-- [ ] `pnpm check`, `pnpm exec tsc --noEmit` e `pnpm build` passam
+- [x] `pnpm check`, `pnpm exec tsc --noEmit` e `pnpm build` passam

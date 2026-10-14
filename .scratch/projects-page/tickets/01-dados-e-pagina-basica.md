@@ -10,12 +10,12 @@
 
 **Blocked by:** None (can start immediately).
 
-Status: ready-for-agent
+Status: ready-for-human
 
-- [ ] `/projects` abre sem 404 e mostra um card por projeto de `site.json`, na ordem da lista
-- [ ] Cada card tem nome, descrição, linguagem e link "Código" em nova aba
-- [ ] "Demo" aparece só quando o repo tem homepage
-- [ ] Nome inexistente no GitHub JSON quebra `pnpm build` com mensagem clara
-- [ ] Tipo `SiteData` atualizado com os novos campos
-- [ ] Textos em `messages/pt.json`, metadata via `generateLocalizedMetadata`, entrada no `sitemap.ts`
-- [ ] `pnpm check`, `pnpm exec tsc --noEmit` e `pnpm build` passam
+- [x] `/projects` abre sem 404 e mostra um card por projeto de `site.json`, na ordem da lista
+- [x] Cada card tem nome, descrição, linguagem e link "Código" em nova aba
+- [x] "Demo" aparece só quando o repo tem homepage
+- [x] Nome inexistente no GitHub JSON quebra `pnpm build` com mensagem clara
+- [x] Tipo `SiteData` atualizado com os novos campos
+- [x] Textos em `messages/pt.json`, metadata via `generateLocalizedMetadata`, entrada no `sitemap.ts`
+- [x] `pnpm check`, `pnpm exec tsc --noEmit` e `pnpm build` passam

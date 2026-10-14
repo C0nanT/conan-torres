@@ -10,8 +10,8 @@
 
 **Blocked by:** 01: Dados e página básica de projetos.
 
-Status: ready-for-agent
+Status: ready-for-human
 
-- [ ] O número do hero é igual à quantidade de cards em `/projects`
-- [ ] `relevantProjects` removido de `site.json` e do tipo, sem referências restantes
-- [ ] `pnpm check`, `pnpm exec tsc --noEmit` e `pnpm build` passam
+- [x] O número do hero é igual à quantidade de cards em `/projects`
+- [x] `relevantProjects` removido de `site.json` e do tipo, sem referências restantes
+- [x] `pnpm check`, `pnpm exec tsc --noEmit` e `pnpm build` passam
