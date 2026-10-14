@@ -58,6 +58,10 @@ export interface ProjectEntry {
   repo: string
   /** Portuguese description shown on the card */
   description: string
+  /** Stack tags shown on the card */
+  stack?: string[]
+  /** Optional image path under `public/projects/`, e.g. `/projects/x.png` */
+  image?: string
 }
 
 export interface Experience {

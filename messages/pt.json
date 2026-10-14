@@ -112,6 +112,7 @@
     "description": "Ferramentas e experimentos de código aberto que construí.",
     "code": "Código",
     "demo": "Demo",
+    "stack": "Tecnologias",
     "codeLabel": "Código de {name} no GitHub",
     "demoLabel": "Demo de {name}",
     "empty": "Nenhum projeto disponível no momento."
