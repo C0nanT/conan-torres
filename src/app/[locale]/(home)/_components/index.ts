@@ -1,3 +1,4 @@
 export { HeroSection } from './hero-section'
 export { YouTubeChannels } from './youtube-channels'
 export { ExperienceSection } from './experience-section'
+export { RecommendationsSection } from './recommendations-section'

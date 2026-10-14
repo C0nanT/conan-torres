@@ -188,9 +188,21 @@ export interface SiteData {
     }>
   }
   experience: Experience[]
+  recommendations: Recommendation[]
   seo: {
     keywords: string[]
   }
+}
+
+export interface Recommendation {
+  id: string
+  name: string
+  photo?: string
+  headline: string
+  relationship?: string
+  date?: string
+  text: string
+  profileUrl?: string
 }
 
 export interface Certification {

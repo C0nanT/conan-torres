@@ -9,9 +9,10 @@ Conteúdo em `data/site.json` (e `messages/pt.json`).
 
 ## Sobre mim (Fazer depois)
 - [ ] Revisar a página completa de "sobre mim".
-- [ ] Criar uma sessão de recomendações, puxando direto do linkedin as que já existem lá, de outros usuários me recomendadno
+- [x] Criar uma sessão de recomendações, puxando direto do linkedin as que já existem lá, de outros usuários me recomendadno
 
 ## Projetos (Fazer depois)
 - [x] Criar a página de projetos.
+- [ ] Revisar projetos a serem listados e suas informações
 
 - [ ] Para cada item: colocar o arquivo (PDF/imagem) em `public/certificates/` e/ou o link "Exibir credencial" do Linkedin, e adicionar ao JSON os campos `file` (ex.: `/certificates/anthropic-claude-code-in-action.pdf`) e `url` (link de verificação).
