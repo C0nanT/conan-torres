@@ -25,9 +25,7 @@ function ProjectCover({ project }: { project: Project }) {
       aria-hidden={true}
       className="flex aspect-video w-full items-center justify-center bg-gradient-to-br from-muted to-muted/40"
     >
-      <span className="text-2xl font-bold text-muted-foreground/60">
-        {project.language ?? <Code2 className="h-8 w-8" />}
-      </span>
+      <Code2 className="h-10 w-10 text-muted-foreground/60" />
     </div>
   )
 }

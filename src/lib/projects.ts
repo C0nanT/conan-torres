@@ -22,8 +22,17 @@ function buildProjects(): Project[] {
   const repos = githubReposData.repos as GithubRepo[]
   const reposByName = new Map(repos.map((repo) => [repo.name, repo]))
 
+  const seen = new Set<string>()
+
   return site.projects.featured.map(
     ({ repo: name, description, stack, image }) => {
+      if (seen.has(name)) {
+        throw new Error(
+          `[projects] "${name}" is listed more than once in data/site.json (projects.featured).`
+        )
+      }
+      seen.add(name)
+
       const repo = reposByName.get(name)
 
       if (!repo) {
