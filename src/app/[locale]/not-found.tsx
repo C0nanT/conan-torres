@@ -1,13 +1,11 @@
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Link } from '@/lib/navigation'
-import { getContactEmail } from '@/lib/site-data'
 import { ArrowLeft, Home, Search } from 'lucide-react'
 import { getTranslations } from 'next-intl/server'
 
 export default async function NotFound() {
   const t = await getTranslations('notFound')
-  const contactEmail = getContactEmail()
   return (
     <div className="min-h-screen flex items-center justify-center bg-muted/30">
       <div className="container mx-auto px-4">
@@ -61,19 +59,6 @@ export default async function NotFound() {
                   {t('backToHome')}
                 </Link>
               </Button>
-            </div>
-
-            {/* Contact Info */}
-            <div className="pt-8 border-t-2 text-sm text-muted-foreground">
-              <p>
-                {t('contactText')}{' '}
-                <a
-                  href={`mailto:${contactEmail}`}
-                  className="text-primary hover:underline"
-                >
-                  {contactEmail}
-                </a>
-              </p>
             </div>
           </CardContent>
         </Card>

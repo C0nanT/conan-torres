@@ -1,6 +1,5 @@
 'use client'
 
-import { getContactEmail } from '@/lib/site-data'
 import { useEffect } from 'react'
 
 export default function GlobalError({
@@ -10,7 +9,6 @@ export default function GlobalError({
   error: Error & { digest?: string }
   reset: () => void
 }) {
-  const contactEmail = getContactEmail()
   useEffect(() => {
     // Log the error to an error reporting service
     console.error('Global application error:', error)
@@ -114,26 +112,6 @@ export default function GlobalError({
             >
               Voltar ao Início
             </button>
-
-            <div
-              style={{
-                marginTop: '2rem',
-                paddingTop: '2rem',
-                borderTop: '1px solid #e5e7eb',
-                fontSize: '0.875rem',
-                color: '#9ca3af',
-              }}
-            >
-              <p>
-                Se o problema persistir, entre em contato:{' '}
-                <a
-                  href={`mailto:${contactEmail}`}
-                  style={{ color: '#3b82f6', textDecoration: 'underline' }}
-                >
-                  {contactEmail}
-                </a>
-              </p>
-            </div>
           </div>
         </div>
       </body>

@@ -38,8 +38,6 @@ No test framework is set up, and none is wanted: this is a portfolio site. Do no
 
 Remote images must be whitelisted in `next.config.mjs` `images.remotePatterns` (currently YouTube thumbnails, Amazon, ghchart).
 
-Known open bugs are tracked as tickets under `.scratch/` (e.g. non-functional contact form: `.scratch/repo-housekeeping/tickets/05-contact-form-nao-funcional.md`).
-
 ## Conventions
 
 Biome (`biome.json`) is strict and enforced; notable rules:

@@ -3,7 +3,6 @@
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Link } from '@/lib/navigation'
-import { getContactEmail } from '@/lib/site-data'
 import { AlertTriangle, Home, RefreshCw } from 'lucide-react'
 import { useEffect } from 'react'
 
@@ -14,7 +13,6 @@ export default function ErrorPage({
   error: Error & { digest?: string }
   reset: () => void
 }) {
-  const contactEmail = getContactEmail()
   useEffect(() => {
     // Log the error to an error reporting service
     console.error('Application error:', error)
@@ -68,19 +66,6 @@ export default function ErrorPage({
                   Voltar ao Início
                 </Link>
               </Button>
-            </div>
-
-            {/* Contact Info */}
-            <div className="pt-8 border-t-2 text-sm text-muted-foreground">
-              <p>
-                Se o problema persistir, entre em contato em{' '}
-                <a
-                  href={`mailto:${contactEmail}`}
-                  className="text-primary hover:underline"
-                >
-                  {contactEmail}
-                </a>
-              </p>
             </div>
           </CardContent>
         </Card>

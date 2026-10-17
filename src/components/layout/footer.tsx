@@ -38,15 +38,6 @@ const footerSections: FooterSection[] = [
       },
     ],
   },
-  {
-    title: 'Contato',
-    links: [
-      {
-        name: site.contact.email,
-        href: `mailto:${site.contact.email}`,
-      },
-    ],
-  },
 ]
 
 // Emoji flags sit on a different baseline than the surrounding text, so the

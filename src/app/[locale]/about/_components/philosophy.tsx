@@ -1,23 +1,12 @@
 import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
-import { Link } from '@/lib/navigation'
 import { site } from '@/lib/site-data'
-import {
-  ArrowRight,
-  Heart,
-  Lightbulb,
-  Mail,
-  MessageCircle,
-  Quote,
-  Target,
-  Users,
-} from 'lucide-react'
+import { Heart, Lightbulb, Quote, Target, Users } from 'lucide-react'
 
 const coreValueIcons = [Lightbulb, Users, Target, Heart] as const
 
 export function Philosophy() {
-  const { philosophy, contact } = site
+  const { philosophy } = site
   const { coreValues, personalInsights } = philosophy
 
   return (
@@ -110,18 +99,8 @@ export function Philosophy() {
                 <p className="text-muted-foreground max-w-2xl mx-auto">
                   Estou sempre aberto a discussões sobre tecnologia, carreira e
                   educação. Se você tem dúvidas ou quer compartilhar sua
-                  jornada, entre em contato!
+                  jornada, me chame nas redes sociais!
                 </p>
-              </div>
-
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button asChild={true} className="group">
-                  <a href={`mailto:${contact.email}`}>
-                    <Mail className="mr-2 h-4 w-4" />
-                    Entrar em Contato
-                    <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                  </a>
-                </Button>
               </div>
 
               <div className="text-sm text-muted-foreground">
