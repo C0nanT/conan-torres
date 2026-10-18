@@ -36,7 +36,7 @@ No test framework is set up, and none is wanted: this is a portfolio site. Do no
 
 **Components:** `src/components/ui` (shadcn primitives + custom animated pieces like dock, page/route transitions, search), `src/components/layout` (nav/footer), `src/components/common` (logo, avatar, newsletter). `cn()` is in `src/lib/shadcn.ts` (shadcn alias `utils`); `tv` (tailwind-variants) is re-exported from `src/utils/tv.ts`. Path alias `@/*` → `src/*`.
 
-Remote images must be whitelisted in `next.config.mjs` `images.remotePatterns` (currently YouTube thumbnails, Amazon, ghchart).
+Remote images must be whitelisted in `next.config.mjs` `images.remotePatterns` (currently only YouTube thumbnails).
 
 ## Conventions
 

@@ -17,4 +17,5 @@ Status: ready-for-agent
 - [x] Botão com `type="button"`, `aria-expanded` e foco visível; operável por teclado
 - [x] Texto completo presente no HTML inicial
 - [x] Expansão respeita `prefers-reduced-motion`
-- [ ] `pnpm check`, `pnpm exec tsc --noEmit` e `pnpm build` passam; checagem manual feita
+- [x] `pnpm check`, `pnpm exec tsc --noEmit` e `pnpm build` passam
+- [ ] Checagem manual feita

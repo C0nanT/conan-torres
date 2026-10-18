@@ -226,6 +226,10 @@ export function getSiteUrl(): string {
   return site.site.url
 }
 
+export function getContactEmail(): string {
+  return site.contact.email
+}
+
 export function getSocialLinksForNav(): Array<{
   name: string
   href: string

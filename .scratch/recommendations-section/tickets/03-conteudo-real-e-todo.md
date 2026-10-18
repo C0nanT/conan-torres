@@ -16,4 +16,5 @@ Status: ready-for-agent
 - [x] Nenhum item de exemplo restante
 - [x] Textos fiéis ao original; ordem do JSON respeitada
 - [x] Item marcado no TODO.md
-- [ ] `pnpm check` e `pnpm build` passam; checagem manual da home
+- [x] `pnpm check` e `pnpm build` passam
+- [ ] Checagem manual da home
