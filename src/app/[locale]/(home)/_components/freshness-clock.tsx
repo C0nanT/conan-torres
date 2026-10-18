@@ -75,7 +75,7 @@ export function FreshnessClock({ text }: FreshnessClockProps) {
           onPointerEnter={handlePointerEnter}
           onPointerLeave={handlePointerLeave}
           onClick={handleTriggerClick}
-          className="ml-1 inline-flex size-6 items-center justify-center rounded-full text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          className="ml-1 inline-flex size-6 cursor-default items-center justify-center rounded-full text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
         >
           <Clock className="size-3.5" aria-hidden="true" />
         </button>
