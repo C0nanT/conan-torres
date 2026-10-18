@@ -4,6 +4,12 @@ import type {
   RecommendedYouTubeChannel,
   RecommendedYouTubeVideo,
 } from './site-data'
+import {
+  claimFallback,
+  recordScrapeFailure,
+  recordScrapeSuccess,
+} from './youtube-stats-log'
+import type { StatsTarget } from './youtube-stats-log'
 
 const REVALIDATE_SECONDS = 60 * 60 * 24
 const FETCH_TIMEOUT_MS = 8000
@@ -88,11 +94,24 @@ async function scrapeChannelStats(channelUrl: string) {
   }
 }
 
+async function trackScrape<T>(target: StatsTarget, scrape: () => Promise<T>) {
+  try {
+    const result = await scrape()
+    recordScrapeSuccess(target)
+    return result
+  } catch (error) {
+    recordScrapeFailure(target, error)
+    throw error
+  }
+}
+
 // Throwing inside the cached function makes Next keep the previous entry.
 function getCachedVideoViews(videoId: string) {
   return unstable_cache(
     async () => ({
-      views: await scrapeVideoViews(videoId),
+      views: await trackScrape({ type: 'video', id: videoId }, () =>
+        scrapeVideoViews(videoId)
+      ),
       fetchedAt: Date.now(),
     }),
     ['youtube-live-stats', 'video-views', videoId],
@@ -103,7 +122,9 @@ function getCachedVideoViews(videoId: string) {
 function getCachedChannelStats(channel: RecommendedYouTubeChannel) {
   return unstable_cache(
     async () => ({
-      ...(await scrapeChannelStats(channel.url)),
+      ...(await trackScrape({ type: 'channel', id: channel.id }, () =>
+        scrapeChannelStats(channel.url)
+      )),
       fetchedAt: Date.now(),
     }),
     ['youtube-live-stats', 'channel-stats', channel.id, channel.url],
@@ -117,7 +138,8 @@ export async function getLiveVideoStats(
   try {
     const { views, fetchedAt } = await getCachedVideoViews(video.videoId)
     return { isFallback: false, views, fetchedAt }
-  } catch {
+  } catch (error) {
+    claimFallback({ type: 'video', id: video.videoId }, error)
     return { isFallback: true, views: video.views }
   }
 }
@@ -129,7 +151,8 @@ export async function getLiveChannelStats(
     const { subscribers, videoCount, fetchedAt } =
       await getCachedChannelStats(channel)
     return { isFallback: false, subscribers, videoCount, fetchedAt }
-  } catch {
+  } catch (error) {
+    claimFallback({ type: 'channel', id: channel.id }, error)
     return {
       isFallback: true,
       subscribers: channel.subscribers,
