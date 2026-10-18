@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "author": "Conan Torres",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/C0nanT/conan-torres"
