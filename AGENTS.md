@@ -38,6 +38,14 @@ No test framework is set up, and none is wanted: this is a portfolio site. Do no
 
 Remote images must be whitelisted in `next.config.mjs` `images.remotePatterns` (currently only YouTube thumbnails).
 
+## Deploy
+
+Own VPS running `docker compose` (`docker-compose.yml`, single `web` service built from the `Dockerfile`). No volumes, so nothing persists across image rebuilds.
+
+**YouTube live numbers live in the Next.js cache.** `src/lib/youtube-live-stats.ts` scrapes views/subscribers/video counts inside `unstable_cache` (24 h revalidate) and falls back to the `site.json` values when a scrape fails with no cached value. The cache lives in `.next/cache` inside the image, so every rebuild resets it: the home page is prerendered during `pnpm build` in the image, which is the first refetch, and it is refreshed again on the first request after each 24 h window. A post-deploy change in the numbers, or `site.json` values showing until the next window when the build-time scrape failed, is expected behaviour.
+
+**Logs:** `docker compose logs web` (add `-t` for Docker timestamps, `--since 24h` to narrow). Capped by the `json-file` driver at 3 × 1 MB; older entries are discarded. Each failed scrape writes one line prefixed `[youtube-stats]` (ISO timestamp, target type and id, reason, whether the `site.json` fallback was used) and a target that recovers writes one `recuperado` line; successes are silent. `docker compose logs web | grep youtube-stats` filters them out of Next's own multi-line `revalidating cache with key` traces, which accompany background failures.
+
 ## Conventions
 
 Biome (`biome.json`) is strict and enforced; notable rules:

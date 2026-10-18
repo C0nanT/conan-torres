@@ -1,16 +1,29 @@
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
+import { formatCardFreshness } from '@/lib/format-freshness'
 import { Link } from '@/lib/navigation'
 import {
   getYouTubeVideoThumbnail,
   getYouTubeVideoUrl,
   site,
 } from '@/lib/site-data'
+import {
+  formatChannelVideoCount,
+  formatSubscribers,
+  formatViews,
+  getLiveStatsByChannelId,
+  getLiveStatsByVideoId,
+} from '@/lib/youtube-live-stats'
 import { ExternalLink, Play, Youtube } from 'lucide-react'
 import Image from 'next/image'
+import { FreshnessClock } from './freshness-clock'
 
-export function YouTubeChannels() {
+export async function YouTubeChannels() {
   const { recommendedChannels, recommendedVideos } = site.youtube
+  const [liveStats, channelStats] = await Promise.all([
+    getLiveStatsByVideoId(),
+    getLiveStatsByChannelId(),
+  ])
 
   return (
     <section className="bg-muted/30 py-16 lg:py-20">
@@ -36,6 +49,9 @@ export function YouTubeChannels() {
             const video = recommendedVideos.find(
               (v) => v.channelId === channel.id
             )
+            const videoStats = video && liveStats.get(video.videoId)
+            const stats = channelStats.get(channel.id)
+            const freshness = formatCardFreshness(videoStats, stats)
 
             return (
               <div
@@ -66,15 +82,24 @@ export function YouTubeChannels() {
 
                 <div className="space-y-3">
                   {video && (
-                    <p className="text-sm font-medium text-primary">
-                      {video.title}
-                    </p>
+                    <div>
+                      <p className="text-sm font-medium text-primary">
+                        {video.title}
+                      </p>
+                      {videoStats && (
+                        <p className="text-xs text-muted-foreground">
+                          {formatViews(videoStats)}
+                        </p>
+                      )}
+                    </div>
                   )}
                   <div>
                     <h3 className="text-2xl font-bold">{channel.name}</h3>
                     <p className="text-sm text-muted-foreground">
-                      {channel.handle} · {channel.subscribers} inscritos ·{' '}
-                      {channel.videoCount} vídeos
+                      {channel.handle} · {stats && formatSubscribers(stats)}{' '}
+                      inscritos · {stats && formatChannelVideoCount(stats)}{' '}
+                      vídeos
+                      <FreshnessClock text={freshness} />
                     </p>
                   </div>
                   <p className="text-muted-foreground">{channel.description}</p>
