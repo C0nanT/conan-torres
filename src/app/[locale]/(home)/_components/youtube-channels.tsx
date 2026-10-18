@@ -96,12 +96,8 @@ export async function YouTubeChannels() {
                   <div>
                     <h3 className="text-2xl font-bold">{channel.name}</h3>
                     <p className="text-sm text-muted-foreground">
-                      {channel.handle} ·{' '}
-                      {stats ? formatSubscribers(stats) : channel.subscribers}{' '}
-                      inscritos ·{' '}
-                      {stats
-                        ? formatChannelVideoCount(stats)
-                        : channel.videoCount}{' '}
+                      {channel.handle} · {stats && formatSubscribers(stats)}{' '}
+                      inscritos · {stats && formatChannelVideoCount(stats)}{' '}
                       vídeos
                       <FreshnessClock text={freshness} />
                     </p>

@@ -58,10 +58,10 @@ function writeFailureLine(record: FailureRecord, isFallbackUsed: boolean) {
 
 /**
  * Call from inside the cached scrape when it throws. The error is then either
- * rethrown to `claimFallback` (no cache entry, site.json value shown) or
+ * rethrown to `logFallbackUsed` (no cache entry, site.json value shown) or
  * swallowed by Next (stale cache entry kept). Which one happens is only known
  * after the rejection settles, so the line is written either by
- * `claimFallback` or, if nobody claims it, on the next macrotask.
+ * `logFallbackUsed` or, if nobody claims it, on the next macrotask.
  */
 export function recordScrapeFailure(target: StatsTarget, error: unknown) {
   failedTargets.add(getTargetKey(target))
@@ -93,7 +93,7 @@ export function recordScrapeSuccess(target: StatsTarget) {
 }
 
 /** Call where the site.json fallback replaces a failed scrape. */
-export function claimFallback(target: StatsTarget, error: unknown) {
+export function logFallbackUsed(target: StatsTarget, error: unknown) {
   const record = error instanceof Error ? failureRecords.get(error) : undefined
   if (record) {
     record.isClaimed = true

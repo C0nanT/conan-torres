@@ -14,7 +14,7 @@ const dateFormatter = new Intl.DateTimeFormat('pt-BR', {
 
 function formatBrasiliaDate(epochMs: number) {
   const parts = Object.fromEntries(
-    dateFormatter.formatToParts(epochMs).map((p) => [p.type, p.value])
+    dateFormatter.formatToParts(epochMs).map((part) => [part.type, part.value])
   )
   return `${parts.day}/${parts.month}/${parts.year} às ${parts.hour}:${parts.minute}`
 }

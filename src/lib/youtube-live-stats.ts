@@ -5,7 +5,7 @@ import type {
   RecommendedYouTubeVideo,
 } from './site-data'
 import {
-  claimFallback,
+  logFallbackUsed,
   recordScrapeFailure,
   recordScrapeSuccess,
 } from './youtube-stats-log'
@@ -132,19 +132,19 @@ function getCachedChannelStats(channel: RecommendedYouTubeChannel) {
   )()
 }
 
-export async function getLiveVideoStats(
+async function getLiveVideoStats(
   video: RecommendedYouTubeVideo
 ): Promise<LiveVideoStats> {
   try {
     const { views, fetchedAt } = await getCachedVideoViews(video.videoId)
     return { isFallback: false, views, fetchedAt }
   } catch (error) {
-    claimFallback({ type: 'video', id: video.videoId }, error)
+    logFallbackUsed({ type: 'video', id: video.videoId }, error)
     return { isFallback: true, views: video.views }
   }
 }
 
-export async function getLiveChannelStats(
+async function getLiveChannelStats(
   channel: RecommendedYouTubeChannel
 ): Promise<LiveChannelStats> {
   try {
@@ -152,7 +152,7 @@ export async function getLiveChannelStats(
       await getCachedChannelStats(channel)
     return { isFallback: false, subscribers, videoCount, fetchedAt }
   } catch (error) {
-    claimFallback({ type: 'channel', id: channel.id }, error)
+    logFallbackUsed({ type: 'channel', id: channel.id }, error)
     return {
       isFallback: true,
       subscribers: channel.subscribers,
@@ -180,21 +180,19 @@ export async function getLiveStatsByChannelId() {
   return new Map(entries)
 }
 
+// Fallback values are site.json strings, already formatted for display.
+function formatCount(value: number | string) {
+  return typeof value === 'string' ? value : compactFormatter.format(value)
+}
+
 export function formatViews(stats: LiveVideoStats) {
-  const label = stats.isFallback
-    ? stats.views
-    : compactFormatter.format(stats.views)
-  return `${label} visualizações`
+  return `${formatCount(stats.views)} visualizações`
 }
 
 export function formatSubscribers(stats: LiveChannelStats) {
-  return stats.isFallback
-    ? stats.subscribers
-    : compactFormatter.format(stats.subscribers)
+  return formatCount(stats.subscribers)
 }
 
 export function formatChannelVideoCount(stats: LiveChannelStats) {
-  return stats.isFallback
-    ? stats.videoCount
-    : compactFormatter.format(stats.videoCount)
+  return formatCount(stats.videoCount)
 }
