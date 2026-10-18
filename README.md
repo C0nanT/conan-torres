@@ -82,6 +82,10 @@ O cache dos números do YouTube vive em `.next/cache` dentro da imagem, então c
 
 Código em TypeScript estrito, formatado pelo Biome (aspas simples, sem ponto e vírgula, 2 espaços). Arquivos em kebab-case, Server Components por padrão e `'use client'` só onde necessário. Detalhes em `AGENTS.md`.
 
+## Licença
+
+[MIT](LICENSE). O conteúdo pessoal (textos, fotos, recomendações em `data/` e `public/`) não está coberto por essa licença.
+
 ## Contato
 
 - LinkedIn: [conan-torres](https://www.linkedin.com/in/conan-torres/)
