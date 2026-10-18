@@ -1,5 +1,6 @@
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
+import { formatCardFreshness } from '@/lib/format-freshness'
 import { Link } from '@/lib/navigation'
 import {
   getYouTubeVideoThumbnail,
@@ -15,6 +16,7 @@ import {
 } from '@/lib/youtube-live-stats'
 import { ExternalLink, Play, Youtube } from 'lucide-react'
 import Image from 'next/image'
+import { FreshnessClock } from './freshness-clock'
 
 export async function YouTubeChannels() {
   const { recommendedChannels, recommendedVideos } = site.youtube
@@ -49,6 +51,7 @@ export async function YouTubeChannels() {
             )
             const videoStats = video && liveStats.get(video.videoId)
             const stats = channelStats.get(channel.id)
+            const freshness = formatCardFreshness(videoStats, stats)
 
             return (
               <div
@@ -100,6 +103,7 @@ export async function YouTubeChannels() {
                         ? formatChannelVideoCount(stats)
                         : channel.videoCount}{' '}
                       vídeos
+                      <FreshnessClock text={freshness} />
                     </p>
                   </div>
                   <p className="text-muted-foreground">{channel.description}</p>
