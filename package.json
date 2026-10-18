@@ -48,7 +48,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "cmdk": "^0.2.1",
-    "date-fns": "^2.30.0",
+    "date-fns": "^3.6.0",
     "framer-motion": "^14.3.0",
     "geist": "^1.7.2",
     "lucide-react": "^0.279.0",
