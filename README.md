@@ -30,7 +30,6 @@ Requer Node >= 22 e pnpm.
 
 ```bash
 pnpm install
-cp .env.example .env
 pnpm dev
 ```
 
@@ -52,7 +51,7 @@ Abra [http://localhost:3000](http://localhost:3000).
 ```
 data/                 Conteúdo do site (site.json, certifications.json)
 messages/pt.json      Textos da interface
-public/               Imagens, áudio, certificados, capas de livros
+public/               Imagens, certificados, capas de livros
 src/app/[locale]/     Páginas (home, about, projects, books, certificates)
 src/components/       ui (shadcn + animados), layout, common
 src/lib/              site-data, metadata, navigation, youtube-live-stats
@@ -67,7 +66,7 @@ src/lib/              site-data, metadata, navigation, youtube-live-stats
 
 ## Deploy
 
-Roda em VPS própria via Docker Compose (serviço `web`, build pelo `Dockerfile`).
+Roda em VPS própria via Docker Compose (serviço `web`, build pelo `Dockerfile`, porta 8080). O site não precisa de variáveis de ambiente.
 
 ```bash
 docker compose up -d --build
