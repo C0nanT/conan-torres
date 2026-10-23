@@ -32,12 +32,12 @@
       "freelances": "7"
     },
     "images": {
-      "avatar": "/profile-id-sem-fundo-2.png",
-      "hero": "/profile-id-sem-fundo-2.png",
-      "profile": "/profile-id-sem-fundo-2.png",
-      "about": "/profile-id-sem-fundo-2.png",
+      "avatar": "/profile-id-sem-fundo-2.webp",
+      "hero": "/profile-id-sem-fundo-2.webp",
+      "profile": "/profile-id-sem-fundo-2.webp",
+      "about": "/profile-id-sem-fundo-2.webp",
       "og": "/og-image.png",
-      "logo": "/profile-id-sem-fundo-2.png"
+      "logo": "/profile-id-sem-fundo-2.webp"
     },
     "knowsAbout": [
       "Web Development",
