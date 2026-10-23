@@ -1,12 +1,8 @@
+import { defaultLocale, locales } from '@/lib/navigation'
 import { getSiteUrl } from '@/lib/site-data'
 import type { MetadataRoute } from 'next'
 
-export default async function sitemap({
-  params,
-}: {
-  params: Promise<{ locale: string }>
-}): Promise<MetadataRoute.Sitemap> {
-  const { locale } = await params
+export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = getSiteUrl()
 
   const staticPages = [
@@ -21,21 +17,17 @@ export default async function sitemap({
     },
   ]
 
-  return staticPages.map(({ path, priority, changeFrequency }) => {
-    const url =
-      locale === 'pt' ? `${baseUrl}${path}` : `${baseUrl}/${locale}${path}`
+  const localizedUrl = (locale: string, path: string) =>
+    locale === defaultLocale
+      ? `${baseUrl}${path}`
+      : `${baseUrl}/${locale}${path}`
 
-    return {
-      url,
+  return locales.flatMap((locale) =>
+    staticPages.map(({ path, priority, changeFrequency }) => ({
+      url: localizedUrl(locale, path),
       lastModified: new Date(),
       changeFrequency,
       priority,
-      alternates: {
-        languages: {
-          'pt-BR': `${baseUrl}${path}`,
-          'en-US': `${baseUrl}/en${path}`,
-        },
-      },
-    }
-  })
+    }))
+  )
 }
