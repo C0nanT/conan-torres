@@ -54,7 +54,7 @@ export async function generateMetadata({
         },
       ],
     },
-    manifest: `/${locale}/manifest.webmanifest`,
+    manifest: '/manifest.webmanifest',
     verification: {
       google: 'your-google-verification-code',
     },

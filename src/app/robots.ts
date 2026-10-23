@@ -1,12 +1,7 @@
 import { getSiteUrl } from '@/lib/site-data'
 import type { MetadataRoute } from 'next'
 
-export default async function robots({
-  params,
-}: {
-  params: Promise<{ locale: string }>
-}): Promise<MetadataRoute.Robots> {
-  const { locale } = await params
+export default function robots(): MetadataRoute.Robots {
   const baseUrl = getSiteUrl()
 
   return {
@@ -70,7 +65,7 @@ export default async function robots({
         allow: '/',
       },
     ],
-    sitemap: `${baseUrl}/${locale}/sitemap.xml`,
+    sitemap: `${baseUrl}/sitemap.xml`,
     host: baseUrl,
   }
 }

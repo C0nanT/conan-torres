@@ -41,13 +41,11 @@ Abra [http://localhost:3000](http://localhost:3000).
 | Comando | O que faz |
 | --- | --- |
 | `pnpm dev` | Servidor de desenvolvimento |
-| `pnpm build` | Build de produção (valida env via `src/env.mjs`) |
+| `pnpm build` | Build de produção |
 | `pnpm start` | Serve o build de produção |
 | `pnpm check` | Lint + formatação (Biome) |
 | `pnpm check:fix` | Corrige lint e formatação automaticamente |
 | `pnpm exec tsc --noEmit` | Checagem de tipos |
-
-Defina `SKIP_ENV_VALIDATION=1` para pular a validação de env (usado em builds Docker).
 
 ## Estrutura
 
