@@ -5,6 +5,10 @@ const withNextIntl = createNextIntlPlugin('./src/i18n.ts')
 /** @type {import("next").NextConfig} */
 const config = {
   reactStrictMode: true,
+  output: 'standalone',
+  // Trace from this folder even when a parent folder has its own lockfile
+  // (e.g. a worktree), so server.js lands at the root of .next/standalone.
+  outputFileTracingRoot: import.meta.dirname,
   images: {
     remotePatterns: [
       {

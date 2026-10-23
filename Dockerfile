@@ -1,30 +1,30 @@
 FROM node:22-alpine AS builder
 WORKDIR /app
 RUN corepack enable
+ENV NEXT_TELEMETRY_DISABLED=1
 
-# Install dependencies
+# Install dependencies (lockfile must match package.json)
 COPY package.json pnpm-lock.yaml ./
 RUN pnpm install --frozen-lockfile
 
-# Build application
+# Build the standalone server
 COPY . .
-ENV NEXT_TELEMETRY_DISABLED=1
 RUN pnpm run build
 
-# Production image
+# Runtime: only the standalone server, static assets and public files
 FROM node:22-alpine AS runner
 WORKDIR /app
-RUN corepack enable
 ENV NODE_ENV=production \
     NEXT_TELEMETRY_DISABLED=1 \
-    PORT=3000
+    HOSTNAME=0.0.0.0 \
+    PORT=8080
 
-# Copy build artifacts
-COPY --from=builder /app/.next ./.next
-COPY --from=builder /app/public ./public
-COPY --from=builder /app/package.json ./package.json
-COPY --from=builder /app/pnpm-lock.yaml ./pnpm-lock.yaml
-COPY --from=builder /app/node_modules ./node_modules
+# The node user (uid 1000) owns /app so Next can write .next/cache at runtime
+# (YouTube stats unstable_cache, next/image optimization cache).
+COPY --from=builder --chown=node:node /app/.next/standalone ./
+COPY --from=builder --chown=node:node /app/.next/static ./.next/static
+COPY --from=builder --chown=node:node /app/public ./public
 
-EXPOSE 3000
-CMD ["pnpm", "run", "start"]
+USER node
+EXPOSE 8080
+CMD ["node", "server.js"]
