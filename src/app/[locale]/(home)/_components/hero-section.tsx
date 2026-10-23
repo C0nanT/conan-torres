@@ -169,7 +169,7 @@ export function HeroSection({ projectsCount }: HeroSectionProps) {
                 {t('cta.courses')}
                 <ArrowRight className="ml-2 h-4 w-4" />
               </FancyButton.Root>
-              <IntroAudio src={profile.introAudio} />
+              {profile.introAudio && <IntroAudio src={profile.introAudio} />}
             </div>
           </div>
 
