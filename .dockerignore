@@ -1,0 +1,27 @@
+# Dependencies and build output from the host (glibc binaries, stale cache)
+node_modules
+.next
+out
+
+# VCS and secrets
+.git
+.gitignore
+.env*
+!.env.example
+
+# Dev tooling and agent work
+.claude
+.cursor
+.scratch
+.vscode
+.husky
+.github
+docs
+
+# Docs (the build does not read any markdown)
+*.md
+
+# Docker files themselves
+Dockerfile
+.dockerignore
+docker-compose.yml
