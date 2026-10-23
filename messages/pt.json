@@ -19,12 +19,7 @@
   "recommendations": {
     "badge": "Recomendações",
     "titlePrefix": "O que dizem sobre",
-    "titleHighlight": "meu trabalho",
-    "subtitle": "Recomendações de quem já trabalhou ou estudou comigo, direto do LinkedIn.",
-    "viewAll": "Ver todas no LinkedIn",
-    "viewProfile": "Ver perfil de {name} no LinkedIn",
-    "readMore": "Ler mais",
-    "readLess": "Ler menos"
+    "titleHighlight": "meu trabalho"
   },
   "common": {
     "readMore": "Ler mais",

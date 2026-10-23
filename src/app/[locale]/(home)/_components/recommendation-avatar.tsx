@@ -34,7 +34,7 @@ export function RecommendationAvatar({
           src={person.photo}
           alt=""
           fill={true}
-          sizes="44px"
+          sizes={size === 'sm' ? '32px' : '44px'}
           className="object-cover"
         />
       ) : (

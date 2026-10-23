@@ -1,7 +1,10 @@
 import { projects } from '@/lib/projects'
-import { Suspense } from 'react'
-import { ExperienceSection, HeroSection, YouTubeChannels } from './_components'
-import { PrototypeRecommendations } from './_components/prototype-recommendations'
+import {
+  ExperienceSection,
+  HeroSection,
+  RecommendationsSection,
+  YouTubeChannels,
+} from './_components'
 import { SectionDivider } from './_components/section-divider'
 
 export default function HomePage() {
@@ -10,9 +13,7 @@ export default function HomePage() {
       <HeroSection projectsCount={projects.length} />
       <ExperienceSection />
       <SectionDivider />
-      <Suspense>
-        <PrototypeRecommendations />
-      </Suspense>
+      <RecommendationsSection />
       <SectionDivider />
       <YouTubeChannels />
     </>
