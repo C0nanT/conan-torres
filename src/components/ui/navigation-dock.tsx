@@ -1,6 +1,5 @@
 'use client'
 
-import { scrollToTop } from '@/hooks/use-scroll-to-top'
 import { Link } from '@/lib/navigation'
 import { usePathname } from '@/lib/navigation'
 import { cn } from '@/lib/shadcn'
@@ -47,7 +46,7 @@ export function NavigationDock({ items, className }: NavigationDockProps) {
   ) => {
     if (isActive || currentPathname === href) {
       event.preventDefault()
-      scrollToTop({ behavior: 'smooth' })
+      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
     }
   }
 

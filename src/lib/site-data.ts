@@ -241,12 +241,6 @@ export function getSocialSameAs(): string[] {
   return [site.social.linkedin.url, site.social.github.url]
 }
 
-export function getRecommendedChannelById(
-  id: string
-): RecommendedYouTubeChannel | undefined {
-  return site.youtube.recommendedChannels.find((channel) => channel.id === id)
-}
-
 export function getBookProgress(book: RecommendedBook): number | undefined {
   if (book.status === 'read') {
     return 100
@@ -274,10 +268,4 @@ export function getYouTubeVideoThumbnail(videoId: string): string {
 
 export function getOgImageUrl(locale: string): string {
   return `${site.site.url}${site.profile.images.og.replace('{locale}', locale)}`
-}
-
-export function getProfileImageUrl(
-  type: keyof SiteData['profile']['images'] = 'avatar'
-): string {
-  return site.profile.images[type]
 }
