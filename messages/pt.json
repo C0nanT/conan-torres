@@ -60,6 +60,8 @@
     "loadFailed": "Não foi possível abrir o PDF. Tente recarregar a página.",
     "pageLabel": "Página",
     "pageOf": "de {total}",
+    "pageFailed": "Não foi possível desenhar a página {page}.",
+    "pageTextFailed": "O texto da página {page} não pôde ser preparado para seleção.",
     "goToPage": "Ir para a página",
     "previousPage": "Página anterior",
     "nextPage": "Próxima página",
@@ -98,6 +100,7 @@
       "delete": "Apagar grifo",
       "confirmDelete": "Apagar mesmo",
       "tooLong": "Trecho longo demais para um grifo. Selecione menos texto.",
+      "limitedToPage": "Grifo limitado à página {page}",
       "errors": {
         "invalid": "Não foi possível grifar esse trecho. Selecione de novo.",
         "unauthorized": "Seu acesso expirou. Entre de novo para usar os grifos.",
