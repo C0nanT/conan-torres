@@ -46,6 +46,10 @@ export function isHighlightColor(value: unknown): value is HighlightColor {
   return HIGHLIGHT_COLORS.some((color) => color === value)
 }
 
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === 'object' && value !== null
+}
+
 function isFraction(value: unknown): value is number {
   return (
     typeof value === 'number' &&
@@ -56,10 +60,10 @@ function isFraction(value: unknown): value is number {
 }
 
 function parseRect(raw: unknown): HighlightRect | null {
-  if (typeof raw !== 'object' || raw === null) {
+  if (!isRecord(raw)) {
     return null
   }
-  const { x, y, w, h } = raw as Record<string, unknown>
+  const { x, y, w, h } = raw
   if (!(isFraction(x) && isFraction(y) && isFraction(w) && isFraction(h))) {
     return null
   }
@@ -104,27 +108,26 @@ export function parseNewHighlight(
   raw: unknown,
   total: number | null
 ): NewHighlight | null {
-  if (typeof raw !== 'object' || raw === null) {
+  if (!isRecord(raw)) {
     return null
   }
-  const input = raw as Record<string, unknown>
 
-  const { page, color } = input
+  const { page, color } = raw
   if (!isPageCount(page) || page > (total ?? MAX_PAGE_WITHOUT_TOTAL)) {
     return null
   }
   if (!isHighlightColor(color)) {
     return null
   }
-  if (typeof input.text !== 'string') {
+  if (typeof raw.text !== 'string') {
     return null
   }
-  const text = input.text.trim()
+  const text = raw.text.trim()
   if (text.length === 0 || text.length > MAX_HIGHLIGHT_TEXT) {
     return null
   }
-  const parsedNote = parseNote(input.note)
-  const rects = parseRects(input.rects)
+  const parsedNote = parseNote(raw.note)
+  const rects = parseRects(raw.rects)
   if (!(parsedNote && rects)) {
     return null
   }
