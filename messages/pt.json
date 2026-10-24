@@ -34,7 +34,18 @@
     "whatsappChat": "Conversar no WhatsApp"
   },
   "reader": {
-    "back": "Voltar para os livros"
+    "back": "Voltar para os livros",
+    "privateTitle": "Leitura privada",
+    "privateDescription": "Este leitor é pessoal. Se quiser ler {title}, compre o seu exemplar.",
+    "buy": "Comprar o livro",
+    "passwordLabel": "Senha",
+    "submit": "Entrar",
+    "submitting": "Verificando...",
+    "wrongPassword": "Senha incorreta.",
+    "locked": "Muitas tentativas erradas. Tente de novo em {minutes, plural, one {# minuto} other {# minutos}}.",
+    "notConfigured": "O leitor está indisponível no momento: o acesso não foi configurado no servidor.",
+    "placeholder": "O leitor de PDF chega em breve.",
+    "signOut": "Sair"
   },
   "notFound": {
     "title": "Página não encontrada",
@@ -78,6 +89,7 @@
     "title": "Livros Recomendados",
     "description": "Livros que li, estou lendo ou pretendo ler.",
     "viewOnAmazon": "Ver na Amazon",
+    "read": "Ler",
     "ratingLabel": "Nota: {rating} de 5",
     "unrated": "Sem nota",
     "progressLabel": "Progresso: {progress}%",

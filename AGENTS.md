@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project
 
-Personal site for Conan Torres (content creator / educator). Next.js 15 App Router, React 18, TypeScript, Tailwind 3, shadcn/ui (new-york) + Radix, Framer Motion / `motion`, `next-intl`. Started from create-t3-app; the T3 boilerplate is gone (no tRPC/Prisma/NextAuth, no env validation). The site needs no env vars.
+Personal site for Conan Torres (content creator / educator). Next.js 15 App Router, React 18, TypeScript, Tailwind 3, shadcn/ui (new-york) + Radix, Framer Motion / `motion`, `next-intl`. Started from create-t3-app; the T3 boilerplate is gone (no tRPC/Prisma/NextAuth, no env validation). Only the book reader reads env vars (`READER_PASSWORD`, see Deploy); the rest of the site works without them.
 
 ## Commands
 
@@ -46,6 +46,11 @@ Own VPS: `docker compose up -d --build` (`docker-compose.yml`, single `web` serv
 - `Dockerfile`: multi-stage. The builder (`node:22-alpine`) runs `pnpm install --frozen-lockfile` and `pnpm build`. The runtime stage copies only `.next/standalone`, `.next/static` and `public`, runs as the non-root `node` user with `node server.js`, and sets `HOSTNAME=0.0.0.0`, `PORT=8080`, `EXPOSE 8080`. Compose does not override `command`.
 - `.dockerignore` keeps `.env*` (except `.env.example`), `.git`, host `node_modules` and `.next`, tool folders (`.claude`, `.cursor`, `.scratch`, `.vscode`, `.husky`, `.github`), `docs` and markdown out of the image.
 - `sharp` ships in the standalone output, so `next/image` works at runtime.
+
+**Environment variables** (book reader only; `.env.example` lists them). On the VPS they live in an uncommitted `.env` next to `docker-compose.yml`, which passes each one through `environment:` as `${VAR:-}`. Never commit a real value, not even a placeholder one.
+- `READER_PASSWORD`: unlocks `/books/<id>/ler`. Unset or blank: the reader refuses access with a message, and every other page still works. A correct password sets a 30-day httpOnly, sameSite, HMAC-signed cookie whose key derives from the password, so changing it signs out every device.
+
+**Reader access** goes through `src/lib/reader-access.ts` alone (`getReader()` returns the owner `conan` or `null`, plus `signIn`/`signOut`); protected pages, actions and routes must not read the cookie themselves. The future login replaces only that module. Wrong passwords are rate-limited in memory by `src/lib/reader-rate-limit.ts`: 3 failures lock the client IP for 20 min, and a restart clears every lock. The IP is the first hop of `x-forwarded-for`; when no proxy sends that header, Next's server fills it with the socket address (`x-real-ip`, then a shared `unknown` bucket, are last-resort fallbacks). That first hop is client-spoofable unless the reverse proxy in front of the container overwrites the header; the VPS proxy setup has not been verified.
 
 **YouTube live numbers live in the Next.js cache.** `src/lib/youtube-live-stats.ts` scrapes views/subscribers/video counts inside `unstable_cache` (24 h revalidate) and falls back to the `site.json` values when a scrape fails with no cached value. The cache writes to `/app/.next/cache` in the runtime image; `/app/.next` is copied with `--chown=node:node`, so the non-root user can write there. The cache is not carried from the build stage, so every rebuild resets it. The home page is prerendered during `pnpm build`: its HTML holds the build-time numbers, and that scrape is the first refetch. The first request after each 24 h window refetches. A post-deploy change in the numbers, or `site.json` values showing until the next window when the build-time scrape failed, is expected behaviour.
 
