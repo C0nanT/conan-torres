@@ -10,8 +10,14 @@ services:
       # read from the host shell or a .env next to this file (never committed)
       READER_PASSWORD: ${READER_PASSWORD:-}
       BOOK_FILE_MONOLITO_PARA_MICROSSERVICOS: ${BOOK_FILE_MONOLITO_PARA_MICROSSERVICOS:-}
+    volumes:
+      # reader's SQLite file (saved pages, highlights); survives rebuilds
+      - leitor-data:/app/reader-data
     logging:
       driver: json-file
       options:
         max-size: "1m"
         max-file: "3"
+
+volumes:
+  leitor-data:

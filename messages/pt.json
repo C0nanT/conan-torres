@@ -55,6 +55,15 @@
     "zoomIn": "Aumentar zoom",
     "zoomOut": "Diminuir zoom",
     "zoomLevel": "Zoom: {percent}%",
+    "savePage": {
+      "label": "Parei na página",
+      "submit": "Salvar",
+      "saving": "Salvando...",
+      "saved": "Página {page} salva.",
+      "invalid": "Digite um número inteiro de 1 a {total}.",
+      "unauthorized": "Seu acesso expirou. Entre de novo para salvar a página.",
+      "error": "Não consegui salvar a página. Tente de novo."
+    },
     "fileError": {
       "title": "Não consegui carregar o livro",
       "missing-env": "O arquivo deste livro não foi configurado no servidor.",

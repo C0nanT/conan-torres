@@ -3,6 +3,11 @@ node_modules
 .next
 out
 
+# Local reader database (the image gets an empty /app/data for the volume)
+data-local
+*.db
+*.db-journal
+
 # VCS and secrets
 .git
 .gitignore
