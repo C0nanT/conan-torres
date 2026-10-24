@@ -47,6 +47,11 @@ export function HighlightComposer({
       aria-label={t('composerLabel')}
       className="fixed inset-x-2 bottom-2 z-30 mx-auto max-w-md rounded-xl border bg-background p-3 shadow-lg motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-4"
     >
+      {selection.isLimited && (
+        <output className="mb-2 block text-amber-700 text-xs dark:text-amber-400">
+          {t('limitedToPage', { page: selection.page })}
+        </output>
+      )}
       {isOpen ? (
         <div className="flex flex-col gap-3">
           <p className="line-clamp-2 text-muted-foreground text-sm">

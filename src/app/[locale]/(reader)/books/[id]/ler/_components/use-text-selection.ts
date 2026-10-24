@@ -6,24 +6,29 @@ import {
   MAX_HIGHLIGHT_TEXT,
 } from '@/lib/highlight-rules'
 import { type RefObject, useEffect, useState } from 'react'
+import { PAGE_SELECTOR } from './pdf-page-item'
 
 const TEXT_LAYER = '.react-pdf__Page__textContent'
 const SETTLE_MS = 200
 const MIN_FRACTION = 0.0005
 
 export interface TextSelection {
+  // The page where the selection started; the rects are fractions of it.
+  page: number
   text: string
   rects: HighlightRect[]
   isTooLong: boolean
+  // The selection went on into another page, whose part was dropped.
+  isLimited: boolean
 }
 
 function clamp01(value: number) {
   return Math.min(1, Math.max(0, value))
 }
 
-// Only one page is ever rendered, so a selection cannot span two pages. A
-// drag that ends outside the text layer (past the page edge, or into the
-// toolbar) is clamped to the layer: the part on the page is kept.
+// A highlight belongs to one page. A drag that ends outside the text layer
+// (past the page edge, into the toolbar or into the next page) is clamped to
+// the layer of the page where it started: only that part is kept.
 function clampToLayer(range: Range, layer: Element): Range | null {
   const bounds = document.createRange()
   bounds.selectNodeContents(layer)
@@ -96,13 +101,24 @@ function readText(range: Range): string {
   return spans.map((span) => span.textContent ?? '').join(' ')
 }
 
-function readSelection(page: Element): TextSelection | null {
+function pageOf(node: Node | null): HTMLElement | null {
+  const element = node instanceof Element ? node : node?.parentElement
+  return element?.closest<HTMLElement>(PAGE_SELECTOR) ?? null
+}
+
+// The anchor is where the drag began, also when it went backwards.
+function readSelection(container: Element): TextSelection | null {
   const selection = document.getSelection()
-  const layer = page.querySelector(TEXT_LAYER)
-  if (!(layer && selection) || selection.isCollapsed || !selection.rangeCount) {
+  if (!selection || selection.isCollapsed || !selection.rangeCount) {
     return null
   }
-  const range = clampToLayer(selection.getRangeAt(0), layer)
+  const page = pageOf(selection.anchorNode)
+  const layer = page?.querySelector(TEXT_LAYER)
+  if (!(page && layer && container.contains(page))) {
+    return null
+  }
+  const original = selection.getRangeAt(0)
+  const range = clampToLayer(original, layer)
   if (!range) {
     return null
   }
@@ -114,29 +130,28 @@ function readSelection(page: Element): TextSelection | null {
   if (rects.length === 0) {
     return null
   }
+  const isLimited = [...container.querySelectorAll(PAGE_SELECTOR)].some(
+    (other) => other !== page && original.intersectsNode(other)
+  )
   return {
+    page: Number(page.dataset.readerPage),
     text,
     rects,
     isTooLong:
       text.length > MAX_HIGHLIGHT_TEXT || rects.length > MAX_HIGHLIGHT_RECTS,
+    isLimited,
   }
 }
 
 // Watches the document selection and exposes the part of it that lies on the
-// page element. While `isFrozen` the last captured selection is kept: tapping
-// the composer clears the browser's selection, but not this copy.
+// page where it started, inside `containerRef`. While `isFrozen` the last
+// captured selection is kept: tapping the composer clears the browser's
+// selection, but not this copy.
 export function useTextSelection(
-  pageRef: RefObject<HTMLElement>,
-  pageNumber: number,
+  containerRef: RefObject<HTMLElement>,
   isFrozen: boolean
 ) {
   const [selection, setSelection] = useState<TextSelection | null>(null)
-
-  // A selection belongs to one page.
-  // biome-ignore lint/correctness/useExhaustiveDependencies: reset on page change
-  useEffect(() => {
-    setSelection(null)
-  }, [pageNumber])
 
   useEffect(() => {
     if (isFrozen) {
@@ -146,8 +161,8 @@ export function useTextSelection(
     const handleChange = () => {
       clearTimeout(timer)
       timer = setTimeout(() => {
-        const page = pageRef.current
-        setSelection(page ? readSelection(page) : null)
+        const container = containerRef.current
+        setSelection(container ? readSelection(container) : null)
       }, SETTLE_MS)
     }
     document.addEventListener('selectionchange', handleChange)
@@ -155,7 +170,7 @@ export function useTextSelection(
       clearTimeout(timer)
       document.removeEventListener('selectionchange', handleChange)
     }
-  }, [isFrozen, pageRef])
+  }, [isFrozen, containerRef])
 
   const clear = () => {
     document.getSelection()?.removeAllRanges()

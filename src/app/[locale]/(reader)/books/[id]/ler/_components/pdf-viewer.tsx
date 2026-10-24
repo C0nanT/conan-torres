@@ -9,7 +9,7 @@ import 'react-pdf/dist/Page/TextLayer.css'
 import { reportTotalPages } from '../actions'
 import { HighlightComposer } from './highlight-composer'
 import { HighlightsPanel } from './highlights-panel'
-import { PdfPageItem } from './pdf-page-item'
+import { PdfPageList, type PdfPageListHandle } from './pdf-page-list'
 import { PdfToolbar } from './pdf-toolbar'
 import { describeError, reportReaderError } from './report-reader-error'
 import { useHighlights } from './use-highlights'
@@ -63,17 +63,16 @@ export default function PdfViewer({
   const [page, setPage] = useState(savedPage ?? 1)
   const hasReportedTotal = useRef(false)
   const [zoom, setZoom] = useState(1)
-  const pageRef = useRef<HTMLDivElement>(null)
+  const listRef = useRef<PdfPageListHandle>(null)
   const [isPanelOpen, setIsPanelOpen] = useState(false)
   const [isComposing, setIsComposing] = useState(false)
   const { highlights, add, remove } = useHighlights(bookId, initialHighlights)
-  const { selection, clear: clearSelection } = useTextSelection(
-    pageRef,
-    page,
-    isComposing
-  )
   const { ref: scrollRef, width: containerWidth } =
     useElementWidth<HTMLDivElement>()
+  const { selection, clear: clearSelection } = useTextSelection(
+    scrollRef,
+    isComposing
+  )
 
   // Stable identity: a new object each render makes react-pdf reload the file.
   const options = useMemo(() => ({ withCredentials: true }), [])
@@ -88,10 +87,10 @@ export default function PdfViewer({
 
   const pageWidth = Math.min(Math.max(containerWidth - 16, 0), MAX_PAGE_WIDTH)
 
+  // Arrows, "Ir para a página" and the highlights list scroll to the page;
+  // the list then reports it back as the current page.
   const handlePageChange = (next: number) => {
-    setPage(clamp(next, 1, Math.max(total, 1)))
-    // Instant on purpose: no scrolling animation to opt out of.
-    scrollRef.current?.scrollTo({ top: 0, left: 0, behavior: 'instant' })
+    listRef.current?.scrollToPage(clamp(next, 1, Math.max(total, 1)))
   }
 
   const handleJump = (target: number) => {
@@ -107,7 +106,8 @@ export default function PdfViewer({
       return false
     }
     const isSaved = await add({
-      page,
+      // The page where the selection started, not the one at the centre.
+      page: selection.page,
       color,
       text: selection.text,
       note: note.trim() || null,
@@ -173,12 +173,15 @@ export default function PdfViewer({
             aria-label={title}
           >
             {pageWidth > 0 && total > 0 && (
-              <PdfPageItem
+              <PdfPageList
+                ref={listRef}
                 bookId={bookId}
-                pageNumber={page}
+                total={total}
                 width={pageWidth * zoom}
+                initialPage={clamp(savedPage ?? 1, 1, total)}
                 highlights={highlights}
-                pageRef={pageRef}
+                scrollRef={scrollRef}
+                onPageChange={setPage}
               />
             )}
           </Document>
