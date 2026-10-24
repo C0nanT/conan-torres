@@ -22,15 +22,24 @@ export type BookFileResult =
   | { ok: true; path: string; size: number }
   | { ok: false; reason: BookFileFailure }
 
-class BookFileError extends Error {
-  readonly reason: BookFileFailure
-  readonly detail?: string
+interface FailureInfo {
+  reason: BookFileFailure
+  detail?: string
+}
 
-  constructor(reason: BookFileFailure, detail?: string) {
-    super(reason)
-    this.reason = reason
-    this.detail = detail
-  }
+// Errors thrown inside this module carry their reason code here, keyed by the
+// Error itself, so they stay plain Errors (the stream pipeline needs one) and
+// the catch in fetchAndCache can tell them from unexpected ones.
+const failureInfo = new WeakMap<Error, FailureInfo>()
+
+function bookFileFailure(reason: BookFileFailure, detail?: string): Error {
+  const error = new Error(reason)
+  failureInfo.set(error, { reason, detail })
+  return error
+}
+
+function getFailureInfo(error: unknown): FailureInfo | undefined {
+  return error instanceof Error ? failureInfo.get(error) : undefined
 }
 
 export function getBookFileEnvName(bookId: string): string {
@@ -58,16 +67,16 @@ async function fetchDrive(url: URL): Promise<Response> {
       signal: AbortSignal.timeout(DOWNLOAD_TIMEOUT_MS),
     })
   } catch (error) {
-    throw new BookFileError(
+    throw bookFileFailure(
       'drive-failed',
       error instanceof Error ? error.name : 'erro'
     )
   }
   if (res.status === 404) {
-    throw new BookFileError('not-found', '404')
+    throw bookFileFailure('not-found', '404')
   }
   if (!res.ok) {
-    throw new BookFileError('drive-failed', String(res.status))
+    throw bookFileFailure('drive-failed', String(res.status))
   }
   return res
 }
@@ -124,14 +133,14 @@ async function openPdfResponse(fileId: string): Promise<Response> {
   const confirmUrl = parseConfirmForm(html)
   if (!confirmUrl) {
     // Sign-in wall (private file), error page or an unknown interstitial.
-    throw new BookFileError(
+    throw bookFileFailure(
       html.includes('download-form') ? 'confirm-page' : 'not-pdf',
       'html'
     )
   }
   const confirmed = await fetchDrive(confirmUrl)
   if (isHtml(confirmed)) {
-    throw new BookFileError('confirm-page', 'html-again')
+    throw bookFileFailure('confirm-page', 'html-again')
   }
   return confirmed
 }
@@ -146,13 +155,13 @@ function createPdfGuard(): Transform {
         isChecked = true
         const head = chunk.subarray(0, PDF_MAGIC.length).toString('latin1')
         if (head !== PDF_MAGIC) {
-          callback(new BookFileError('not-pdf', 'magic'))
+          callback(bookFileFailure('not-pdf', 'magic'))
           return
         }
       }
       seen += chunk.length
       if (seen > MAX_BYTES) {
-        callback(new BookFileError('too-large'))
+        callback(bookFileFailure('too-large'))
         return
       }
       callback(null, chunk)
@@ -163,28 +172,30 @@ function createPdfGuard(): Transform {
 async function download(fileId: string, target: string): Promise<void> {
   const res = await openPdfResponse(fileId)
   if (!res.body) {
-    throw new BookFileError('drive-failed', 'empty-body')
+    throw bookFileFailure('drive-failed', 'empty-body')
   }
 
   await mkdir(CACHE_DIR, { recursive: true })
   const temp = `${target}.${process.pid}.${Date.now()}.tmp`
   try {
     await pipeline(
+      // Same object at runtime; TS types fetch's DOM stream and Node's web
+      // stream separately, and no guard can bridge them.
       Readable.fromWeb(res.body as NodeReadableStream),
       createPdfGuard(),
       createWriteStream(temp)
     )
     if ((await readSize(temp)) === null) {
-      throw new BookFileError('not-pdf', 'empty')
+      throw bookFileFailure('not-pdf', 'empty')
     }
     await rename(temp, target)
   } catch (error) {
     await rm(temp, { force: true })
-    if (error instanceof BookFileError) {
+    if (getFailureInfo(error)) {
       throw error
     }
     const name = error instanceof Error ? error.name : 'erro'
-    throw new BookFileError(
+    throw bookFileFailure(
       name === 'TimeoutError' || name === 'AbortError'
         ? 'drive-failed'
         : 'io-error',
@@ -202,24 +213,24 @@ async function fetchAndCache(bookId: string): Promise<BookFileResult> {
 
   try {
     if (!BOOK_ID_PATTERN.test(bookId)) {
-      throw new BookFileError('invalid-book-id')
+      throw bookFileFailure('invalid-book-id')
     }
     const envName = getBookFileEnvName(bookId)
     const fileId = process.env[envName]?.trim()
     if (!fileId) {
-      throw new BookFileError('missing-env', envName)
+      throw bookFileFailure('missing-env', envName)
     }
     await download(fileId, target)
     const size = await readSize(target)
     if (size === null) {
-      throw new BookFileError('io-error', 'missing-after-rename')
+      throw bookFileFailure('io-error', 'missing-after-rename')
     }
     return { ok: true, path: target, size }
   } catch (error) {
-    const failure =
-      error instanceof BookFileError
-        ? error
-        : new BookFileError('io-error', 'unexpected')
+    const failure = getFailureInfo(error) ?? {
+      reason: 'io-error',
+      detail: 'unexpected',
+    }
     logBookFileFailure(bookId, failure.reason, failure.detail)
     return { ok: false, reason: failure.reason }
   }
