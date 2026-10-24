@@ -45,6 +45,7 @@
     "locked": "Muitas tentativas erradas. Tente de novo em {minutes, plural, one {# minuto} other {# minutos}}.",
     "notConfigured": "O leitor está indisponível no momento: o acesso não foi configurado no servidor.",
     "signOut": "Sair",
+    "exportHighlights": "Exportar grifos",
     "loading": "Carregando o livro...",
     "loadFailed": "Não foi possível abrir o PDF. Tente recarregar a página.",
     "pageLabel": "Página",
