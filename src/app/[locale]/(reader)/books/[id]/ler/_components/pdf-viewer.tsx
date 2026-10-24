@@ -3,7 +3,14 @@
 import { Button } from '@/components/ui/button'
 import type { Highlight, HighlightColor } from '@/lib/highlight-rules'
 import { Link } from '@/lib/navigation'
-import { ArrowLeft, Highlighter, LogOut, Minus, Plus } from 'lucide-react'
+import {
+  ArrowLeft,
+  Download,
+  Highlighter,
+  LogOut,
+  Minus,
+  Plus,
+} from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Document, Page, pdfjs } from 'react-pdf'
@@ -174,6 +181,15 @@ function Toolbar({
         >
           <Highlighter className="h-4 w-4" />
           <span className="ml-1 text-xs tabular-nums">{highlightCount}</span>
+        </Button>
+        <Button asChild={true} variant="ghost" size="sm">
+          <a
+            href={`/api/books/${bookId}/highlights/export`}
+            aria-label={t('exportHighlights')}
+          >
+            <Download className="h-4 w-4 sm:mr-2" />
+            <span className="hidden sm:inline">{t('exportHighlights')}</span>
+          </a>
         </Button>
         <form action={logout}>
           <Button
