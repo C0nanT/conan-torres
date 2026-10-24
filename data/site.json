@@ -546,7 +546,8 @@
         "Implantei um fluxo de desenvolvimento assistido por IA, com ganhos acima de 10x na maior parte das entregas, que foi apresentado no 1° Encontro das Defensorias do Sul.",
         "Responsável técnico por sistemas usados para administração de todas as Defensorias Públicas de Santa Catarina",
         "Estruturei a base de engenharia da instituição: entrega contínua, segurança de aplicações, observabilidade e Design System oficial."
-      ]
+      ],
+      "details": ["PREENCHA_AQUI"]
     },
     {
       "company": "FiveLabs",
@@ -558,7 +559,8 @@
         "Consultas críticas de cerca de 1,8s para menos de 200ms com estratégias de cache e processamento assíncrono.",
         "Cultura de testes automatizados: cerca de 50% menos tempo e custo na entrega de novas features.",
         "Code review, integrações entre sistemas e apoio técnico ao time."
-      ]
+      ],
+      "details": ["PREENCHA_AQUI"]
     },
     {
       "company": "SistemaPET",
@@ -570,7 +572,8 @@
         "Entreguei um chatbot com IA sobre a base de conhecimento da empresa e um app mobile multiplataforma.",
         "Automação de processos de negócio e integrações com parceiros.",
         "Evolução dos ERPs web e mobile e mentoria de estagiários."
-      ]
+      ],
+      "details": ["PREENCHA_AQUI"]
     },
     {
       "company": "Freelance",
@@ -581,7 +584,8 @@
         "Soluções web sob medida para pequenos negócios, da concepção ao deploy.",
         "Landing pages focadas em performance e conversão.",
         "Produtos SaaS próprios, construídos do zero até a produção."
-      ]
+      ],
+      "details": ["PREENCHA_AQUI"]
     },
     {
       "company": "Colégio Santa Terezinha",
@@ -591,7 +595,8 @@
       "highlights": [
         "Suporte de TI e manutenção dos sites institucionais.",
         "Apoio em aulas introdutórias de informática e programação."
-      ]
+      ],
+      "details": ["PREENCHA_AQUI"]
     }
   ]
 }

@@ -1,4 +1,5 @@
 import { site } from '@/lib/site-data'
+import { ExperienceItem } from './experience-item'
 import { ResumeDownloadTitle } from './resume-download-title'
 
 export function ExperienceSection() {
@@ -9,31 +10,7 @@ export function ExperienceSection() {
 
         <div className="divide-y divide-border">
           {site.experience.map((job) => (
-            <div
-              key={`${job.company}-${job.period}`}
-              className="group grid gap-4 px-3 transition-colors duration-200 py-8 md:grid-cols-[280px_1fr] md:gap-12 hover:bg-muted/40"
-            >
-              <div className="space-y-1">
-                <h3 className="text-xl font-bold">
-                  {job.company}{' '}
-                  <span className="text-sm font-medium text-primary">
-                    [{job.level}]
-                  </span>
-                </h3>
-                <p className="text-sm text-muted-foreground">{job.role}</p>
-                <p className="text-sm text-muted-foreground">{job.period}</p>
-              </div>
-              <ul className="space-y-2 text-muted-foreground">
-                {job.highlights.map((item) => (
-                  <li key={item} className="flex gap-2">
-                    <span aria-hidden="true" className="text-primary">
-                      ▸
-                    </span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <ExperienceItem key={`${job.company}-${job.period}`} job={job} />
           ))}
         </div>
       </div>

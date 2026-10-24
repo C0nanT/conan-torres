@@ -70,6 +70,8 @@ export interface Experience {
   role: string
   period: string
   highlights: string[]
+  // versão longa, exibida pelo switch "mais detalhes"; sem ela o switch some
+  details?: string[]
 }
 
 export interface SiteData {
