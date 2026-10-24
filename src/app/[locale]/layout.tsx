@@ -1,7 +1,4 @@
-import { WhatsappFloatingButton } from '@/components/common'
-import { Footer, Navigation } from '@/components/layout'
 import { InitialLoading } from '@/components/ui/initial-loading'
-import { RouteTransition } from '@/components/ui/route-transition'
 import { Toaster } from '@/components/ui/sonner'
 import {
   generateLocalizedMetadata,
@@ -14,7 +11,6 @@ import type { Metadata } from 'next'
 import { NextIntlClientProvider } from 'next-intl'
 import { getMessages } from 'next-intl/server'
 import { notFound } from 'next/navigation'
-import { Suspense } from 'react'
 import '@/styles/globals.css'
 
 export async function generateMetadata({
@@ -160,16 +156,7 @@ export default async function LocaleLayout({
       >
         <NextIntlClientProvider messages={messages} locale={locale}>
           <InitialLoading />
-          <div className="flex flex-col">
-            <Suspense fallback={<div className="h-16 bg-background" />}>
-              <Navigation />
-            </Suspense>
-            <main className="min-h-screen">
-              <RouteTransition>{children}</RouteTransition>
-            </main>
-            <Footer />
-          </div>
-          <WhatsappFloatingButton />
+          {children}
           <Toaster />
         </NextIntlClientProvider>
       </body>
