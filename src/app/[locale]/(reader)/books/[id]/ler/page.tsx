@@ -1,4 +1,5 @@
 import { Button } from '@/components/ui/button'
+import { ensureBookFile } from '@/lib/book-file'
 import { Link } from '@/lib/navigation'
 import { getReader, isReaderAccessConfigured } from '@/lib/reader-access'
 import { getClientIp, getLockRemainingMs } from '@/lib/reader-rate-limit'
@@ -6,7 +7,7 @@ import { site } from '@/lib/site-data'
 import { ArrowLeft } from 'lucide-react'
 import { getTranslations } from 'next-intl/server'
 import { notFound } from 'next/navigation'
-import { PrivateScreen, ReaderPlaceholder } from './_components'
+import { BookFileError, BookViewer, PrivateScreen } from './_components'
 import type { LoginState } from './actions'
 
 async function getInitialLoginState(): Promise<LoginState> {
@@ -28,20 +29,37 @@ export default async function ReaderPage({
     notFound()
   }
 
-  const t = await getTranslations('reader')
   const reader = await getReader()
+
+  if (reader) {
+    const file = await ensureBookFile(book.id)
+    if (file.ok) {
+      return <BookViewer bookId={book.id} title={book.title} />
+    }
+    return (
+      <Centered>
+        <BookFileError reason={file.reason} />
+      </Centered>
+    )
+  }
+
+  return (
+    <Centered>
+      <PrivateScreen
+        book={book}
+        isConfigured={isReaderAccessConfigured()}
+        initialState={await getInitialLoginState()}
+      />
+    </Centered>
+  )
+}
+
+async function Centered({ children }: { children: React.ReactNode }) {
+  const t = await getTranslations('reader')
 
   return (
     <div className="flex h-full flex-col items-center justify-center gap-8 overflow-y-auto px-4 py-8 text-center">
-      {reader ? (
-        <ReaderPlaceholder book={book} />
-      ) : (
-        <PrivateScreen
-          book={book}
-          isConfigured={isReaderAccessConfigured()}
-          initialState={await getInitialLoginState()}
-        />
-      )}
+      {children}
       <Button asChild={true} variant="outline">
         <Link href="/books">
           <ArrowLeft className="mr-2 h-4 w-4" />

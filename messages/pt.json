@@ -44,8 +44,28 @@
     "wrongPassword": "Senha incorreta.",
     "locked": "Muitas tentativas erradas. Tente de novo em {minutes, plural, one {# minuto} other {# minutos}}.",
     "notConfigured": "O leitor está indisponível no momento: o acesso não foi configurado no servidor.",
-    "placeholder": "O leitor de PDF chega em breve.",
-    "signOut": "Sair"
+    "signOut": "Sair",
+    "loading": "Carregando o livro...",
+    "loadFailed": "Não foi possível abrir o PDF. Tente recarregar a página.",
+    "pageLabel": "Página",
+    "pageOf": "de {total}",
+    "goToPage": "Ir para a página",
+    "previousPage": "Página anterior",
+    "nextPage": "Próxima página",
+    "zoomIn": "Aumentar zoom",
+    "zoomOut": "Diminuir zoom",
+    "zoomLevel": "Zoom: {percent}%",
+    "fileError": {
+      "title": "Não consegui carregar o livro",
+      "missing-env": "O arquivo deste livro não foi configurado no servidor.",
+      "invalid-book-id": "Livro inválido.",
+      "not-found": "O arquivo não foi encontrado no Drive. Confira o ID configurado.",
+      "drive-failed": "O Drive não respondeu direito. Tente de novo em instantes.",
+      "not-pdf": "O Drive não devolveu um PDF. Confira se o arquivo está compartilhado para qualquer pessoa com o link.",
+      "confirm-page": "O Drive pediu uma confirmação que o servidor não conseguiu atravessar.",
+      "too-large": "O arquivo é maior do que o limite aceito.",
+      "io-error": "O servidor não conseguiu guardar o arquivo."
+    }
   },
   "notFound": {
     "title": "Página não encontrada",

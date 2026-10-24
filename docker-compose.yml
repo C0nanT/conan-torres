@@ -9,6 +9,7 @@ services:
       PORT: 8080
       # read from the host shell or a .env next to this file (never committed)
       READER_PASSWORD: ${READER_PASSWORD:-}
+      BOOK_FILE_MONOLITO_PARA_MICROSSERVICOS: ${BOOK_FILE_MONOLITO_PARA_MICROSSERVICOS:-}
     logging:
       driver: json-file
       options:

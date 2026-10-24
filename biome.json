@@ -261,6 +261,16 @@
       }
     },
     {
+      "include": ["**/route.ts"],
+      "linter": {
+        "rules": {
+          "style": {
+            "useNamingConvention": "off"
+          }
+        }
+      }
+    },
+    {
       "include": ["**/manifest.ts"],
       "linter": {
         "rules": {
