@@ -7,7 +7,7 @@ import { cookies, headers } from 'next/headers'
 
 export type Reader = 'conan'
 
-const OWNER: Reader = 'conan'
+export const OWNER: Reader = 'conan'
 const COOKIE_NAME = 'reader_session'
 const SESSION_MAX_AGE_SECONDS = 30 * 24 * 60 * 60
 

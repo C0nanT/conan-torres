@@ -63,6 +63,7 @@ Own VPS: `docker compose up -d --build` (`docker-compose.yml`, single `web` serv
 - `total_pages` is written the first time the viewer loads the PDF, and again if the page count changes. `current_page` and `updated_at` stay `NULL` until a page is saved from the "Parei na página" field. Nothing saves automatically, and the browser keeps no copy of the position.
 - The journal mode is the default rollback mode (`DELETE`, no `-wal`/`-shm` files), so `leitor.db` alone is the whole database.
 - Failures log one line prefixed `[reader-db]` (ISO timestamp, `operacao=<op>`, `erro=<message>`). If the database is unreadable, the reader still opens on page 1, and saving shows an error.
+- **Public progress** is decided in `src/lib/book-progress.ts` (`getBooks()`): a `readable` book with a saved page shows `round(current_page / total_pages * 100)` and the `updated_at` date; every other book keeps `progress` / `progressUpdatedAt` from `site.json`. The books page renders per request (`connection()`) and reads the database each time, so a deploy never serves build-time numbers over a populated volume; at build, or if the database is unreadable (one `[reader-db]` line, `operacao=ler-progresso`), `site.json` is used. `savePage` calls `revalidateBookProgress()`; any new page that shows book progress must read `getBooks()` and be added there.
 
 Volume and backup:
 - Inspect the volume: `docker volume inspect conan-torres_leitor-data`. The prefix is the compose project name, which is the folder name by default.
