@@ -1,6 +1,7 @@
 import { mkdirSync } from 'node:fs'
 import path from 'node:path'
 import Database from 'better-sqlite3'
+import { getDataDir } from './data-dir'
 
 // The reader's SQLite file. Opened lazily on the first query (never at module
 // load) so `pnpm build` runs without a data dir. The schema below is applied
@@ -39,13 +40,6 @@ const MIGRATIONS: readonly string[] = [
 ]
 
 let connection: Database.Database | undefined
-
-// DATA_DIR is /app/reader-data (the named volume) in the image; locally it falls
-// back to ./data-local, which is gitignored.
-export function getDataDir(): string {
-  const configured = process.env.DATA_DIR?.trim()
-  return configured ? configured : path.join(process.cwd(), 'data-local')
-}
 
 function migrate(db: Database.Database) {
   const version: unknown = db.pragma('user_version', { simple: true })

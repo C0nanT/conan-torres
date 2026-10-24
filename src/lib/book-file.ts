@@ -5,6 +5,7 @@ import { Readable, Transform } from 'node:stream'
 import { pipeline } from 'node:stream/promises'
 import type { ReadableStream as NodeReadableStream } from 'node:stream/web'
 import { type BookFileFailure, logBookFileFailure } from './book-file-log'
+import { getDataDir } from './data-dir'
 import { debugReader } from './reader-log'
 
 // Server-side copy of a book PDF that lives in Google Drive ("anyone with the
@@ -17,7 +18,7 @@ const MAX_BYTES = 300 * 1024 * 1024
 const MAX_CONFIRM_PAGE_CHARS = 512 * 1024
 const PDF_MAGIC = '%PDF-'
 const BOOK_ID_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/
-const CACHE_DIR = path.join(process.cwd(), '.next', 'cache', 'book-files')
+const CACHE_FOLDER = 'book-files'
 
 export type BookFileResult =
   | { ok: true; path: string; size: number }
@@ -47,8 +48,13 @@ export function getBookFileEnvName(bookId: string): string {
   return `BOOK_FILE_${bookId.replaceAll('-', '_').toUpperCase()}`
 }
 
+// Under the data dir (the volume in the image), so a rebuild keeps the PDF.
+function getCacheDir(): string {
+  return path.join(getDataDir(), CACHE_FOLDER)
+}
+
 function getCachePath(bookId: string): string {
-  return path.join(CACHE_DIR, `${bookId}.pdf`)
+  return path.join(getCacheDir(), `${bookId}.pdf`)
 }
 
 async function readSize(file: string): Promise<number | null> {
@@ -176,7 +182,7 @@ async function download(fileId: string, target: string): Promise<void> {
     throw bookFileFailure('drive-failed', 'empty-body')
   }
 
-  await mkdir(CACHE_DIR, { recursive: true })
+  await mkdir(getCacheDir(), { recursive: true })
   const temp = `${target}.${process.pid}.${Date.now()}.tmp`
   try {
     await pipeline(

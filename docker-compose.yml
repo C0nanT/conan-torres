@@ -10,8 +10,10 @@ services:
       # read from the host shell or a .env next to this file (never committed)
       READER_PASSWORD: ${READER_PASSWORD:-}
       BOOK_FILE_MONOLITO_PARA_MICROSSERVICOS: ${BOOK_FILE_MONOLITO_PARA_MICROSSERVICOS:-}
+      READER_DEBUG: ${READER_DEBUG:-}
     volumes:
-      # reader's SQLite file (saved pages, highlights); survives rebuilds
+      # reader's SQLite file (saved pages, highlights) and the downloaded book
+      # PDFs; survives rebuilds
       - leitor-data:/app/reader-data
     logging:
       driver: json-file
