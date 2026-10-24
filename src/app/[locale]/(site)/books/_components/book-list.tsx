@@ -1,9 +1,10 @@
-import { site } from '@/lib/site-data'
+import { getBooks } from '@/lib/book-progress'
 import { getTranslations } from 'next-intl/server'
 import { BookItem } from './book-item'
 
 export async function BookList() {
   const t = await getTranslations('books')
+  const books = getBooks()
 
   return (
     <section className="py-16 lg:py-20">
@@ -14,7 +15,7 @@ export async function BookList() {
         </header>
 
         <div className="divide-y divide-dotted divide-border">
-          {site.books.recommended.map((book) => (
+          {books.map((book) => (
             <BookItem key={book.id} book={book} />
           ))}
         </div>

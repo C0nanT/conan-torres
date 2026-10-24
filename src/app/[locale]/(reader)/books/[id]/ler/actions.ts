@@ -1,5 +1,6 @@
 'use server'
 
+import { revalidateBookProgress } from '@/lib/book-progress'
 import { isPageCount, parsePageNumber } from '@/lib/page-number'
 import { getReader, signIn, signOut } from '@/lib/reader-access'
 import { logReaderDbFailure } from '@/lib/reader-db'
@@ -96,6 +97,7 @@ export async function savePage(
       setTotalPages(reader, bookId, total)
     }
     saveCurrentPage(reader, bookId, page)
+    revalidateBookProgress()
     return { status: 'saved', page }
   } catch (error) {
     logReaderDbFailure('salvar-pagina', error)
