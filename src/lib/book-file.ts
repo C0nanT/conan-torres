@@ -5,6 +5,7 @@ import { Readable, Transform } from 'node:stream'
 import { pipeline } from 'node:stream/promises'
 import type { ReadableStream as NodeReadableStream } from 'node:stream/web'
 import { type BookFileFailure, logBookFileFailure } from './book-file-log'
+import { debugReader } from './reader-log'
 
 // Server-side copy of a book PDF that lives in Google Drive ("anyone with the
 // link"). The Drive file ID comes from BOOK_FILE_<BOOK_ID_IN_CONSTANT_CASE>
@@ -208,8 +209,14 @@ async function fetchAndCache(bookId: string): Promise<BookFileResult> {
   const target = getCachePath(bookId)
   const cachedSize = await readSize(target)
   if (cachedSize !== null) {
+    debugReader('pdf-cache', {
+      livro: bookId,
+      resultado: 'hit',
+      bytes: cachedSize,
+    })
     return { ok: true, path: target, size: cachedSize }
   }
+  debugReader('pdf-cache', { livro: bookId, resultado: 'miss' })
 
   try {
     if (!BOOK_ID_PATTERN.test(bookId)) {
@@ -220,11 +227,17 @@ async function fetchAndCache(bookId: string): Promise<BookFileResult> {
     if (!fileId) {
       throw bookFileFailure('missing-env', envName)
     }
+    const startedAt = Date.now()
     await download(fileId, target)
     const size = await readSize(target)
     if (size === null) {
       throw bookFileFailure('io-error', 'missing-after-rename')
     }
+    debugReader('pdf-download', {
+      livro: bookId,
+      bytes: size,
+      ms: Date.now() - startedAt,
+    })
     return { ok: true, path: target, size }
   } catch (error) {
     const failure = getFailureInfo(error) ?? {

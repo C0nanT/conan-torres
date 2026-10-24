@@ -20,6 +20,7 @@ import { logout, reportTotalPages } from '../actions'
 import { HighlightComposer } from './highlight-composer'
 import { HighlightLayer } from './highlight-layer'
 import { HighlightsPanel } from './highlights-panel'
+import { describeError, reportReaderError } from './report-reader-error'
 import { SavePageForm } from './save-page-form'
 import { useHighlights } from './use-highlights'
 import { useTextSelection } from './use-text-selection'
@@ -242,6 +243,14 @@ export default function PdfViewer({
 
   // Stable identity: a new object each render makes react-pdf reload the file.
   const options = useMemo(() => ({ withCredentials: true }), [])
+  const [loadError, setLoadError] = useState<string | null>(null)
+
+  // A PDF that does not load used to leave only react-pdf's generic message.
+  // The cause (HTTP status, pdf.js parse error) goes on screen and to the log.
+  const handleLoadError = (origin: string) => (error: Error) => {
+    setLoadError(describeError(error))
+    reportReaderError(bookId, origin, error)
+  }
 
   const pageWidth = Math.min(Math.max(containerWidth - 16, 0), MAX_PAGE_WIDTH)
 
@@ -309,15 +318,22 @@ export default function PdfViewer({
             file={src}
             options={options}
             onLoadSuccess={handleLoadSuccess}
+            onLoadError={handleLoadError('pdf-carregar')}
+            onSourceError={handleLoadError('pdf-origem')}
             loading={
               <p className="p-8 text-center text-muted-foreground">
                 {t('loading')}
               </p>
             }
             error={
-              <p role="alert" className="p-8 text-center text-destructive">
-                {t('loadFailed')}
-              </p>
+              <div role="alert" className="p-8 text-center">
+                <p className="text-destructive">{t('loadFailed')}</p>
+                {loadError && (
+                  <p className="mt-2 break-words font-mono text-muted-foreground text-xs">
+                    {loadError}
+                  </p>
+                )}
+              </div>
             }
             className="mx-auto w-fit"
             aria-label={title}
@@ -327,6 +343,12 @@ export default function PdfViewer({
                 <Page
                   pageNumber={page}
                   width={pageWidth * zoom}
+                  onRenderError={(error) =>
+                    reportReaderError(bookId, `pdf-pagina-${page}`, error)
+                  }
+                  onRenderTextLayerError={(error) =>
+                    reportReaderError(bookId, `pdf-texto-${page}`, error)
+                  }
                   className="shadow-md"
                 />
                 <HighlightLayer

@@ -1,10 +1,13 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
-import { Link } from '@/lib/navigation'
+import { Link, usePathname } from '@/lib/navigation'
 import { AlertTriangle, ArrowLeft, RefreshCw } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { useEffect } from 'react'
+import { reportReaderError } from './books/[id]/ler/_components/report-reader-error'
+
+const BOOK_PATH_PATTERN = /^\/books\/([^/]+)\/ler/
 
 // Full-screen error inside the reader shell, so a thrown error does not fall
 // through to global-error.tsx.
@@ -16,10 +19,15 @@ export default function ReaderError({
   reset: () => void
 }) {
   const t = useTranslations('reader')
+  const pathname = usePathname()
 
+  // In production a server error reaches the browser with its message
+  // stripped; the digest is what links it to the server log.
   useEffect(() => {
-    console.error('[reader] erro na página:', error)
-  }, [error])
+    const bookId = BOOK_PATH_PATTERN.exec(pathname)?.[1] ?? 'desconhecido'
+    const origin = error.digest ? `pagina digest=${error.digest}` : 'pagina'
+    reportReaderError(bookId, origin, error)
+  }, [error, pathname])
 
   return (
     <div className="flex h-full flex-col items-center justify-center gap-6 overflow-y-auto px-4 py-8 text-center">

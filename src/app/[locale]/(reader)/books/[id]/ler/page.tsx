@@ -9,6 +9,7 @@ import {
   isReaderAccessConfigured,
 } from '@/lib/reader-access'
 import { logReaderDbFailure } from '@/lib/reader-db'
+import { debugReader } from '@/lib/reader-log'
 import { getClientIp, getLockMinutesLeft } from '@/lib/reader-rate-limit'
 import {
   type ReadingPosition,
@@ -62,6 +63,11 @@ export default async function ReaderPage({
   }
 
   const reader = await getReader()
+  debugReader('pagina', {
+    livro: book.id,
+    leitor: reader ?? 'nenhum',
+    senhaConfigurada: isReaderAccessConfigured(),
+  })
 
   if (reader) {
     const file = await ensureBookFile(book.id)

@@ -4,6 +4,7 @@ import { revalidateBookProgress } from '@/lib/book-progress'
 import { isPageCount, parsePageNumber } from '@/lib/page-number'
 import { getReader, signIn, signOut } from '@/lib/reader-access'
 import { logReaderDbFailure } from '@/lib/reader-db'
+import { debugReader } from '@/lib/reader-log'
 import {
   clearFailures,
   getClientIp,
@@ -33,11 +34,13 @@ export async function login(
   // passwords stops at the limit; a right one clears the count.
   const attempt = registerAttempt(ip)
   if (!attempt.isAllowed) {
+    debugReader('login', { ip, resultado: 'bloqueado' })
     return { status: 'locked', minutesLeft: attempt.minutesLeft }
   }
 
   const password = formData.get('password')
   const result = await signIn(typeof password === 'string' ? password : '')
+  debugReader('login', { ip, resultado: result })
   if (result !== 'wrong-password') {
     // 'not-configured' cannot succeed either way, so it does not count.
     clearFailures(ip)
