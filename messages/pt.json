@@ -19,7 +19,8 @@
   "recommendations": {
     "badge": "Recomendações",
     "titlePrefix": "O que dizem sobre",
-    "titleHighlight": "meu trabalho"
+    "titleHighlight": "meu trabalho",
+    "viewAll": "Ver todas no LinkedIn"
   },
   "common": {
     "loading": "Carregando...",
