@@ -1,10 +1,24 @@
 import { createReadStream } from 'node:fs'
 import { Readable } from 'node:stream'
 import { ensureBookFile } from '@/lib/book-file'
-import { PRIVATE_HEADERS, privateText } from '@/lib/private-response'
+import {
+  PRIVATE_HEADERS,
+  PRIVATE_REVALIDATE_CACHE_CONTROL,
+  privateText,
+} from '@/lib/private-response'
 import { getReader } from '@/lib/reader-access'
 import { debugReader } from '@/lib/reader-log'
 import { getReadableBook } from '@/lib/site-data'
+
+function matchesEtag(header: string | null, etag: string): boolean {
+  if (!header) {
+    return false
+  }
+  return header
+    .split(',')
+    .map((tag) => tag.trim().replace(/^W\//, ''))
+    .some((tag) => tag === '*' || tag === etag)
+}
 
 export async function GET(
   request: Request,
@@ -31,6 +45,22 @@ export async function GET(
     return privateText(502, 'Book file unavailable')
   }
 
+  // The validator comes from the server's cached copy, so deleting that file
+  // (to refresh it from Drive) changes it. Access was checked above, so a 304
+  // is only ever sent to the signed-in reader.
+  const etag = `"${file.size.toString(16)}-${file.modifiedMs.toString(16)}"`
+  const cacheHeaders = {
+    ...PRIVATE_HEADERS,
+    'Cache-Control': PRIVATE_REVALIDATE_CACHE_CONTROL,
+    ETag: etag,
+    'Last-Modified': new Date(file.modifiedMs).toUTCString(),
+  }
+
+  if (matchesEtag(request.headers.get('if-none-match'), etag)) {
+    debugReader('arquivo', { livro: book.id, status: 304 })
+    return new Response(null, { status: 304, headers: cacheHeaders })
+  }
+
   debugReader('arquivo', { livro: book.id, status: 200, bytes: file.size })
 
   return new Response(
@@ -39,7 +69,7 @@ export async function GET(
     Readable.toWeb(createReadStream(file.path)) as ReadableStream,
     {
       headers: {
-        ...PRIVATE_HEADERS,
+        ...cacheHeaders,
         'Content-Type': 'application/pdf',
         'Content-Length': String(file.size),
         'Content-Disposition': 'inline',
