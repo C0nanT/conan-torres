@@ -1,4 +1,9 @@
-import { createHash, createHmac, timingSafeEqual } from 'node:crypto'
+import {
+  createHash,
+  createHmac,
+  scryptSync,
+  timingSafeEqual,
+} from 'node:crypto'
 import { cookies, headers } from 'next/headers'
 
 // The single answer to "who is reading this request". Every protected page,
@@ -23,9 +28,28 @@ export function isReaderAccessConfigured(): boolean {
 }
 
 // The signing key derives from the password, so changing READER_PASSWORD
-// invalidates every cookie already issued.
+// invalidates every cookie already issued. scrypt is deliberately slow (about
+// 100 ms), so a stolen cookie is costly to brute-force offline for the
+// password; the fixed salt only separates this use from any other. Derived
+// once per password value per process.
+const KDF_SALT = 'conan-torres:reader-cookie:v2'
+const KDF_OPTIONS = {
+  cost: 2 ** 15,
+  blockSize: 8,
+  parallelization: 1,
+  maxmem: 64 * 1024 * 1024,
+}
+const KEY_LENGTH = 32
+let derived: { password: string; key: Buffer } | undefined
+
 function deriveKey(password: string): Buffer {
-  return createHash('sha256').update(`reader-cookie-v1:${password}`).digest()
+  if (derived?.password !== password) {
+    derived = {
+      password,
+      key: scryptSync(password, KDF_SALT, KEY_LENGTH, KDF_OPTIONS),
+    }
+  }
+  return derived.key
 }
 
 function sign(payload: string, password: string): string {

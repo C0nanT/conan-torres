@@ -1,39 +1,33 @@
 import { createReadStream } from 'node:fs'
 import { Readable } from 'node:stream'
 import { ensureBookFile } from '@/lib/book-file'
+import { PRIVATE_HEADERS, privateText } from '@/lib/private-response'
 import { getReader } from '@/lib/reader-access'
-import { site } from '@/lib/site-data'
-
-const PRIVATE_HEADERS = {
-  'Cache-Control': 'private, no-store',
-  'X-Content-Type-Options': 'nosniff',
-}
-
-function plain(status: number, body: string) {
-  return new Response(body, { status, headers: PRIVATE_HEADERS })
-}
+import { getReadableBook } from '@/lib/site-data'
 
 export async function GET(
   _request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
   if (!(await getReader())) {
-    return plain(401, 'Unauthorized')
+    return privateText(401, 'Unauthorized')
   }
 
   const { id } = await params
-  const book = site.books.recommended.find((item) => item.id === id)
-  if (!book?.readable) {
-    return plain(404, 'Not found')
+  const book = getReadableBook(id)
+  if (!book) {
+    return privateText(404, 'Not found')
   }
 
   const file = await ensureBookFile(book.id)
   if (!file.ok) {
     // The reason is already logged with the [book-file] prefix.
-    return plain(502, 'Book file unavailable')
+    return privateText(502, 'Book file unavailable')
   }
 
   return new Response(
+    // Node's web stream and the DOM ReadableStream Response expects are the
+    // same object at runtime but distinct types; no guard can bridge them.
     Readable.toWeb(createReadStream(file.path)) as ReadableStream,
     {
       headers: {

@@ -3,7 +3,7 @@ node_modules
 .next
 out
 
-# Local reader database (the image gets an empty /app/data for the volume)
+# Local reader database (the image gets an empty /app/reader-data for the volume)
 data-local
 *.db
 *.db-journal

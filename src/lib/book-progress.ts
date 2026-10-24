@@ -11,7 +11,29 @@ import { type RecommendedBook, site } from './site-data'
 
 interface SavedProgress {
   progress: number
+  /** Day of the save in São Paulo, YYYY-MM-DD like site.json's dates */
   updatedAt: string
+}
+
+const SAVE_DAY_FORMAT = new Intl.DateTimeFormat('en-CA', {
+  timeZone: 'America/Sao_Paulo',
+  year: 'numeric',
+  month: '2-digit',
+  day: '2-digit',
+})
+
+// The database stores the save as a UTC instant; the public page shows a
+// plain day (site.json's `2026-10-12`, rendered as UTC). Turning the instant
+// into São Paulo's calendar day here keeps a 22:30 save on the same day.
+function toSaoPauloDay(instant: string): string | null {
+  const date = new Date(instant)
+  if (Number.isNaN(date.getTime())) {
+    return null
+  }
+  const parts = new Map(
+    SAVE_DAY_FORMAT.formatToParts(date).map((part) => [part.type, part.value])
+  )
+  return `${parts.get('year')}-${parts.get('month')}-${parts.get('day')}`
 }
 
 function readSavedProgress(): Record<string, SavedProgress> {
@@ -23,12 +45,13 @@ function readSavedProgress(): Record<string, SavedProgress> {
     const saved: Record<string, SavedProgress> = {}
     for (const position of listReadingPositions(OWNER)) {
       const { currentPage, totalPages, updatedAt } = position
-      if (currentPage === null || updatedAt === null || !totalPages) {
+      const day = updatedAt === null ? null : toSaoPauloDay(updatedAt)
+      if (currentPage === null || day === null || !totalPages) {
         continue
       }
       saved[position.bookId] = {
         progress: Math.min(100, Math.round((currentPage / totalPages) * 100)),
-        updatedAt,
+        updatedAt: day,
       }
     }
     return saved

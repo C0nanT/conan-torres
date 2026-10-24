@@ -9,12 +9,12 @@ import {
   isReaderAccessConfigured,
 } from '@/lib/reader-access'
 import { logReaderDbFailure } from '@/lib/reader-db'
-import { getClientIp, getLockRemainingMs } from '@/lib/reader-rate-limit'
+import { getClientIp, getLockMinutesLeft } from '@/lib/reader-rate-limit'
 import {
   type ReadingPosition,
   getReadingPosition,
 } from '@/lib/reading-position'
-import { site } from '@/lib/site-data'
+import { getReadableBook } from '@/lib/site-data'
 import { ArrowLeft } from 'lucide-react'
 import { getTranslations } from 'next-intl/server'
 import { notFound } from 'next/navigation'
@@ -22,9 +22,9 @@ import { BookFileError, BookViewer, PrivateScreen } from './_components'
 import type { LoginState } from './actions'
 
 async function getInitialLoginState(): Promise<LoginState> {
-  const remainingMs = getLockRemainingMs(await getClientIp())
-  return remainingMs > 0
-    ? { status: 'locked', minutesLeft: Math.ceil(remainingMs / 60_000) }
+  const minutesLeft = getLockMinutesLeft(await getClientIp())
+  return minutesLeft > 0
+    ? { status: 'locked', minutesLeft }
     : { status: 'idle' }
 }
 
@@ -55,9 +55,9 @@ export default async function ReaderPage({
   params: Promise<{ id: string }>
 }) {
   const { id } = await params
-  const book = site.books.recommended.find((item) => item.id === id)
+  const book = getReadableBook(id)
 
-  if (!book?.readable) {
+  if (!book) {
     notFound()
   }
 

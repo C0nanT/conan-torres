@@ -48,7 +48,8 @@ export function getDataDir(): string {
 }
 
 function migrate(db: Database.Database) {
-  const current = db.pragma('user_version', { simple: true }) as number
+  const version: unknown = db.pragma('user_version', { simple: true })
+  const current = typeof version === 'number' ? version : 0
   if (current >= MIGRATIONS.length) {
     return
   }

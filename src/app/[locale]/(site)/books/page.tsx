@@ -13,8 +13,8 @@ export async function generateMetadata({
 }
 
 // Rendered per request so a deploy never serves build-time numbers over a
-// database that already has saved pages; the numbers themselves are cached and
-// refreshed on demand when a page is saved (see book-progress.ts).
+// database that already has saved pages. Every request reads the database;
+// saving a page also drops the router's cached copy (see book-progress.ts).
 export default async function BooksPage() {
   await connection()
   return <BookList />

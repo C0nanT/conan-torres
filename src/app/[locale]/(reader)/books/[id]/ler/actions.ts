@@ -7,25 +7,20 @@ import { logReaderDbFailure } from '@/lib/reader-db'
 import {
   clearFailures,
   getClientIp,
-  getLockRemainingMs,
-  recordFailure,
+  registerAttempt,
 } from '@/lib/reader-rate-limit'
 import {
   getReadingPosition,
   saveCurrentPage,
   setTotalPages,
 } from '@/lib/reading-position'
-import { site } from '@/lib/site-data'
+import { getReadableBook } from '@/lib/site-data'
 
 export type LoginState =
   | { status: 'idle' }
   | { status: 'wrong-password' }
   | { status: 'not-configured' }
   | { status: 'locked'; minutesLeft: number }
-
-function locked(remainingMs: number): LoginState {
-  return { status: 'locked', minutesLeft: Math.ceil(remainingMs / 60_000) }
-}
 
 // Changing the cookie makes Next re-render the reader page, which then shows
 // the reader instead of the private screen; no redirect needed.
@@ -34,33 +29,28 @@ export async function login(
   formData: FormData
 ): Promise<LoginState> {
   const ip = await getClientIp()
-  const remainingMs = getLockRemainingMs(ip)
-  if (remainingMs > 0) {
-    return locked(remainingMs)
+  // Counted before the password is compared, so a parallel burst of wrong
+  // passwords stops at the limit; a right one clears the count.
+  const attempt = registerAttempt(ip)
+  if (!attempt.isAllowed) {
+    return { status: 'locked', minutesLeft: attempt.minutesLeft }
   }
 
   const password = formData.get('password')
   const result = await signIn(typeof password === 'string' ? password : '')
-  if (result === 'ok') {
+  if (result !== 'wrong-password') {
+    // 'not-configured' cannot succeed either way, so it does not count.
     clearFailures(ip)
-    return { status: 'idle' }
-  }
-  if (result === 'not-configured') {
-    return { status: 'not-configured' }
+    return result === 'ok' ? { status: 'idle' } : { status: 'not-configured' }
   }
 
-  const lockMs = recordFailure(ip)
-  return lockMs > 0 ? locked(lockMs) : { status: 'wrong-password' }
+  return attempt.lockMinutesIfWrong > 0
+    ? { status: 'locked', minutesLeft: attempt.lockMinutesIfWrong }
+    : { status: 'wrong-password' }
 }
 
 export async function logout(): Promise<void> {
   await signOut()
-}
-
-function isReadableBook(bookId: unknown): bookId is string {
-  return site.books.recommended.some(
-    (book) => book.id === bookId && book.readable
-  )
 }
 
 export type SavePageResult =
@@ -79,12 +69,13 @@ export async function savePage(
   pdfTotal: unknown
 ): Promise<SavePageResult> {
   const reader = await getReader()
-  if (!(reader && isReadableBook(bookId))) {
+  const book = getReadableBook(bookId)
+  if (!(reader && book)) {
     return { status: 'unauthorized' }
   }
 
   try {
-    const stored = getReadingPosition(reader, bookId)?.totalPages ?? null
+    const stored = getReadingPosition(reader, book.id)?.totalPages ?? null
     const total = isPageCount(pdfTotal) ? pdfTotal : stored
     if (total === null) {
       return { status: 'error' }
@@ -94,9 +85,9 @@ export async function savePage(
       return { status: 'invalid', total }
     }
     if (total !== stored) {
-      setTotalPages(reader, bookId, total)
+      setTotalPages(reader, book.id, total)
     }
-    saveCurrentPage(reader, bookId, page)
+    saveCurrentPage(reader, book.id, page)
     revalidateBookProgress()
     return { status: 'saved', page }
   } catch (error) {
@@ -112,11 +103,12 @@ export async function reportTotalPages(
   totalPages: unknown
 ): Promise<void> {
   const reader = await getReader()
-  if (!(reader && isReadableBook(bookId) && isPageCount(totalPages))) {
+  const book = getReadableBook(bookId)
+  if (!(reader && book && isPageCount(totalPages))) {
     return
   }
   try {
-    setTotalPages(reader, bookId, totalPages)
+    setTotalPages(reader, book.id, totalPages)
   } catch (error) {
     logReaderDbFailure('gravar-total', error)
   }
