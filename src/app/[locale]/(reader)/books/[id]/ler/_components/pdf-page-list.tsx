@@ -22,6 +22,13 @@ const RENDER_AROUND = 2
 const PAGE_GAP = 8
 const NO_HIGHLIGHTS: Highlight[] = []
 
+// The spot kept on screen across a zoom: a page and how far down it (as a
+// fraction of its height) the scroller's vertical centre was.
+interface ZoomAnchor {
+  page: number
+  fraction: number
+}
+
 export interface PdfPageListHandle {
   scrollToPage: (page: number) => void
 }
@@ -124,9 +131,44 @@ export const PdfPageList = forwardRef<
   const pinnedTop = useRef<number | null>(null)
   const frame = useRef(0)
   const hasRestored = useRef(false)
+  // The slot height the DOM was last laid out with, and the spot to restore
+  // once the next layout is in place.
+  const laidOutSlot = useRef(0)
+  const zoomAnchor = useRef<ZoomAnchor | null>(null)
 
   const byPage = useMemo(() => groupByPage(highlights), [highlights])
   const slotHeight = width * (defaultRatio ?? 0)
+
+  // Render runs before React touches the DOM, so on a new size the elements
+  // still hold the old layout: the last chance to read where the reader is.
+  if (
+    hasRestored.current &&
+    laidOutSlot.current > 0 &&
+    slotHeight !== laidOutSlot.current &&
+    !zoomAnchor.current
+  ) {
+    zoomAnchor.current = readAnchor()
+  }
+
+  function readAnchor(): ZoomAnchor | null {
+    const scroller = scrollRef.current
+    if (!scroller) {
+      return null
+    }
+    const centre =
+      scroller.getBoundingClientRect().top + scroller.clientHeight / 2
+    // A requested page stays current even when another covers the centre.
+    const page =
+      pinnedTop.current === null
+        ? findCentrePage(scroller, elements.current, elements.current.keys())
+        : currentPage.current
+    const rect =
+      page === null ? null : elements.current.get(page)?.getBoundingClientRect()
+    if (page === null || !rect || rect.height <= 0) {
+      return null
+    }
+    return { page, fraction: (centre - rect.top) / rect.height }
+  }
 
   const report = useCallback(
     (page: number) => {
@@ -240,8 +282,8 @@ export const PdfPageList = forwardRef<
   }, [scheduleUpdate, scrollRef])
 
   // Opening: jump to the saved page (or page 1) once the slots have a size.
-  // After that, a new width (zoom, resize, panel) keeps the current page on
-  // screen.
+  // After that, a new width (zoom, resize, panel) puts the same spot of the
+  // same page back at the centre of the scroller.
   // biome-ignore lint/correctness/useExhaustiveDependencies: runs on new width
   useLayoutEffect(() => {
     if (slotHeight <= 0) {
@@ -249,10 +291,30 @@ export const PdfPageList = forwardRef<
     }
     if (!hasRestored.current) {
       hasRestored.current = true
+      laidOutSlot.current = slotHeight
       scrollToPage(initialPage)
       return
     }
-    scrollToPage(currentPage.current)
+    laidOutSlot.current = slotHeight
+    const anchor = zoomAnchor.current
+    zoomAnchor.current = null
+    const scroller = scrollRef.current
+    const element = anchor && elements.current.get(anchor.page)
+    if (!(anchor && scroller && element)) {
+      scrollToPage(currentPage.current)
+      return
+    }
+    const rect = element.getBoundingClientRect()
+    const centre =
+      scroller.getBoundingClientRect().top + scroller.clientHeight / 2
+    // Instant on purpose, like every other jump.
+    scroller.scrollTo({
+      top:
+        scroller.scrollTop + rect.top + anchor.fraction * rect.height - centre,
+      behavior: 'instant',
+    })
+    pinnedTop.current = scroller.scrollTop
+    report(anchor.page)
   }, [slotHeight])
 
   const registerPage = useCallback(
