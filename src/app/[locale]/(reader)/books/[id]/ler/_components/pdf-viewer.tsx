@@ -1,15 +1,21 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
+import type { Highlight, HighlightColor } from '@/lib/highlight-rules'
 import { Link } from '@/lib/navigation'
-import { ArrowLeft, LogOut, Minus, Plus } from 'lucide-react'
+import { ArrowLeft, Highlighter, LogOut, Minus, Plus } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Document, Page, pdfjs } from 'react-pdf'
 import 'react-pdf/dist/Page/AnnotationLayer.css'
 import 'react-pdf/dist/Page/TextLayer.css'
 import { logout, reportTotalPages } from '../actions'
+import { HighlightComposer } from './highlight-composer'
+import { HighlightLayer } from './highlight-layer'
+import { HighlightsPanel } from './highlights-panel'
 import { SavePageForm } from './save-page-form'
+import { useHighlights } from './use-highlights'
+import { useTextSelection } from './use-text-selection'
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   'pdfjs-dist/build/pdf.worker.min.mjs',
@@ -49,15 +55,21 @@ function Toolbar({
   page,
   total,
   zoom,
+  highlightCount,
+  isPanelOpen,
   onPageChange,
   onZoomChange,
+  onTogglePanel,
 }: {
   bookId: string
   page: number
   total: number
   zoom: number
+  highlightCount: number
+  isPanelOpen: boolean
   onPageChange: (page: number) => void
   onZoomChange: (zoom: number) => void
+  onTogglePanel: () => void
 }) {
   const t = useTranslations('reader')
   const [draft, setDraft] = useState(String(page))
@@ -152,6 +164,17 @@ function Toolbar({
         >
           <Plus className="h-4 w-4" />
         </Button>
+        <Button
+          type="button"
+          variant={isPanelOpen ? 'secondary' : 'ghost'}
+          size="sm"
+          aria-label={t('highlights.toggle')}
+          aria-pressed={isPanelOpen}
+          onClick={onTogglePanel}
+        >
+          <Highlighter className="h-4 w-4" />
+          <span className="ml-1 text-xs tabular-nums">{highlightCount}</span>
+        </Button>
         <form action={logout}>
           <Button
             type="submit"
@@ -174,12 +197,14 @@ export default function PdfViewer({
   title,
   savedPage,
   storedTotal,
+  initialHighlights,
 }: {
   bookId: string
   src: string
   title: string
   savedPage: number | null
   storedTotal: number | null
+  initialHighlights: Highlight[]
 }) {
   const t = useTranslations('reader')
   const [total, setTotal] = useState(0)
@@ -187,6 +212,15 @@ export default function PdfViewer({
   const [page, setPage] = useState(savedPage ?? 1)
   const hasReportedTotal = useRef(false)
   const [zoom, setZoom] = useState(1)
+  const pageRef = useRef<HTMLDivElement>(null)
+  const [isPanelOpen, setIsPanelOpen] = useState(false)
+  const [isComposing, setIsComposing] = useState(false)
+  const { highlights, add, remove } = useHighlights(bookId, initialHighlights)
+  const { selection, clear: clearSelection } = useTextSelection(
+    pageRef,
+    page,
+    isComposing
+  )
   const { ref: scrollRef, width: containerWidth } =
     useElementWidth<HTMLDivElement>()
 
@@ -199,6 +233,31 @@ export default function PdfViewer({
     setPage(clamp(next, 1, Math.max(total, 1)))
     // Instant on purpose: no scrolling animation to opt out of.
     scrollRef.current?.scrollTo({ top: 0, left: 0, behavior: 'instant' })
+  }
+
+  const handleJump = (target: number) => {
+    handlePageChange(target)
+    // On phones the panel is a sheet that covers the page.
+    if (window.matchMedia('(max-width: 767px)').matches) {
+      setIsPanelOpen(false)
+    }
+  }
+
+  const handleSaveHighlight = async (color: HighlightColor, note: string) => {
+    if (!selection) {
+      return false
+    }
+    const isSaved = await add({
+      page,
+      color,
+      text: selection.text,
+      note: note.trim() || null,
+      rects: selection.rects,
+    })
+    if (isSaved) {
+      clearSelection()
+    }
+    return isSaved
   }
 
   const handleLoadSuccess = ({ numPages }: { numPages: number }) => {
@@ -219,36 +278,66 @@ export default function PdfViewer({
         page={page}
         total={total}
         zoom={zoom}
+        highlightCount={highlights.length}
+        isPanelOpen={isPanelOpen}
+        onTogglePanel={() => setIsPanelOpen((current) => !current)}
         onPageChange={handlePageChange}
         onZoomChange={(next) => setZoom(clamp(next, MIN_ZOOM, MAX_ZOOM))}
       />
-      <div ref={scrollRef} className="flex-1 overflow-auto bg-muted/40 p-2">
-        <Document
-          file={src}
-          options={options}
-          onLoadSuccess={handleLoadSuccess}
-          loading={
-            <p className="p-8 text-center text-muted-foreground">
-              {t('loading')}
-            </p>
-          }
-          error={
-            <p role="alert" className="p-8 text-center text-destructive">
-              {t('loadFailed')}
-            </p>
-          }
-          className="mx-auto w-fit"
-          aria-label={title}
+      <div className="flex min-h-0 flex-1">
+        <div
+          ref={scrollRef}
+          className="min-w-0 flex-1 overflow-auto bg-muted/40 p-2"
         >
-          {pageWidth > 0 && total > 0 && (
-            <Page
-              pageNumber={page}
-              width={pageWidth * zoom}
-              className="shadow-md"
-            />
-          )}
-        </Document>
+          <Document
+            file={src}
+            options={options}
+            onLoadSuccess={handleLoadSuccess}
+            loading={
+              <p className="p-8 text-center text-muted-foreground">
+                {t('loading')}
+              </p>
+            }
+            error={
+              <p role="alert" className="p-8 text-center text-destructive">
+                {t('loadFailed')}
+              </p>
+            }
+            className="mx-auto w-fit"
+            aria-label={title}
+          >
+            {pageWidth > 0 && total > 0 && (
+              <div ref={pageRef} className="relative w-fit">
+                <Page
+                  pageNumber={page}
+                  width={pageWidth * zoom}
+                  className="shadow-md"
+                />
+                <HighlightLayer
+                  highlights={highlights.filter((item) => item.page === page)}
+                />
+              </div>
+            )}
+          </Document>
+        </div>
+        {isPanelOpen && (
+          <HighlightsPanel
+            highlights={highlights}
+            currentPage={page}
+            onJump={handleJump}
+            onRemove={remove}
+            onClose={() => setIsPanelOpen(false)}
+          />
+        )}
       </div>
+      {selection && (
+        <HighlightComposer
+          selection={selection}
+          isOpen={isComposing}
+          onOpenChange={setIsComposing}
+          onSave={handleSaveHighlight}
+        />
+      )}
     </div>
   )
 }
