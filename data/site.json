@@ -277,7 +277,8 @@
         "cover": "/books/monolith-to-microservices.jpg",
         "status": "reading",
         "progress": 35,
-        "progressUpdatedAt": "2026-10-12"
+        "progressUpdatedAt": "2026-10-12",
+        "readable": true
       },
       {
         "id": "14-habitos-desenvolvedores",

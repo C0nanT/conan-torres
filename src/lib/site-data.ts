@@ -51,6 +51,11 @@ export interface RecommendedBook {
   rating?: 1 | 2 | 3 | 4 | 5
   /** short personal remark about the book */
   note?: string
+  /**
+   * Shows the "Ler" button and enables `/books/<id>/ler`. Only a marker: the
+   * file's location stays in server env vars, never in this public repo.
+   */
+  readable?: boolean
 }
 
 export interface ProjectEntry {

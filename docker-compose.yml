@@ -7,6 +7,8 @@ services:
     environment:
       NODE_ENV: production
       PORT: 8080
+      # read from the host shell or a .env next to this file (never committed)
+      READER_PASSWORD: ${READER_PASSWORD:-}
     logging:
       driver: json-file
       options:
