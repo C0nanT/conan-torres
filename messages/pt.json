@@ -46,7 +46,17 @@
     "notConfigured": "O leitor está indisponível no momento: o acesso não foi configurado no servidor.",
     "signOut": "Sair",
     "exportHighlights": "Exportar grifos",
+    "exportFailed": "Não consegui exportar os grifos agora. Tente de novo em instantes.",
     "loading": "Carregando o livro...",
+    "opening": {
+      "title": "Abrindo o livro...",
+      "firstOpen": "Na primeira abertura, o servidor baixa o livro do Drive. Isso pode levar até dois minutos; depois, ele abre na hora."
+    },
+    "crash": {
+      "title": "O leitor encontrou um erro",
+      "description": "Algo deu errado ao abrir o livro. Tente de novo; se continuar, volte para os livros e entre mais tarde.",
+      "retry": "Tentar de novo"
+    },
     "loadFailed": "Não foi possível abrir o PDF. Tente recarregar a página.",
     "pageLabel": "Página",
     "pageOf": "de {total}",
