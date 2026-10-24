@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project
 
-Personal site for Conan Torres (content creator / educator). Next.js 15 App Router, React 18, TypeScript, Tailwind 3, shadcn/ui (new-york) + Radix, Framer Motion / `motion`, `next-intl`. Started from create-t3-app; the T3 boilerplate is gone (no tRPC/Prisma/NextAuth, no env validation). Only the book reader reads env vars (`READER_PASSWORD`, see Deploy); the rest of the site works without them.
+Personal site for Conan Torres (content creator / educator). Next.js 15 App Router, React 18, TypeScript, Tailwind 3, shadcn/ui (new-york) + Radix, Framer Motion / `motion`, `next-intl`. Started from create-t3-app; the T3 boilerplate is gone (no tRPC/Prisma/NextAuth, no env validation). Only the book reader reads env vars (`READER_PASSWORD`, `BOOK_FILE_*`, `DATA_DIR`, see Deploy); the rest of the site works without them.
 
 ## Commands
 
