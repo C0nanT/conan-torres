@@ -9,7 +9,7 @@ import {
   isReaderAccessConfigured,
 } from '@/lib/reader-access'
 import { logReaderDbFailure } from '@/lib/reader-db'
-import { getClientIp, getLockRemainingMs } from '@/lib/reader-rate-limit'
+import { getClientIp, getLockMinutesLeft } from '@/lib/reader-rate-limit'
 import {
   type ReadingPosition,
   getReadingPosition,
@@ -22,9 +22,9 @@ import { BookFileError, BookViewer, PrivateScreen } from './_components'
 import type { LoginState } from './actions'
 
 async function getInitialLoginState(): Promise<LoginState> {
-  const remainingMs = getLockRemainingMs(await getClientIp())
-  return remainingMs > 0
-    ? { status: 'locked', minutesLeft: Math.ceil(remainingMs / 60_000) }
+  const minutesLeft = getLockMinutesLeft(await getClientIp())
+  return minutesLeft > 0
+    ? { status: 'locked', minutesLeft }
     : { status: 'idle' }
 }
 

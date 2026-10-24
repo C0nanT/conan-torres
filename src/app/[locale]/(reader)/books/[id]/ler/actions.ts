@@ -7,8 +7,7 @@ import { logReaderDbFailure } from '@/lib/reader-db'
 import {
   clearFailures,
   getClientIp,
-  getLockRemainingMs,
-  recordFailure,
+  registerAttempt,
 } from '@/lib/reader-rate-limit'
 import {
   getReadingPosition,
@@ -23,10 +22,6 @@ export type LoginState =
   | { status: 'not-configured' }
   | { status: 'locked'; minutesLeft: number }
 
-function locked(remainingMs: number): LoginState {
-  return { status: 'locked', minutesLeft: Math.ceil(remainingMs / 60_000) }
-}
-
 // Changing the cookie makes Next re-render the reader page, which then shows
 // the reader instead of the private screen; no redirect needed.
 export async function login(
@@ -34,23 +29,24 @@ export async function login(
   formData: FormData
 ): Promise<LoginState> {
   const ip = await getClientIp()
-  const remainingMs = getLockRemainingMs(ip)
-  if (remainingMs > 0) {
-    return locked(remainingMs)
+  // Counted before the password is compared, so a parallel burst of wrong
+  // passwords stops at the limit; a right one clears the count.
+  const attempt = registerAttempt(ip)
+  if (!attempt.isAllowed) {
+    return { status: 'locked', minutesLeft: attempt.minutesLeft }
   }
 
   const password = formData.get('password')
   const result = await signIn(typeof password === 'string' ? password : '')
-  if (result === 'ok') {
+  if (result !== 'wrong-password') {
+    // 'not-configured' cannot succeed either way, so it does not count.
     clearFailures(ip)
-    return { status: 'idle' }
-  }
-  if (result === 'not-configured') {
-    return { status: 'not-configured' }
+    return result === 'ok' ? { status: 'idle' } : { status: 'not-configured' }
   }
 
-  const lockMs = recordFailure(ip)
-  return lockMs > 0 ? locked(lockMs) : { status: 'wrong-password' }
+  return attempt.lockMinutesIfWrong > 0
+    ? { status: 'locked', minutesLeft: attempt.lockMinutesIfWrong }
+    : { status: 'wrong-password' }
 }
 
 export async function logout(): Promise<void> {
