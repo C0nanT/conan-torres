@@ -21,7 +21,7 @@ const BOOK_ID_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/
 const CACHE_FOLDER = 'book-files'
 
 export type BookFileResult =
-  | { ok: true; path: string; size: number }
+  | { ok: true; path: string; size: number; modifiedMs: number }
   | { ok: false; reason: BookFileFailure }
 
 interface FailureInfo {
@@ -57,10 +57,17 @@ function getCachePath(bookId: string): string {
   return path.join(getCacheDir(), `${bookId}.pdf`)
 }
 
-async function readSize(file: string): Promise<number | null> {
+interface FileInfo {
+  size: number
+  modifiedMs: number
+}
+
+async function readInfo(file: string): Promise<FileInfo | null> {
   try {
     const info = await stat(file)
-    return info.isFile() && info.size > 0 ? info.size : null
+    return info.isFile() && info.size > 0
+      ? { size: info.size, modifiedMs: Math.floor(info.mtimeMs) }
+      : null
   } catch {
     return null
   }
@@ -192,7 +199,7 @@ async function download(fileId: string, target: string): Promise<void> {
       createPdfGuard(),
       createWriteStream(temp)
     )
-    if ((await readSize(temp)) === null) {
+    if ((await readInfo(temp)) === null) {
       throw bookFileFailure('not-pdf', 'empty')
     }
     await rename(temp, target)
@@ -213,14 +220,14 @@ async function download(fileId: string, target: string): Promise<void> {
 
 async function fetchAndCache(bookId: string): Promise<BookFileResult> {
   const target = getCachePath(bookId)
-  const cachedSize = await readSize(target)
-  if (cachedSize !== null) {
+  const cached = await readInfo(target)
+  if (cached !== null) {
     debugReader('pdf-cache', {
       livro: bookId,
       resultado: 'hit',
-      bytes: cachedSize,
+      bytes: cached.size,
     })
-    return { ok: true, path: target, size: cachedSize }
+    return { ok: true, path: target, ...cached }
   }
   debugReader('pdf-cache', { livro: bookId, resultado: 'miss' })
 
@@ -235,16 +242,16 @@ async function fetchAndCache(bookId: string): Promise<BookFileResult> {
     }
     const startedAt = Date.now()
     await download(fileId, target)
-    const size = await readSize(target)
-    if (size === null) {
+    const info = await readInfo(target)
+    if (info === null) {
       throw bookFileFailure('io-error', 'missing-after-rename')
     }
     debugReader('pdf-download', {
       livro: bookId,
-      bytes: size,
+      bytes: info.size,
       ms: Date.now() - startedAt,
     })
-    return { ok: true, path: target, size }
+    return { ok: true, path: target, ...info }
   } catch (error) {
     const failure = getFailureInfo(error) ?? {
       reason: 'io-error',
