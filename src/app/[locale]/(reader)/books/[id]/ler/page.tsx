@@ -14,7 +14,7 @@ import {
   type ReadingPosition,
   getReadingPosition,
 } from '@/lib/reading-position'
-import { site } from '@/lib/site-data'
+import { getReadableBook } from '@/lib/site-data'
 import { ArrowLeft } from 'lucide-react'
 import { getTranslations } from 'next-intl/server'
 import { notFound } from 'next/navigation'
@@ -55,9 +55,9 @@ export default async function ReaderPage({
   params: Promise<{ id: string }>
 }) {
   const { id } = await params
-  const book = site.books.recommended.find((item) => item.id === id)
+  const book = getReadableBook(id)
 
-  if (!book?.readable) {
+  if (!book) {
     notFound()
   }
 

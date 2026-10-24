@@ -258,6 +258,14 @@ export function getBookProgress(book: RecommendedBook): number | undefined {
   return book.progress
 }
 
+/**
+ * The book with this id when it is marked `readable`, else undefined. Takes
+ * `unknown` because server actions pass untrusted arguments straight in.
+ */
+export function getReadableBook(id: unknown): RecommendedBook | undefined {
+  return site.books.recommended.find((book) => book.id === id && book.readable)
+}
+
 export function getYouTubeVideoUrl(
   videoId: string,
   startSeconds?: number

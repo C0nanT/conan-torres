@@ -14,7 +14,7 @@ import {
   saveCurrentPage,
   setTotalPages,
 } from '@/lib/reading-position'
-import { site } from '@/lib/site-data'
+import { getReadableBook } from '@/lib/site-data'
 
 export type LoginState =
   | { status: 'idle' }
@@ -53,12 +53,6 @@ export async function logout(): Promise<void> {
   await signOut()
 }
 
-function isReadableBook(bookId: unknown): bookId is string {
-  return site.books.recommended.some(
-    (book) => book.id === bookId && book.readable
-  )
-}
-
 export type SavePageResult =
   | { status: 'saved'; page: number }
   | { status: 'invalid'; total: number }
@@ -75,12 +69,13 @@ export async function savePage(
   pdfTotal: unknown
 ): Promise<SavePageResult> {
   const reader = await getReader()
-  if (!(reader && isReadableBook(bookId))) {
+  const book = getReadableBook(bookId)
+  if (!(reader && book)) {
     return { status: 'unauthorized' }
   }
 
   try {
-    const stored = getReadingPosition(reader, bookId)?.totalPages ?? null
+    const stored = getReadingPosition(reader, book.id)?.totalPages ?? null
     const total = isPageCount(pdfTotal) ? pdfTotal : stored
     if (total === null) {
       return { status: 'error' }
@@ -90,9 +85,9 @@ export async function savePage(
       return { status: 'invalid', total }
     }
     if (total !== stored) {
-      setTotalPages(reader, bookId, total)
+      setTotalPages(reader, book.id, total)
     }
-    saveCurrentPage(reader, bookId, page)
+    saveCurrentPage(reader, book.id, page)
     revalidateBookProgress()
     return { status: 'saved', page }
   } catch (error) {
@@ -108,11 +103,12 @@ export async function reportTotalPages(
   totalPages: unknown
 ): Promise<void> {
   const reader = await getReader()
-  if (!(reader && isReadableBook(bookId) && isPageCount(totalPages))) {
+  const book = getReadableBook(bookId)
+  if (!(reader && book && isPageCount(totalPages))) {
     return
   }
   try {
-    setTotalPages(reader, bookId, totalPages)
+    setTotalPages(reader, book.id, totalPages)
   } catch (error) {
     logReaderDbFailure('gravar-total', error)
   }
