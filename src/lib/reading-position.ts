@@ -63,3 +63,19 @@ export function saveCurrentPage(
     )
     .run({ owner, bookId, currentPage, updatedAt })
 }
+
+export interface BookReadingPosition extends ReadingPosition {
+  bookId: string
+}
+
+// Every book the owner has a row for; feeds the public books page.
+export function listReadingPositions(owner: Reader): BookReadingPosition[] {
+  return getDb()
+    .prepare<[{ owner: string }], BookReadingPosition>(
+      `SELECT book_id AS bookId, current_page AS currentPage,
+              total_pages AS totalPages, updated_at AS updatedAt
+         FROM reading_positions
+        WHERE owner = @owner`
+    )
+    .all({ owner })
+}
