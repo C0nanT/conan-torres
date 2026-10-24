@@ -17,13 +17,19 @@ WORKDIR /app
 ENV NODE_ENV=production \
     NEXT_TELEMETRY_DISABLED=1 \
     HOSTNAME=0.0.0.0 \
-    PORT=8080
+    PORT=8080 \
+    DATA_DIR=/app/reader-data
 
 # The node user (uid 1000) owns /app so Next can write .next/cache at runtime
 # (YouTube stats unstable_cache, next/image optimization cache).
 COPY --from=builder --chown=node:node /app/.next/standalone ./
 COPY --from=builder --chown=node:node /app/.next/static ./.next/static
 COPY --from=builder --chown=node:node /app/public ./public
+
+# Mount point of the named volume holding the reader's SQLite file. A new,
+# empty volume inherits this node:node ownership, so the non-root user can
+# create leitor.db there.
+RUN mkdir -p /app/reader-data && chown node:node /app/reader-data
 
 USER node
 EXPOSE 8080

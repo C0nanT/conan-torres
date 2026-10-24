@@ -8,7 +8,8 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import { Document, Page, pdfjs } from 'react-pdf'
 import 'react-pdf/dist/Page/AnnotationLayer.css'
 import 'react-pdf/dist/Page/TextLayer.css'
-import { logout } from '../actions'
+import { logout, reportTotalPages } from '../actions'
+import { SavePageForm } from './save-page-form'
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   'pdfjs-dist/build/pdf.worker.min.mjs',
@@ -44,12 +45,14 @@ function useElementWidth<T extends HTMLElement>() {
 }
 
 function Toolbar({
+  bookId,
   page,
   total,
   zoom,
   onPageChange,
   onZoomChange,
 }: {
+  bookId: string
   page: number
   total: number
   zoom: number
@@ -120,6 +123,8 @@ function Toolbar({
         </Button>
       </div>
 
+      <SavePageForm bookId={bookId} page={page} total={total} />
+
       <div className="flex items-center gap-1">
         <Button
           type="button"
@@ -164,15 +169,23 @@ function Toolbar({
 }
 
 export default function PdfViewer({
+  bookId,
   src,
   title,
+  savedPage,
+  storedTotal,
 }: {
+  bookId: string
   src: string
   title: string
+  savedPage: number | null
+  storedTotal: number | null
 }) {
   const t = useTranslations('reader')
   const [total, setTotal] = useState(0)
-  const [page, setPage] = useState(1)
+  // Always the server's saved page (or 1): the browser keeps no position.
+  const [page, setPage] = useState(savedPage ?? 1)
+  const hasReportedTotal = useRef(false)
   const [zoom, setZoom] = useState(1)
   const { ref: scrollRef, width: containerWidth } =
     useElementWidth<HTMLDivElement>()
@@ -188,9 +201,21 @@ export default function PdfViewer({
     scrollRef.current?.scrollTo({ top: 0, left: 0, behavior: 'instant' })
   }
 
+  const handleLoadSuccess = ({ numPages }: { numPages: number }) => {
+    setTotal(numPages)
+    // A replaced, shorter PDF must not leave the reader past its last page.
+    setPage((current) => clamp(current, 1, numPages))
+    // First open (or a replaced PDF): store the page count once.
+    if (numPages !== storedTotal && !hasReportedTotal.current) {
+      hasReportedTotal.current = true
+      reportTotalPages(bookId, numPages).catch(() => undefined)
+    }
+  }
+
   return (
     <div className="flex h-full flex-col">
       <Toolbar
+        bookId={bookId}
         page={page}
         total={total}
         zoom={zoom}
@@ -201,7 +226,7 @@ export default function PdfViewer({
         <Document
           file={src}
           options={options}
-          onLoadSuccess={({ numPages }) => setTotal(numPages)}
+          onLoadSuccess={handleLoadSuccess}
           loading={
             <p className="p-8 text-center text-muted-foreground">
               {t('loading')}

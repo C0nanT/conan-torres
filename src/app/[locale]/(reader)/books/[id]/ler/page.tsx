@@ -1,8 +1,17 @@
 import { Button } from '@/components/ui/button'
 import { ensureBookFile } from '@/lib/book-file'
 import { Link } from '@/lib/navigation'
-import { getReader, isReaderAccessConfigured } from '@/lib/reader-access'
+import {
+  type Reader,
+  getReader,
+  isReaderAccessConfigured,
+} from '@/lib/reader-access'
+import { logReaderDbFailure } from '@/lib/reader-db'
 import { getClientIp, getLockRemainingMs } from '@/lib/reader-rate-limit'
+import {
+  type ReadingPosition,
+  getReadingPosition,
+} from '@/lib/reading-position'
 import { site } from '@/lib/site-data'
 import { ArrowLeft } from 'lucide-react'
 import { getTranslations } from 'next-intl/server'
@@ -15,6 +24,17 @@ async function getInitialLoginState(): Promise<LoginState> {
   return remainingMs > 0
     ? { status: 'locked', minutesLeft: Math.ceil(remainingMs / 60_000) }
     : { status: 'idle' }
+}
+
+// A database failure must not lock Conan out of the book: open on page 1 and
+// let the save action report the problem.
+function loadPosition(owner: Reader, bookId: string): ReadingPosition | null {
+  try {
+    return getReadingPosition(owner, bookId)
+  } catch (error) {
+    logReaderDbFailure('ler-posicao', error)
+    return null
+  }
 }
 
 export default async function ReaderPage({
@@ -34,7 +54,15 @@ export default async function ReaderPage({
   if (reader) {
     const file = await ensureBookFile(book.id)
     if (file.ok) {
-      return <BookViewer bookId={book.id} title={book.title} />
+      const position = loadPosition(reader, book.id)
+      return (
+        <BookViewer
+          bookId={book.id}
+          title={book.title}
+          savedPage={position?.currentPage ?? null}
+          storedTotal={position?.totalPages ?? null}
+        />
+      )
     }
     return (
       <Centered>

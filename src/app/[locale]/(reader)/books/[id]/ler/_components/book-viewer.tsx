@@ -23,9 +23,21 @@ const PdfViewer = dynamic(() => import('./pdf-viewer'), {
 export function BookViewer({
   bookId,
   title,
+  savedPage,
+  storedTotal,
 }: {
   bookId: string
   title: string
+  savedPage: number | null
+  storedTotal: number | null
 }) {
-  return <PdfViewer src={`/api/books/${bookId}/file`} title={title} />
+  return (
+    <PdfViewer
+      bookId={bookId}
+      src={`/api/books/${bookId}/file`}
+      title={title}
+      savedPage={savedPage}
+      storedTotal={storedTotal}
+    />
+  )
 }
