@@ -129,7 +129,7 @@ export const PdfPageList = forwardRef<
   // from it, the requested page stays current, even if another page covers
   // the centre (at low zoom several pages fit on screen).
   const pinnedTop = useRef<number | null>(null)
-  const frame = useRef(0)
+  const frameId = useRef(0)
   const hasRestored = useRef(false)
   // The slot height the DOM was last laid out with, and the spot to restore
   // once the next layout is in place.
@@ -181,7 +181,7 @@ export const PdfPageList = forwardRef<
   )
 
   const updateCurrentPage = useCallback(() => {
-    frame.current = 0
+    frameId.current = 0
     const scroller = scrollRef.current
     if (!scroller) {
       return
@@ -200,8 +200,8 @@ export const PdfPageList = forwardRef<
 
   // At most once per animation frame, however many scroll events arrive.
   const scheduleUpdate = useCallback(() => {
-    if (!frame.current) {
-      frame.current = requestAnimationFrame(updateCurrentPage)
+    if (!frameId.current) {
+      frameId.current = requestAnimationFrame(updateCurrentPage)
     }
   }, [updateCurrentPage])
 
@@ -253,7 +253,14 @@ export const PdfPageList = forwardRef<
             inWindow.current.delete(page)
           }
         }
-        setRendered(new Set(inWindow.current))
+        const visible = new Set(inWindow.current)
+        // Same pages as before: keep the old set, so nothing re-renders.
+        setRendered((current) =>
+          current.size === visible.size &&
+          [...current].every((page) => visible.has(page))
+            ? current
+            : visible
+        )
         scheduleUpdate()
       },
       { root: scroller, rootMargin: `${margin}px 0px` }
@@ -276,8 +283,8 @@ export const PdfPageList = forwardRef<
     scroller.addEventListener('scroll', scheduleUpdate, { passive: true })
     return () => {
       scroller.removeEventListener('scroll', scheduleUpdate)
-      cancelAnimationFrame(frame.current)
-      frame.current = 0
+      cancelAnimationFrame(frameId.current)
+      frameId.current = 0
     }
   }, [scheduleUpdate, scrollRef])
 
@@ -316,6 +323,14 @@ export const PdfPageList = forwardRef<
     pinnedTop.current = scroller.scrollTop
     report(anchor.page)
   }, [slotHeight])
+
+  // An anchor lives from the render that read it to that render's commit,
+  // where the effect above uses it. A render that never commits, or a size
+  // that returns to the laid-out one, leaves it unused: drop it after every
+  // commit, so a later zoom or resize reads a fresh one.
+  useLayoutEffect(() => {
+    zoomAnchor.current = null
+  })
 
   const registerPage = useCallback(
     (page: number, element: HTMLDivElement | null) => {
