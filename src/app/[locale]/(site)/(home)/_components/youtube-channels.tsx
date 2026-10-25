@@ -31,9 +31,9 @@ export async function YouTubeChannels() {
         <div className="text-center space-y-4 mb-12">
           <Badge
             variant="outline"
-            className="group px-3 py-1 motion-safe:hover:scale-100 hover:border-[#FF0000]/40 hover:bg-[#FF0000]/10 hover:text-[#D93025]"
+            className="px-3 py-1 motion-safe:hover:scale-100 hover:border-border hover:bg-transparent"
           >
-            <Youtube className="mr-1 h-3 w-3 text-foreground transition-colors duration-200 group-hover:text-[#D93025]" />
+            <Youtube className="mr-1 h-3 w-3 text-foreground" />
             YouTube
           </Badge>
           <h2 className="text-3xl font-bold lg:text-4xl">
