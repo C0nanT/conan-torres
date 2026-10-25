@@ -40,10 +40,10 @@ const technologyGroups: TechnologyGroup[] = [
   },
   {
     id: 'security',
-    color: '#ef4444',
+    color: '#ec4899',
     labels: ['Segurança', 'Autenticação', 'JWT'],
   },
-  { id: 'ai', color: '#ec4899', labels: ['IA', 'Claude'] },
+  { id: 'ai', color: '#ef4444', labels: ['IA', 'Claude'] },
   {
     id: 'career',
     color: '#64748b',
