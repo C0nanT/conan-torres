@@ -1,4 +1,4 @@
-import type { LiveChannelStats, LiveVideoStats } from './youtube/live-stats'
+import type { LiveChannelStats, LiveVideoStats } from '@/lib/youtube/live-stats'
 
 const FALLBACK_TEXT = 'Valor aproximado — ainda não foi possível atualizar'
 

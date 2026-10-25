@@ -61,8 +61,8 @@ data/                 Conteúdo do site (site.json, certifications.json)
 messages/pt.json      Textos da interface
 public/               Imagens, certificados, capas de livros
 src/app/[locale]/     Páginas (home, about, projects, books, certificates)
-src/components/       ui (shadcn + animados), layout, common
-src/lib/              site-data, metadata, navigation, youtube-live-stats
+src/components/       ui (primitivos shadcn), layout (navegação, rodapé), common (logos, botões, animados)
+src/lib/              site-data, metadata, navigation, styling; reader/, youtube/, certifications/ (domínios)
 ```
 
 ## Onde editar

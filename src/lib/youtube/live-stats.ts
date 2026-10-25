@@ -1,9 +1,9 @@
-import { unstable_cache } from 'next/cache'
-import { site } from '../site-data'
+import { site } from '@/lib/site-data'
 import type {
   RecommendedYouTubeChannel,
   RecommendedYouTubeVideo,
-} from '../site-data'
+} from '@/lib/site-data'
+import { unstable_cache } from 'next/cache'
 import {
   logFallbackUsed,
   recordScrapeFailure,
