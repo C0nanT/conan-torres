@@ -11,6 +11,7 @@ services:
       READER_PASSWORD: ${READER_PASSWORD:-}
       BOOK_FILE_MONOLITO_PARA_MICROSSERVICOS: ${BOOK_FILE_MONOLITO_PARA_MICROSSERVICOS:-}
       READER_DEBUG: ${READER_DEBUG:-}
+      APP_ENV: ${APP_ENV:-}
     volumes:
       # reader's SQLite file (saved pages) and the downloaded book
       # PDFs; survives rebuilds
