@@ -22,6 +22,8 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
 ).toString()
 
 const MAX_PAGE_WIDTH = 900
+// Below this width the highlights panel is a sheet that covers the page.
+const PHONE_QUERY = '(max-width: 767px)'
 
 function useElementWidth<T extends HTMLElement>() {
   const ref = useRef<T>(null)
@@ -96,7 +98,7 @@ export default function PdfViewer({
   const handleJump = (target: number) => {
     handlePageChange(target)
     // On phones the panel is a sheet that covers the page.
-    if (window.matchMedia('(max-width: 767px)').matches) {
+    if (window.matchMedia(PHONE_QUERY).matches) {
       setIsPanelOpen(false)
     }
   }

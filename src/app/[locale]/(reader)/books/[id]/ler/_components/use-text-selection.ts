@@ -6,7 +6,7 @@ import {
   MAX_HIGHLIGHT_TEXT,
 } from '@/lib/highlight-rules'
 import { type RefObject, useEffect, useState } from 'react'
-import { PAGE_SELECTOR } from './pdf-page-item'
+import { PAGE_SELECTOR } from './page-selector'
 
 const TEXT_LAYER = '.react-pdf__Page__textContent'
 const SETTLE_MS = 200

@@ -8,11 +8,6 @@ import { Page } from 'react-pdf'
 import { HighlightLayer } from './highlight-layer'
 import { reportReaderError } from './report-reader-error'
 
-// Marks the page box (`data-reader-page`): the element a selection and its
-// rects are measured against. It has exactly the page's size, so saved rects
-// keep their meaning.
-export const PAGE_SELECTOR = '[data-reader-page]'
-
 function PageContent({
   bookId,
   pageNumber,
