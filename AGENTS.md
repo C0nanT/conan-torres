@@ -15,12 +15,12 @@ pnpm dev               # dev server (Turbopack, see below)
 pnpm build             # production build (standalone output)
 pnpm check             # biome lint + format check
 pnpm check:fix         # biome auto-fix
-pnpm exec tsc --noEmit # type check (no script for it)
+pnpm typecheck         # type check (tsc --noEmit)
 ```
 
 `pnpm dev` runs `next dev --turbopack` because webpack's dev server cannot open the book reader: loading `pdfjs-dist` throws `Object.defineProperty called on non-object`, and the reader's `error.tsx` ("O leitor encontrou um erro") replaces the viewer. `pdf.mjs` declares its own top-level `var __webpack_exports__`, which shadows webpack's in the dev `eval` wrapper; production builds (`pnpm build`) concatenate modules and are fine, and Next reverts any `devtool` change in dev. Do not switch `dev` back to webpack while the reader uses `react-pdf`.
 
-No test framework is set up, and none is wanted: this is a portfolio site. Do not write or add tests, set up a test framework, or declare test seams, even when a skill (`tdd`, `to-spec`, `to-tickets`, `implement`, …) asks for them. Where a skill requires a testing section, write "no automated tests" and verify with `pnpm check`, `pnpm exec tsc --noEmit`, `pnpm build` and a manual check. Pre-commit hook (husky + lint-staged) runs `biome check --write` on staged files.
+No test framework is set up, and none is wanted: this is a portfolio site. Do not write or add tests, set up a test framework, or declare test seams, even when a skill (`tdd`, `to-spec`, `to-tickets`, `implement`, …) asks for them. Where a skill requires a testing section, write "no automated tests" and verify with `pnpm check`, `pnpm typecheck`, `pnpm build` and a manual check. Pre-commit hook (husky + lint-staged) runs `biome check --write` on staged files.
 
 ## Architecture
 
