@@ -21,7 +21,7 @@
     "badge": "Recomendações",
     "titlePrefix": "O que dizem sobre",
     "titleHighlight": "meu trabalho",
-    "viewAll": "Ver todas no LinkedIn"
+    "viewAll": "Ver todas no Linkedin"
   },
   "common": {
     "loading": "Carregando...",
@@ -101,7 +101,8 @@
       "projects": "Projetos Relevantes Publicados",
       "certifications": "Certificações",
       "experience": "Anos de Experiência",
-      "freelances": "Projetos Freelance"
+      "freelances": "Projetos Freelance",
+      "maintenance": "Em manutenção"
     },
     "cta": {
       "courses": "Ver Projetos",
@@ -266,6 +267,7 @@
   },
   "maintenance": {
     "title": "Página em manutenção",
+    "tape": "Em manutenção",
     "description": "Esta página está passando por ajustes e volta em breve.",
     "backToHome": "Voltar ao início"
   }

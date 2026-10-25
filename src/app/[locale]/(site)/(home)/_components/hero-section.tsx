@@ -1,5 +1,6 @@
 'use client'
 
+import { CautionTape } from '@/components/common/caution-tape'
 import * as FancyButton from '@/components/common/fancy-button'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
@@ -37,6 +38,7 @@ interface HeroStat {
   value: string
   icon: LucideIcon
   href?: string
+  isUnderMaintenance?: boolean
 }
 
 interface HeroSectionProps {
@@ -68,6 +70,7 @@ export function HeroSection({ projectsCount }: HeroSectionProps) {
       label: t('stats.freelances'),
       value: profile.stats.freelances,
       icon: Rocket,
+      isUnderMaintenance: true,
     },
   ]
 
@@ -207,7 +210,6 @@ export function HeroSection({ projectsCount }: HeroSectionProps) {
                       className="pointer-events-none absolute inset-0"
                     >
                       <div className="absolute inset-0 bg-[radial-gradient(circle_at_100%_0%,hsl(var(--primary)/0.14),transparent_65%)]" />
-                      <div className="absolute inset-0 bg-[radial-gradient(hsl(var(--primary)/0.35)_1px,transparent_1px)] [background-size:10px_10px] [mask-image:radial-gradient(circle_at_100%_0%,black,transparent_70%)]" />
                       <div className="absolute -right-8 -top-8 h-24 w-24 rounded-full border border-primary/15" />
                       <div className="absolute -right-12 -top-12 h-32 w-32 rounded-full border border-primary/10" />
                       <Icon
@@ -215,12 +217,25 @@ export function HeroSection({ projectsCount }: HeroSectionProps) {
                         className="absolute right-2 top-2 h-12 w-12 rotate-12 text-primary/25 transition-[transform,color] duration-300 ease-out group-hover:text-primary/40 motion-safe:group-hover:rotate-[24deg] motion-safe:group-hover:scale-110"
                       />
                     </div>
-                    <CardContent className="relative p-3">
+                    <CardContent
+                      className={cn(
+                        'relative p-3',
+                        stat.isUnderMaintenance &&
+                          'select-none opacity-30 blur-[1.5px]'
+                      )}
+                      aria-hidden={stat.isUnderMaintenance}
+                    >
                       <div className="text-2xl font-bold">{stat.value}</div>
                       <div className="text-xs text-muted-foreground">
                         {stat.label}
                       </div>
                     </CardContent>
+                    {stat.isUnderMaintenance && (
+                      <CautionTape
+                        label={t('stats.maintenance')}
+                        className="absolute inset-x-[-15%] top-1/2 -translate-y-1/2 -rotate-[8deg]"
+                      />
+                    )}
                   </Card>
                 )
 

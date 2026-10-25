@@ -18,7 +18,11 @@ export async function generateMetadata({
 export default async function ProjectsPage() {
   await connection()
   if (isProductionEnv()) {
-    return <MaintenancePage />
+    return (
+      <MaintenancePage>
+        <ProjectList />
+      </MaintenancePage>
+    )
   }
   return <ProjectList />
 }
