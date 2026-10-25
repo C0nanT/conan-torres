@@ -454,6 +454,15 @@
   },
   "recommendations": [
     {
+      "id": "leandro-holanda",
+      "name": "Leandro Holanda",
+      "photo": "/recommendations/leandro.jpeg",
+      "headline": "Desenvolvedor Back-End | Django | Python | Django Rest Framework | FastAPI | Docker | PostgreSQL | MySQL | AWS",
+      "relationship": "Era liderado por Conan",
+      "date": "outubro de 2026",
+      "text": "Conan foi um pilar fundamental durante o meu estágio na DPESC. Com muita paciência e domínio técnico, ele me orientou no desenvolvimento de aplicações em PHP e Python. É um profissional dedicado, colaborativo e com uma didática excelente para compartilhar conhecimento. Um excelente desenvolvedor e um grande parceiro de equipe. Recomendo fortemente!"
+    },
+    {
       "id": "julia-santos",
       "photo": "/recommendations/julia.jpeg",
       "name": "Julia Santos",
