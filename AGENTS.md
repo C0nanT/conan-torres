@@ -95,10 +95,10 @@ Biome (`biome.json`) is strict and enforced; notable rules:
 - `useNamingConvention`: functions camelCase/PascalCase, variables camelCase/CONSTANT_CASE/PascalCase, types PascalCase.
 - a11y rules are errors (`useButtonType`, `useAltText`, `noBlankTarget`, `useKeyWithClickEvents`, …).
 
-From `.cursor/rules/`:
+Code style:
 - kebab-case file and directory names; PascalCase components/types; event handlers prefixed `handle`, booleans `is/has/can`.
 - Functional/declarative code, early returns, no classes; prefer Server Components, `'use client'` only where needed.
-- Animations: purposeful, compositor-friendly properties (transform/opacity), interruptible, and must respect `prefers-reduced-motion` (see `.cursor/rules/animation-guidelines.mdc` for the full Framer Motion guidance).
+- Animations: purposeful, compositor-friendly properties (transform/opacity), interruptible, and must respect `prefers-reduced-motion`.
 
 ## SOLID
 
