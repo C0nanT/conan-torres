@@ -1,9 +1,9 @@
 'use client'
 
+import * as FancyButton from '@/components/common/fancy-button'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
-import * as FancyButton from '@/components/ui/fancy-button'
 import { Link } from '@/lib/navigation'
 import { cn } from '@/lib/shadcn'
 import { site } from '@/lib/site-data'

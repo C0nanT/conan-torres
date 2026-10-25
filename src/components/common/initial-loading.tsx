@@ -1,6 +1,6 @@
 'use client'
 
-import { LoadingScreen } from '@/components/ui/loading-screen'
+import { LoadingScreen } from '@/components/common/loading-screen'
 import { useEffect, useState } from 'react'
 
 export function InitialLoading() {

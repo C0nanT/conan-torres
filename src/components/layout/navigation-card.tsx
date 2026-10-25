@@ -1,7 +1,7 @@
+import * as FancyButton from '@/components/common/fancy-button'
 import { Link } from '@/lib/navigation'
 import { cn } from '@/lib/shadcn'
 import type * as React from 'react'
-import * as FancyButton from './fancy-button'
 
 interface NavigationCardProps {
   href: string

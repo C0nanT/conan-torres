@@ -1,2 +1,6 @@
 export { Navigation } from './navigation'
 export { Footer } from './footer'
+export { NavigationDock } from './navigation-dock'
+export { NavigationCard } from './navigation-card'
+export { RouteTransition } from './route-transition'
+export { LocaleSwitch } from './locale-switch'
