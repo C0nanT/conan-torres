@@ -1,5 +1,5 @@
-import { cn } from '@/lib/shadcn'
 import type { Recommendation } from '@/lib/site-data'
+import { cn } from '@/lib/styling'
 import Image from 'next/image'
 
 interface RecommendationAvatarProps {

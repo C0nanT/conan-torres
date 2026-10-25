@@ -1,5 +1,5 @@
-import { cn } from '@/lib/shadcn'
 import { site } from '@/lib/site-data'
+import { cn } from '@/lib/styling'
 import { LogoIcon } from './logo-icon'
 
 interface Props {

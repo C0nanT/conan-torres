@@ -41,7 +41,7 @@ No test framework is set up, and none is wanted: this is a portfolio site. Do no
 
 Page-specific components live in colocated `_components/` folders with an `index.ts` barrel (e.g. `src/app/[locale]/(site)/(home)/_components/`). Metadata per page goes through `generateLocalizedMetadata(locale, page)` in `src/lib/metadata.ts`, which reads the `metadata` message namespace + `site.json`.
 
-**Components:** `src/components/ui` (shadcn primitives only, so `shadcn add` never touches a component written by hand), `src/components/layout` (site chrome: nav/footer, navigation-dock, navigation-card, route-transition, locale-switch), `src/components/common` (other custom pieces: logos, whatsapp-floating-button, fancy-button, social-button, loading-screen, initial-loading, clarity). `cn()` is in `src/lib/shadcn.ts` (shadcn alias `utils`); `tv` (tailwind-variants) is re-exported from `src/utils/tv.ts`. Path alias `@/*` → `src/*`.
+**Components:** `src/components/ui` (shadcn primitives only, so `shadcn add` never touches a component written by hand), `src/components/layout` (site chrome: nav/footer, navigation-dock, navigation-card, route-transition, locale-switch), `src/components/common` (other custom pieces: logos, whatsapp-floating-button, fancy-button, social-button, loading-screen, initial-loading, clarity). `cn()` and `tv` (tailwind-variants re-export) both live in `src/lib/styling.ts` (shadcn alias `utils`), next to the other helpers in `src/lib/`. Path alias `@/*` → `src/*`.
 
 Remote images must be whitelisted in `next.config.mjs` `images.remotePatterns` (currently only YouTube thumbnails).
 

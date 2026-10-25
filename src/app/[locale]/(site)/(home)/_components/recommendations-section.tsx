@@ -1,8 +1,8 @@
 'use client'
 
 import { Badge } from '@/components/ui/badge'
-import { cn } from '@/lib/shadcn'
 import { type Recommendation, site } from '@/lib/site-data'
+import { cn } from '@/lib/styling'
 import {
   AnimatePresence,
   type Variants,

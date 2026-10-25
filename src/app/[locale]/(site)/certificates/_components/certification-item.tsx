@@ -11,8 +11,8 @@ import {
   getCertificationLinks,
 } from '@/lib/certifications/links'
 import { sortTechnologies } from '@/lib/certifications/technology-groups'
-import { cn } from '@/lib/shadcn'
 import type { Certification } from '@/lib/site-data'
+import { cn } from '@/lib/styling'
 import { ExternalLink, FileText } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
