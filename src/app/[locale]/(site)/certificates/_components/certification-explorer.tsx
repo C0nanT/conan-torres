@@ -6,9 +6,9 @@ import {
   getAllTechnologies,
   groupByYear,
   sortCertifications,
-} from '@/lib/certifications'
+} from '@/lib/certifications/certifications'
+import { groupTechnologies } from '@/lib/certifications/technology-groups'
 import type { Certification } from '@/lib/site-data'
-import { groupTechnologies } from '@/lib/technology-groups'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { Trash2 } from 'lucide-react'
 import { useTranslations } from 'next-intl'

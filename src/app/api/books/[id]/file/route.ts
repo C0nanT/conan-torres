@@ -1,13 +1,13 @@
 import { createReadStream } from 'node:fs'
 import { Readable } from 'node:stream'
-import { ensureBookFile } from '@/lib/book-file'
+import { getReader } from '@/lib/reader/access'
+import { ensureBookFile } from '@/lib/reader/book-file'
+import { debugReader } from '@/lib/reader/log'
 import {
   PRIVATE_HEADERS,
   PRIVATE_REVALIDATE_CACHE_CONTROL,
   privateText,
-} from '@/lib/private-response'
-import { getReader } from '@/lib/reader-access'
-import { debugReader } from '@/lib/reader-log'
+} from '@/lib/reader/private-response'
 import { getReadableBook } from '@/lib/site-data'
 
 function matchesEtag(header: string | null, etag: string): boolean {

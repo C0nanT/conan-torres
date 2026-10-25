@@ -1,8 +1,8 @@
 import { revalidatePath } from 'next/cache'
-import { OWNER } from './reader-access'
-import { logReaderDbFailure } from './reader-db'
+import { type RecommendedBook, site } from '../site-data'
+import { OWNER } from './access'
+import { logReaderDbFailure } from './db'
 import { listReadingPositions } from './reading-position'
-import { type RecommendedBook, site } from './site-data'
 
 // The one place where the public reading progress is decided. A readable
 // book with a saved page takes `current_page / total_pages` and the save date

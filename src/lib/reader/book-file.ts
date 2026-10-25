@@ -6,7 +6,7 @@ import { pipeline } from 'node:stream/promises'
 import type { ReadableStream as NodeReadableStream } from 'node:stream/web'
 import { type BookFileFailure, logBookFileFailure } from './book-file-log'
 import { getDataDir } from './data-dir'
-import { debugReader } from './reader-log'
+import { debugReader } from './log'
 
 // Server-side copy of a book PDF that lives in Google Drive ("anyone with the
 // link"). The Drive file ID comes from BOOK_FILE_<BOOK_ID_IN_CONSTANT_CASE>

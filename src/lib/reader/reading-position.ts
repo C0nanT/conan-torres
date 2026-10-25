@@ -1,5 +1,5 @@
-import type { Reader } from './reader-access'
-import { getDb } from './reader-db'
+import type { Reader } from './access'
+import { getDb } from './db'
 
 // Where each owner stopped in each book. The only module with reading-position
 // SQL: the reader page, its actions and (later) the books page call these

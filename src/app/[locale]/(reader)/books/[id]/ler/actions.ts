@@ -1,20 +1,20 @@
 'use server'
 
-import { revalidateBookProgress } from '@/lib/book-progress'
-import { isPageCount, parsePageNumber } from '@/lib/page-number'
-import { getReader, signIn, signOut } from '@/lib/reader-access'
-import { logReaderDbFailure } from '@/lib/reader-db'
-import { debugReader } from '@/lib/reader-log'
+import { getReader, signIn, signOut } from '@/lib/reader/access'
+import { revalidateBookProgress } from '@/lib/reader/book-progress'
+import { logReaderDbFailure } from '@/lib/reader/db'
+import { debugReader } from '@/lib/reader/log'
+import { isPageCount, parsePageNumber } from '@/lib/reader/page-number'
 import {
   clearFailures,
   getClientIp,
   registerAttempt,
-} from '@/lib/reader-rate-limit'
+} from '@/lib/reader/rate-limit'
 import {
   getReadingPosition,
   saveCurrentPage,
   setTotalPages,
-} from '@/lib/reading-position'
+} from '@/lib/reader/reading-position'
 import { getReadableBook } from '@/lib/site-data'
 
 export type LoginState =
