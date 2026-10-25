@@ -1,5 +1,5 @@
+import { type RecommendedBook, site } from '@/lib/site-data'
 import { revalidatePath } from 'next/cache'
-import { type RecommendedBook, site } from '../site-data'
 import { OWNER } from './access'
 import { logReaderDbFailure } from './db'
 import { listReadingPositions } from './reading-position'

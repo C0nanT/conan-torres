@@ -1,8 +1,8 @@
 'use client'
 
-import { LogoIcon } from '@/components/common'
 import { cn } from '@/lib/styling'
 import { useEffect, useState } from 'react'
+import { LogoIcon } from './logo-icon'
 
 interface LoadingScreenProps {
   isLoading: boolean
