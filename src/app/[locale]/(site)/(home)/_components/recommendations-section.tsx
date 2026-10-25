@@ -200,20 +200,24 @@ export function RecommendationsSection() {
                       (a montagem reinicia a animação). Sem animação
                       (prefers-reduced-motion) não há contagem nem troca
                       automática; com um só autor não há para onde ir. */}
+                  {/* A barra fica colada na borda de baixo do card; o
+                      recorte arredondado acompanha os cantos do destaque. */}
                   {isSelected && items.length > 1 && (
                     <span
                       aria-hidden={true}
                       style={{ animationDelay: `${BAR_DELAY_MS}ms` }}
-                      className="absolute inset-x-3 bottom-1 h-0.5 animate-recommendation-bar-in rounded-full bg-border motion-reduce:hidden"
+                      className="pointer-events-none absolute inset-0 animate-recommendation-bar-in overflow-hidden rounded-lg motion-reduce:hidden"
                     >
-                      <span
-                        onAnimationEnd={handleCountdownEnd}
-                        style={{
-                          animationDelay: `${BAR_DELAY_MS}ms`,
-                          animationDuration: `${getReadingTimeMs(item.text) - BAR_DELAY_MS}ms`,
-                        }}
-                        className="block h-full origin-right animate-recommendation-countdown rounded-full bg-primary group-hover:[animation-play-state:paused] group-has-[:focus-visible]:[animation-play-state:paused]"
-                      />
+                      <span className="absolute inset-x-0 bottom-0 h-[3px] bg-primary/15">
+                        <span
+                          onAnimationEnd={handleCountdownEnd}
+                          style={{
+                            animationDelay: `${BAR_DELAY_MS}ms`,
+                            animationDuration: `${getReadingTimeMs(item.text) - BAR_DELAY_MS}ms`,
+                          }}
+                          className="block h-full origin-right animate-recommendation-countdown bg-primary group-hover:[animation-play-state:paused] group-has-[:focus-visible]:[animation-play-state:paused]"
+                        />
+                      </span>
                     </span>
                   )}
                 </button>
