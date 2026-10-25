@@ -134,7 +134,7 @@ export function BookItem({ book }: { book: RecommendedBook }) {
   const progress = getBookProgress(book)
 
   return (
-    <article className="hover-ambient grid gap-5 rounded-lg border border-transparent px-3 py-6 first:pt-0 last:pb-0 sm:grid-cols-[144px_1fr]">
+    <article className="grid gap-5 py-10 first:pt-0last:pb-0 sm:grid-cols-[144px_1fr]">
       <BookCover book={book} progress={progress} />
 
       <div className="space-y-3">
