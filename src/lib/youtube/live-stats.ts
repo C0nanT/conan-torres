@@ -1,15 +1,15 @@
-import { unstable_cache } from 'next/cache'
-import { site } from './site-data'
+import { site } from '@/lib/site-data'
 import type {
   RecommendedYouTubeChannel,
   RecommendedYouTubeVideo,
-} from './site-data'
+} from '@/lib/site-data'
+import { unstable_cache } from 'next/cache'
 import {
   logFallbackUsed,
   recordScrapeFailure,
   recordScrapeSuccess,
-} from './youtube-stats-log'
-import type { StatsTarget } from './youtube-stats-log'
+} from './stats-log'
+import type { StatsTarget } from './stats-log'
 
 const REVALIDATE_SECONDS = 60 * 60 * 24
 const FETCH_TIMEOUT_MS = 8000

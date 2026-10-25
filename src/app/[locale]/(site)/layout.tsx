@@ -1,6 +1,6 @@
 import { WhatsappFloatingButton } from '@/components/common'
 import { Footer, Navigation } from '@/components/layout'
-import { RouteTransition } from '@/components/ui/route-transition'
+import { RouteTransition } from '@/components/layout/route-transition'
 import { Suspense } from 'react'
 
 export default function SiteLayout({

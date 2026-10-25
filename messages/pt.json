@@ -263,5 +263,10 @@
         "credenciais"
       ]
     }
+  },
+  "maintenance": {
+    "title": "Página em manutenção",
+    "description": "Esta página está passando por ajustes e volta em breve.",
+    "backToHome": "Voltar ao início"
   }
 }

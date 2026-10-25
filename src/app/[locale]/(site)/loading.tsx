@@ -1,6 +1,6 @@
 'use client'
 
-import { LoadingScreen } from '@/components/ui/loading-screen'
+import { LoadingScreen } from '@/components/common/loading-screen'
 
 export default function Loading() {
   return <LoadingScreen isLoading={true} />

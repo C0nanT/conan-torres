@@ -1,7 +1,7 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
-import { parsePageNumber } from '@/lib/page-number'
+import { parsePageNumber } from '@/lib/reader/page-number'
 import { useTranslations } from 'next-intl'
 import { useEffect, useState, useTransition } from 'react'
 import { toast } from 'sonner'

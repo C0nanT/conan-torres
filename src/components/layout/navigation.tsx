@@ -1,9 +1,9 @@
 'use client'
 
+import { SocialButton } from '@/components/common/social-button'
+import { NavigationCard } from '@/components/layout/navigation-card'
+import { NavigationDock } from '@/components/layout/navigation-dock'
 import { Button } from '@/components/ui/button'
-import { NavigationCard } from '@/components/ui/navigation-card'
-import { NavigationDock } from '@/components/ui/navigation-dock'
-import { SocialButton } from '@/components/ui/social-button'
 import { Link, usePathname } from '@/lib/navigation'
 import { getSocialLinksForNav } from '@/lib/site-data'
 import { useTranslations } from 'next-intl'

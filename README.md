@@ -43,7 +43,7 @@ Abra [http://localhost:3000](http://localhost:3000).
 | `pnpm build` | Build de produção (saída `standalone`) |
 | `pnpm check` | Lint + formatação (Biome) |
 | `pnpm check:fix` | Corrige lint e formatação automaticamente |
-| `pnpm exec tsc --noEmit` | Checagem de tipos |
+| `pnpm typecheck` | Checagem de tipos |
 
 O build usa `output: 'standalone'`, então `pnpm start` (`next start`) não é suportado: o Next avisa que não funciona com essa configuração. Em produção o site roda via Docker (veja [Deploy](#deploy)). Para testar o build de produção localmente:
 
@@ -61,8 +61,8 @@ data/                 Conteúdo do site (site.json, certifications.json)
 messages/pt.json      Textos da interface
 public/               Imagens, certificados, capas de livros
 src/app/[locale]/     Páginas (home, about, projects, books, certificates)
-src/components/       ui (shadcn + animados), layout, common
-src/lib/              site-data, metadata, navigation, youtube-live-stats
+src/components/       ui (primitivos shadcn), layout (navegação, rodapé), common (logos, botões, animados)
+src/lib/              site-data, metadata, navigation, styling; reader/, youtube/, certifications/ (domínios)
 ```
 
 ## Onde editar

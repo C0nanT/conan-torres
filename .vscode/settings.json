@@ -1,8 +1,6 @@
 {
   "search.exclude": {
-    "package-lock.json": true,
-    "pnpm-lock.json": true,
-    "yarn.lock": true
+    "pnpm-lock.yaml": true
   },
   // Tailwind
   "css.lint.unknownAtRules": "ignore",
@@ -45,5 +43,5 @@
   "files.eol": "\n",
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
-  "i18n-ally.localesPaths": ["messages", "src/i18n"]
+  "i18n-ally.localesPaths": ["messages"]
 }
