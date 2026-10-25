@@ -1,4 +1,4 @@
-import { ClarityAnalytics } from '@/components/clarity'
+import { ClarityAnalytics } from '@/components/common/clarity'
 import { getSiteUrl } from '@/lib/site-data'
 import type { Metadata } from 'next'
 

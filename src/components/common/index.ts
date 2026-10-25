@@ -2,3 +2,8 @@
 export { LogoHorizontal } from './logo-horizontal'
 export { LogoIcon } from './logo-icon'
 export { WhatsappFloatingButton } from './whatsapp-floating-button'
+export * as FancyButton from './fancy-button'
+export { SocialButton } from './social-button'
+export { LoadingScreen } from './loading-screen'
+export { InitialLoading } from './initial-loading'
+export { ClarityAnalytics } from './clarity'

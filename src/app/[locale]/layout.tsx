@@ -1,4 +1,4 @@
-import { InitialLoading } from '@/components/ui/initial-loading'
+import { InitialLoading } from '@/components/common/initial-loading'
 import { Toaster } from '@/components/ui/sonner'
 import {
   generateLocalizedMetadata,
