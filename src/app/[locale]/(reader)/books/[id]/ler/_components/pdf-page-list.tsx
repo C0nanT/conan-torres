@@ -1,6 +1,5 @@
 'use client'
 
-import type { Highlight } from '@/lib/highlight-rules'
 import {
   type RefObject,
   forwardRef,
@@ -20,7 +19,6 @@ import { PdfPageItem } from './pdf-page-item'
 const RENDER_AROUND = 2
 // Space between pages, in px (matches `gap-2` and the scroller's `p-2`).
 const PAGE_GAP = 8
-const NO_HIGHLIGHTS: Highlight[] = []
 
 // The spot kept on screen across a zoom: a page and how far down it (as a
 // fraction of its height) the scroller's vertical centre was.
@@ -31,19 +29,6 @@ interface ZoomAnchor {
 
 export interface PdfPageListHandle {
   scrollToPage: (page: number) => void
-}
-
-function groupByPage(highlights: Highlight[]) {
-  const groups = new Map<number, Highlight[]>()
-  for (const highlight of highlights) {
-    const group = groups.get(highlight.page)
-    if (group) {
-      group.push(highlight)
-    } else {
-      groups.set(highlight.page, [highlight])
-    }
-  }
-  return groups
 }
 
 // The ratio (height / width) of page 1, the size every slot reserves until
@@ -110,12 +95,11 @@ export const PdfPageList = forwardRef<
     total: number
     width: number
     initialPage: number
-    highlights: Highlight[]
     scrollRef: RefObject<HTMLDivElement>
     onPageChange: (page: number) => void
   }
 >(function PdfPageList(
-  { bookId, total, width, initialPage, highlights, scrollRef, onPageChange },
+  { bookId, total, width, initialPage, scrollRef, onPageChange },
   ref
 ) {
   const defaultRatio = useDefaultRatio()
@@ -136,7 +120,6 @@ export const PdfPageList = forwardRef<
   const laidOutSlot = useRef(0)
   const zoomAnchor = useRef<ZoomAnchor | null>(null)
 
-  const byPage = useMemo(() => groupByPage(highlights), [highlights])
   const slotHeight = width * (defaultRatio ?? 0)
 
   // Render runs before React touches the DOM, so on a new size the elements
@@ -375,7 +358,6 @@ export const PdfPageList = forwardRef<
           width={width}
           height={width * (ratios[page] ?? defaultRatio)}
           isRendered={rendered.has(page)}
-          highlights={byPage.get(page) ?? NO_HIGHLIGHTS}
           registerPage={registerPage}
           onRatio={handleRatio}
         />

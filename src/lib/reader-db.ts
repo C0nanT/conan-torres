@@ -6,7 +6,7 @@ import { getDataDir } from './data-dir'
 // The reader's SQLite file. Opened lazily on the first query (never at module
 // load) so `pnpm build` runs without a data dir. The schema below is applied
 // idempotently on that first open. Only the data modules (reading-position,
-// later highlights) import this; nothing else writes SQL.
+// later tables) import this; nothing else writes SQL.
 
 const LOG_PREFIX = '[reader-db]'
 const DB_FILE = 'leitor.db'

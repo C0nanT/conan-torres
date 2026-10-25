@@ -1,6 +1,5 @@
 'use client'
 
-import type { Highlight } from '@/lib/highlight-rules'
 import { useTranslations } from 'next-intl'
 import dynamic from 'next/dynamic'
 
@@ -26,13 +25,11 @@ export function BookViewer({
   title,
   savedPage,
   storedTotal,
-  initialHighlights,
 }: {
   bookId: string
   title: string
   savedPage: number | null
   storedTotal: number | null
-  initialHighlights: Highlight[]
 }) {
   return (
     <PdfViewer
@@ -41,7 +38,6 @@ export function BookViewer({
       title={title}
       savedPage={savedPage}
       storedTotal={storedTotal}
-      initialHighlights={initialHighlights}
     />
   )
 }

@@ -2,14 +2,7 @@
 
 import { Button } from '@/components/ui/button'
 import { Link } from '@/lib/navigation'
-import {
-  ArrowLeft,
-  Download,
-  Highlighter,
-  LogOut,
-  Minus,
-  Plus,
-} from 'lucide-react'
+import { ArrowLeft, LogOut, Minus, Plus } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
 import { logout } from '../actions'
@@ -21,21 +14,15 @@ export function PdfToolbar({
   page,
   total,
   zoom,
-  highlightCount,
-  isPanelOpen,
   onPageChange,
   onZoomChange,
-  onTogglePanel,
 }: {
   bookId: string
   page: number
   total: number
   zoom: number
-  highlightCount: number
-  isPanelOpen: boolean
   onPageChange: (page: number) => void
   onZoomChange: (zoom: number) => void
-  onTogglePanel: () => void
 }) {
   const t = useTranslations('reader')
   const [draft, setDraft] = useState(String(page))
@@ -129,26 +116,6 @@ export function PdfToolbar({
           onClick={() => onZoomChange(zoom + ZOOM_STEP)}
         >
           <Plus className="h-4 w-4" />
-        </Button>
-        <Button
-          type="button"
-          variant={isPanelOpen ? 'secondary' : 'ghost'}
-          size="sm"
-          aria-label={t('highlights.toggle')}
-          aria-pressed={isPanelOpen}
-          onClick={onTogglePanel}
-        >
-          <Highlighter className="h-4 w-4" />
-          <span className="ml-1 text-xs tabular-nums">{highlightCount}</span>
-        </Button>
-        <Button asChild={true} variant="ghost" size="sm">
-          <a
-            href={`/api/books/${bookId}/highlights/export`}
-            aria-label={t('exportHighlights')}
-          >
-            <Download className="h-4 w-4 sm:mr-2" />
-            <span className="hidden sm:inline">{t('exportHighlights')}</span>
-          </a>
         </Button>
         <form action={logout}>
           <Button

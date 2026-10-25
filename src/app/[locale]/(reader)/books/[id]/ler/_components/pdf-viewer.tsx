@@ -1,19 +1,14 @@
 'use client'
 
-import type { Highlight, HighlightColor } from '@/lib/highlight-rules'
 import { useTranslations } from 'next-intl'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Document, pdfjs } from 'react-pdf'
 import 'react-pdf/dist/Page/AnnotationLayer.css'
 import 'react-pdf/dist/Page/TextLayer.css'
 import { reportTotalPages } from '../actions'
-import { HighlightComposer } from './highlight-composer'
-import { HighlightsPanel } from './highlights-panel'
 import { PdfPageList, type PdfPageListHandle } from './pdf-page-list'
 import { PdfToolbar } from './pdf-toolbar'
 import { describeError, reportReaderError } from './report-reader-error'
-import { useHighlights } from './use-highlights'
-import { useTextSelection } from './use-text-selection'
 import { MAX_ZOOM, MIN_ZOOM, clamp } from './viewer-limits'
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
@@ -22,8 +17,6 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
 ).toString()
 
 const MAX_PAGE_WIDTH = 900
-// Below this width the highlights panel is a sheet that covers the page.
-const PHONE_QUERY = '(max-width: 767px)'
 
 function useElementWidth<T extends HTMLElement>() {
   const ref = useRef<T>(null)
@@ -50,14 +43,12 @@ export default function PdfViewer({
   title,
   savedPage,
   storedTotal,
-  initialHighlights,
 }: {
   bookId: string
   src: string
   title: string
   savedPage: number | null
   storedTotal: number | null
-  initialHighlights: Highlight[]
 }) {
   const t = useTranslations('reader')
   const [total, setTotal] = useState(0)
@@ -66,15 +57,8 @@ export default function PdfViewer({
   const hasReportedTotal = useRef(false)
   const [zoom, setZoom] = useState(1)
   const listRef = useRef<PdfPageListHandle>(null)
-  const [isPanelOpen, setIsPanelOpen] = useState(false)
-  const [isComposing, setIsComposing] = useState(false)
-  const { highlights, add, remove } = useHighlights(bookId, initialHighlights)
   const { ref: scrollRef, width: containerWidth } =
     useElementWidth<HTMLDivElement>()
-  const { selection, clear: clearSelection } = useTextSelection(
-    scrollRef,
-    isComposing
-  )
 
   // Stable identity: a new object each render makes react-pdf reload the file.
   const options = useMemo(() => ({ withCredentials: true }), [])
@@ -89,36 +73,10 @@ export default function PdfViewer({
 
   const pageWidth = Math.min(Math.max(containerWidth - 16, 0), MAX_PAGE_WIDTH)
 
-  // Arrows, "Ir para a página" and the highlights list scroll to the page;
+  // Arrows and "Ir para a página" scroll to the page;
   // the list then reports it back as the current page.
   const handlePageChange = (next: number) => {
     listRef.current?.scrollToPage(clamp(next, 1, Math.max(total, 1)))
-  }
-
-  const handleJump = (target: number) => {
-    handlePageChange(target)
-    // On phones the panel is a sheet that covers the page.
-    if (window.matchMedia(PHONE_QUERY).matches) {
-      setIsPanelOpen(false)
-    }
-  }
-
-  const handleSaveHighlight = async (color: HighlightColor, note: string) => {
-    if (!selection) {
-      return false
-    }
-    const isSaved = await add({
-      // The page where the selection started, not the one at the centre.
-      page: selection.page,
-      color,
-      text: selection.text,
-      note: note.trim() || null,
-      rects: selection.rects,
-    })
-    if (isSaved) {
-      clearSelection()
-    }
-    return isSaved
   }
 
   const handleLoadSuccess = ({ numPages }: { numPages: number }) => {
@@ -139,9 +97,6 @@ export default function PdfViewer({
         page={page}
         total={total}
         zoom={zoom}
-        highlightCount={highlights.length}
-        isPanelOpen={isPanelOpen}
-        onTogglePanel={() => setIsPanelOpen((current) => !current)}
         onPageChange={handlePageChange}
         onZoomChange={(next) => setZoom(clamp(next, MIN_ZOOM, MAX_ZOOM))}
       />
@@ -181,31 +136,13 @@ export default function PdfViewer({
                 total={total}
                 width={pageWidth * zoom}
                 initialPage={clamp(savedPage ?? 1, 1, total)}
-                highlights={highlights}
                 scrollRef={scrollRef}
                 onPageChange={setPage}
               />
             )}
           </Document>
         </div>
-        {isPanelOpen && (
-          <HighlightsPanel
-            highlights={highlights}
-            currentPage={page}
-            onJump={handleJump}
-            onRemove={remove}
-            onClose={() => setIsPanelOpen(false)}
-          />
-        )}
       </div>
-      {selection && (
-        <HighlightComposer
-          selection={selection}
-          isOpen={isComposing}
-          onOpenChange={setIsComposing}
-          onSave={handleSaveHighlight}
-        />
-      )}
     </div>
   )
 }
