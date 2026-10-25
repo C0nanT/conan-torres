@@ -1,0 +1,32 @@
+# Dependencies and build output from the host (glibc binaries, stale cache)
+node_modules
+.next
+out
+
+# Local reader database (the image gets an empty /app/reader-data for the volume)
+data-local
+*.db
+*.db-journal
+
+# VCS and secrets
+.git
+.gitignore
+.env*
+!.env.example
+
+# Dev tooling and agent work
+.claude
+.cursor
+.scratch
+.vscode
+.husky
+.github
+docs
+
+# Docs (the build does not read any markdown)
+*.md
+
+# Docker files themselves
+Dockerfile
+.dockerignore
+docker-compose.yml

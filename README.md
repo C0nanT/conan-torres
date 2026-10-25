@@ -30,7 +30,6 @@ Requer Node >= 22 e pnpm.
 
 ```bash
 pnpm install
-cp .env.example .env
 pnpm dev
 ```
 
@@ -41,20 +40,26 @@ Abra [http://localhost:3000](http://localhost:3000).
 | Comando | O que faz |
 | --- | --- |
 | `pnpm dev` | Servidor de desenvolvimento |
-| `pnpm build` | Build de produção (valida env via `src/env.mjs`) |
-| `pnpm start` | Serve o build de produção |
+| `pnpm build` | Build de produção (saída `standalone`) |
 | `pnpm check` | Lint + formatação (Biome) |
 | `pnpm check:fix` | Corrige lint e formatação automaticamente |
 | `pnpm exec tsc --noEmit` | Checagem de tipos |
 
-Defina `SKIP_ENV_VALIDATION=1` para pular a validação de env (usado em builds Docker).
+O build usa `output: 'standalone'`, então `pnpm start` (`next start`) não é suportado: o Next avisa que não funciona com essa configuração. Em produção o site roda via Docker (veja [Deploy](#deploy)). Para testar o build de produção localmente:
+
+```bash
+pnpm build
+cp -r public .next/standalone/
+cp -r .next/static .next/standalone/.next/
+PORT=3000 node .next/standalone/server.js
+```
 
 ## Estrutura
 
 ```
 data/                 Conteúdo do site (site.json, certifications.json)
 messages/pt.json      Textos da interface
-public/               Imagens, áudio, certificados, capas de livros
+public/               Imagens, certificados, capas de livros
 src/app/[locale]/     Páginas (home, about, projects, books, certificates)
 src/components/       ui (shadcn + animados), layout, common
 src/lib/              site-data, metadata, navigation, youtube-live-stats
@@ -69,7 +74,7 @@ src/lib/              site-data, metadata, navigation, youtube-live-stats
 
 ## Deploy
 
-Roda em VPS própria via Docker Compose (serviço `web`, build pelo `Dockerfile`).
+Roda em VPS própria via Docker Compose (serviço `web`, build pelo `Dockerfile`, porta 8080). O site não precisa de variáveis de ambiente.
 
 ```bash
 docker compose up -d --build

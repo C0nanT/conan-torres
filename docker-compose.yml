@@ -1,5 +1,3 @@
-version: "3.9"
-
 services:
   web:
     build: .
@@ -9,9 +7,19 @@ services:
     environment:
       NODE_ENV: production
       PORT: 8080
-    command: ["pnpm", "run", "start"]
+      # read from the host shell or a .env next to this file (never committed)
+      READER_PASSWORD: ${READER_PASSWORD:-}
+      BOOK_FILE_MONOLITO_PARA_MICROSSERVICOS: ${BOOK_FILE_MONOLITO_PARA_MICROSSERVICOS:-}
+      READER_DEBUG: ${READER_DEBUG:-}
+    volumes:
+      # reader's SQLite file (saved pages, highlights) and the downloaded book
+      # PDFs; survives rebuilds
+      - leitor-data:/app/reader-data
     logging:
       driver: json-file
       options:
         max-size: "1m"
         max-file: "3"
+
+volumes:
+  leitor-data:

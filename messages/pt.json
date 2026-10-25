@@ -10,6 +10,7 @@
   "experience": {
     "titlePrefix": "Minhas",
     "titleHighlight": "experiências",
+    "moreDetails": "Mais detalhes",
     "downloadResume": "Minhas experiências — baixar currículo",
     "resumeUnavailable": {
       "title": "Currículo em breve",
@@ -20,14 +21,9 @@
     "badge": "Recomendações",
     "titlePrefix": "O que dizem sobre",
     "titleHighlight": "meu trabalho",
-    "subtitle": "Recomendações de quem já trabalhou ou estudou comigo, direto do LinkedIn.",
-    "viewAll": "Ver todas no LinkedIn",
-    "viewProfile": "Ver perfil de {name} no LinkedIn",
-    "readMore": "Ler mais",
-    "readLess": "Ler menos"
+    "viewAll": "Ver todas no LinkedIn"
   },
   "common": {
-    "readMore": "Ler mais",
     "loading": "Carregando...",
     "error": "Erro",
     "notFound": "Não encontrado",
@@ -37,20 +33,91 @@
     "english": "Inglês",
     "whatsappChat": "Conversar no WhatsApp"
   },
-  "search": {
-    "placeholder": "Buscar artigos sobre algoritmos, carreira, tech...",
-    "triggerText": "Buscar artigos sobre algoritmos, carreira, tech...",
-    "searching": "Buscando artigos...",
-    "noResults": "Nenhum resultado encontrado",
-    "noResultsDescription": "Tente usar palavras-chave diferentes como \"algoritmos\", \"carreira\" ou \"sistema\"",
-    "featuredArticles": "Artigos em Destaque",
-    "searchResults": "Resultados da Busca",
-    "cancel": "Cancelar",
-    "clear": "Limpar",
-    "navigate": "Navegar",
-    "select": "Selecionar",
-    "close": "Fechar",
-    "shortcutHint": "K"
+  "reader": {
+    "back": "Voltar para os livros",
+    "privateTitle": "Leitura privada",
+    "privateDescription": "Este leitor é pessoal. Se quiser ler {title}, compre o seu exemplar.",
+    "buy": "Comprar o livro",
+    "passwordLabel": "Senha",
+    "submit": "Entrar",
+    "submitting": "Verificando...",
+    "wrongPassword": "Senha incorreta.",
+    "locked": "Muitas tentativas erradas. Tente de novo em {minutes, plural, one {# minuto} other {# minutos}}.",
+    "notConfigured": "O leitor está indisponível no momento: o acesso não foi configurado no servidor.",
+    "signOut": "Sair",
+    "exportHighlights": "Exportar grifos",
+    "exportFailed": "Não consegui exportar os grifos agora. Tente de novo em instantes.",
+    "loading": "Carregando o livro...",
+    "opening": {
+      "title": "Abrindo o livro...",
+      "firstOpen": "Na primeira abertura, o servidor baixa o livro do Drive. Isso pode levar até dois minutos; depois, ele abre na hora."
+    },
+    "crash": {
+      "title": "O leitor encontrou um erro",
+      "description": "Algo deu errado ao abrir o livro. Tente de novo; se continuar, volte para os livros e entre mais tarde.",
+      "retry": "Tentar de novo"
+    },
+    "loadFailed": "Não foi possível abrir o PDF. Tente recarregar a página.",
+    "pageLabel": "Página",
+    "pageOf": "de {total}",
+    "pageFailed": "Não foi possível desenhar a página {page}.",
+    "pageTextFailed": "O texto da página {page} não pôde ser preparado para seleção.",
+    "goToPage": "Ir para a página",
+    "previousPage": "Página anterior",
+    "nextPage": "Próxima página",
+    "zoomIn": "Aumentar zoom",
+    "zoomOut": "Diminuir zoom",
+    "zoomLevel": "Zoom: {percent}%",
+    "savePage": {
+      "label": "Parei na página",
+      "submit": "Salvar",
+      "saving": "Salvando...",
+      "saved": "Página {page} salva.",
+      "invalid": "Digite um número inteiro de 1 a {total}.",
+      "unauthorized": "Seu acesso expirou. Entre de novo para salvar a página.",
+      "error": "Não consegui salvar a página. Tente de novo."
+    },
+    "highlights": {
+      "title": "Grifos",
+      "toggle": "Mostrar ou esconder os grifos",
+      "close": "Fechar a lista de grifos",
+      "empty": "Nenhum grifo ainda. Selecione um trecho do texto e toque em Grifar.",
+      "pageShort": "Pág. {page}",
+      "composerLabel": "Novo grifo",
+      "action": "Grifar",
+      "colorLabel": "Cor do grifo",
+      "colors": {
+        "yellow": "Amarelo",
+        "green": "Verde",
+        "blue": "Azul",
+        "pink": "Rosa"
+      },
+      "noteLabel": "Nota (opcional)",
+      "notePlaceholder": "Nota (opcional)",
+      "save": "Salvar grifo",
+      "saving": "Salvando...",
+      "cancel": "Cancelar",
+      "delete": "Apagar grifo",
+      "confirmDelete": "Apagar mesmo",
+      "tooLong": "Trecho longo demais para um grifo. Selecione menos texto.",
+      "limitedToPage": "Grifo limitado à página {page}",
+      "errors": {
+        "invalid": "Não foi possível grifar esse trecho. Selecione de novo.",
+        "unauthorized": "Seu acesso expirou. Entre de novo para usar os grifos.",
+        "error": "Não consegui concluir a operação. Tente de novo."
+      }
+    },
+    "fileError": {
+      "title": "Não consegui carregar o livro",
+      "missing-env": "O arquivo deste livro não foi configurado no servidor.",
+      "invalid-book-id": "Livro inválido.",
+      "not-found": "O arquivo não foi encontrado no Drive. Confira o ID configurado.",
+      "drive-failed": "O Drive não respondeu direito. Tente de novo em instantes.",
+      "not-pdf": "O Drive não devolveu um PDF. Confira se o arquivo está compartilhado para qualquer pessoa com o link.",
+      "confirm-page": "O Drive pediu uma confirmação que o servidor não conseguiu atravessar.",
+      "too-large": "O arquivo é maior do que o limite aceito.",
+      "io-error": "O servidor não conseguiu guardar o arquivo."
+    }
   },
   "notFound": {
     "title": "Página não encontrada",
@@ -94,6 +161,7 @@
     "title": "Livros Recomendados",
     "description": "Livros que li, estou lendo ou pretendo ler.",
     "viewOnAmazon": "Ver na Amazon",
+    "read": "Ler",
     "ratingLabel": "Nota: {rating} de 5",
     "unrated": "Sem nota",
     "progressLabel": "Progresso: {progress}%",

@@ -32,14 +32,13 @@
       "freelances": "7"
     },
     "images": {
-      "avatar": "/profile-id-sem-fundo-2.png",
-      "hero": "/profile-id-sem-fundo-2.png",
-      "profile": "/profile-id-sem-fundo-2.png",
-      "about": "/profile-id-sem-fundo-2.png",
+      "avatar": "/profile-id-sem-fundo-2.webp",
+      "hero": "/profile-id-sem-fundo-2.webp",
+      "profile": "/profile-id-sem-fundo-2.webp",
+      "about": "/profile-id-sem-fundo-2.webp",
       "og": "/og-image.png",
-      "logo": "/profile-id-sem-fundo-2.png"
+      "logo": "/profile-id-sem-fundo-2.webp"
     },
-    "introAudio": "/audio/apresentacao.mp3",
     "knowsAbout": [
       "Web Development",
       "Laravel (PHP)",
@@ -278,7 +277,8 @@
         "cover": "/books/monolith-to-microservices.jpg",
         "status": "reading",
         "progress": 35,
-        "progressUpdatedAt": "2026-10-12"
+        "progressUpdatedAt": "2026-10-12",
+        "readable": true
       },
       {
         "id": "14-habitos-desenvolvedores",
@@ -547,7 +547,8 @@
         "Implantei um fluxo de desenvolvimento assistido por IA, com ganhos acima de 10x na maior parte das entregas, que foi apresentado no 1° Encontro das Defensorias do Sul.",
         "Responsável técnico por sistemas usados para administração de todas as Defensorias Públicas de Santa Catarina",
         "Estruturei a base de engenharia da instituição: entrega contínua, segurança de aplicações, observabilidade e Design System oficial."
-      ]
+      ],
+      "details": ["Em breve..."]
     },
     {
       "company": "FiveLabs",
@@ -559,7 +560,8 @@
         "Consultas críticas de cerca de 1,8s para menos de 200ms com estratégias de cache e processamento assíncrono.",
         "Cultura de testes automatizados: cerca de 50% menos tempo e custo na entrega de novas features.",
         "Code review, integrações entre sistemas e apoio técnico ao time."
-      ]
+      ],
+      "details": ["Em breve..."]
     },
     {
       "company": "SistemaPET",
@@ -571,18 +573,20 @@
         "Entreguei um chatbot com IA sobre a base de conhecimento da empresa e um app mobile multiplataforma.",
         "Automação de processos de negócio e integrações com parceiros.",
         "Evolução dos ERPs web e mobile e mentoria de estagiários."
-      ]
+      ],
+      "details": ["Em breve..."]
     },
     {
       "company": "Freelance",
-      "level": "FL",
+      "level": "-",
       "role": "Desenvolvedor de software",
       "period": "Jan 2020 - Dez 2023",
       "highlights": [
         "Soluções web sob medida para pequenos negócios, da concepção ao deploy.",
         "Landing pages focadas em performance e conversão.",
         "Produtos SaaS próprios, construídos do zero até a produção."
-      ]
+      ],
+      "details": ["Em breve..."]
     },
     {
       "company": "Colégio Santa Terezinha",
@@ -592,7 +596,8 @@
       "highlights": [
         "Suporte de TI e manutenção dos sites institucionais.",
         "Apoio em aulas introdutórias de informática e programação."
-      ]
+      ],
+      "details": ["Em breve..."]
     }
   ]
 }

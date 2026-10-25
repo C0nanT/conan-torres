@@ -11,6 +11,10 @@
 # database
 /prisma/db.sqlite
 /prisma/db.sqlite-journal
+# book reader SQLite (local default DATA_DIR)
+/data-local/
+*.db
+*.db-journal
 
 # next.js
 /.next/

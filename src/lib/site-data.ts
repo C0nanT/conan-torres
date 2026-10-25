@@ -51,6 +51,11 @@ export interface RecommendedBook {
   rating?: 1 | 2 | 3 | 4 | 5
   /** short personal remark about the book */
   note?: string
+  /**
+   * Shows the "Ler" button and enables `/books/<id>/ler`. Only a marker: the
+   * file's location stays in server env vars, never in this public repo.
+   */
+  readable?: boolean
 }
 
 export interface ProjectEntry {
@@ -70,6 +75,8 @@ export interface Experience {
   role: string
   period: string
   highlights: string[]
+  // versão longa, exibida pelo switch "mais detalhes"; sem ela o switch some
+  details?: string[]
 }
 
 export interface SiteData {
@@ -113,7 +120,7 @@ export interface SiteData {
       og: string
       logo: string
     }
-    introAudio: string
+    introAudio?: string
     knowsAbout: string[]
     tagline: string
   }
@@ -241,12 +248,6 @@ export function getSocialSameAs(): string[] {
   return [site.social.linkedin.url, site.social.github.url]
 }
 
-export function getRecommendedChannelById(
-  id: string
-): RecommendedYouTubeChannel | undefined {
-  return site.youtube.recommendedChannels.find((channel) => channel.id === id)
-}
-
 export function getBookProgress(book: RecommendedBook): number | undefined {
   if (book.status === 'read') {
     return 100
@@ -255,6 +256,14 @@ export function getBookProgress(book: RecommendedBook): number | undefined {
     return 0
   }
   return book.progress
+}
+
+/**
+ * The book with this id when it is marked `readable`, else undefined. Takes
+ * `unknown` because server actions pass untrusted arguments straight in.
+ */
+export function getReadableBook(id: unknown): RecommendedBook | undefined {
+  return site.books.recommended.find((book) => book.id === id && book.readable)
 }
 
 export function getYouTubeVideoUrl(
@@ -274,10 +283,4 @@ export function getYouTubeVideoThumbnail(videoId: string): string {
 
 export function getOgImageUrl(locale: string): string {
   return `${site.site.url}${site.profile.images.og.replace('{locale}', locale)}`
-}
-
-export function getProfileImageUrl(
-  type: keyof SiteData['profile']['images'] = 'avatar'
-): string {
-  return site.profile.images[type]
 }
