@@ -169,20 +169,20 @@ export function BookItem({ book }: { book: RecommendedBook }) {
               {t('progressLabel', { progress: book.progress })}
             </span>
           )}
+          <Button asChild={true} size="sm" className="w-fit">
+            <a href={book.url} target="_blank" rel="noopener noreferrer">
+              {t('viewOnAmazon')}
+              <ExternalLink className="ml-2 h-3.5 w-3.5" />
+            </a>
+          </Button>
           {book.readable && (
-            <Button asChild={true} size="sm" className="w-fit">
+            <Button asChild={true} size="sm" variant="ghost" className="w-fit">
               <Link href={`/books/${book.id}/ler`}>
                 <BookOpen className="mr-2 h-3.5 w-3.5" />
                 {t('read')}
               </Link>
             </Button>
           )}
-          <Button asChild={true} size="sm" variant="outline" className="w-fit">
-            <a href={book.url} target="_blank" rel="noopener noreferrer">
-              {t('viewOnAmazon')}
-              <ExternalLink className="ml-2 h-3.5 w-3.5" />
-            </a>
-          </Button>
         </div>
       </div>
     </article>
