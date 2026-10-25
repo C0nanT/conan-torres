@@ -11,8 +11,10 @@ import {
 } from 'framer-motion'
 import { ExternalLink, Linkedin } from 'lucide-react'
 import { useTranslations } from 'next-intl'
-import { type KeyboardEvent, useEffect, useId, useRef, useState } from 'react'
+import { type KeyboardEvent, useId, useRef, useState } from 'react'
 import { RecommendationAvatar } from './recommendation-avatar'
+import { RecommendationCarousel } from './recommendation-carousel'
+import { RecommendationCountdown } from './recommendation-countdown'
 
 // ~200 palavras/min: confortável para ler sem pressa
 const READING_MS_PER_WORD = 300
@@ -52,7 +54,6 @@ export function RecommendationsSection() {
   const t = useTranslations('recommendations')
   const items = site.recommendations
   const baseId = useId()
-  const listRef = useRef<HTMLDivElement>(null)
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([])
   const isStill = useReducedMotion() ?? false
   const [selectedId, setSelectedId] = useState(items[0]?.id)
@@ -62,26 +63,6 @@ export function RecommendationsSection() {
     items.findIndex((item) => item.id === selectedId)
   )
   const selected = items[selectedIndex]
-
-  // Na lista horizontal (mobile) mantém o autor ativo à vista; só rola a
-  // própria lista, nunca a página.
-  useEffect(() => {
-    const list = listRef.current
-    const tab = tabRefs.current[selectedIndex]
-    if (!(list && tab)) {
-      return
-    }
-    if (list.scrollWidth <= list.clientWidth) {
-      return
-    }
-    const isReducedMotion = window.matchMedia(
-      '(prefers-reduced-motion: reduce)'
-    ).matches
-    list.scrollTo({
-      left: tab.offsetLeft - (list.clientWidth - tab.offsetWidth) / 2,
-      behavior: isReducedMotion ? 'auto' : 'smooth',
-    })
-  }, [selectedIndex])
 
   if (!selected) {
     return null
@@ -149,12 +130,19 @@ export function RecommendationsSection() {
           </a>
         </div>
         <div className="group grid gap-8 md:grid-cols-[260px_1fr] md:gap-12">
+          <RecommendationCarousel
+            items={items}
+            selectedIndex={selectedIndex}
+            countdownDelayMs={BAR_DELAY_MS}
+            countdownDurationMs={getReadingTimeMs(selected.text) - BAR_DELAY_MS}
+            onSelect={selectPerson}
+            onCountdownEnd={handleCountdownEnd}
+          />
           <div
-            ref={listRef}
             role="tablist"
             aria-orientation="vertical"
             onKeyDown={handleKeyDown}
-            className="relative flex gap-2 overflow-x-auto md:flex-col md:overflow-visible"
+            className="relative hidden gap-2 md:flex md:flex-col"
           >
             {items.map((item, index) => {
               const isSelected = item.id === selected.id
@@ -200,25 +188,12 @@ export function RecommendationsSection() {
                       (a montagem reinicia a animação). Sem animação
                       (prefers-reduced-motion) não há contagem nem troca
                       automática; com um só autor não há para onde ir. */}
-                  {/* A barra fica colada na borda de baixo do card; o
-                      recorte arredondado acompanha os cantos do destaque. */}
                   {isSelected && items.length > 1 && (
-                    <span
-                      aria-hidden={true}
-                      style={{ animationDelay: `${BAR_DELAY_MS}ms` }}
-                      className="pointer-events-none absolute inset-0 animate-recommendation-bar-in overflow-hidden rounded-lg motion-reduce:hidden"
-                    >
-                      <span className="absolute inset-x-0 bottom-0 h-[3px] bg-primary/15">
-                        <span
-                          onAnimationEnd={handleCountdownEnd}
-                          style={{
-                            animationDelay: `${BAR_DELAY_MS}ms`,
-                            animationDuration: `${getReadingTimeMs(item.text) - BAR_DELAY_MS}ms`,
-                          }}
-                          className="block h-full origin-right animate-recommendation-countdown bg-primary group-hover:[animation-play-state:paused] group-has-[:focus-visible]:[animation-play-state:paused]"
-                        />
-                      </span>
-                    </span>
+                    <RecommendationCountdown
+                      delayMs={BAR_DELAY_MS}
+                      durationMs={getReadingTimeMs(item.text) - BAR_DELAY_MS}
+                      onEnd={handleCountdownEnd}
+                    />
                   )}
                 </button>
               )
