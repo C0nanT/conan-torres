@@ -1,6 +1,6 @@
 'use client'
 
-import { cn } from '@/lib/shadcn'
+import { cn } from '@/lib/styling'
 import type { ButtonHTMLAttributes } from 'react'
 
 interface SwitchProps

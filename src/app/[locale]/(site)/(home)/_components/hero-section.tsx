@@ -5,8 +5,8 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Link } from '@/lib/navigation'
-import { cn } from '@/lib/shadcn'
 import { site } from '@/lib/site-data'
+import { cn } from '@/lib/styling'
 import {
   ArrowRight,
   Award,

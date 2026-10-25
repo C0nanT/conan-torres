@@ -1,6 +1,6 @@
 import { Badge } from '@/components/ui/badge'
 import { getTechnologyGroup } from '@/lib/certifications/technology-groups'
-import { cn } from '@/lib/shadcn'
+import { cn } from '@/lib/styling'
 import type { CSSProperties } from 'react'
 
 // The group colour is a tinted background plus border; text stays foreground

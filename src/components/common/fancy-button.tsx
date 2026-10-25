@@ -3,9 +3,9 @@
 import { Slot } from '@radix-ui/react-slot'
 import * as React from 'react'
 
-import type { PolymorphicComponentProps } from '@/utils/polymorphic'
-import { recursiveCloneChildren } from '@/utils/recursive-clone-children'
-import { type VariantProps, tv } from '@/utils/tv'
+import type { PolymorphicComponentProps } from '@/lib/polymorphic'
+import { recursiveCloneChildren } from '@/lib/recursive-clone-children'
+import { type VariantProps, tv } from '@/lib/styling'
 
 const FANCY_BUTTON_ROOT_NAME = 'FancyButtonRoot'
 const FANCY_BUTTON_ICON_NAME = 'FancyButtonIcon'

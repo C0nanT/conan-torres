@@ -1,7 +1,7 @@
 'use client'
 
 import { LogoIcon } from '@/components/common'
-import { cn } from '@/lib/shadcn'
+import { cn } from '@/lib/styling'
 import { useEffect, useState } from 'react'
 
 interface LoadingScreenProps {

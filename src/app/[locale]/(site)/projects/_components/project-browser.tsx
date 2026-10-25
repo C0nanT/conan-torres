@@ -3,7 +3,7 @@
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import type { Project } from '@/lib/projects'
-import { cn } from '@/lib/shadcn'
+import { cn } from '@/lib/styling'
 import { Code2, ExternalLink, Github } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
