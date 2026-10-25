@@ -45,8 +45,6 @@
     "locked": "Muitas tentativas erradas. Tente de novo em {minutes, plural, one {# minuto} other {# minutos}}.",
     "notConfigured": "O leitor está indisponível no momento: o acesso não foi configurado no servidor.",
     "signOut": "Sair",
-    "exportHighlights": "Exportar grifos",
-    "exportFailed": "Não consegui exportar os grifos agora. Tente de novo em instantes.",
     "loading": "Carregando o livro...",
     "opening": {
       "title": "Abrindo o livro...",
@@ -76,36 +74,6 @@
       "invalid": "Digite um número inteiro de 1 a {total}.",
       "unauthorized": "Seu acesso expirou. Entre de novo para salvar a página.",
       "error": "Não consegui salvar a página. Tente de novo."
-    },
-    "highlights": {
-      "title": "Grifos",
-      "toggle": "Mostrar ou esconder os grifos",
-      "close": "Fechar a lista de grifos",
-      "empty": "Nenhum grifo ainda. Selecione um trecho do texto e toque em Grifar.",
-      "pageShort": "Pág. {page}",
-      "composerLabel": "Novo grifo",
-      "action": "Grifar",
-      "colorLabel": "Cor do grifo",
-      "colors": {
-        "yellow": "Amarelo",
-        "green": "Verde",
-        "blue": "Azul",
-        "pink": "Rosa"
-      },
-      "noteLabel": "Nota (opcional)",
-      "notePlaceholder": "Nota (opcional)",
-      "save": "Salvar grifo",
-      "saving": "Salvando...",
-      "cancel": "Cancelar",
-      "delete": "Apagar grifo",
-      "confirmDelete": "Apagar mesmo",
-      "tooLong": "Trecho longo demais para um grifo. Selecione menos texto.",
-      "limitedToPage": "Grifo limitado à página {page}",
-      "errors": {
-        "invalid": "Não foi possível grifar esse trecho. Selecione de novo.",
-        "unauthorized": "Seu acesso expirou. Entre de novo para usar os grifos.",
-        "error": "Não consegui concluir a operação. Tente de novo."
-      }
     },
     "fileError": {
       "title": "Não consegui carregar o livro",

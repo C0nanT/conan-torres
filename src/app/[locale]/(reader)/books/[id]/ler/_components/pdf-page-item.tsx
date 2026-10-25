@@ -1,24 +1,20 @@
 'use client'
 
-import type { Highlight } from '@/lib/highlight-rules'
 import { useTranslations } from 'next-intl'
 import type { PDFPageProxy } from 'pdfjs-dist'
 import { memo, useCallback, useEffect, useRef, useState } from 'react'
 import { Page } from 'react-pdf'
-import { HighlightLayer } from './highlight-layer'
 import { reportReaderError } from './report-reader-error'
 
 function PageContent({
   bookId,
   pageNumber,
   width,
-  highlights,
   onRatio,
 }: {
   bookId: string
   pageNumber: number
   width: number
-  highlights: Highlight[]
   onRatio: (pageNumber: number, ratio: number) => void
 }) {
   const t = useTranslations('reader')
@@ -59,7 +55,6 @@ function PageContent({
           reportReaderError(bookId, `pdf-texto-${pageNumber}`, error)
         }}
       />
-      <HighlightLayer highlights={highlights} />
       {(hasPageError || hasTextError) && (
         <p
           role="alert"
@@ -75,7 +70,7 @@ function PageContent({
 }
 
 // One slot of the continuous column. The slot always reserves the page's
-// size; the canvas, text and highlight layers exist only while the page is
+// size; the canvas, and text layers exist only while the page is
 // inside the render window, and unmounting them frees the canvas.
 export const PdfPageItem = memo(function PdfPageItem({
   bookId,
@@ -83,7 +78,6 @@ export const PdfPageItem = memo(function PdfPageItem({
   width,
   height,
   isRendered,
-  highlights,
   registerPage,
   onRatio,
 }: {
@@ -92,7 +86,6 @@ export const PdfPageItem = memo(function PdfPageItem({
   width: number
   height: number
   isRendered: boolean
-  highlights: Highlight[]
   registerPage: (pageNumber: number, element: HTMLDivElement | null) => void
   onRatio: (pageNumber: number, ratio: number) => void
 }) {
@@ -113,7 +106,6 @@ export const PdfPageItem = memo(function PdfPageItem({
           bookId={bookId}
           pageNumber={pageNumber}
           width={width}
-          highlights={highlights}
           onRatio={onRatio}
         />
       )}

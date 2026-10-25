@@ -1,7 +1,5 @@
 import { Button } from '@/components/ui/button'
 import { ensureBookFile } from '@/lib/book-file'
-import type { Highlight } from '@/lib/highlight-rules'
-import { listHighlights } from '@/lib/highlights'
 import { Link } from '@/lib/navigation'
 import {
   type Reader,
@@ -40,16 +38,6 @@ function loadPosition(owner: Reader, bookId: string): ReadingPosition | null {
   }
 }
 
-// Same rule: highlights that fail to load must not block reading.
-function loadHighlights(owner: Reader, bookId: string): Highlight[] {
-  try {
-    return listHighlights(owner, bookId)
-  } catch (error) {
-    logReaderDbFailure('ler-grifos', error)
-    return []
-  }
-}
-
 export default async function ReaderPage({
   params,
 }: {
@@ -79,7 +67,6 @@ export default async function ReaderPage({
           title={book.title}
           savedPage={position?.currentPage ?? null}
           storedTotal={position?.totalPages ?? null}
-          initialHighlights={loadHighlights(reader, book.id)}
         />
       )
     }
