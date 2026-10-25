@@ -1,8 +1,13 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/components/ui/popover'
 import { Link } from '@/lib/navigation'
-import { ArrowLeft, LogOut, Minus, Plus } from 'lucide-react'
+import { ArrowLeft, LogOut, Menu, Minus, Plus } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
 import { logout } from '../actions'
@@ -12,6 +17,7 @@ import { MAX_ZOOM, MIN_ZOOM, ZOOM_STEP, clamp } from './viewer-limits'
 export function PdfToolbar({
   bookId,
   page,
+  startPage,
   total,
   zoom,
   onPageChange,
@@ -19,6 +25,7 @@ export function PdfToolbar({
 }: {
   bookId: string
   page: number
+  startPage: number
   total: number
   zoom: number
   onPageChange: (page: number) => void
@@ -88,47 +95,103 @@ export function PdfToolbar({
         </Button>
       </div>
 
-      <SavePageForm bookId={bookId} page={page} total={total} />
+      <div className="hidden items-center gap-3 lg:flex">
+        <SavePageForm
+          bookId={bookId}
+          page={page}
+          startPage={startPage}
+          total={total}
+        />
+        <ZoomControls zoom={zoom} onZoomChange={onZoomChange} />
+        <SignOutButton />
+      </div>
 
-      <div className="flex items-center gap-1">
-        <Button
-          type="button"
-          variant="ghost"
-          size="sm"
-          aria-label={t('zoomOut')}
-          disabled={zoom <= MIN_ZOOM}
-          onClick={() => onZoomChange(zoom - ZOOM_STEP)}
-        >
-          <Minus className="h-4 w-4" />
-        </Button>
-        <span
-          className="w-12 text-center text-muted-foreground text-sm tabular-nums"
-          title={t('zoomLevel', { percent: Math.round(zoom * 100) })}
-        >
-          {Math.round(zoom * 100)}%
-        </span>
-        <Button
-          type="button"
-          variant="ghost"
-          size="sm"
-          aria-label={t('zoomIn')}
-          disabled={zoom >= MAX_ZOOM}
-          onClick={() => onZoomChange(zoom + ZOOM_STEP)}
-        >
-          <Plus className="h-4 w-4" />
-        </Button>
-        <form action={logout}>
+      <Popover>
+        <PopoverTrigger asChild={true}>
           <Button
-            type="submit"
+            type="button"
             variant="ghost"
             size="sm"
-            aria-label={t('signOut')}
+            className="lg:hidden"
+            aria-label={t('menu')}
           >
-            <LogOut className="h-4 w-4 sm:mr-2" />
-            <span className="hidden sm:inline">{t('signOut')}</span>
+            <Menu className="h-4 w-4" />
           </Button>
-        </form>
-      </div>
+        </PopoverTrigger>
+        <PopoverContent
+          align="end"
+          className="flex w-auto max-w-[calc(100vw-1rem)] flex-col items-stretch gap-3 lg:hidden"
+        >
+          <SavePageForm
+            bookId={bookId}
+            page={page}
+            startPage={startPage}
+            total={total}
+          />
+          <ZoomControls zoom={zoom} onZoomChange={onZoomChange} />
+          <SignOutButton isLabelVisible={true} />
+        </PopoverContent>
+      </Popover>
     </header>
+  )
+}
+
+function ZoomControls({
+  zoom,
+  onZoomChange,
+}: {
+  zoom: number
+  onZoomChange: (zoom: number) => void
+}) {
+  const t = useTranslations('reader')
+
+  return (
+    <div className="flex items-center gap-1">
+      <Button
+        type="button"
+        variant="ghost"
+        size="sm"
+        aria-label={t('zoomOut')}
+        disabled={zoom <= MIN_ZOOM}
+        onClick={() => onZoomChange(zoom - ZOOM_STEP)}
+      >
+        <Minus className="h-4 w-4" />
+      </Button>
+      <span
+        className="w-12 text-center text-muted-foreground text-sm tabular-nums"
+        title={t('zoomLevel', { percent: Math.round(zoom * 100) })}
+      >
+        {Math.round(zoom * 100)}%
+      </span>
+      <Button
+        type="button"
+        variant="ghost"
+        size="sm"
+        aria-label={t('zoomIn')}
+        disabled={zoom >= MAX_ZOOM}
+        onClick={() => onZoomChange(zoom + ZOOM_STEP)}
+      >
+        <Plus className="h-4 w-4" />
+      </Button>
+    </div>
+  )
+}
+
+function SignOutButton({
+  isLabelVisible = false,
+}: { isLabelVisible?: boolean }) {
+  const t = useTranslations('reader')
+
+  return (
+    <form action={logout}>
+      <Button type="submit" variant="ghost" size="sm" aria-label={t('signOut')}>
+        <LogOut
+          className={isLabelVisible ? 'mr-2 h-4 w-4' : 'h-4 w-4 sm:mr-2'}
+        />
+        <span className={isLabelVisible ? undefined : 'hidden sm:inline'}>
+          {t('signOut')}
+        </span>
+      </Button>
+    </form>
   )
 }

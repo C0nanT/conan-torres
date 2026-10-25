@@ -45,6 +45,7 @@
     "locked": "Muitas tentativas erradas. Tente de novo em {minutes, plural, one {# minuto} other {# minutos}}.",
     "notConfigured": "O leitor está indisponível no momento: o acesso não foi configurado no servidor.",
     "signOut": "Sair",
+    "menu": "Menu",
     "loading": "Carregando o livro...",
     "opening": {
       "title": "Abrindo o livro...",

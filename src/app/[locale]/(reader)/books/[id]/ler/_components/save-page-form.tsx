@@ -3,7 +3,7 @@
 import { Button } from '@/components/ui/button'
 import { parsePageNumber } from '@/lib/reader/page-number'
 import { useTranslations } from 'next-intl'
-import { useEffect, useState, useTransition } from 'react'
+import { useEffect, useId, useState, useTransition } from 'react'
 import { toast } from 'sonner'
 import { savePage } from '../actions'
 
@@ -13,13 +13,16 @@ import { savePage } from '../actions'
 export function SavePageForm({
   bookId,
   page,
+  startPage,
   total,
 }: {
   bookId: string
   page: number
+  startPage: number
   total: number
 }) {
   const t = useTranslations('reader.savePage')
+  const inputId = useId()
   const [draft, setDraft] = useState(String(page))
   const [isInvalid, setIsInvalid] = useState(false)
   const [isPending, startTransition] = useTransition()
@@ -60,14 +63,11 @@ export function SavePageForm({
 
   return (
     <form onSubmit={handleSubmit} className="flex items-center gap-1.5">
-      <label
-        htmlFor="save-page-input"
-        className="hidden whitespace-nowrap text-muted-foreground text-sm md:inline"
-      >
-        {t('label')}
-      </label>
+      <span className="whitespace-nowrap text-muted-foreground text-sm tabular-nums">
+        p{startPage} ·
+      </span>
       <input
-        id="save-page-input"
+        id={inputId}
         type="text"
         inputMode="numeric"
         autoComplete="off"
@@ -89,6 +89,9 @@ export function SavePageForm({
       >
         {isPending ? t('saving') : t('submit')}
       </Button>
+      <span className="whitespace-nowrap text-muted-foreground text-sm tabular-nums">
+        · {Math.max(0, page - startPage)} páginas
+      </span>
     </form>
   )
 }
