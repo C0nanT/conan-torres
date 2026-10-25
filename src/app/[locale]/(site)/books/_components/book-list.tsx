@@ -1,4 +1,4 @@
-import { getBooks } from '@/lib/book-progress'
+import { getBooks } from '@/lib/reader/book-progress'
 import { getTranslations } from 'next-intl/server'
 import { BookItem } from './book-item'
 

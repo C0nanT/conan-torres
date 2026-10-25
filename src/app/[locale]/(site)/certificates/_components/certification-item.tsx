@@ -2,17 +2,17 @@
 
 import { Button } from '@/components/ui/button'
 import {
-  type CertificationLink,
-  getCertificationLinks,
-} from '@/lib/certification-links'
-import {
   formatCertificationDate,
   getIssuerInitials,
   getIssuerLogo,
-} from '@/lib/certifications'
+} from '@/lib/certifications/certifications'
+import {
+  type CertificationLink,
+  getCertificationLinks,
+} from '@/lib/certifications/links'
+import { sortTechnologies } from '@/lib/certifications/technology-groups'
 import { cn } from '@/lib/shadcn'
 import type { Certification } from '@/lib/site-data'
-import { sortTechnologies } from '@/lib/technology-groups'
 import { ExternalLink, FileText } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'

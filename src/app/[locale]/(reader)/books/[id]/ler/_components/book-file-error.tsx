@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button'
-import type { BookFileFailure } from '@/lib/book-file-log'
+import type { BookFileFailure } from '@/lib/reader/book-file-log'
 import { AlertTriangle, LogOut } from 'lucide-react'
 import { getTranslations } from 'next-intl/server'
 import { logout } from '../actions'

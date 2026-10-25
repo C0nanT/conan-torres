@@ -13,7 +13,7 @@ import {
   formatViews,
   getLiveStatsByChannelId,
   getLiveStatsByVideoId,
-} from '@/lib/youtube-live-stats'
+} from '@/lib/youtube/live-stats'
 import { ExternalLink, Play, Youtube } from 'lucide-react'
 import Image from 'next/image'
 import { FreshnessClock } from './freshness-clock'

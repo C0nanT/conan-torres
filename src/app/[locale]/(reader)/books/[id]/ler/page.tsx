@@ -1,18 +1,18 @@
 import { Button } from '@/components/ui/button'
-import { ensureBookFile } from '@/lib/book-file'
 import { Link } from '@/lib/navigation'
 import {
   type Reader,
   getReader,
   isReaderAccessConfigured,
-} from '@/lib/reader-access'
-import { logReaderDbFailure } from '@/lib/reader-db'
-import { debugReader } from '@/lib/reader-log'
-import { getClientIp, getLockMinutesLeft } from '@/lib/reader-rate-limit'
+} from '@/lib/reader/access'
+import { ensureBookFile } from '@/lib/reader/book-file'
+import { logReaderDbFailure } from '@/lib/reader/db'
+import { debugReader } from '@/lib/reader/log'
+import { getClientIp, getLockMinutesLeft } from '@/lib/reader/rate-limit'
 import {
   type ReadingPosition,
   getReadingPosition,
-} from '@/lib/reading-position'
+} from '@/lib/reader/reading-position'
 import { getReadableBook } from '@/lib/site-data'
 import { ArrowLeft } from 'lucide-react'
 import { getTranslations } from 'next-intl/server'

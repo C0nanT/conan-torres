@@ -1,7 +1,7 @@
 'use server'
 
-import { getReader } from '@/lib/reader-access'
-import { logReaderClientError } from '@/lib/reader-log'
+import { getReader } from '@/lib/reader/access'
+import { logReaderClientError } from '@/lib/reader/log'
 
 // Lets the browser report an error to the server log, which is the only place
 // Conan can read it when the reader runs on the VPS. Server actions are public
