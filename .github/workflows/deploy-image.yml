@@ -22,9 +22,11 @@ env:
 jobs:
   build-push:
     # Only after a green CI run triggered by a push (not a PR from a branch
-    # named main), or when started by hand.
+    # named main), or when started by hand on main. A manual run skips CI, so
+    # it must never push :latest from another branch.
     if: >
-      github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'workflow_dispatch' &&
+       github.ref == 'refs/heads/main') ||
       (github.event.workflow_run.conclusion == 'success' &&
        github.event.workflow_run.event == 'push')
     runs-on: ubuntu-latest

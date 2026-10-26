@@ -31,12 +31,8 @@ services:
       # reader's SQLite file and cached book PDFs; survives down/up and
       # image swaps
       - leitor-data:/app/reader-data
-    healthcheck:
-      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:8080/api/health > /dev/null || exit 1"]
-      interval: 30s
-      timeout: 5s
-      retries: 3
-      start_period: 20s
+    # Healthcheck: inherited from the image's Dockerfile HEALTHCHECK (polls
+    # /api/health on 127.0.0.1:$PORT), the single source; not repeated here.
     networks:
       - proxy
     labels:
