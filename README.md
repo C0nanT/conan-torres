@@ -74,7 +74,15 @@ src/lib/              site-data, metadata, navigation, styling; reader/, youtube
 
 ## Deploy
 
-Roda em VPS própria via Docker Compose (serviço `web`, build pelo `Dockerfile`, porta 8080). O site não precisa de variáveis de ambiente.
+Em produção o site roda numa VPS atrás do Traefik de [traefik-default](https://github.com/c0nant/traefik-default) (HTTPS automático, `www` redireciona para `conantorres.dev`). O compose de produção é `docker-compose.prod.yml`: usa a imagem privada do GHCR, não publica porta, entra na rede `proxy` e mantém o volume `leitor-data`. Na VPS ele vira `/opt/apps/conan-torres/docker-compose.yml`, ao lado de um `.env` (`READER_PASSWORD`, `BOOK_FILE_*`, `APP_ENV=production`, opcional `IMAGE_TAG`).
+
+```bash
+cd /opt/apps/conan-torres
+docker compose pull && docker compose up -d
+docker compose ps   # web deve aparecer como (healthy)
+```
+
+Desenvolvimento local (sem Traefik): `docker-compose.yml` constrói a imagem e publica a porta 8080.
 
 ```bash
 docker compose up -d --build
