@@ -15,8 +15,9 @@ services:
     # Pin IMAGE_TAG in .env to a commit SHA to roll back or hold a version.
     image: ghcr.io/c0nant/conan-torres:${IMAGE_TAG:-latest}
     restart: unless-stopped
-    # No `ports:`: all traffic enters through Traefik. This also keeps the
-    # reader's rate limit honest (see AGENTS.md "Reader access").
+    # No `ports:`: all internet traffic enters through Traefik, which keeps
+    # the reader's rate limit honest. Other containers on `proxy` can still
+    # reach web:8080 directly (accepted risk, see AGENTS.md "Reader access").
     expose:
       - "8080"
     environment:
