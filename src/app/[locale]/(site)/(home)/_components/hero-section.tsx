@@ -185,9 +185,15 @@ export function HeroSection({ projectsCount }: HeroSectionProps) {
                   src={profile.images.hero}
                   alt={`${profile.displayName} - ${profile.jobTitle}`}
                   fill={true}
-                  className="object-cover object-center transition-transform duration-700 ease-out motion-safe:group-hover:scale-105"
+                  className="select-none object-cover object-center opacity-20 blur-[1.5px] transition-transform duration-700 ease-out motion-safe:group-hover:scale-105"
                   priority={true}
                   sizes="(max-width: 768px) 100vw, 448px"
+                />
+                <CautionTape
+                  label={t('stats.maintenance')}
+                  size="lg"
+                  repeat={4}
+                  className="absolute inset-x-[-15%] top-1/2 -translate-y-1/2 -rotate-[8deg]"
                 />
               </div>
 
