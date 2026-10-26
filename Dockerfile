@@ -33,4 +33,8 @@ RUN mkdir -p /app/reader-data && chown node:node /app/reader-data
 
 USER node
 EXPOSE 8080
+# /api/health answers 200 while the server is up; it needs no secret and does
+# not touch the database. busybox wget ships with alpine.
+HEALTHCHECK --interval=30s --timeout=5s --start-period=20s --retries=3 \
+  CMD wget -qO- "http://127.0.0.1:${PORT:-8080}/api/health" > /dev/null || exit 1
 CMD ["node", "server.js"]
