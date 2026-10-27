@@ -104,7 +104,7 @@ export function RecommendationCarousel({
                 tabIndex={distance === 1 ? 0 : -1}
                 aria-hidden={distance > 1}
                 aria-current={isSelected}
-                aria-label={item.name}
+                aria-label={`${item.name}, ${item.company}`}
                 onClick={() => {
                   if (!isSelected) {
                     onSelect(index, index > selectedIndex ? 1 : -1)
@@ -118,8 +118,11 @@ export function RecommendationCarousel({
                 )}
               >
                 <RecommendationAvatar person={item} size="sm" />
-                <span className="whitespace-nowrap text-sm font-medium">
-                  {item.name}
+                <span className="flex flex-col whitespace-nowrap">
+                  <span className="text-sm font-medium">{item.name}</span>
+                  <span className="text-xs text-muted-foreground">
+                    {item.company}
+                  </span>
                 </span>
                 {isSelected && items.length > 1 && (
                   <RecommendationCountdown

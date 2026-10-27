@@ -44,7 +44,9 @@ function Meta({ item }: { item: Recommendation }) {
       <p className="font-bold">{item.name}</p>
       <p className="text-sm text-muted-foreground">{item.headline}</p>
       <p className="text-xs text-muted-foreground">
-        {[item.date, item.relationship].filter(Boolean).join(' · ')}
+        {[item.company, item.date, item.relationship]
+          .filter(Boolean)
+          .join(' · ')}
       </p>
     </>
   )
@@ -182,7 +184,12 @@ export function RecommendationsSection() {
                   )}
                   <span className="relative flex items-center gap-3">
                     <RecommendationAvatar person={item} size="sm" />
-                    <span className="text-sm font-medium">{item.name}</span>
+                    <span className="flex flex-col">
+                      <span className="text-sm font-medium">{item.name}</span>
+                      <span className="text-xs text-muted-foreground">
+                        {item.company}
+                      </span>
+                    </span>
                   </span>
                   {/* Cada autor tem a própria barra, montada só na vez dele
                       (a montagem reinicia a animação). Sem animação

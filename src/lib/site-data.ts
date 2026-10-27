@@ -206,6 +206,7 @@ export interface Recommendation {
   name: string
   photo?: string
   headline: string
+  company: string
   relationship?: string
   date?: string
   text: string
