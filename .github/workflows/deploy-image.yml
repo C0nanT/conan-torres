@@ -1,9 +1,10 @@
 name: Build & Push Image
 
 # Publishes the private production image to GHCR after CI passes on main, so
-# the VPS only pulls it and never builds. The image carries no secret: the
-# build reads no env var, .env* is dockerignored, and READER_PASSWORD,
-# BOOK_FILE_* and APP_ENV come from the VPS .env at runtime.
+# the VPS only pulls it and never builds, then deploys it to the VPS over SSH.
+# The image carries no secret: the build reads no env var, .env* is
+# dockerignored, and READER_PASSWORD, BOOK_FILE_* and APP_ENV come from the
+# VPS .env at runtime.
 
 on:
   workflow_run:
@@ -18,6 +19,10 @@ concurrency:
 
 env:
   IMAGE: ghcr.io/c0nant/conan-torres
+  # workflow_run starts on the default branch tip; build and deploy the exact
+  # commit CI checked instead. One definition, so deploy sends the SHA
+  # build-push tagged.
+  SHA: ${{ github.event.workflow_run.head_sha || github.sha }}
 
 jobs:
   build-push:
@@ -35,11 +40,9 @@ jobs:
       packages: write
 
     steps:
-      # workflow_run starts on the default branch tip; build the exact commit
-      # CI checked instead.
       - uses: actions/checkout@v7
         with:
-          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+          ref: ${{ env.SHA }}
 
       - uses: docker/setup-buildx-action@v3
 
@@ -56,6 +59,63 @@ jobs:
           provenance: false
           tags: |
             ${{ env.IMAGE }}:latest
-            ${{ env.IMAGE }}:${{ github.event.workflow_run.head_sha || github.sha }}
+            ${{ env.IMAGE }}:${{ env.SHA }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+
+  deploy:
+    needs: build-push
+    # Same gate as build-push, repeated so the deploy can never run on its own
+    # terms (e.g. if build-push's condition changes later).
+    if: >
+      (github.event_name == 'workflow_dispatch' &&
+       github.ref == 'refs/heads/main') ||
+      (github.event.workflow_run.conclusion == 'success' &&
+       github.event.workflow_run.event == 'push')
+    runs-on: ubuntu-latest
+    # Secrets live in this Environment, which only main can use.
+    environment: producao
+    permissions: {}
+
+    steps:
+      # The `deploy` user's key can only run the VPS deploy script for this
+      # site; the remote command is just the SHA (40 lowercase hex), which the
+      # script reads from SSH_ORIGINAL_COMMAND. It refuses (red run) while the
+      # VPS .env pins IMAGE_TAG. Plain ssh from the runner: the private key
+      # never goes through a third-party action.
+      - name: Deploy over SSH
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
+          VPS_KNOWN_HOSTS: ${{ secrets.VPS_KNOWN_HOSTS }}
+        run: |
+          umask 077
+          dir="$(mktemp -d "$RUNNER_TEMP/ssh.XXXXXX")"
+          trap 'rm -rf "$dir"' EXIT
+          printf '%s\n' "$VPS_SSH_KEY" > "$dir/key"
+          printf '%s\n' "$VPS_KNOWN_HOSTS" > "$dir/known_hosts"
+          chmod 600 "$dir/key" "$dir/known_hosts"
+          ssh -i "$dir/key" \
+            -o IdentitiesOnly=yes \
+            -o BatchMode=yes \
+            -o StrictHostKeyChecking=yes \
+            -o UserKnownHostsFile="$dir/known_hosts" \
+            -o ConnectTimeout=30 \
+            "deploy@$VPS_HOST" "$SHA"
+
+      # Checks the whole public path through the Traefik edge. A few retries
+      # cover the moment the router picks up the new container.
+      - name: Check https://conantorres.dev answers 200
+        run: |
+          for attempt in 1 2 3 4 5; do
+            code="$(curl -sS -o /dev/null -w '%{http_code}' --max-time 20 \
+              https://conantorres.dev || true)"
+            if [ "$code" = 200 ]; then
+              echo "https://conantorres.dev: 200"
+              exit 0
+            fi
+            echo "attempt $attempt: HTTP $code"
+            sleep 5
+          done
+          echo "https://conantorres.dev did not answer 200" >&2
+          exit 1
