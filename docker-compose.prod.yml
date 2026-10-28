@@ -12,8 +12,7 @@ services:
   web:
     # Private image built by CI (.github/workflows/deploy-image.yml); the VPS
     # never builds. Needs `docker login ghcr.io` (read:packages token) once.
-    # Pin IMAGE_TAG in .env to a commit SHA to roll back or hold a version;
-    # while it is set, the CI deploy refuses (red run).
+    # Pin IMAGE_TAG in .env to a commit SHA to roll back or hold a version.
     image: ghcr.io/c0nant/conan-torres:${IMAGE_TAG:-latest}
     restart: unless-stopped
     # No `ports:`: all internet traffic enters through Traefik, which keeps
