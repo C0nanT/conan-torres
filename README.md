@@ -78,17 +78,18 @@ src/lib/              site-data, metadata, navigation, styling; reader/, youtube
 
 ## Deploy
 
-Todo push na `main` roda o CI (`.github/workflows/ci.yml`). Se ele passar, o workflow "Build & Push Image" publica a imagem privada `ghcr.io/c0nant/conan-torres` com as tags `latest` e o SHA do commit. A VPS não atualiza sozinha: depois do push, rode o `pull` abaixo.
+Todo push na `main` roda o CI (`.github/workflows/ci.yml`). Se ele passar, o workflow "Build & Push Image" publica a imagem privada `ghcr.io/c0nant/conan-torres` com as tags `latest` e o SHA do commit e, logo depois, faz o deploy na VPS: entra por SSH com o usuário `deploy` (Environment `producao`, secrets `VPS_HOST`, `VPS_SSH_KEY` e `VPS_KNOWN_HOSTS`) e manda só o SHA. Na VPS, o script `deploy-vps` do [traefik-default](https://github.com/c0nant/traefik-default) roda `pull` + `up -d`, espera o container ficar `healthy` e confere que a imagem em uso é a daquele commit. Por fim o workflow faz um `curl` em https://conantorres.dev exigindo 200. Se algo falha, a execução fica vermelha no GitHub e nada é desfeito. A configuração da VPS e dos secrets está no README do traefik-default, seção "Deploy pelo CI (usuário `deploy`)".
 
-Em produção o site roda numa VPS atrás do Traefik de [traefik-default](https://github.com/c0nant/traefik-default) (HTTPS automático, `www` redireciona para `conantorres.dev`). O compose de produção é `docker-compose.prod.yml`: usa a imagem privada do GHCR, não publica porta, entra na rede `proxy` e mantém o volume `leitor-data`. Na VPS ele vira `/opt/apps/conan-torres/docker-compose.yml`, ao lado de um `.env` (`READER_PASSWORD`, `BOOK_FILE_*`, `APP_ENV=production`, opcional `IMAGE_TAG`).
+Em produção o site roda numa VPS atrás do Traefik de [traefik-default](https://github.com/c0nant/traefik-default) (HTTPS automático, `www` redireciona para `conantorres.dev`). O compose de produção é `docker-compose.prod.yml`: usa a imagem privada do GHCR, não publica porta, entra na rede `proxy` e mantém o volume `leitor-data`. Na VPS ele vira `/opt/apps/conan-torres/docker-compose.yml`, ao lado de um `.env` (`READER_PASSWORD`, `BOOK_FILE_*`, `APP_ENV=production`, opcional `IMAGE_TAG`). A pasta também tem o arquivo `.deploy-pelo-ci`, que faz o cron de atualização da VPS pular este site: quem atualiza é só o CI.
+
+Para conferir o estado na VPS:
 
 ```bash
 cd /opt/apps/conan-torres
-docker compose pull && docker compose up -d
 docker compose ps   # web deve aparecer como (healthy)
 ```
 
-Para voltar a uma versão, defina `IMAGE_TAG=<sha>` no `.env` e rode o mesmo comando.
+Para voltar a uma versão, reverta o commit na `main`: o CI publica e faz o deploy da versão revertida. Fixar `IMAGE_TAG=<sha>` no `.env` (e rodar `docker compose pull && docker compose up -d` na pasta) também funciona, mas trava o deploy: enquanto o `IMAGE_TAG` estiver lá, todo deploy do CI recusa e a execução fica vermelha. Tire a linha do `.env` para o CI voltar a fazer o deploy.
 
 Desenvolvimento local (sem Traefik): `docker-compose.yml` constrói a imagem e publica a porta 8080.
 
